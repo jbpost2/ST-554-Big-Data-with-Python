@@ -39,7 +39,7 @@ There are a lot of options for the IDE to use.  We'll use JupyterLab as our pro
 
 ### Python Help (Optional)
 
-We'll continue to learn python throughout this first topic. You may want more detail or another explanation of concepts. The best place to learn about a particular objects, functions, or methods is in the official documentation but that can be difficult to read when you are first starting out. Below are a number of tutorials that may be helpful!
+We'll continue to learn python throughout the first couple of topics. You may want more detail or another explanation of concepts. The best place to learn about particular objects, functions, or methods is in the official documentation but that can be difficult to read when you are first starting out. Below are a number of tutorials that may be helpful!
 
 - A <a href="https://docs.python.org/3/tutorial/index.html" target="_blank" rel="noopener">nice tutorial from python.org</a> (although sometimes they throw in some things that may be a bit out there for beginners).
 - A <a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">good reference for python basics from w3schools</a>. Generally w3schools is good to just get an idea about lots of languages! But overall the tutorials aren't great.

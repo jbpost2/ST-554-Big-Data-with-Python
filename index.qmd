@@ -12,12 +12,12 @@ Volume, Variety, Velocity, Veracity (Variability), and Value
 knitr::include_graphics("01_Programming_in_python/img/big-data-characteristics.png")
 ```
 
-The course is split into four topics
+The course covers
 
-1.  Programming in `python`
-2.  Big Data Management
-3.  Modeling Big Data (with `Spark` via `pyspark`)
-4.  Streaming Data
+-   Programming in `python`
+-   Understanding how big data is managed
+-   Predictive modeling in `python` and with `Spark` via `pyspark`
+-   Handling streaming data
 
 Using `python` as our programming language we'll learn about using Jupyter notebooks to share and document our work. We'll use `pyspark` as our interface to the `Spark` software, which is commonly used to handle big data.
 
@@ -33,7 +33,7 @@ At the end of this course students will be able to
 
 ## Weekly To-do List
 
-Generally speaking, each week will have a few videos to watch and readings to do as well as corresponding homework assignments (see the syllabus on Moodle for homework policies).
+Generally speaking, each week will have a few videos to watch and readings to do as well as corresponding homework assignments (see the syllabus on [Moodle](https://wolfware.ncsu.edu) for homework policies).
 
 -   There will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.
 -   There will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment.
@@ -51,9 +51,8 @@ To obtain course help there are a number of options:
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
 | Topic/Week        | Learning Materials                                              | Assignments                               |
 +===================+=================================================================+===========================================+
-| Week 1\           | Read - Week 1 Overview\                                         | HW 1 due W, 1/15                          |
-| 1/6-1/10          | 01 - Course Goals\                                              |                                           |
-|                   | 02 - Basic Use of Python\                                       |                                           |
+| Week 1\           | 01 - Course Goals & Other Resources\                            | HW 1 due W, 1/15                          |
+| 1/6-1/10          | 02 - Basic Use of Python\                                       |                                           |
 |                   | 03 - Modules\                                                   |                                           |
 |                   | 04 - JupyterLab Notebooks & Markdown\                           |                                           |
 |                   | 05 - List Basics and Strings\                                   |                                           |
@@ -64,11 +63,11 @@ To obtain course help there are a number of options:
 | 1/13-1/17         | 09 - Control Flow\                                              |                                           |
 |                   | 10 - Lists and Tuples\                                          |                                           |
 |                   | 11 - Dictionaries\                                              |                                           |
-|                   | 12 - Numpy\                                                     |                                           |
-|                   | 13 - Exploratory Data Analysis Concepts                         |                                           |
+|                   | 12 - Numpy                                                      |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 3\           | 14 - Pandas Series\                                             | HW 3 due W, 1/29                          |
-| 1/21-1/24 (Off M) | 15 - Pandas DataFrames\                                         |                                           |
+| Week 3\           | 13 - Exploratory Data Analysis Concepts\                        | HW 3 due W, 1/29                          |
+| 1/21-1/24 (Off M) | 14 - Pandas Series\                                             |                                           |
+|                   | 15 - Pandas DataFrames\                                         |                                           |
 |                   | 16 - Pandas for Reading Data\                                   |                                           |
 |                   | 17 - Numeric Summaries                                          |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
