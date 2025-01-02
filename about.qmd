@@ -2,8 +2,4 @@
 title: "About"
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+This website houses the learning materials for ST 554 - Big Data Analysis at NC State.
