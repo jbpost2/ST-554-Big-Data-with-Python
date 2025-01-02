@@ -466,7 +466,7 @@
     "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html",
     "title": "Basic Use of Python",
     "section": "",
-    "text": "Justin Post (Some notes modified from Dr. Eric Chi)\nIn preparation for dealing with big data we need to learn a programming language and figure out a good coding environment. We’ll learn python and code in Google Colab/JupyterLab.\nWe choose python due to its popularity and the ease of programming in spark through pyspark.\nWe use JupyterLab as it is a widely used software for creating python notebooks. Google Colab is built on JupyterLab!"
+    "text": "In preparation for dealing with big data we need to learn a programming language and figure out a good coding environment. We’ll learn python and code in Google Colab/JupyterLab.\nWe choose python due to its popularity and the ease of programming in spark (a big data software) through pyspark.\nWe use JupyterLab as it is a widely used software for creating python notebooks. Google Colab is built on JupyterLab!\nNote: These types of webpages are built from Jupyter notebooks (.ipynb files). You can access your own versions of them by clicking the ‘open in colab’ button at the top. It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!"
   },
   {
     "objectID": "01_Programming_in_python/02-Basic_Use_Of_Python.html#getting-started",
