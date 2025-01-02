@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-17">
+<meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Error Handling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -115,9 +108,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
@@ -129,39 +122,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/21-Error_Handling.html">Error Handling</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/21-Error_Handling.html">Error Handling</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -171,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -188,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Learning <code>python</code></span></a>
+ <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -197,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Goals</span></a>
+ <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -336,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Basics of Predictive Modeling</span></a>
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -383,20 +376,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#error-handling" id="toc-error-handling" class="nav-link active" data-scroll-target="#error-handling">Error Handling</a>
-  <ul class="collapse">
-  <li><a href="#errors-when-programming" id="toc-errors-when-programming" class="nav-link" data-scroll-target="#errors-when-programming">Errors When Programming</a></li>
+  <li><a href="#errors-when-programming" id="toc-errors-when-programming" class="nav-link active" data-scroll-target="#errors-when-programming">Errors When Programming</a></li>
   <li><a href="#dealing-with-exceptions" id="toc-dealing-with-exceptions" class="nav-link" data-scroll-target="#dealing-with-exceptions">Dealing with Exceptions</a></li>
   <li><a href="#raising-an-exception-yourself" id="toc-raising-an-exception-yourself" class="nav-link" data-scroll-target="#raising-an-exception-yourself">Raising an Exception Yourself</a></li>
   <li><a href="#quick-video" id="toc-quick-video" class="nav-link" data-scroll-target="#quick-video">Quick Video</a></li>
-  </ul></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
@@ -404,8 +394,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/21-Error_Handling.html">Error Handling</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Error Handling</h1>
 </div>
 
 
@@ -416,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-17</p>
+      <p class="date">2025-01-02</p>
     </div>
   </div>
   
@@ -424,13 +415,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/21_Error_Handling.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="error-handling" class="level1">
-<h1>Error Handling</h1>
 <p>Justin Post</p>
 <hr>
 <p>We’ve already learned a lot about creating our own functions. One thing we haven’t touched on is how to have our functions fail in a good way. That is, when an error occurs, can we either avoid it and finish the function execution or can we at least provide a clear explanation of what error came up?</p>
@@ -442,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Syntax error</strong> is when you typed something in wrong (and it can’t be parsed by python)</li>
 </ul>
-<div id="5562ab82" class="cell" data-outputid="52434013-b9dc-448a-fd7e-e80a96ceeafe">
+<div class="cell" data-outputid="52434013-b9dc-448a-fd7e-e80a96ceeafe">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="co">#missing colon</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
@@ -454,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>These aren’t things we can fix on the backend. Code needs to be typed in correctly!</p></li>
 <li><p>An <strong>exception</strong> occurs when python can’t execute your code (during the execution something bad happens)</p></li>
 </ul>
-<div id="332a30b7" class="cell" data-outputid="33a28775-65ab-412b-e7ba-1f9ce7c1e3e7">
+<div class="cell" data-outputid="33a28775-65ab-412b-e7ba-1f9ce7c1e3e7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"the number is "</span> <span class="op">+</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
@@ -466,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="dealing-with-exceptions" class="level2">
 <h2 class="anchored" data-anchor-id="dealing-with-exceptions">Dealing with Exceptions</h2>
 <p>Exceptions can be dealt with to some degree! Consider this function to print out strings passed by the user.</p>
-<div id="c38a0e4d" class="cell" data-outputid="4452daec-093a-44c6-b40e-da452cbd4f60">
+<div class="cell" data-outputid="4452daec-093a-44c6-b40e-da452cbd4f60">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_strings(<span class="op">*</span>x): <span class="co">#should all be strings!</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> x:</span>
@@ -483,7 +470,7 @@ The value in position 2 is: bird</code></pre>
 <ul>
 <li>If we pass a non-string, this will throw an exception.</li>
 </ul>
-<div id="b2e6cefe" class="cell" data-outputid="ee3ddb67-b4d1-469a-de00-f96141e61c49">
+<div class="cell" data-outputid="ee3ddb67-b4d1-469a-de00-f96141e61c49">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_strings(<span class="op">*</span>x): <span class="co">#should all be strings!</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> x:</span>
@@ -502,7 +489,7 @@ The value in position 2 is: bird</code></pre>
 <li>Note that it says <code>TypeError</code> at the beginning of that big error message. What we can do is run a <code>try</code> block and set up what to do when we get certain exceptions via an <code>except</code> block.</li>
 <li>The syntax for these is simlar to <code>if</code> and <code>else</code> blocks</li>
 </ul>
-<div id="6a3e285f" class="cell" data-outputid="62a5b92a-4944-4d19-b59e-d7236f8f79d2">
+<div class="cell" data-outputid="62a5b92a-4944-4d19-b59e-d7236f8f79d2">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_strings(<span class="op">*</span>x):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> x:</span>
@@ -523,7 +510,7 @@ The value in position 3 is: bird</code></pre>
 <li><p>Can have multiple <code>except</code> statements and an <code>else</code> block to account for many situations</p></li>
 <li><p>Let’s create a quick function to printout information about a person given as key/value pairs</p></li>
 </ul>
-<div id="86d7d984" class="cell" data-outputid="36d6cbbd-9797-4ee0-a56f-773ff75d9089">
+<div class="cell" data-outputid="36d6cbbd-9797-4ee0-a56f-773ff75d9089">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_stuff(<span class="op">**</span>x): <span class="co">#now taking key value pairs (a dictionary within the function)</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Pay special attention to "</span> <span class="op">+</span> x.pop(<span class="st">"Name"</span>) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">His attributes are:"</span>) <span class="co">#we must have a Name argument</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> x: <span class="co">#now run through the other info given and print it out</span></span>
@@ -538,14 +525,14 @@ His attributes are:
 </div>
 </div>
 <p>If we don’t have a <code>Name</code> argument passed, we’d have an error!</p>
-<div id="d2cf43AK3KTi" class="cell" data-outputid="88c953c8-8424-42b5-e3d0-8861c7dc6a20">
+<div class="cell" data-outputid="88c953c8-8424-42b5-e3d0-8861c7dc6a20">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>print_stuff(person <span class="op">=</span> <span class="st">"Justin Post"</span>, Age <span class="op">=</span> <span class="dv">39</span>, Job <span class="op">=</span> <span class="st">"Professor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>KeyError: 'Name'</code></pre>
 </div>
 </div>
 <p>In this case we get a <code>KeyError</code> (this is when we look for a certain key in a dictionary (or other similar object) and can’t find it) - We can look for this kind of error - Also look for other errors that might come up</p>
-<div id="62cf834a" class="cell" data-outputid="1d8c856e-a8f2-46f4-df07-435a62a23bff">
+<div class="cell" data-outputid="1d8c856e-a8f2-46f4-df07-435a62a23bff">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_stuff(<span class="op">**</span>x): <span class="co">#now taking key value pairs</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Pay special attention to "</span> <span class="op">+</span> x.pop(<span class="st">"Name"</span>) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">His attributes are:"</span>)</span>
@@ -563,7 +550,7 @@ His attributes are:
      Job  :  Professor</code></pre>
 </div>
 </div>
-<div id="xDtrZMDx3rL0" class="cell" data-outputid="5c12bb98-06df-4e3d-b202-5d50788b319a">
+<div class="cell" data-outputid="5c12bb98-06df-4e3d-b202-5d50788b319a">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>print_stuff(Name <span class="op">=</span> <span class="dv">11</span>, Age <span class="op">=</span> <span class="dv">39</span>, Job <span class="op">=</span> <span class="st">"Professor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Oh no! 'Name' is not a string
@@ -571,7 +558,7 @@ His attributes are:
      Job  :  Professor</code></pre>
 </div>
 </div>
-<div id="lDxV9rX-3uO_" class="cell" data-outputid="3278a732-f6d5-44ea-95cf-b1292ab1f57c">
+<div class="cell" data-outputid="3278a732-f6d5-44ea-95cf-b1292ab1f57c">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>print_stuff(person <span class="op">=</span> <span class="st">"Justin Post"</span>, Age <span class="op">=</span> <span class="dv">39</span>, Job <span class="op">=</span> <span class="st">"Professor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>You didn't supply a 'Name'!
@@ -581,7 +568,7 @@ His attributes are:
 </div>
 </div>
 <p>An <code>else</code> block can be given that is similar to what we use with <code>if</code>, <code>elif</code> logic - This specifies what to do if things aren’t accounted for above</p>
-<div id="abead5da" class="cell" data-outputid="37f9ad04-8802-4b22-8189-b332f6dfecc5">
+<div class="cell" data-outputid="37f9ad04-8802-4b22-8189-b332f6dfecc5">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_stuff(<span class="op">**</span>x): <span class="co">#now taking key value pairs</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Pay special attention to "</span> <span class="op">+</span> x.pop(<span class="st">"Name"</span>) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">His attributes are:"</span>)</span>
@@ -607,7 +594,7 @@ His attributes are:
 <li>A <code>finally</code> clause can be given to always execute at end regardless</li>
 <li>Like an <code>else</code> block but it always runs</li>
 </ul>
-<div id="c4e76e02" class="cell" data-outputid="259b4e0d-8c50-490f-cddc-863f8222c9a2">
+<div class="cell" data-outputid="259b4e0d-8c50-490f-cddc-863f8222c9a2">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_stuff(<span class="op">**</span>x): <span class="co">#now taking key value pairs</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
@@ -641,7 +628,7 @@ This string prints no matter what
 <li><p>You can define your own exceptions to be more descriptive!</p></li>
 <li><p>If we try to divide by 0 we get a <code>ZeroDivisionError</code> exception</p></li>
 </ul>
-<div id="ba5a8f2e" class="cell" data-outputid="9e4bc2d5-0c36-4f87-e5f2-065faee6bdb2">
+<div class="cell" data-outputid="9e4bc2d5-0c36-4f87-e5f2-065faee6bdb2">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="op">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ZeroDivisionError: division by zero</code></pre>
@@ -650,19 +637,19 @@ This string prints no matter what
 <ul>
 <li>Instead we can <code>raise</code> our own exception</li>
 </ul>
-<div id="neadqLm44e1A" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_divide(x, y):</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Can't divide by 0..."</span>)</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">/</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="kK2OZQko4rcB" class="cell" data-outputid="ed22a53c-0ae1-4247-e73e-c0d984201b99">
+<div class="cell" data-outputid="ed22a53c-0ae1-4247-e73e-c0d984201b99">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>my_divide(<span class="dv">3</span>, <span class="dv">9</span>) <span class="co">#works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>0.3333333333333333</code></pre>
 </div>
 </div>
-<div id="JPeW9q5W4tst" class="cell" data-outputid="c0ed2299-346b-4649-ddf8-d87b178fb299">
+<div class="cell" data-outputid="c0ed2299-346b-4649-ddf8-d87b178fb299">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_divide(<span class="dv">3</span>,<span class="dv">0</span>) <span class="co">#raises our custom exception and provides that note!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Exception: Can't divide by 0...</code></pre>
@@ -673,7 +660,7 @@ This string prints no matter what
 <section id="quick-video" class="level2">
 <h2 class="anchored" data-anchor-id="quick-video">Quick Video</h2>
 <p>This video shows an example of using error control!</p>
-<div id="Q-CPY05WRlvr" class="cell" data-outputid="caa66bd3-6418-4a75-93b1-1259502bdf1c" data-execution_count="1">
+<div class="cell" data-outputid="caa66bd3-6418-4a75-93b1-1259502bdf1c" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=cd799e52-f4f1-4531-8174-b10301708125&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -683,7 +670,6 @@ This string prints no matter what
 </div>
 </div>
 <hr>
-</section>
 </section>
 <section id="recap" class="level1">
 <h1>Recap</h1>
@@ -778,27 +764,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -808,17 +777,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -830,130 +790,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -997,7 +834,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1023,32 +859,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1110,18 +920,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/20-Plotting_pandas.html" class="pagination-link" aria-label="Plotting with `pandas`">
+      <a href="../01_Programming_in_python/20-Plotting_pandas.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plotting with <code>pandas</code></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="pagination-link" aria-label="Common Uses for Data">
+      <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="pagination-link">
         <span class="nav-page-text">Common Uses for Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

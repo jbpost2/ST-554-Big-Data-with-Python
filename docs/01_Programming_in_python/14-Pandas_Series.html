@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-17">
+<meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Pandas Series</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,7 +91,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -112,9 +105,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
@@ -126,39 +119,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/14-Pandas_Series.html">Pandas Series</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/14-Pandas_Series.html">Pandas Series</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -168,7 +161,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -185,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Learning <code>python</code></span></a>
+ <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -194,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Goals</span></a>
+ <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -268,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -333,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Basics of Predictive Modeling</span></a>
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -380,18 +373,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#pandas-series" id="toc-pandas-series" class="nav-link active" data-scroll-target="#pandas-series">Pandas Series</a>
-  <ul class="collapse">
-  <li><a href="#creating-a-pandas-series" id="toc-creating-a-pandas-series" class="nav-link" data-scroll-target="#creating-a-pandas-series">Creating a pandas Series</a></li>
+  <li><a href="#creating-a-pandas-series" id="toc-creating-a-pandas-series" class="nav-link active" data-scroll-target="#creating-a-pandas-series">Creating a pandas Series</a></li>
   <li><a href="#indexing-a-series" id="toc-indexing-a-series" class="nav-link" data-scroll-target="#indexing-a-series">Indexing a Series</a></li>
-  </ul></li>
   <li><a href="#series-relation-to-other-common-objects" id="toc-series-relation-to-other-common-objects" class="nav-link" data-scroll-target="#series-relation-to-other-common-objects">Series Relation to Other Common Objects</a>
   <ul class="collapse">
   <li><a href="#relation-to-dictionaries" id="toc-relation-to-dictionaries" class="nav-link" data-scroll-target="#relation-to-dictionaries">Relation to Dictionaries</a></li>
@@ -405,8 +395,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/14-Pandas_Series.html">Pandas Series</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Pandas Series</h1>
 </div>
 
 
@@ -417,7 +408,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-17</p>
+      <p class="date">2025-01-02</p>
     </div>
   </div>
   
@@ -425,13 +416,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/14_Pandas_Series.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="pandas-series" class="level1">
-<h1>Pandas Series</h1>
 <p>Justin Post</p>
 <hr>
 <ul>
@@ -452,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create a series using the <code>pd.Series()</code> function</li>
 </ul>
-<div id="c20756ff" class="cell" data-outputid="df3fbf81-0ff3-4448-adce-6542bcd70c3d" data-execution_count="3">
+<div class="cell" data-outputid="df3fbf81-0ff3-4448-adce-6542bcd70c3d" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">2</span>) <span class="co">#set a seed</span></span>
@@ -482,19 +469,19 @@ dtype: float64</code></pre>
 <li>Unlike <code>numpy</code> arrays, series can be indexed by an <code>index</code> attribute (not just the numeric index)</li>
 <li><code>.index</code> attribute returns just the indices</li>
 </ul>
-<div id="d5f4ac3a" class="cell" data-outputid="0d1f6f2c-2b0a-4b75-b164-7602fc1cde18" data-execution_count="4">
+<div class="cell" data-outputid="0d1f6f2c-2b0a-4b75-b164-7602fc1cde18" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>s.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>RangeIndex(start=0, stop=10, step=1)</code></pre>
 </div>
 </div>
-<div id="DyNSp3Ox4PdN" class="cell" data-outputid="7b63cb19-2819-4b8a-cdc2-501075bdb3cf" data-execution_count="5">
+<div class="cell" data-outputid="7b63cb19-2819-4b8a-cdc2-501075bdb3cf" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>] <span class="co">#is both the numeric index and the value of an index here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>2.756213527174132</code></pre>
 </div>
 </div>
-<div id="9-HVmLsS4Qz_" class="cell" data-outputid="3f65b67c-9e28-45cd-bb2d-66eb9a7a87a1" data-execution_count="7">
+<div class="cell" data-outputid="3f65b67c-9e28-45cd-bb2d-66eb9a7a87a1" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series(rng.normal(size <span class="op">=</span> <span class="dv">10</span>, loc <span class="op">=</span> <span class="dv">2</span>, scale <span class="op">=</span> <span class="dv">4</span>),</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>               index <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="st">"abcdefghij"</span>])</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>s2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,20 +499,20 @@ j   -1.569096
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="bFWfKHfC4mLj" class="cell" data-outputid="dd0050c5-8dce-423e-b020-62803502f413" data-execution_count="8">
+<div class="cell" data-outputid="dd0050c5-8dce-423e-b020-62803502f413" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s2.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Index(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'], dtype='object')</code></pre>
 </div>
 </div>
 <p>We can access elements with the numeric index of this index value.</p>
-<div id="kVmovk434ukK" class="cell" data-outputid="e6a564f1-35af-4402-d825-fbb0f3385322" data-execution_count="10">
+<div class="cell" data-outputid="e6a564f1-35af-4402-d825-fbb0f3385322" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>s2[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0.6847043837681492</code></pre>
 </div>
 </div>
-<div id="HFOJd-Z94n8G" class="cell" data-outputid="8707f540-382a-4b02-e98a-b5ae9f1dcb84" data-execution_count="11">
+<div class="cell" data-outputid="8707f540-382a-4b02-e98a-b5ae9f1dcb84" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>s2[<span class="st">"c"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0.6847043837681492</code></pre>
@@ -534,14 +521,14 @@ dtype: float64</code></pre>
 <ul>
 <li>We can obtain just the values with of a series using the <code>.values</code> attribute</li>
 </ul>
-<div id="5526d2cb" class="cell" data-outputid="ec06928d-976a-493b-e36b-d652a34c0584" data-execution_count="12">
+<div class="cell" data-outputid="ec06928d-976a-493b-e36b-d652a34c0584" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>s.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>array([ 2.75621353, -0.09099377,  0.34774583, -7.76586953,  9.19882953,
         6.57666349,  0.69830865,  5.09522635,  3.12484268, -0.21529135])</code></pre>
 </div>
 </div>
-<div id="GfIY2T_q4-hC" class="cell" data-outputid="81d4b0a8-9d46-47b7-8fbb-1079d4e6fd97" data-execution_count="13">
+<div class="cell" data-outputid="81d4b0a8-9d46-47b7-8fbb-1079d4e6fd97" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s2.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>array([ 5.9102698 ,  0.75777381,  0.68470438, -1.16858702,  3.81983228,
@@ -551,14 +538,13 @@ dtype: float64</code></pre>
 <ul>
 <li>Note that when you return the values you get back just a numpy array!</li>
 </ul>
-<div id="KDzhe6uH5CMA" class="cell" data-outputid="de20516e-dce9-440d-f4d5-cc48f3b6ddb5" data-execution_count="14">
+<div class="cell" data-outputid="de20516e-dce9-440d-f4d5-cc48f3b6ddb5" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(s2.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>numpy.ndarray</code></pre>
 </div>
 </div>
 <hr>
-</section>
 </section>
 <section id="series-relation-to-other-common-objects" class="level1">
 <h1>Series Relation to Other Common Objects</h1>
@@ -568,7 +554,7 @@ dtype: float64</code></pre>
 <li>Recall a dictionary consists of key/value pairs</li>
 <li>When creating a series from a dictionary, the keys of the dictionary become the indices</li>
 </ul>
-<div id="31a487af" class="cell" data-outputid="d5c84b5c-75e2-462c-f4cd-abf55977ea2c" data-execution_count="15">
+<div class="cell" data-outputid="d5c84b5c-75e2-462c-f4cd-abf55977ea2c" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">'b'</span>: <span class="dv">1</span>,</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">'a'</span>: <span class="dv">0</span>,</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">'c'</span>: <span class="dv">2</span>}</span>
@@ -580,7 +566,7 @@ c    2
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="04416957" class="cell" data-outputid="ea41fde4-f238-4052-8408-73cd1ab7e362" data-execution_count="18">
+<div class="cell" data-outputid="ea41fde4-f238-4052-8408-73cd1ab7e362" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCNorth"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCEast"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -604,13 +590,13 @@ dtype: object</code></pre>
 <li>But Series have an ordering to them so, unlike a dictionary, we can use a numeric index</li>
 </ul></li>
 </ul>
-<div id="-aOjPFr_6E6d" class="cell" data-outputid="606a0619-e64c-410f-9702-f36d12baf91f" data-execution_count="23">
+<div class="cell" data-outputid="606a0619-e64c-410f-9702-f36d12baf91f" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>div_series[<span class="st">"AFCNorth"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
 </div>
 </div>
-<div id="eefbc615" class="cell" data-outputid="be6594d2-3dda-4d61-f844-6944763b2879" data-execution_count="22">
+<div class="cell" data-outputid="be6594d2-3dda-4d61-f844-6944763b2879" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>div_series[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
@@ -619,7 +605,7 @@ dtype: object</code></pre>
 <ul>
 <li>We can check if an index occurs similar to how we could check if a key occurred in a dictionary</li>
 </ul>
-<div id="0dc2cc37" class="cell" data-outputid="a72381d1-3987-4d18-e70a-c7612e528343" data-execution_count="24">
+<div class="cell" data-outputid="a72381d1-3987-4d18-e70a-c7612e528343" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AFCNorth"</span> <span class="kw">in</span> AFCDivisions)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AFCNorth"</span> <span class="kw">in</span> div_series)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -635,7 +621,7 @@ True</code></pre>
 <li>Series behave very similarly to <code>NumPy</code>’s 1D <code>ndarray</code></li>
 <li>In fact, <code>NumPy</code> functions can typically take series as input</li>
 </ul>
-<div id="14fe9783" class="cell" data-outputid="3e29d12f-abe7-4c2a-9c63-49455f35710b" data-execution_count="25">
+<div class="cell" data-outputid="3e29d12f-abe7-4c2a-9c63-49455f35710b" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s <span class="co">#was created from a numpy array!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>0    2.756214
@@ -651,7 +637,7 @@ True</code></pre>
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="pbrYrJxh6dnY" class="cell" data-outputid="a4abfc74-7fa1-4ba9-a3b8-e8bfe14f2942" data-execution_count="26">
+<div class="cell" data-outputid="a4abfc74-7fa1-4ba9-a3b8-e8bfe14f2942" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>np.exp(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>0      15.740130
@@ -670,7 +656,7 @@ dtype: float64</code></pre>
 <ul>
 <li>Numerical operations are done element-wise</li>
 </ul>
-<div id="19fae709" class="cell" data-outputid="5db83755-147d-4274-ccc9-6a488c2fe2dd" data-execution_count="30">
+<div class="cell" data-outputid="5db83755-147d-4274-ccc9-6a488c2fe2dd" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>0     8.268641
@@ -697,7 +683,7 @@ dtype: float64</code></pre>
 <li>can using slicing with <code>:</code></li>
 </ul></li>
 </ul>
-<div id="88385790" class="cell" data-outputid="bf6806a9-8793-4faa-8bde-95f2dfddcf08" data-execution_count="31">
+<div class="cell" data-outputid="bf6806a9-8793-4faa-8bde-95f2dfddcf08" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">4</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -714,7 +700,7 @@ dtype: float64</code></pre>
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="xuMgZGu47Ojm" class="cell" data-outputid="3154532c-75ef-4d7c-f10b-b4347d61cbbf" data-execution_count="32">
+<div class="cell" data-outputid="3154532c-75ef-4d7c-f10b-b4347d61cbbf" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>s[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>0    2.756214
@@ -725,7 +711,7 @@ dtype: float64</code></pre>
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="Rmgt3bvU7Rcw" class="cell" data-outputid="d73b9eb1-e188-4294-8e7c-246012d7144f" data-execution_count="33">
+<div class="cell" data-outputid="d73b9eb1-e188-4294-8e7c-246012d7144f" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">3</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>3   -7.76587
@@ -832,27 +818,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -862,17 +831,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -884,130 +844,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1051,7 +888,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1077,32 +913,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1164,18 +974,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/13-EDA_Landing.html" class="pagination-link" aria-label="Exploratory Data Analysis">
+      <a href="../01_Programming_in_python/13-EDA_Landing.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exploratory Data Analysis</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/15-Pandas_Data_Frames.html" class="pagination-link" aria-label="Pandas Data Frames">
+      <a href="../01_Programming_in_python/15-Pandas_Data_Frames.html" class="pagination-link">
         <span class="nav-page-text">Pandas Data Frames</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

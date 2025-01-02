@@ -1,5 +1,5 @@
 ---
-title: "Course Goals"
+title: "Course Goals & Other Resources"
 format: html
 toc: TRUE
 editor_options: 
@@ -18,5 +18,35 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 
 - <a href = "01-Course_Goals.html" target = "_blank">HTML version</a>
 - <a href = "PDFs/01-Course_Goals.pdf" target = "_blank">PDF version</a>
+
+## Additional Readings for Topic 1
+
+### PIP Information (Optional)
+
+We use Pip to install our modules when needed (although most of the ones we need are already available to us on Google Colab). Here is more information about pip:
+
+- <a href="https://pip.pypa.io/en/stable/installation/" target="_blank" rel="noopener">pip</a> documentation
+- More help on <a href="https://realpython.com/what-is-pip/" target="_blank" rel="noopener">understanding the basics of pip</a>
+- <a href="https://colab.research.google.com/notebooks/snippets/importing_libraries.ipynb" target="_blank" rel="noopener">Using pip with Colab</a> (very short)
+
+### JupyterLab Info (Optional)
+
+There are a lot of options for the IDE to use.  We'll use JupyterLab as our programming environment for the course. We'll start out in Colab, which is built on JupyterLab. JupyterLab Notebooks are replacing the traditional Jupyter Notebook. They really just give a bit more functionality than the traditional notebook!
+
+- <a href="https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html" target="_blank" rel="noopener">JupyterLab</a> getting started guide
+- Note that these notebooks can be used with an R kernel (that is, you can use them to run R code!)
+- <a href="https://colab.research.google.com/notebooks/markdown_guide.ipynb#scrollTo=Lhfnlq1Surtk"  target="_blank" rel="noopener">Markdown guide</a>
+
+### Python Help (Optional)
+
+We'll continue to learn python throughout this first topic. You may want more detail or another explanation of concepts. The best place to learn about a particular objects, functions, or methods is in the official documentation but that can be difficult to read when you are first starting out. Below are a number of tutorials that may be helpful!
+
+- A <a href="https://docs.python.org/3/tutorial/index.html" target="_blank" rel="noopener">nice tutorial from python.org</a> (although sometimes they throw in some things that may be a bit out there for beginners).
+- A <a href="https://www.w3schools.com/python/" target="_blank" rel="noopener">good reference for python basics from w3schools</a>. Generally w3schools is good to just get an idea about lots of languages! But overall the tutorials aren't great.
+- <a href="https://realpython.com/what-is-pip/" target="_blank" rel="noopener">This is a nice website</a> but a little hard to navigate. I find that searching in the box for something (say 'lists') tends to bring up a pretty good article.
+- <a href="https://www.geeksforgeeks.org/python-programming-language/?ref=shm" target="_blank" rel="noopener">Geeks for geeks</a> is pretty solid!
+- <a href="https://numpy.org/doc/stable/reference/" target="_blank" rel="noopener">numpy </a>documentation
+- <a href="https://pandas.pydata.org/docs/reference/index.html" target="_blank" rel="noopener">pandas</a> documentation
+
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

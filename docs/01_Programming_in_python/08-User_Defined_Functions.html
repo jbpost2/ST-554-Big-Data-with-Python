@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-17">
+<meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Course Plan</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,45 +91,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -144,9 +110,9 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
@@ -158,39 +124,39 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/08-User_Defined_Functions.html">Course Plan</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/08-User_Defined_Functions.html">Course Plan</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -200,7 +166,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -217,7 +183,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Learning <code>python</code></span></a>
+ <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -226,7 +192,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Goals</span></a>
+ <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -300,7 +266,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
- <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -365,7 +331,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Basics of Predictive Modeling</span></a>
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -412,15 +378,14 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-plan" id="toc-course-plan" class="nav-link active" data-scroll-target="#course-plan">Course Plan</a></li>
-  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link" data-scroll-target="#user-defined-functions">User Defined Functions</a>
+  <li><a href="#user-defined-functions" id="toc-user-defined-functions" class="nav-link active" data-scroll-target="#user-defined-functions">User Defined Functions</a>
   <ul class="collapse">
   <li><a href="#function-creation-syntax" id="toc-function-creation-syntax" class="nav-link" data-scroll-target="#function-creation-syntax">Function Creation Syntax</a></li>
   <li><a href="#write-our-own-mean-function" id="toc-write-our-own-mean-function" class="nav-link" data-scroll-target="#write-our-own-mean-function">Write Our Own Mean Function</a></li>
@@ -444,8 +409,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/08-User_Defined_Functions.html">Course Plan</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Course Plan</h1>
 </div>
 
 
@@ -456,7 +422,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-17</p>
+      <p class="date">2025-01-02</p>
     </div>
   </div>
   
@@ -464,13 +430,9 @@ window.Quarto = {
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/08_User_Defined_Functions.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="course-plan" class="level1">
-<h1>Course Plan</h1>
 <p>Course split into four topics</p>
 <ul>
 <li>Programming in python</li>
@@ -480,7 +442,6 @@ window.Quarto = {
 </ul>
 <p>We’re working through learning how to program in python. We’ve seen - how to program through Google Colab - how to bring in modules - common data types: strings, lists, numeric types (and booleans)</p>
 <p>We’ve also seen a bit about how to think about data. Now, we’ll focus on improving our programs a bit before we get back to handling data.</p>
-</section>
 <section id="user-defined-functions" class="level1">
 <h1>User Defined Functions</h1>
 <p>Justin Post</p>
@@ -506,7 +467,7 @@ window.Quarto = {
 </ul>
 <p><span class="math display">\[\bar{y}=\frac{1}{n}\sum_{i=1}^{n}y_i\]</span></p>
 <p>Let’s write a function to calculate the mean of a <code>list</code> of numbers using the <code>sum()</code> and <code>len()</code> functions.</p>
-<div id="e83abe21" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean</span></span>
@@ -517,20 +478,20 @@ window.Quarto = {
 <p>Now let’s apply our function to a <code>list</code> of numeric values. We can create a sequence of values using the <code>range()</code> function. This function takes two arguments, the starting point and the ending point (which isn’t included).</p>
 <p><code>range()</code> itself is a immutable <em>iterable</em> type object. It isn’t the values themselves but an object that can be used to create the values. In the case of <code>range()</code> it <a href="https://stackoverflow.com/questions/13092267/if-range-is-a-generator-in-python-3-3-why-can-i-not-call-next-on-a-range">can be described as a <em>lazy</em> list</a>.</p>
 <p>One way to get the <code>range()</code> object to create its values is by running <code>list()</code> on it. This tells python to iterate over the <code>range()</code> object and produce the numbers.</p>
-<div id="393334fa" class="cell" data-outputid="17b56bcf-09f5-4727-e64d-e71dda995027">
+<div class="cell" data-outputid="17b56bcf-09f5-4727-e64d-e71dda995027">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>seq <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">11</span>) <span class="co">#same as range(11)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>seq <span class="co">#doesn't show values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>range(0, 11)</code></pre>
 </div>
 </div>
-<div id="sLtljCqD-7uc" class="cell" data-outputid="352e9e9f-bd6b-4d77-c9da-9789ae56b712">
+<div class="cell" data-outputid="352e9e9f-bd6b-4d77-c9da-9789ae56b712">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(seq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
 </div>
 </div>
-<div id="YEDAWUkFAL4y" class="cell" data-outputid="b97b2f5b-e3e6-4d92-edf2-f2723a651d4a">
+<div class="cell" data-outputid="b97b2f5b-e3e6-4d92-edf2-f2723a651d4a">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>find_mean(<span class="bu">list</span>(seq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>5.0</code></pre>
@@ -547,13 +508,13 @@ window.Quarto = {
 <li>This is a mean where we first remove the smallest p% of values and the largest p% of values. We then take the mean of the remaining numbers.</li>
 <li>A trimmed mean is more <strong>robust</strong> to outliers. For instance,</li>
 </ul>
-<div id="Nq6aDj-R-7C8" class="cell" data-outputid="72e1eef5-710b-448c-d615-ae38c8453527">
+<div class="cell" data-outputid="72e1eef5-710b-448c-d615-ae38c8453527">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">100</span>]) <span class="co">#the mean is greatly affected by the large value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>19.166666666666668</code></pre>
 </div>
 </div>
-<div id="wYJFC06Y-6lt" class="cell" data-outputid="cc9321d1-c2c0-4020-fea5-4a4a590bdd8b">
+<div class="cell" data-outputid="cc9321d1-c2c0-4020-fea5-4a4a590bdd8b">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]) <span class="co">#remove the large value to get a better idea about 'most' of the data values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>3.0</code></pre>
@@ -565,7 +526,7 @@ window.Quarto = {
 <li>Remove the lowest p% and highest p%</li>
 <li>Find mean on the remaining values</li>
 </ul>
-<div id="509b168c" class="cell" data-outputid="6fb18303-7b08-49b5-c393-db4efbcfa61c">
+<div class="cell" data-outputid="6fb18303-7b08-49b5-c393-db4efbcfa61c">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can pull in the floor and sqrt functions from math to help us out</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> floor, sqrt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#generate 50 random values from the standard normal distribution</span></span>
@@ -588,7 +549,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Note that lists have a <code>.sort()</code> method but this modifies the list in place. Instead we can use the <code>sorted()</code> function which returns a new sorted version of the list.</p>
-<div id="eb2af224" class="cell" data-outputid="62aeb907-d215-48bb-e6b2-f33d43c80b76">
+<div class="cell" data-outputid="62aeb907-d215-48bb-e6b2-f33d43c80b76">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sort_y[<span class="dv">0</span>:<span class="dv">10</span>])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">0</span>:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -598,7 +559,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Now, given a value of p, we can remove the lowest and high p% of values. We can do this with the <code>floor()</code> function. This gives us the largest interger below a given value.</p>
-<div id="g-ATQJSkChz8" class="cell" data-outputid="6f058ead-fda5-4f9d-f7f7-fe4738b57a64">
+<div class="cell" data-outputid="6f058ead-fda5-4f9d-f7f7-fe4738b57a64">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(floor(<span class="dv">4</span>))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(floor(<span class="fl">4.2</span>))</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(floor(<span class="fl">4.9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -609,7 +570,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Given a p (for proportion) we can determine the number of observations corresponding to that proportion using the length of <code>y</code>.</p>
-<div id="1c800c3c" class="cell" data-outputid="d0d18874-d7c4-4adc-bf9f-3b404cd4ea43">
+<div class="cell" data-outputid="d0d18874-d7c4-4adc-bf9f-3b404cd4ea43">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.11</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
@@ -622,7 +583,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We can remove observations by simply subsetting our list using the <code>:</code> operator we studied. Remember that this operator doesn’t include the <strong>last</strong> value. (i.e.&nbsp;<code>2:5</code> gives <code>2</code>, <code>3</code>, <code>4</code>)</p>
-<div id="556a600d" class="cell" data-outputid="a461ca29-1ea6-4e3e-81a0-477710886eb2">
+<div class="cell" data-outputid="a461ca29-1ea6-4e3e-81a0-477710886eb2">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([to_remove, <span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove])<span class="co">#values we want to keep are between these</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#remember, counting starts at 0</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we want the remove the first 5 values so we should start with the 5th index (the 6th actual value!)</span></span>
@@ -679,7 +640,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="modify-the-function-arguments">Modify the function arguments</h3>
 <p>Now that we have the process down (this is a good way to write functions by the way, write them outside of a function first and then put the pieces into the function), we can add our arguments/calculations.</p>
 <p>We’ll add a - <code>method =</code> argument with a default value of <code>None</code>. <code>None</code> is a special name that defines no value. + If this argument takes on <code>Trim</code>, we’ll do a trimmed mean. + This can be done using <code>if Boolean:</code> with the resulting code to execute tabbed in four spaces - a <code>p =</code> argument to specify the proportion to remove with a default value set to 0.</p>
-<div id="28d27010" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y, method <span class="op">=</span> <span class="va">None</span>, p <span class="op">=</span> <span class="dv">0</span>):</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean</span></span>
@@ -694,19 +655,19 @@ window.Quarto = {
 <span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s test the function!</p>
-<div id="3A3SGZspEd2o" class="cell" data-outputid="a44fc33f-b982-4b9e-d7da-d4da059dd3e6">
+<div class="cell" data-outputid="a44fc33f-b982-4b9e-d7da-d4da059dd3e6">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="dv">0</span>) <span class="co">#usual mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="115">
 <pre><code>-0.03607807742830818</code></pre>
 </div>
 </div>
-<div id="hTdHKb0FEzUG" class="cell" data-outputid="e942ddc0-b6df-456a-dcab-747d409d7a28">
+<div class="cell" data-outputid="e942ddc0-b6df-456a-dcab-747d409d7a28">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.05</span>) <span class="co">#5% trimmed mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="116">
 <pre><code>-0.029659532804894563</code></pre>
 </div>
 </div>
-<div id="h_Ri3pEpEsdY" class="cell" data-outputid="fa681dd8-9933-4341-fadf-d1828b838a15">
+<div class="cell" data-outputid="fa681dd8-9933-4341-fadf-d1828b838a15">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, method <span class="op">=</span> <span class="st">"trim"</span>, p <span class="op">=</span> <span class="fl">0.05</span>) <span class="co">#mean not trimmed if method not set correctly</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="117">
 <pre><code>-0.03607807742830817</code></pre>
@@ -720,7 +681,7 @@ window.Quarto = {
 <ul>
 <li>A function can be called using positional or named args</li>
 </ul>
-<div id="d4e0b529" class="cell" data-outputid="8d3f06df-6de5-4a1c-ad06-927506fde91d">
+<div class="cell" data-outputid="8d3f06df-6de5-4a1c-ad06-927506fde91d">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#def find_mean(y, method = None, p = 0):</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_mean(y, <span class="va">None</span>))</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_mean(method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.1</span>, y <span class="op">=</span> y))</span>
@@ -734,7 +695,7 @@ window.Quarto = {
 <ul>
 <li>You can’t place positional args after a keyword though!</li>
 </ul>
-<div id="b1cc77d7" class="cell" data-outputid="6043563c-e7dc-430b-e3f3-4447b6e322a4">
+<div class="cell" data-outputid="6043563c-e7dc-430b-e3f3-4447b6e322a4">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>find_mean(y <span class="op">=</span> x, <span class="st">"Trim"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>SyntaxError: positional argument follows keyword argument (&lt;ipython-input-119-39dc4eceb262&gt;, line 1)</code></pre>
@@ -752,7 +713,7 @@ window.Quarto = {
            |         Positional or keyword   |
            |                                 - Keyword only
            -- Positional only</code></pre>
-<div id="e5e5f87b" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_it(x, y, <span class="op">/</span>):</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Must pass x and y positionally!"</span> <span class="op">+</span> x <span class="op">+</span> y)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -763,7 +724,7 @@ window.Quarto = {
 <span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Now z must be passed as a named argument"</span> <span class="op">+</span> x <span class="op">+</span> y <span class="op">+</span> z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s modify our mean function and show this.</p>
-<div id="oSvagJuyFzN1" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#with this, y must be passes positionally!</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y, <span class="op">/</span>, method <span class="op">=</span> <span class="va">None</span>, p <span class="op">=</span> <span class="dv">0</span>):</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -778,13 +739,13 @@ window.Quarto = {
 <span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)] <span class="co">#replace y with the modified version</span></span>
 <span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="Qzy_Cmh9F5dU" class="cell" data-outputid="2580af98-be06-461c-eda1-33bbceb85b06">
+<div class="cell" data-outputid="2580af98-be06-461c-eda1-33bbceb85b06">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>find_mean(y, <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="124">
 <pre><code>-0.009797451217442077</code></pre>
 </div>
 </div>
-<div id="A2hl5vN7F-30" class="cell" data-outputid="55039c81-d1fa-48d0-e392-6adec1de7b3f">
+<div class="cell" data-outputid="55039c81-d1fa-48d0-e392-6adec1de7b3f">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>find_mean(y <span class="op">=</span> y, method <span class="op">=</span> <span class="st">"Trim"</span>, p <span class="op">=</span> <span class="fl">0.1</span>) <span class="co">#this won't work!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: find_mean() got some positional-only arguments passed as keyword arguments: 'y'</code></pre>
@@ -806,7 +767,7 @@ window.Quarto = {
 <p>Function body: - Find sample means for <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> - Compute numerator sum and denominator sums - Find quotient and return that value</p>
 <section id="finding-means" class="level4">
 <h4 class="anchored" data-anchor-id="finding-means">Finding Means</h4>
-<div id="eabd1726" class="cell" data-outputid="d34f712a-485d-4941-8524-a3c36d115d0e">
+<div class="cell" data-outputid="d34f712a-485d-4941-8524-a3c36d115d0e">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">51</span>))</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x[<span class="dv">1</span>:<span class="dv">10</span>])</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="op">=</span> find_mean(x)</span>
@@ -818,7 +779,7 @@ window.Quarto = {
 <pre><code>25.5</code></pre>
 </div>
 </div>
-<div id="53cabf06" class="cell" data-outputid="a44860c5-f621-4082-9a50-27b713c2769d">
+<div class="cell" data-outputid="a44860c5-f621-4082-9a50-27b713c2769d">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use same y as before</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="bu">list</span>(np.random.default_rng(<span class="dv">1</span>).standard_normal(<span class="dv">50</span>))</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y[<span class="dv">1</span>:<span class="dv">10</span>])</span>
@@ -834,7 +795,7 @@ window.Quarto = {
 <p>These two vectors are not related and should have a near 0 correlation!</p>
 <p>Next, we need to find the numerator and denominator sums. Finding the sums will be easier once we learn arrays, but for now we’ll peak at a <code>for</code> loop and the <code>zip()</code> function.</p>
 <p>Let’s start with computation of <span class="math display">\[\sum_{i=1}^n(x_i-\bar{x})^2\]</span></p>
-<div id="d99f4bd8" class="cell" data-outputid="d8dc39d5-cdd4-4d68-ba0d-5badf8142269">
+<div class="cell" data-outputid="d8dc39d5-cdd4-4d68-ba0d-5badf8142269">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#computation in one of our sums (we want this across all 50 values, then added up)</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>(x[<span class="dv">0</span>]<span class="op">-</span>xbar)<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="128">
@@ -847,7 +808,7 @@ window.Quarto = {
 ...
 (x[49]-xbar)**2</code></pre>
 <p>We can use <code>for</code> to iterate over the values of 0, 1, …, 49. Similar to function definitions and <code>if</code> statements, we just tab in (four spaces) the code to be executed at each iteration of the for loop.</p>
-<div id="jFHhCM1iHKCZ" class="cell" data-outputid="d231cf0b-e008-4369-e9b1-b9b6a05c4dd1">
+<div class="cell" data-outputid="d231cf0b-e008-4369-e9b1-b9b6a05c4dd1">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#initialize a value to store the sum in</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>den_x <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co">#use a for loop to iterate across values (studies more later!)</span></span>
@@ -865,7 +826,7 @@ window.Quarto = {
 ...
 (x[49]-xbar)(y[49]-ybar)</code></pre>
 <p>We can <code>zip()</code> the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> lists together. This essentially just pairs the 0th elements, the 1st elements, etc. Then we can iterate over the values together.</p>
-<div id="d4Sj3iPPIzQG" class="cell" data-outputid="a14c7be5-e866-401a-cad9-0c992f5a03be">
+<div class="cell" data-outputid="a14c7be5-e866-401a-cad9-0c992f5a03be">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>num <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, j <span class="kw">in</span> <span class="bu">zip</span>(x, y):</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    num <span class="op">+=</span> (i<span class="op">-</span>xbar)<span class="op">*</span>(j<span class="op">-</span>ybar)</span>
@@ -875,7 +836,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Ok, now we are ready to put these together and calculate our correlation!</p>
-<div id="8dcd746b" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_corr(x, y):</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Compute Pearson's Correlation Coefficient</span></span>
@@ -894,14 +855,14 @@ window.Quarto = {
 <span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> num<span class="op">/</span>sqrt(den_x<span class="op">*</span>den_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s test our function on our data!</p>
-<div id="2ff6ce99" class="cell" data-outputid="d62e204f-cd4e-4599-e951-7a30eafe33fd">
+<div class="cell" data-outputid="d62e204f-cd4e-4599-e951-7a30eafe33fd">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>find_corr(x, y) <span class="co">#near 0!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="133">
 <pre><code>-0.0813179110596017</code></pre>
 </div>
 </div>
 <p>Note that all functions with a doc string have a <code>.__doc__</code> attribute that you can look at to understand that function (assuming the doc string is useful!).</p>
-<div id="L9WmUgl1JdPU" class="cell" data-outputid="6b8a1187-ee17-432c-a1f8-1892e5a34f64">
+<div class="cell" data-outputid="6b8a1187-ee17-432c-a1f8-1892e5a34f64">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_corr.__doc__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -911,13 +872,13 @@ window.Quarto = {
     </code></pre>
 </div>
 </div>
-<div id="kvQNp6W_Jd_8" class="cell" data-outputid="99e0382a-cab2-4172-88df-6203ea5f1ed6">
+<div class="cell" data-outputid="99e0382a-cab2-4172-88df-6203ea5f1ed6">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>.__doc__) <span class="co">#another example on a common function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Return the number of items in a container.</code></pre>
 </div>
 </div>
-<div id="rex_HZMEJk2l" class="cell" data-outputid="d4097344-fc9d-4947-dff9-e1adb16051fa">
+<div class="cell" data-outputid="d4097344-fc9d-4947-dff9-e1adb16051fa">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.random.default_rng.__doc__) <span class="co">#another example</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Construct a new Generator with the default BitGenerator (PCG64).
@@ -1007,7 +968,7 @@ window.Quarto = {
 <li>When executing a function, a new symbol table is used for the local variables</li>
 <li>This keeps us from accidentally overwriting something</li>
 </ul>
-<div id="90484fbc" class="cell" data-outputid="ae2f7148-9f43-4760-82be-c41457d5dffc">
+<div class="cell" data-outputid="ae2f7148-9f43-4760-82be-c41457d5dffc">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>))</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1024,7 +985,7 @@ window.Quarto = {
 [ 1  2  3  4  5  6  7  8  9 10]</code></pre>
 </div>
 </div>
-<div id="f186e177" class="cell" data-outputid="f738a11d-3857-484d-a8f7-d57a76ef38d4">
+<div class="cell" data-outputid="f738a11d-3857-484d-a8f7-d57a76ef38d4">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z) <span class="co">#z isn't defined outside the function call!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'z' is not defined</code></pre>
@@ -1033,7 +994,7 @@ window.Quarto = {
 <ul>
 <li>You can define global variables in a function using <code>global</code></li>
 </ul>
-<div id="111f7d9e" class="cell" data-outputid="0f0615be-801a-45ca-b1d6-9e75ad32078a">
+<div class="cell" data-outputid="0f0615be-801a-45ca-b1d6-9e75ad32078a">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(z):</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">global</span> y</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> z<span class="op">**</span><span class="dv">2</span></span>
@@ -1051,7 +1012,7 @@ window.Quarto = {
 <ul>
 <li>If nothing is returned from a function (with <code>return</code>) then it actually returns the special <code>None</code></li>
 </ul>
-<div id="a15a81ee" class="cell" data-outputid="98db9d66-f32f-4bc0-a0fb-3985fbea1b94">
+<div class="cell" data-outputid="98db9d66-f32f-4bc0-a0fb-3985fbea1b94">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square_it(a):</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="bu">type</span>(a) <span class="op">==</span> <span class="bu">int</span>) <span class="kw">or</span> (<span class="bu">type</span>(a) <span class="op">==</span> <span class="bu">float</span>):</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> a<span class="op">**</span><span class="dv">2</span></span>
@@ -1072,7 +1033,7 @@ None</code></pre>
 <li><p>Default values are only evaluated once - at the time of the function <strong>definition</strong></p></li>
 <li><p>Mutable objects can cause an issue! (Lists are mutable as they can be changed, some objects, like tuples, are immutable and can’t be modified.)</p></li>
 </ul>
-<div id="bcf91492" class="cell" data-outputid="435dd899-290b-4fd5-bd66-cbd0dbdc11f8">
+<div class="cell" data-outputid="435dd899-290b-4fd5-bd66-cbd0dbdc11f8">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#append a value to a list but give a default empty list if not given</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_append(value, L <span class="op">=</span> []):</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    L.append(value)</span>
@@ -1090,7 +1051,7 @@ None</code></pre>
 <ul>
 <li>To avoid this behavior, instead define the default value as <code>None</code> and take care of things within the function body</li>
 </ul>
-<div id="cd9089b8" class="cell" data-outputid="330c47f1-b508-4442-bdf9-b5fc9f1802c5">
+<div class="cell" data-outputid="330c47f1-b508-4442-bdf9-b5fc9f1802c5">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_append(value, L <span class="op">=</span> <span class="va">None</span>):</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> L <span class="kw">is</span> <span class="va">None</span>:</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>        L <span class="op">=</span> []</span>
@@ -1109,7 +1070,7 @@ None</code></pre>
 <h2 class="anchored" data-anchor-id="video-demo">Video Demo</h2>
 <p>This quick video demo gives another example of creating our own function!</p>
 <p>Remember to pop these out into a panopto window as they are much easier to watch that way!</p>
-<div id="XsXfzp9iy5mN" class="cell" data-outputid="93d8202a-ae7a-414d-d238-5f1cdc651649" data-execution_count="1">
+<div class="cell" data-outputid="93d8202a-ae7a-414d-d238-5f1cdc651649" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae1858b3-74cf-4065-8ec7-b0f800e4f827&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -1126,7 +1087,7 @@ None</code></pre>
 <ul>
 <li>Writing functions is super cool!</li>
 </ul>
-<div id="34ffc089" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func_name(args):</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Doc string</span></span>
@@ -1222,27 +1183,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1252,17 +1196,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1274,130 +1209,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1441,7 +1253,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1467,32 +1278,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1554,18 +1339,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="pagination-link" aria-label="Common Uses for Data">
+      <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Common Uses for Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/09-Control_Flow.html" class="pagination-link" aria-label="Control Flow">
+      <a href="../01_Programming_in_python/09-Control_Flow.html" class="pagination-link">
         <span class="nav-page-text">Control Flow</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

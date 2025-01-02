@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-17">
+<meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Numerical Summaries</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -115,9 +108,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
@@ -129,39 +122,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/17-Numerical_Summaries.html">Numerical Summaries</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/17-Numerical_Summaries.html">Numerical Summaries</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -171,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -188,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Learning <code>python</code></span></a>
+ <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -197,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Goals</span></a>
+ <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -336,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Basics of Predictive Modeling</span></a>
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -383,16 +376,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#numerical-summaries" id="toc-numerical-summaries" class="nav-link active" data-scroll-target="#numerical-summaries">Numerical Summaries</a>
-  <ul class="collapse">
-  <li><a href="#understand-how-data-is-stored" id="toc-understand-how-data-is-stored" class="nav-link" data-scroll-target="#understand-how-data-is-stored">Understand How Data is Stored</a></li>
+  <li><a href="#understand-how-data-is-stored" id="toc-understand-how-data-is-stored" class="nav-link active" data-scroll-target="#understand-how-data-is-stored">Understand How Data is Stored</a></li>
   <li><a href="#do-basic-data-validation" id="toc-do-basic-data-validation" class="nav-link" data-scroll-target="#do-basic-data-validation">Do Basic Data Validation</a></li>
   <li><a href="#determine-rate-of-missing-values" id="toc-determine-rate-of-missing-values" class="nav-link" data-scroll-target="#determine-rate-of-missing-values">Determine Rate of Missing Values</a></li>
   <li><a href="#clean-up-data-as-needed" id="toc-clean-up-data-as-needed" class="nav-link" data-scroll-target="#clean-up-data-as-needed">Clean Up Data As Needed</a></li>
@@ -402,7 +393,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#numeric-data" id="toc-numeric-data" class="nav-link" data-scroll-target="#numeric-data">Numeric Data</a></li>
   <li><a href="#summaries-across-groups" id="toc-summaries-across-groups" class="nav-link" data-scroll-target="#summaries-across-groups">Summaries Across Groups</a></li>
   </ul></li>
-  </ul></li>
   <li><a href="#quick-video" id="toc-quick-video" class="nav-link" data-scroll-target="#quick-video">Quick Video</a></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
@@ -411,8 +401,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/17-Numerical_Summaries.html">Numerical Summaries</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Numerical Summaries</h1>
 </div>
 
 
@@ -423,7 +414,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-17</p>
+      <p class="date">2025-01-02</p>
     </div>
   </div>
   
@@ -431,13 +422,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/17_Numerical_Summaries.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="numerical-summaries" class="level1">
-<h1>Numerical Summaries</h1>
 <p>Justin Post</p>
 <ul>
 <li><p>Usual first step in an analysis is to get to know your data (an Exploratory Data Analysis (EDA))</p></li>
@@ -459,7 +446,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="understand-how-data-is-stored" class="level2">
 <h2 class="anchored" data-anchor-id="understand-how-data-is-stored">Understand How Data is Stored</h2>
 <p>Read in some data</p>
-<div id="bb80abe8" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>titanic_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/titanic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -467,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We saw the <code>.info()</code> method to see how our variables are stored (among other things)</li>
 <li>Column data types should make sense for what you expect!</li>
 </ul>
-<div id="80d86e5e" class="cell" data-outputid="eb54b77f-4d3c-4db9-acc2-3daf5ff5f607">
+<div class="cell" data-outputid="eb54b77f-4d3c-4db9-acc2-3daf5ff5f607">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>titanic_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -496,7 +483,7 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li><code>.head()</code> and <code>.tail()</code> help to see what we have as well</li>
 </ul>
-<div id="acfddc33" class="cell" data-outputid="b5e2480c-e3bc-4f49-f76a-5a45ecd510eb">
+<div class="cell" data-outputid="b5e2480c-e3bc-4f49-f76a-5a45ecd510eb">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>titanic_data.head() <span class="co">#clearly some missing values with NaNs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 
@@ -504,7 +491,7 @@ memory usage: 143.4+ KB</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -612,6 +599,7 @@ memory usage: 143.4+ KB</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -819,7 +807,7 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 </div>
 </div>
-<div id="cLJZRBEiiKA5" class="cell" data-outputid="fad37c9b-2858-4719-9dbe-131037ad05d5">
+<div class="cell" data-outputid="fad37c9b-2858-4719-9dbe-131037ad05d5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>titanic_data.tail() <span class="co">#note the last row of NaN (not a number)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 
@@ -827,7 +815,7 @@ memory usage: 143.4+ KB</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -935,6 +923,7 @@ memory usage: 143.4+ KB</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1150,7 +1139,7 @@ memory usage: 143.4+ KB</code></pre>
 <li>Use the <code>describe()</code> method on a data frame</li>
 <li>Check that the min’s, max’s, etc. all make sense!</li>
 </ul>
-<div id="9640bed1" class="cell" data-outputid="8228ba9e-367c-45c3-ec69-97613cb6016b">
+<div class="cell" data-outputid="8228ba9e-367c-45c3-ec69-97613cb6016b">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>titanic_data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 
@@ -1158,7 +1147,7 @@ memory usage: 143.4+ KB</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1254,6 +1243,7 @@ memory usage: 143.4+ KB</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1465,7 +1455,7 @@ memory usage: 143.4+ KB</code></pre>
 <li>Recall we can subset our columns with <code>[]</code></li>
 <li>We can determine <code>percentiles</code> to return with <code>.describe()</code> too</li>
 </ul>
-<div id="d48bc4e8" class="cell" data-outputid="a51664c8-adf8-4006-83fb-a30871e3123e">
+<div class="cell" data-outputid="a51664c8-adf8-4006-83fb-a30871e3123e">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>titanic_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Index(['pclass', 'survived', 'name', 'sex', 'age', 'sibsp', 'parch', 'ticket',
@@ -1473,7 +1463,7 @@ memory usage: 143.4+ KB</code></pre>
       dtype='object')</code></pre>
 </div>
 </div>
-<div id="uetity9LitNB" class="cell" data-outputid="0317e75b-6e05-475e-8339-a6bf4f6df3cb">
+<div class="cell" data-outputid="0317e75b-6e05-475e-8339-a6bf4f6df3cb">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>titanic_data[[<span class="st">"age"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>, <span class="st">"fare"</span>]].describe(percentiles <span class="op">=</span> [<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.99</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 
@@ -1481,7 +1471,7 @@ memory usage: 143.4+ KB</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1557,6 +1547,7 @@ memory usage: 143.4+ KB</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1771,7 +1762,7 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Use <code>is.null()</code> method</li>
 </ul>
-<div id="1a5ef0ce" class="cell" data-outputid="327af2cd-1d2c-43ab-81b1-ecd8b920a51a">
+<div class="cell" data-outputid="327af2cd-1d2c-43ab-81b1-ecd8b920a51a">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>titanic_data.isnull()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 
@@ -1779,7 +1770,7 @@ memory usage: 143.4+ KB</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1989,6 +1980,7 @@ memory usage: 143.4+ KB</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 <p>1310 rows × 14 columns</p>
 </div>
@@ -2202,7 +2194,7 @@ memory usage: 143.4+ KB</code></pre>
 <li>This is a <code>DataFrame</code> of booleans!</li>
 <li>Use the <code>.sum()</code> method to see how many <code>null</code> values we have for each column</li>
 </ul>
-<div id="29ca4bdb" class="cell" data-outputid="fe4d0b25-c66d-4d7e-ebcc-adc91d91fa59">
+<div class="cell" data-outputid="fe4d0b25-c66d-4d7e-ebcc-adc91d91fa59">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>titanic_data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>pclass          1
@@ -2234,14 +2226,14 @@ dtype: int64</code></pre>
 <li>If we want to just remove some columns, can use the <code>.drop()</code> method</li>
 </ul></li>
 </ul>
-<div id="u9facuBWkkIs" class="cell" data-outputid="b304e58a-23cf-4eda-c460-adadc47e52a1">
+<div class="cell" data-outputid="b304e58a-23cf-4eda-c460-adadc47e52a1">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data <span class="op">=</span> titanic_data.drop(columns <span class="op">=</span> [<span class="st">"body"</span>, <span class="st">"cabin"</span>, <span class="st">"boat"</span>])</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>(1310, 11)</code></pre>
 </div>
 </div>
-<div id="c88cb301" class="cell" data-outputid="f00db730-6197-4107-ec11-4b5e550fde0e">
+<div class="cell" data-outputid="f00db730-6197-4107-ec11-4b5e550fde0e">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>pclass         1
@@ -2261,14 +2253,14 @@ dtype: int64</code></pre>
 <ul>
 <li>Remove any rows with missing values</li>
 </ul>
-<div id="56c64ecd" class="cell" data-outputid="1acebe40-ec12-49b6-b312-5569a79e3603">
+<div class="cell" data-outputid="1acebe40-ec12-49b6-b312-5569a79e3603">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> sub_titanic_data.dropna()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>temp.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>(684, 11)</code></pre>
 </div>
 </div>
-<div id="dhSTMHRjj5sr" class="cell" data-outputid="49868f78-c00e-49a6-cd9c-dfd15f9bb2e4">
+<div class="cell" data-outputid="49868f78-c00e-49a6-cd9c-dfd15f9bb2e4">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>temp.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>pclass       0
@@ -2288,7 +2280,7 @@ dtype: int64</code></pre>
 <ul>
 <li>Can be dangerous to impute the missing values… but can be done with <code>.fillna()</code> method</li>
 </ul>
-<div id="1dccd368" class="cell" data-outputid="88cab409-fc85-47d6-c9b3-721c2c486c93">
+<div class="cell" data-outputid="88cab409-fc85-47d6-c9b3-721c2c486c93">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.fillna(value <span class="op">=</span> <span class="dv">0</span>) <span class="co">#note, for instance, some values of age are 0 now and the last row is all 0 values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 
@@ -2296,7 +2288,7 @@ dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2470,6 +2462,7 @@ dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 <p>1310 rows × 11 columns</p>
 </div>
@@ -2681,7 +2674,7 @@ dtype: int64</code></pre>
 <ul>
 <li>Can set the value you want to impute by passing a dictionary of key/value pairs</li>
 </ul>
-<div id="86481b1e" class="cell" data-outputid="ff2d114c-11f5-415b-c355-c5cace98ee87">
+<div class="cell" data-outputid="ff2d114c-11f5-415b-c355-c5cace98ee87">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.fillna(value <span class="op">=</span> {<span class="st">"home.dest"</span>: <span class="st">"Unknown"</span>, <span class="st">"age"</span>: <span class="dv">200</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 
@@ -2689,7 +2682,7 @@ dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2863,6 +2856,7 @@ dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 <p>1310 rows × 11 columns</p>
 </div>
@@ -3114,7 +3108,7 @@ dtype: int64</code></pre>
 </ul></li>
 </ul>
 <p>Variables of interest for this section: + embarked (where journey started)</p>
-<div id="3a8ca728" class="cell" data-outputid="bede4f52-718f-4bcf-c386-23df251d0deb">
+<div class="cell" data-outputid="bede4f52-718f-4bcf-c386-23df251d0deb">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarked[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>0    S
@@ -3122,7 +3116,7 @@ dtype: int64</code></pre>
 Name: embarked, dtype: object</code></pre>
 </div>
 </div>
-<div id="ylAAxftNmSv7" class="cell" data-outputid="6d2c7670-c4a0-4aad-89a0-9a37d4b92e12">
+<div class="cell" data-outputid="6d2c7670-c4a0-4aad-89a0-9a37d4b92e12">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(sub_titanic_data.embarked[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>str</code></pre>
@@ -3136,7 +3130,7 @@ Name: embarked, dtype: object</code></pre>
 <li>Can have more descriptive labels, ordering of categories, etc.</li>
 </ul>
 <p>Let’s give the <code>embarked</code> variable more descriptive values and by converting it to a <code>category</code> type and manipulating it that way.</p>
-<div id="dadcdcf8" class="cell" data-outputid="4ecdd59f-0b1f-44a6-ec71-c4b8be718a27">
+<div class="cell" data-outputid="4ecdd59f-0b1f-44a6-ec71-c4b8be718a27">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"embarkedC"</span>] <span class="op">=</span> sub_titanic_data.embarked.astype(<span class="st">"category"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
@@ -3149,7 +3143,7 @@ Categories (3, object): ['C', 'Q', 'S']</code></pre>
 <ul>
 <li>Now we can use the <code>.cat.rename_categories()</code> method on this <code>category</code> variable</li>
 </ul>
-<div id="7681ee27" class="cell" data-outputid="739f934f-1020-4bc1-9b11-fb342c863325">
+<div class="cell" data-outputid="739f934f-1020-4bc1-9b11-fb342c863325">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC <span class="op">=</span> sub_titanic_data.embarkedC.cat.rename_categories([<span class="st">"Cherbourg"</span>, <span class="st">"Queenstown"</span>, <span class="st">"Southampton"</span>])</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
@@ -3165,7 +3159,7 @@ Categories (3, object): ['Cherbourg', 'Queenstown', 'Southampton']</code></pre>
 </li>
 <li>survived (survive or not)</li>
 </ul>
-<div id="63afa66d" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert sec variable</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"sexC"</span>] <span class="op">=</span> sub_titanic_data.sex.astype(<span class="st">"category"</span>)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.sexC <span class="op">=</span> sub_titanic_data.sexC.cat.rename_categories([<span class="st">"Female"</span>, <span class="st">"Male"</span>])</span>
@@ -3181,7 +3175,7 @@ Categories (3, object): ['Cherbourg', 'Queenstown', 'Southampton']</code></pre>
 <li>Tables of counts are the main numerical summary for categorical data</li>
 <li>Create <strong>one-way contingency tables</strong> (<code>.value_counts()</code> method) (one-way because we are looking at one variable at a time)</li>
 </ul>
-<div id="846122ce" class="cell" data-outputid="dd29f996-8ed4-4379-d643-b9981f5cc172">
+<div class="cell" data-outputid="dd29f996-8ed4-4379-d643-b9981f5cc172">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC.value_counts(dropna <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>Southampton    914
@@ -3191,7 +3185,7 @@ NaN              3
 Name: embarkedC, dtype: int64</code></pre>
 </div>
 </div>
-<div id="hOt8jMy0nqvh" class="cell" data-outputid="8b2dff3b-3fdf-4cd6-c3a4-617088e65ac4">
+<div class="cell" data-outputid="8b2dff3b-3fdf-4cd6-c3a4-617088e65ac4">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.survivedC.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>Died        809
@@ -3199,7 +3193,7 @@ Survived    500
 Name: survivedC, dtype: int64</code></pre>
 </div>
 </div>
-<div id="32a34b83" class="cell" data-outputid="bd08c992-32f9-4094-8384-f5244f994271">
+<div class="cell" data-outputid="bd08c992-32f9-4094-8384-f5244f994271">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.sexC.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>Male      843
@@ -3215,7 +3209,7 @@ Name: sexC, dtype: int64</code></pre>
 <li><code>index</code> argument is the row variable and <code>columns</code> argument is the column variable</li>
 </ul></li>
 </ul>
-<div id="521670a2" class="cell" data-outputid="4eee14ab-4f13-456f-bdfa-f1d5ddbdf950">
+<div class="cell" data-outputid="4eee14ab-4f13-456f-bdfa-f1d5ddbdf950">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"dummy"</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> sub_titanic_data.embarkedC, columns <span class="op">=</span> sub_titanic_data.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
@@ -3224,7 +3218,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">dummy</th>
@@ -3250,6 +3244,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3457,7 +3452,7 @@ Name: sexC, dtype: int64</code></pre>
   </div>
 </div>
 </div>
-<div id="91638a0c" class="cell" data-outputid="9a715a4d-5374-453a-84da-4b0243c36c73">
+<div class="cell" data-outputid="9a715a4d-5374-453a-84da-4b0243c36c73">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> sub_titanic_data.sexC, columns <span class="op">=</span> sub_titanic_data.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 
@@ -3465,7 +3460,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">dummy</th>
@@ -3487,6 +3482,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3698,7 +3694,7 @@ Name: sexC, dtype: int64</code></pre>
 <li>To summarize two categorical variables together, we use a two-way contingency table</li>
 <li>Use the <code>cross_tab()</code> function here</li>
 </ul>
-<div id="2f4ff95c" class="cell" data-outputid="f4889dd5-22f7-4785-e4fe-56312ba414c6">
+<div class="cell" data-outputid="f4889dd5-22f7-4785-e4fe-56312ba414c6">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC, <span class="co">#index variable</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC) <span class="co">#column variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3708,7 +3704,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">survivedC</th>
@@ -3739,6 +3735,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3946,7 +3943,7 @@ Name: sexC, dtype: int64</code></pre>
   </div>
 </div>
 </div>
-<div id="44dba40a" class="cell" data-outputid="7468b745-bc5b-4ae7-f4b8-4b47ae36f679">
+<div class="cell" data-outputid="7468b745-bc5b-4ae7-f4b8-4b47ae36f679">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3956,7 +3953,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">survivedC</th>
@@ -3982,6 +3979,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -4192,7 +4190,7 @@ Name: sexC, dtype: int64</code></pre>
 <ul>
 <li>Add marginal totals with <code>margins = True</code> argument</li>
 </ul>
-<div id="b1bf7867" class="cell" data-outputid="ec998825-5cd8-4b62-9659-dc7f5c274dfb">
+<div class="cell" data-outputid="ec998825-5cd8-4b62-9659-dc7f5c274dfb">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
@@ -4203,7 +4201,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">survivedC</th>
@@ -4245,6 +4243,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -4458,7 +4457,7 @@ Name: sexC, dtype: int64</code></pre>
 <li>Use <code>rownames</code> and <code>colnames</code> arguments</li>
 </ul></li>
 </ul>
-<div id="8a12d38b" class="cell" data-outputid="1851c9a3-3e8d-4627-c8b8-e20208315b67">
+<div class="cell" data-outputid="1851c9a3-3e8d-4627-c8b8-e20208315b67">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
@@ -4472,7 +4471,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Survival Status</th>
@@ -4514,6 +4513,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -4725,7 +4725,7 @@ Name: sexC, dtype: int64</code></pre>
 <ul>
 <li>Three-way contingency table:</li>
 </ul>
-<div id="f9d38ef6" class="cell" data-outputid="80ccde85-a9be-46c6-bbd9-10da1ee3b225">
+<div class="cell" data-outputid="80ccde85-a9be-46c6-bbd9-10da1ee3b225">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  [sub_titanic_data.embarkedC, sub_titanic_data.survivedC],</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
@@ -4736,7 +4736,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4802,6 +4802,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -5012,7 +5013,7 @@ Name: sexC, dtype: int64</code></pre>
 <ul>
 <li>Add in names for more clarity</li>
 </ul>
-<div id="4b6a4fc0" class="cell" data-outputid="da81d71d-6965-44ad-da11-189d4e5930ca">
+<div class="cell" data-outputid="da81d71d-6965-44ad-da11-189d4e5930ca">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>my_tab <span class="op">=</span> pd.crosstab(</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  [sub_titanic_data.embarkedC, sub_titanic_data.survivedC],</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
@@ -5026,7 +5027,7 @@ Name: sexC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5092,6 +5093,7 @@ Name: sexC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -5303,19 +5305,19 @@ Name: sexC, dtype: int64</code></pre>
 <ul>
 <li><code>crosstab()</code> returns a data frame!</li>
 </ul>
-<div id="3d92165c" class="cell" data-outputid="0230e1b5-61ca-4e57-ce2f-8008cd5c509e">
+<div class="cell" data-outputid="0230e1b5-61ca-4e57-ce2f-8008cd5c509e">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>pandas.core.frame.DataFrame</code></pre>
 </div>
 </div>
-<div id="26bed0d0" class="cell" data-outputid="09beae41-ed8e-4328-ecd1-5fe415291c42">
+<div class="cell" data-outputid="09beae41-ed8e-4328-ecd1-5fe415291c42">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>my_tab.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>Index(['Female', 'Male', 'All'], dtype='object', name='Sex')</code></pre>
 </div>
 </div>
-<div id="b5_MudIoo-QX" class="cell" data-outputid="065b6d6b-dd11-40b2-bebe-17be6d9edac9">
+<div class="cell" data-outputid="065b6d6b-dd11-40b2-bebe-17be6d9edac9">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my_tab.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>MultiIndex([(  'Cherbourg',     'Died'),
@@ -5333,7 +5335,7 @@ Name: sexC, dtype: int64</code></pre>
 <li><p>The <code>MultiIndex</code> can be tough but let’s look at some examples</p></li>
 <li><p>Below returns the embarked vs survived table for females</p></li>
 </ul>
-<div id="d29e2ff8" class="cell" data-outputid="af99c174-ecff-473e-d29d-2c24ab4e223c">
+<div class="cell" data-outputid="af99c174-ecff-473e-d29d-2c24ab4e223c">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>my_tab[<span class="st">"Female"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <pre><code>Embarked Port  Survival Status
@@ -5347,7 +5349,7 @@ All                               464
 Name: Female, dtype: int64</code></pre>
 </div>
 </div>
-<div id="zbhBOK6_phin" class="cell" data-outputid="6a1bed7b-5434-4060-a237-574846947571">
+<div class="cell" data-outputid="6a1bed7b-5434-4060-a237-574846947571">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[:, <span class="st">"Female"</span>] <span class="co">#.loc way of doing this, : gives all of that index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>Embarked Port  Survival Status
@@ -5364,7 +5366,7 @@ Name: Female, dtype: int64</code></pre>
 <ul>
 <li>Below returns the sex vs embarked table for those that died</li>
 </ul>
-<div id="721b7615" class="cell" data-outputid="df363aae-0900-4956-fe5f-5d52f0409710">
+<div class="cell" data-outputid="df363aae-0900-4956-fe5f-5d52f0409710">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>my_tab.iloc[<span class="dv">0</span>:<span class="dv">5</span>:<span class="dv">2</span>, :] <span class="co">#0:5:2 gives a shorthand for a sequence with steps of 2s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 
@@ -5372,7 +5374,7 @@ Name: Female, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5413,6 +5415,7 @@ Name: Female, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -5624,7 +5627,7 @@ Name: Female, dtype: int64</code></pre>
 <li>Using <code>.loc[]</code> is better</li>
 <li>Must understand our <code>MultiIndex</code></li>
 </ul>
-<div id="faca1653" class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="0e11d5c8-54e0-4ea3-cb1b-1dd89cee76be">
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="0e11d5c8-54e0-4ea3-cb1b-1dd89cee76be">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>my_tab.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>MultiIndex([(  'Cherbourg',     'Died'),
@@ -5640,7 +5643,7 @@ Name: Female, dtype: int64</code></pre>
 <ul>
 <li>Below uses this index to return the sex vs embarked table for those that died</li>
 </ul>
-<div id="87ccfa44" class="cell" data-outputid="0a2d3faf-292c-47cd-f5ec-5d058d411f4e">
+<div class="cell" data-outputid="0a2d3faf-292c-47cd-f5ec-5d058d411f4e">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[((<span class="st">"Cherbourg"</span>, <span class="st">"Queenstown"</span>, <span class="st">"Southampton"</span>), <span class="st">"Died"</span>), :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 
@@ -5648,7 +5651,7 @@ Name: Female, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5689,6 +5692,7 @@ Name: Female, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -5899,7 +5903,7 @@ Name: Female, dtype: int64</code></pre>
 <ul>
 <li>Below returns the sex vs survived table for embarked of Cherbourg</li>
 </ul>
-<div id="112de0c2" class="cell" data-outputid="166c5f0d-7f21-4ab1-a970-961e47f1741b">
+<div class="cell" data-outputid="166c5f0d-7f21-4ab1-a970-961e47f1741b">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[(<span class="st">'Cherbourg'</span>, (<span class="st">"Died"</span>, <span class="st">"Survived"</span>)), :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 
@@ -5907,7 +5911,7 @@ Name: Female, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5940,6 +5944,7 @@ Name: Female, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -6153,7 +6158,7 @@ Name: Female, dtype: int64</code></pre>
 <li>First with <code>.iloc[]</code> then with <code>.loc[]</code></li>
 </ul></li>
 </ul>
-<div id="68b95001" class="cell" data-outputid="aa80a5d5-003f-42ba-ae73-a4371a22804c">
+<div class="cell" data-outputid="aa80a5d5-003f-42ba-ae73-a4371a22804c">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>my_tab.iloc[<span class="dv">0</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>Sex
@@ -6163,7 +6168,7 @@ All       120
 Name: (Cherbourg, Died), dtype: int64</code></pre>
 </div>
 </div>
-<div id="135fcfc5" class="cell" data-outputid="13ba54c9-dbd6-46f0-a8c4-d512627ebbee">
+<div class="cell" data-outputid="13ba54c9-dbd6-46f0-a8c4-d512627ebbee">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[(<span class="st">'Cherbourg'</span>, <span class="st">'Died'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>Sex
@@ -6201,31 +6206,31 @@ Name: (Cherbourg, Died), dtype: int64</code></pre>
 <ul>
 <li>Find mean and median with methods on a <code>Series</code></li>
 </ul>
-<div id="ZcfKv5eXq7jf" class="cell" data-outputid="61a08a15-545c-4bec-a2dc-90639a984d7a">
+<div class="cell" data-outputid="61a08a15-545c-4bec-a2dc-90639a984d7a">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(sub_titanic_data[<span class="st">'fare'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>pandas.core.series.Series</code></pre>
 </div>
 </div>
-<div id="1ce870d4" class="cell" data-outputid="574c77c2-9874-48b3-ef66-90adbf99cde4">
+<div class="cell" data-outputid="574c77c2-9874-48b3-ef66-90adbf99cde4">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">'fare'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>33.29547928134557</code></pre>
 </div>
 </div>
-<div id="c0a9bcc9" class="cell" data-outputid="65f99961-a2e5-481e-be01-e7af23aed836">
+<div class="cell" data-outputid="65f99961-a2e5-481e-be01-e7af23aed836">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">'fare'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>14.4542</code></pre>
 </div>
 </div>
-<div id="50652ab0" class="cell" data-outputid="d732b20f-c868-4d3a-cd5f-b88708cc8b3f">
+<div class="cell" data-outputid="d732b20f-c868-4d3a-cd5f-b88708cc8b3f">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.mean() <span class="co">#same thing with a different way to get a column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>29.8811345124283</code></pre>
 </div>
 </div>
-<div id="eZqjDiDSrDB5" class="cell" data-outputid="524a6b9d-52c4-4211-f642-9892a274a4cc">
+<div class="cell" data-outputid="524a6b9d-52c4-4211-f642-9892a274a4cc">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>28.0</code></pre>
@@ -6238,13 +6243,13 @@ Name: (Cherbourg, Died), dtype: int64</code></pre>
 <ul>
 <li>Standard Deviation, Quartiles, &amp; IQR found with <code>Series</code> methods as well</li>
 </ul>
-<div id="43d489f0" class="cell" data-outputid="8582b52d-feb2-416a-aa04-7e5314454402">
+<div class="cell" data-outputid="8582b52d-feb2-416a-aa04-7e5314454402">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>14.413499699923602</code></pre>
 </div>
 </div>
-<div id="BK5UnSOXrJmz" class="cell" data-outputid="a52cf9df-a46e-4e3d-c98c-a7d49b3abe29">
+<div class="cell" data-outputid="a52cf9df-a46e-4e3d-c98c-a7d49b3abe29">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.2</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="79">
 <pre><code>0.20    19.0
@@ -6254,7 +6259,7 @@ Name: (Cherbourg, Died), dtype: int64</code></pre>
 Name: age, dtype: float64</code></pre>
 </div>
 </div>
-<div id="aa8c76d6" class="cell" data-outputid="27ac0dc0-4582-4492-96f8-1684cb033bfd">
+<div class="cell" data-outputid="27ac0dc0-4582-4492-96f8-1684cb033bfd">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.25</span>])</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>q1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="80">
@@ -6262,7 +6267,7 @@ Name: age, dtype: float64</code></pre>
 Name: age, dtype: float64</code></pre>
 </div>
 </div>
-<div id="kOoIdLKqrOYK" class="cell" data-outputid="ba875f99-1525-4b6e-b399-90ac52a130a5">
+<div class="cell" data-outputid="ba875f99-1525-4b6e-b399-90ac52a130a5">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.75</span>])</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>q3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
@@ -6270,7 +6275,7 @@ Name: age, dtype: float64</code></pre>
 Name: age, dtype: float64</code></pre>
 </div>
 </div>
-<div id="yAJ8qAydrPnu" class="cell" data-outputid="f8db2356-f8c8-4d18-cf34-a1514cf2ebba">
+<div class="cell" data-outputid="f8db2356-f8c8-4d18-cf34-a1514cf2ebba">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(q1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>pandas.core.series.Series</code></pre>
@@ -6280,7 +6285,7 @@ Name: age, dtype: float64</code></pre>
 <li>As both <code>q1</code> and <code>q3</code> are <code>Series</code>, they have indices</li>
 <li>This makes them a little more difficult than you might like to subtract (to find the IRQ)</li>
 </ul>
-<div id="N5GMP6TNrcuO" class="cell" data-outputid="f22acd26-e411-40f4-d737-bdc6a68fcf33">
+<div class="cell" data-outputid="f22acd26-e411-40f4-d737-bdc6a68fcf33">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>q3<span class="op">-</span>q1 <span class="co">#doesn't work due to the differing index names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="84">
 <pre><code>0.25   NaN
@@ -6288,7 +6293,7 @@ Name: age, dtype: float64</code></pre>
 Name: age, dtype: float64</code></pre>
 </div>
 </div>
-<div id="Zs2LWK3OrQjA" class="cell" data-outputid="00b5fc94-6d3e-439b-8457-4af75b22b05d">
+<div class="cell" data-outputid="00b5fc94-6d3e-439b-8457-4af75b22b05d">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>q3[<span class="fl">0.75</span>] <span class="op">-</span> q1[<span class="fl">0.25</span>] <span class="co">#grab the values by index names and subtract those</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>18.0</code></pre>
@@ -6297,7 +6302,7 @@ Name: age, dtype: float64</code></pre>
 <ul>
 <li>Alternatively, remember that returning the <code>.values</code> attribute returns a <code>numpy</code> array. We can subtract these.</li>
 </ul>
-<div id="RwdSJWQorlTu" class="cell" data-outputid="5f13a93f-d3d6-4c13-8efd-865a019fbd5f">
+<div class="cell" data-outputid="5f13a93f-d3d6-4c13-8efd-865a019fbd5f">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>q3.values <span class="op">-</span> q1.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="89">
 <pre><code>array([18.])</code></pre>
@@ -6314,7 +6319,7 @@ Name: age, dtype: float64</code></pre>
 <li>Just because it is stored numerically doesn’t mean we should treat it numerically!</li>
 </ul></li>
 </ul>
-<div id="0a672e08" class="cell" data-outputid="2c967a4e-f5ec-4052-86ff-093c0f455f2f">
+<div class="cell" data-outputid="2c967a4e-f5ec-4052-86ff-093c0f455f2f">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default value of numeric_only in DataFrame.corr is deprecated. In a future version, it will default to False. Select only valid columns or specify the value of numeric_only to silence this warning.
@@ -6326,7 +6331,7 @@ Name: age, dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6412,6 +6417,7 @@ Name: age, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -6622,7 +6628,7 @@ Name: age, dtype: float64</code></pre>
 <ul>
 <li>Let’s just look at the variables that make sense</li>
 </ul>
-<div id="f9ec8139" class="cell" data-outputid="dfa59348-1b6c-4895-d8ff-ff931109cd69">
+<div class="cell" data-outputid="dfa59348-1b6c-4895-d8ff-ff931109cd69">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="92">
 
@@ -6630,7 +6636,7 @@ Name: age, dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6671,6 +6677,7 @@ Name: age, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -6888,7 +6895,7 @@ Name: age, dtype: float64</code></pre>
 <section id="groupby-examples" class="level4">
 <h4 class="anchored" data-anchor-id="groupby-examples"><code>.groupby()</code> Examples</h4>
 <p>Example: Get similar fare summaries for each <em>survival status</em></p>
-<div id="e44420ee" class="cell" data-outputid="8d3c51f3-622e-4d70-9ce6-0099e1a46899">
+<div class="cell" data-outputid="8d3c51f3-622e-4d70-9ce6-0099e1a46899">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="99">
 
@@ -6896,7 +6903,7 @@ Name: age, dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6930,6 +6937,7 @@ Name: age, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -7137,7 +7145,7 @@ Name: age, dtype: float64</code></pre>
   </div>
 </div>
 </div>
-<div id="2eb06d17" class="cell" data-outputid="682ef32b-258c-44ac-ba1a-990aac1f4ec7">
+<div class="cell" data-outputid="682ef32b-258c-44ac-ba1a-990aac1f4ec7">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="100">
 
@@ -7145,7 +7153,7 @@ Name: age, dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7179,6 +7187,7 @@ Name: age, dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -7389,7 +7398,7 @@ Name: age, dtype: float64</code></pre>
 <ul>
 <li><code>.unstack()</code> method on the result can sometimes make the output clearer</li>
 </ul>
-<div id="2d39e93d" class="cell" data-outputid="d8b972bd-cdc1-48f0-bc20-274856df220d">
+<div class="cell" data-outputid="d8b972bd-cdc1-48f0-bc20-274856df220d">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean().unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="101">
 <pre><code>       survivedC
@@ -7408,7 +7417,7 @@ dtype: float64</code></pre>
 <li>Multiple grouping variables can be given as a list</li>
 </ul>
 <p>Example: Get summary for numeric type variables for each <em>survival status</em> and <em>embarked port</em></p>
-<div id="325fe8ce" class="cell" data-outputid="c494615a-bb2b-4725-83e0-f35901c066ff">
+<div class="cell" data-outputid="c494615a-bb2b-4725-83e0-f35901c066ff">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>])[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="102">
 
@@ -7416,7 +7425,7 @@ dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7482,6 +7491,7 @@ dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -7689,7 +7699,7 @@ dtype: float64</code></pre>
   </div>
 </div>
 </div>
-<div id="853dea4a" class="cell" data-outputid="a196eac8-a732-445b-a3f7-b3d84ece504b">
+<div class="cell" data-outputid="a196eac8-a732-445b-a3f7-b3d84ece504b">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>])[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="103">
 
@@ -7697,7 +7707,7 @@ dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7763,6 +7773,7 @@ dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -7973,7 +7984,7 @@ dtype: float64</code></pre>
 <ul>
 <li>As our code gets longer, this is a good place to use <code>\</code> to extend our code down a line</li>
 </ul>
-<div id="48331880" class="cell" data-outputid="27e33df8-73a8-4f92-800a-875407736975">
+<div class="cell" data-outputid="27e33df8-73a8-4f92-800a-875407736975">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data <span class="op">\</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>]) <span class="op">\</span></span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>   [[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]] <span class="op">\</span></span>
@@ -7984,7 +7995,7 @@ dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8050,6 +8061,7 @@ dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -8268,7 +8280,7 @@ dtype: float64</code></pre>
 <li>A bit awkward in this case as we don’t really have a ‘column’ variable</li>
 <li>Make a dummy variable for that</li>
 </ul>
-<div id="9f400828" class="cell" data-outputid="e48dc74e-b77b-46ab-b65e-0f11e5ff18ce">
+<div class="cell" data-outputid="e48dc74e-b77b-46ab-b65e-0f11e5ff18ce">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"mean"</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(sub_titanic_data.shape[<span class="dv">0</span>])],</span>
@@ -8280,7 +8292,7 @@ dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">col_0</th>
@@ -8302,6 +8314,7 @@ dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -8512,7 +8525,7 @@ dtype: float64</code></pre>
 <ul>
 <li>Can return multiple summaries at once by passing them as a <code>list</code></li>
 </ul>
-<div id="3f32820b" class="cell" data-outputid="d620a623-bcc8-4617-9b06-bb0a8ede9842">
+<div class="cell" data-outputid="d620a623-bcc8-4617-9b06-bb0a8ede9842">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"stat"</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(sub_titanic_data.shape[<span class="dv">0</span>])],</span>
@@ -8524,7 +8537,7 @@ dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8565,6 +8578,7 @@ dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -8776,7 +8790,7 @@ dtype: float64</code></pre>
 <li>More natural with two grouping variables</li>
 </ul>
 <p>Example: Get summary for numeric type variables for each <em>survival status</em> and <em>embarked port</em></p>
-<div id="4caa92f7" class="cell" data-outputid="2d0eff84-44c8-4ee0-d18a-f363836e053a">
+<div class="cell" data-outputid="2d0eff84-44c8-4ee0-d18a-f363836e053a">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
@@ -8788,7 +8802,7 @@ dtype: float64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8834,6 +8848,7 @@ dtype: float64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -9045,12 +9060,11 @@ dtype: float64</code></pre>
 </section>
 </section>
 </section>
-</section>
 <section id="quick-video" class="level1">
 <h1>Quick Video</h1>
 <p>This video shows an example of reading in some data and finding numeric summaries!</p>
 <p>We’ll look at the <code>.pivot_table()</code> and <code>.agg()</code> methods</p>
-<div id="Qz3ZVcNOCJns" class="cell" data-outputid="4273e137-6195-4685-f93c-e8a61c4c4cb8" data-execution_count="1">
+<div class="cell" data-outputid="4273e137-6195-4685-f93c-e8a61c4c4cb8" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=197e5481-40be-4488-8271-b0ff000f5fd2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -9161,27 +9175,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -9191,17 +9188,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -9213,130 +9201,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -9380,7 +9245,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -9406,32 +9270,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -9493,18 +9331,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/16-Pandas_For_Reading_Data.html" class="pagination-link" aria-label="Pandas for Reading Raw Data">
+      <a href="../01_Programming_in_python/16-Pandas_For_Reading_Data.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pandas for Reading Raw Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/18-More_Function_Writing.html" class="pagination-link" aria-label="More on Writing Functions">
+      <a href="../01_Programming_in_python/18-More_Function_Writing.html" class="pagination-link">
         <span class="nav-page-text">More on Writing Functions</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

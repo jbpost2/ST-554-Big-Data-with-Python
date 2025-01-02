@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-17">
+<meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - More on Writing Functions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -115,9 +108,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
@@ -129,39 +122,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/18-More_Function_Writing.html">More on Writing Functions</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/18-More_Function_Writing.html">More on Writing Functions</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -171,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -188,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Learning <code>python</code></span></a>
+ <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -197,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Goals</span></a>
+ <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -336,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Basics of Predictive Modeling</span></a>
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -383,16 +376,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#more-on-writing-functions" id="toc-more-on-writing-functions" class="nav-link active" data-scroll-target="#more-on-writing-functions">More on Writing Functions</a>
-  <ul class="collapse">
-  <li><a href="#programming-in-python" id="toc-programming-in-python" class="nav-link" data-scroll-target="#programming-in-python">Programming in Python</a></li>
+  <li><a href="#programming-in-python" id="toc-programming-in-python" class="nav-link active" data-scroll-target="#programming-in-python">Programming in Python</a></li>
   <li><a href="#writing-functions-recap" id="toc-writing-functions-recap" class="nav-link" data-scroll-target="#writing-functions-recap">Writing Functions Recap</a></li>
   <li><a href="#packing-and-unpacking" id="toc-packing-and-unpacking" class="nav-link" data-scroll-target="#packing-and-unpacking">Packing and Unpacking</a>
   <ul class="collapse">
@@ -407,7 +398,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functools.reduce" id="toc-functools.reduce" class="nav-link" data-scroll-target="#functools.reduce"><code>functools.reduce()</code></a></li>
   </ul></li>
   <li><a href="#quick-video" id="toc-quick-video" class="nav-link" data-scroll-target="#quick-video">Quick Video</a></li>
-  </ul></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
@@ -415,8 +405,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/18-More_Function_Writing.html">More on Writing Functions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">More on Writing Functions</h1>
 </div>
 
 
@@ -427,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-17</p>
+      <p class="date">2025-01-02</p>
     </div>
   </div>
   
@@ -435,13 +426,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/18_More_Function_Writing.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="more-on-writing-functions" class="level1">
-<h1>More on Writing Functions</h1>
 <p>Justin Post</p>
 <hr>
 <section id="programming-in-python" class="level2">
@@ -471,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Writing functions is super cool!</li>
 <li>Recall the basic syntax</li>
 </ul>
-<div id="16750093" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func_name(args):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Doc string</span></span>
@@ -500,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Reminder: We can <strong>pack</strong> a list by separating variables to create with commas:</p>
 <p><code>first, second, third = ...</code></p>
 <p>Let’s look at an example:</p>
-<div id="d16dbf76" class="cell" data-outputid="8f275313-7dac-4f6a-ae67-2b204493d079">
+<div class="cell" data-outputid="8f275313-7dac-4f6a-ae67-2b204493d079">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>animals <span class="op">=</span> [<span class="st">"Dog"</span>, <span class="st">"Cat"</span>, <span class="st">"Horse"</span>, <span class="st">"Frog"</span>, <span class="st">"Cow"</span>, <span class="st">"Buffalo"</span>, <span class="st">"Deer"</span>, <span class="st">"Fish"</span>, <span class="st">"Bird"</span>, <span class="st">"Fox"</span>, <span class="st">"Racoon"</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>short_animals <span class="op">=</span> animals[:<span class="dv">3</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -511,7 +498,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We saw that we can pack leftover elements into a list using <code>*variable</code>:</p>
-<div id="abb19639" class="cell" data-outputid="afc45503-a466-4750-b85b-1304b8e1247f">
+<div class="cell" data-outputid="afc45503-a466-4750-b85b-1304b8e1247f">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>first, second, third, <span class="op">*</span>other <span class="op">=</span> animals</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(first <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> second <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> third)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(other)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -530,14 +517,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The inputs are handled as a <code>tuple</code> in the function!</li>
 </ul>
 <p>Let’s write a silly function to print out all arguments passed via this idea</p>
-<div id="1VVUr_6SQlqd" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> basic_print(<span class="op">*</span>args):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="bu">type</span>(args))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(args)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can pass this function as many things as we’d like and it will be accessible within the function body as a tuple. We can see this as the printed values are surrounded by <code>(...)</code>, which implies we are printing a tuple!</p>
-<div id="Piiek6DgQrmp" class="cell" data-outputid="69d54c83-8996-46ed-aa71-da31101eed1f">
+<div class="cell" data-outputid="69d54c83-8996-46ed-aa71-da31101eed1f">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>basic_print(<span class="st">"hi"</span>, [<span class="st">"a list"</span>, <span class="st">"how fun"</span>], <span class="dv">3</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'tuple'&gt;
@@ -545,13 +532,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>As tuples are iterable, we can iterate across these elements via a loop!</p>
-<div id="wL4T6rbrRTCA" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> basic_print_elements(<span class="op">*</span>args):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> args:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">type</span>(i),i)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ejkVXPs8RY6D" class="cell" data-outputid="bfc948e5-7d4e-4ef9-c2bd-533eb500d4f5">
+<div class="cell" data-outputid="bfc948e5-7d4e-4ef9-c2bd-533eb500d4f5">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>basic_print_elements(<span class="st">"hi"</span>, [<span class="st">"a list"</span>, <span class="st">"how fun"</span>], <span class="dv">3</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'str'&gt; hi
@@ -562,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Let’s define a function that takes in as many 1D numpy arrays or pandas series the user would like and returns the means for each input.</p>
 <p>We’ll also take an argument for the number of decimal places to return for the means.</p>
-<div id="247583c9" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_means(<span class="op">*</span>args, decimals <span class="op">=</span> <span class="dv">4</span>):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Assume that args will be a bunch of numpy arrays (1D) or pandas series</span></span>
@@ -576,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create some data with <code>numpy</code> to send to this</li>
 </ul>
-<div id="d306fb06" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">3</span>) <span class="co">#set seed to 3</span></span>
@@ -588,7 +575,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>n1000 <span class="op">=</span> rng.standard_normal(<span class="dv">1000</span>) <span class="co">#sample size of 1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s pass these to our function!</p>
-<div id="fd7025f6" class="cell" data-outputid="be24e603-eb61-4ad9-b41f-816fca40a228">
+<div class="cell" data-outputid="be24e603-eb61-4ad9-b41f-816fca40a228">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>find_means(n5, n25, n100, n1000, decimals <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>[-0.22, 0.11, -0.01, 0.04]</code></pre>
@@ -604,7 +591,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Handled as a <strong>dictionary</strong> in the function</li>
 </ul>
 <p>Let’s write a basic function to print out the keywords with their values.</p>
-<div id="42f2feed" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_key_value_pairs(<span class="op">**</span>kwargs):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">    key word args can be anything</span></span>
@@ -614,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(x <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(kwargs.get(x))) <span class="co">#cast the value to a string for printing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we pass as many named arguments as we’d like!</p>
-<div id="lYnAeNzvUSS-" class="cell" data-outputid="286e5edd-a733-4e25-bc77-10e98bba99a2">
+<div class="cell" data-outputid="286e5edd-a733-4e25-bc77-10e98bba99a2">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>print_key_value_pairs(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  name <span class="op">=</span> <span class="st">"Justin"</span>,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  job <span class="op">=</span> <span class="st">"Professor"</span>,</span>
@@ -638,14 +625,14 @@ phone : 9195150637</code></pre>
 </ul></li>
 <li>We can <em>unpack</em> this list or tuple to be our function arguments by calling our function in a particular way.</li>
 </ul>
-<div id="6d669813" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We want to call our find_means function with these arguments</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>call_args <span class="op">=</span> [n5, n25, n100, n1000]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Call the function using <code>*call_args</code> (unpacking)</li>
 </ul>
-<div id="ae7fc95e" class="cell" data-outputid="94cbcad6-04ae-4d18-ae6c-ebde045be569">
+<div class="cell" data-outputid="94cbcad6-04ae-4d18-ae6c-ebde045be569">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>find_means(<span class="op">*</span>call_args, decimals <span class="op">=</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>[-0.223, 0.114, -0.014, 0.04]</code></pre>
@@ -658,7 +645,7 @@ phone : 9195150637</code></pre>
 <li>Can call the function using <code>**kw_call_args</code> (unpacking)</li>
 </ul>
 <p>Define a quick function.</p>
-<div id="itGvRHnkWVmf" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_items(name, job, number):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Name is: "</span>, name)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Job is: "</span>, job)</span>
@@ -666,7 +653,7 @@ phone : 9195150637</code></pre>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create a dictionary with key-value pairs corresponding to our inputs.</p>
-<div id="2849eeae" class="cell" data-outputid="ebef0e4a-4b67-46c7-aa57-e7f22c296d76">
+<div class="cell" data-outputid="ebef0e4a-4b67-46c7-aa57-e7f22c296d76">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>kw_call_args <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Justin Post"</span>, <span class="st">"job"</span>: <span class="st">"Professor"</span>, <span class="st">"number"</span>: <span class="st">"9195150637"</span>}</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>kw_call_args</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -674,7 +661,7 @@ phone : 9195150637</code></pre>
 </div>
 </div>
 <p>Call our function using <code>**</code> with our dictionary!</p>
-<div id="yuGwkaDZWR3I" class="cell" data-outputid="e1ed74b0-6259-4594-944b-a31b73f8170c">
+<div class="cell" data-outputid="e1ed74b0-6259-4594-944b-a31b73f8170c">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>print_items(<span class="op">**</span>kw_call_args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Name is:  Justin Post
@@ -686,7 +673,7 @@ Phone number is:  9195150637</code></pre>
 <li>Passing named and unnamed arguments can both be done at once!</li>
 <li>Recall our <code>find_means</code> function inputs: <code>def find_means(*args, decimals = 4):</code></li>
 </ul>
-<div id="8b1cf05d" class="cell" data-outputid="f65be28d-bd02-4530-c0d2-1d682146b948">
+<div class="cell" data-outputid="f65be28d-bd02-4530-c0d2-1d682146b948">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dec_dictionary <span class="op">=</span> {<span class="st">"decimals"</span>: <span class="dv">6</span>}</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>find_means(<span class="op">*</span>call_args, <span class="op">**</span>dec_dictionary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
@@ -707,14 +694,14 @@ Phone number is:  9195150637</code></pre>
 <li>Syntax requires a <em>single</em> line. Cannot use <code>return</code> or some other keywords</li>
 </ul></li>
 </ul>
-<div id="077033c1" class="cell" data-outputid="858588f8-cca0-477b-b0f0-b4e22e5b4612">
+<div class="cell" data-outputid="858588f8-cca0-477b-b0f0-b4e22e5b4612">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>square_it <span class="op">=</span> <span class="kw">lambda</span> x : x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>square_it(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>100</code></pre>
 </div>
 </div>
-<div id="5oj0SA7dYbTj" class="cell" data-outputid="ab1e5ddd-df65-40c6-e85e-13bec1d22944">
+<div class="cell" data-outputid="ab1e5ddd-df65-40c6-e85e-13bec1d22944">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>square_then_add <span class="op">=</span> <span class="kw">lambda</span> x, y : x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>square_then_add(<span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
@@ -724,14 +711,14 @@ Phone number is:  9195150637</code></pre>
 <ul>
 <li>Can still define the arguments in many ways</li>
 </ul>
-<div id="f655f942" class="cell" data-outputid="22e6f70b-08e5-4903-9fca-997a5395dbd7">
+<div class="cell" data-outputid="22e6f70b-08e5-4903-9fca-997a5395dbd7">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>my_print <span class="op">=</span> <span class="kw">lambda</span> x, y <span class="op">=</span> <span class="st">"ho"</span>: <span class="bu">print</span>(x, y)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>my_print(<span class="st">"hi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>hi ho</code></pre>
 </div>
 </div>
-<div id="sIlEq1kaZkdk" class="cell" data-outputid="76cd6e07-3017-4aec-b6ff-ee11539c19cd">
+<div class="cell" data-outputid="76cd6e07-3017-4aec-b6ff-ee11539c19cd">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>my_print <span class="op">=</span> <span class="kw">lambda</span> <span class="op">*</span>x: [<span class="bu">print</span>(<span class="st">"Input: "</span> <span class="op">+</span> <span class="bu">str</span>(z)) <span class="cf">for</span> z <span class="kw">in</span> x]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>my_print(<span class="st">"hi"</span>, <span class="st">"ho"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -748,14 +735,14 @@ Input: ho</code></pre>
 <p>Using lambda functions comes up a lot in the <code>map/reduce</code> idea. This is important for what we’ll do!</p>
 <p>Map/reduce idea: - Apply (or <em>map</em>) a function to each element of an iterable object - Combine (or <em>reduce</em>) the results where able</p>
 <p>Example: Counting words - Want to take a list of words and create a tuple with the word and the value 1 - Syntax for <code>map</code>: + <code>map(function, object_to_apply_function_to)</code></p>
-<div id="2d2607ec" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="bu">map</span>(</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> word: (word, <span class="dv">1</span>),</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"these"</span>, <span class="st">"are"</span>, <span class="st">"my"</span>, <span class="st">"words"</span>, <span class="st">"these"</span>, <span class="st">"words"</span>, <span class="st">"rule"</span>]</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Similar to other functions like <code>range</code> or <code>zip</code>, we don’t get back the actual object we think we would. Instead we get a <code>map</code> object that can be used to find the mapped values.</p>
-<div id="dgfHO3SwZDc8" class="cell" data-outputid="d0453439-48a2-4a03-c257-a09c5ff71b1d">
+<div class="cell" data-outputid="d0453439-48a2-4a03-c257-a09c5ff71b1d">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(res))</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -766,7 +753,7 @@ Input: ho</code></pre>
 </div>
 </div>
 <p>We can convert the <code>map</code> object to a list using <code>list()</code></p>
-<div id="saBgeqxpZJr3" class="cell" data-outputid="b7e28ba9-b6f2-4a5b-c8fc-bcd4da491a94">
+<div class="cell" data-outputid="b7e28ba9-b6f2-4a5b-c8fc-bcd4da491a94">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>[('these', 1),
@@ -779,34 +766,34 @@ Input: ho</code></pre>
 </div>
 </div>
 <p>Let’s return the square of some values without defining a square function via <code>map()</code></p>
-<div id="2dcb0907" class="cell" data-outputid="42d2c11c-bb87-4f7f-f6e3-a6340030ab54">
+<div class="cell" data-outputid="42d2c11c-bb87-4f7f-f6e3-a6340030ab54">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">map</span>(<span class="kw">lambda</span> r: r <span class="op">**</span><span class="dv">2</span>, <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>&lt;map at 0x785ed8b40cd0&gt;</code></pre>
 </div>
 </div>
-<div id="OYVnjwVDaFUW" class="cell" data-outputid="e97c8250-9c86-4edc-d808-92a17887fe4a">
+<div class="cell" data-outputid="e97c8250-9c86-4edc-d808-92a17887fe4a">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> r: r <span class="op">**</span><span class="dv">2</span>, <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>[0, 1, 4, 9, 16]</code></pre>
 </div>
 </div>
 <p>Note: this can equivalently be done using a list comprehension!</p>
-<div id="_KSAKD27aGbL" class="cell" data-outputid="72f33f1f-bc49-4104-a7ae-97d4b1ab93d6">
+<div class="cell" data-outputid="72f33f1f-bc49-4104-a7ae-97d4b1ab93d6">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>[r <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>[0, 1, 4, 9, 16]</code></pre>
 </div>
 </div>
 <p>Another example of using map with a lambda function might be to quickly uppercase a list of strings.</p>
-<div id="da44dce3" class="cell" data-outputid="811be052-4e72-4889-94b2-c3284ab70d5e">
+<div class="cell" data-outputid="811be052-4e72-4889-94b2-c3284ab70d5e">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x.upper(), [<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'wolf'</span>, <span class="st">'bear'</span>, <span class="st">'parrot'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>['CAT', 'DOG', 'WOLF', 'BEAR', 'PARROT']</code></pre>
 </div>
 </div>
 <p>Again, this could be done with a list comprehension!</p>
-<div id="B1UlotWTab3d" class="cell" data-outputid="a62d22c7-347e-4c85-ca5e-86664926cab2">
+<div class="cell" data-outputid="a62d22c7-347e-4c85-ca5e-86664926cab2">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>[x.upper() <span class="cf">for</span> x <span class="kw">in</span> [<span class="st">'cat'</span>, <span class="st">'dog'</span>, <span class="st">'wolf'</span>, <span class="st">'bear'</span>, <span class="st">'parrot'</span>]] <span class="co">#equivalent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>['CAT', 'DOG', 'WOLF', 'BEAR', 'PARROT']</code></pre>
@@ -817,18 +804,18 @@ Input: ho</code></pre>
 <li>Create a function that generates functions!</li>
 <li>Here a function to raise a number to a given power</li>
 </ul>
-<div id="b6195de9" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> raise_power(k):</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">lambda</span> r: r <span class="op">**</span> k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0Uct6Qr0cxWi" class="cell" data-outputid="f6035790-2a44-46e9-90c2-cd0166816640">
+<div class="cell" data-outputid="f6035790-2a44-46e9-90c2-cd0166816640">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>square <span class="op">=</span> raise_power(<span class="dv">2</span>) <span class="co">#creates a function!</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>square(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>100</code></pre>
 </div>
 </div>
-<div id="d753322a" class="cell" data-outputid="c6020d60-49dc-49f0-c85c-1560bd4c96c3">
+<div class="cell" data-outputid="c6020d60-49dc-49f0-c85c-1560bd4c96c3">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>cube <span class="op">=</span> raise_power(<span class="dv">3</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>cube(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
@@ -836,20 +823,20 @@ Input: ho</code></pre>
 </div>
 </div>
 <p>We can put this together with our packing idea and map!</p>
-<div id="e16252c1" class="cell" data-outputid="7d25e933-7508-4e69-cfae-90642d9617cc">
+<div class="cell" data-outputid="7d25e933-7508-4e69-cfae-90642d9617cc">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>ident, square, cube <span class="op">=</span> <span class="bu">map</span>(raise_power, <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>ident(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>4</code></pre>
 </div>
 </div>
-<div id="_SCqXeorghQr" class="cell" data-outputid="a3bb7e2e-dd61-4db2-f191-3e93c8fe7b6a">
+<div class="cell" data-outputid="a3bb7e2e-dd61-4db2-f191-3e93c8fe7b6a">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>square(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>16</code></pre>
 </div>
 </div>
-<div id="O2fHIDb9giBD" class="cell" data-outputid="bbd66c77-ee0f-4fdf-89c6-faf200094b2e">
+<div class="cell" data-outputid="bbd66c77-ee0f-4fdf-89c6-faf200094b2e">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>cube(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>64</code></pre>
@@ -867,13 +854,13 @@ Input: ho</code></pre>
 </ul></li>
 </ul>
 <p>Here we want to return only vowels from a string (an iterable).</p>
-<div id="194f5981" class="cell" data-outputid="3b87ba0c-61a1-4dd6-a283-bced4b304b22">
+<div class="cell" data-outputid="3b87ba0c-61a1-4dd6-a283-bced4b304b22">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="kw">in</span> <span class="st">"aeiou"</span>, <span class="st">"We want to return just the vowels."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>&lt;filter at 0x785ed8b41150&gt;</code></pre>
 </div>
 </div>
-<div id="BAHLgIj6g2nD" class="cell" data-outputid="c54cb564-ca2e-4068-c3cf-0152ba8423c2">
+<div class="cell" data-outputid="c54cb564-ca2e-4068-c3cf-0152ba8423c2">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return in list form!</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: x <span class="kw">in</span> <span class="st">"aeiou"</span>, <span class="st">"We want to return just the vowels."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
@@ -881,7 +868,7 @@ Input: ho</code></pre>
 </div>
 </div>
 <p>Equivalent to doing a list comprehension with an <code>if</code> in there!</p>
-<div id="y0xX3WHZg-Gi" class="cell" data-outputid="a30ef7fd-4b4e-476f-c479-8f502a48c0af">
+<div class="cell" data-outputid="a30ef7fd-4b4e-476f-c479-8f502a48c0af">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> <span class="st">"We want to return just the vowels."</span> <span class="cf">if</span> x <span class="kw">in</span> <span class="st">"aeiou"</span>] <span class="co">#equivalent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>['e', 'a', 'o', 'e', 'u', 'u', 'e', 'o', 'e']</code></pre>
@@ -892,14 +879,14 @@ Input: ho</code></pre>
 <li>Recall the <em>mod</em> operator <code>%</code>, which returns the remainder</li>
 <li>A number is even if, when we divide by 2, we get 0 as the remainder</li>
 </ul>
-<div id="b21a4f7c" class="cell" data-outputid="1e9fd883-a0f7-497d-9271-3f95abad8bb9">
+<div class="cell" data-outputid="1e9fd883-a0f7-497d-9271-3f95abad8bb9">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">filter</span>(<span class="kw">lambda</span> x: (x <span class="op">%</span> <span class="dv">2</span>) <span class="op">!=</span> <span class="dv">0</span>, <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>[1, 3, 5, 7, 9]</code></pre>
 </div>
 </div>
 <p>Equivalent to this list comprehension with an <code>if</code>:</p>
-<div id="FdcCS92ghW-Q" class="cell" data-outputid="052dbfab-2b97-48db-d931-43f47ca9f4cb">
+<div class="cell" data-outputid="052dbfab-2b97-48db-d931-43f47ca9f4cb">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">10</span>) <span class="cf">if</span> (x <span class="op">%</span> <span class="dv">2</span>) <span class="op">!=</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>[1, 3, 5, 7, 9]</code></pre>
@@ -915,7 +902,7 @@ Input: ho</code></pre>
 <li>It applies the function repetitively over the iterable, and returns the result</li>
 </ul>
 <p>Here, we’ll find the cumulative sum of a bunch of numbers (given as an iterable)</p>
-<div id="120a0bc6" class="cell" data-outputid="c4d2d4d5-b5b2-4bd9-e0d4-e75a3f8c438c">
+<div class="cell" data-outputid="c4d2d4d5-b5b2-4bd9-e0d4-e75a3f8c438c">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>)) <span class="co"># sum first 10 numbers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
@@ -924,14 +911,14 @@ Input: ho</code></pre>
 </div>
 <p>Here, <code>reduce()</code> works like this: - Takes the first two arguments of the iterable (1 and 2) and adds them - Takes the result of that (3) and adds it to the next argument of the iterable (3) - Repeats until the iterable is exhausted</p>
 <p>Again, we could do this kind of thing with a list comprehension. Here we just use the sum function on the result.</p>
-<div id="FZaWHsJ2h_IK" class="cell" data-outputid="f7836551-1d24-4dfb-ff3d-06f2004a649a">
+<div class="cell" data-outputid="f7836551-1d24-4dfb-ff3d-06f2004a649a">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>([x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>55</code></pre>
 </div>
 </div>
 <p>We can also provide an initial value to <code>reduce()</code> to start the computation at. Here we supply 45.</p>
-<div id="dc90efae" class="cell" data-outputid="9c666bc8-b94f-44ef-84a9-dbe4b1822784">
+<div class="cell" data-outputid="9c666bc8-b94f-44ef-84a9-dbe4b1822784">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add an initial value to the computation</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="op">+</span> y, <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>), <span class="dv">45</span>) <span class="co"># sum first 10 numbers + 45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
@@ -939,7 +926,7 @@ Input: ho</code></pre>
 </div>
 </div>
 <p>Ok, that’s a bit silly. We can do more interesting things with this. For instance, here we write a reduce function to find the largest value in a list.</p>
-<div id="0b5c517f" class="cell" data-outputid="8970414c-1ad5-4c62-a10e-107d1ce2f342">
+<div class="cell" data-outputid="8970414c-1ad5-4c62-a10e-107d1ce2f342">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a list of numbers to find the max of</span></span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">53</span>, <span class="dv">13</span>, <span class="dv">103</span>, <span class="dv">2</span>, <span class="dv">15</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">201</span>, <span class="dv">6</span>]</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="cf">if</span> x <span class="op">&gt;</span> y <span class="cf">else</span> y, my_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -949,7 +936,7 @@ Input: ho</code></pre>
 </div>
 <p>How does that work? - Take x (53) and y (13), if x &gt; y take x (53), otherwise take y (13) - With the result of that as x, take y as the next value in the iterable (103) - Repeat that step. Here it would keep 103 since it is larger - Keep going until the iterable is exhausted</p>
 <p>This works with a starting value as well!</p>
-<div id="zHrozm_hijGz" class="cell" data-outputid="e4d947f5-0f52-4e35-c4d2-624fcc16860d">
+<div class="cell" data-outputid="e4d947f5-0f52-4e35-c4d2-624fcc16860d">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: x <span class="cf">if</span> x <span class="op">&gt;</span> y <span class="cf">else</span> y, my_list, <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>500</code></pre>
@@ -961,7 +948,7 @@ Input: ho</code></pre>
 <section id="quick-video" class="level2">
 <h2 class="anchored" data-anchor-id="quick-video">Quick Video</h2>
 <p>This video shows an example of writing more involved functions including the use of <code>lambda</code> and <code>map</code> (Coming soon)</p>
-<div id="D52EG1Ubiic4" class="cell" data-outputid="ebb88615-83a6-44cd-c971-e4f8148d5c3f" data-execution_count="1">
+<div class="cell" data-outputid="ebb88615-83a6-44cd-c971-e4f8148d5c3f" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=55af749d-fd9d-4b0d-b2b4-b10301614c9c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -971,7 +958,6 @@ Input: ho</code></pre>
 </div>
 </div>
 <hr>
-</section>
 </section>
 <section id="recap" class="level1">
 <h1>Recap</h1>
@@ -1069,27 +1055,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1099,17 +1068,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1121,130 +1081,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1288,7 +1125,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1314,32 +1150,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1401,18 +1211,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/17-Numerical_Summaries.html" class="pagination-link" aria-label="Numerical Summaries">
+      <a href="../01_Programming_in_python/17-Numerical_Summaries.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Numerical Summaries</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="pagination-link" aria-label="Plotting with `matplotlib`">
+      <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="pagination-link">
         <span class="nav-page-text">Plotting with <code>matplotlib</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

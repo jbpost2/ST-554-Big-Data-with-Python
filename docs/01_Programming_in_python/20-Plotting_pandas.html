@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-12-17">
+<meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Plotting with pandas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -115,9 +108,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
@@ -129,39 +122,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/20-Plotting_pandas.html">Plotting with <code>pandas</code></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/20-Plotting_pandas.html">Plotting with <code>pandas</code></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -171,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -188,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
- <span class="menu-text">Learning <code>python</code></span></a>
+ <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -197,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Goals</span></a>
+ <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -271,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Dealing with Data in <code>python</code></span></a>
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -336,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Basics of Predictive Modeling</span></a>
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -383,16 +376,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#plotting-with-pandas" id="toc-plotting-with-pandas" class="nav-link active" data-scroll-target="#plotting-with-pandas">Plotting with <code>pandas</code></a>
-  <ul class="collapse">
-  <li><a href="#barplots-with-pandas" id="toc-barplots-with-pandas" class="nav-link" data-scroll-target="#barplots-with-pandas">Barplots with <code>pandas</code></a></li>
+  <li><a href="#barplots-with-pandas" id="toc-barplots-with-pandas" class="nav-link active" data-scroll-target="#barplots-with-pandas">Barplots with <code>pandas</code></a></li>
   <li><a href="#plotting-numeric-variables" id="toc-plotting-numeric-variables" class="nav-link" data-scroll-target="#plotting-numeric-variables">Plotting Numeric Variables</a>
   <ul class="collapse">
   <li><a href="#histogram-with-pandas" id="toc-histogram-with-pandas" class="nav-link" data-scroll-target="#histogram-with-pandas">Histogram with <code>pandas</code></a></li>
@@ -401,7 +392,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#scatter-plots-with-pandas" id="toc-scatter-plots-with-pandas" class="nav-link" data-scroll-target="#scatter-plots-with-pandas">Scatter Plots with <code>pandas</code></a></li>
   </ul></li>
   <li><a href="#quick-video" id="toc-quick-video" class="nav-link" data-scroll-target="#quick-video">Quick Video</a></li>
-  </ul></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
@@ -409,8 +399,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/20-Plotting_pandas.html">Plotting with <code>pandas</code></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Plotting with <code>pandas</code></h1>
 </div>
 
 
@@ -421,7 +412,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-12-17</p>
+      <p class="date">2025-01-02</p>
     </div>
   </div>
   
@@ -429,13 +420,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/20_Plotting_pandas.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="plotting-with-pandas" class="level1">
-<h1>Plotting with <code>pandas</code></h1>
 <p>Justin Post</p>
 <hr>
 <p>Let’s see the basic functionality that <code>pandas</code> provides for plotting <code>series</code> (columns essentially) and <code>DataFrames</code></p>
@@ -443,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Let’s process our titanic data from the previous notebook.</li>
 </ul>
-<div id="5a9e7cfe" class="cell" data-tags="[&quot;remove_input&quot;]">
+<div class="cell" data-tags="[&quot;remove_input&quot;]">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -471,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>.plot.bar()</code> method on a <code>series</code> or <code>dataframe</code></li>
 <li><code>.plot()</code> method with <code>kind = 'bar'</code> specified</li>
 </ul>
-<div id="54c1dbac" class="cell" data-fig.align="center" data-message="false" data-out.width="450px" data-outputid="b18a5dc3-785e-43f5-8771-5ff3fd14e236">
+<div class="cell" data-fig.align="center" data-out.width="450px" data-outputid="b18a5dc3-785e-43f5-8771-5ff3fd14e236">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> sub_titanic_data.embarkedC.value_counts()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(table))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -486,20 +473,19 @@ Name: embarkedC, dtype: int64</code></pre>
 </div>
 </div>
 <p>Note that this is a <code>pandas</code> <code>series</code>. We can use the <code>.plot.bar()</code> method on this series to get a bar plot.</p>
-<div id="0029c5ff" class="cell" data-fig.align="center" data-out.height="350px" data-out.width="450px" data-outputid="c9a62600-402c-4b65-e4ce-aff090e7f8aa">
+<div class="cell" data-fig.align="center" data-out.height="350px" data-out.width="450px" data-outputid="c9a62600-402c-4b65-e4ce-aff090e7f8aa">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;Axes: &gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can then apply the <code>matplotlib</code> functionality to update/modify the plot (notice we already read in <code>matplotlib.pyplot</code> as <code>plt</code>.</p>
-<div id="9b099b9b" class="cell" data-fig.align="center" data-message="false" data-out.height="250px" data-out.width="400px" data-outputid="829d305d-c05e-404b-d378-bc916f35c788">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="400px" data-outputid="829d305d-c05e-404b-d378-bc916f35c788">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>(array([0, 1, 2]),
  [Text(0, 0, 'Southampton'),
@@ -507,22 +493,17 @@ Name: embarkedC, dtype: int64</code></pre>
   Text(2, 0, 'Queenstown')])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="20-Plotting_pandas_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Alternatively, we can use the slightly more flexible <code>.plot()</code> method on a series where we specify the <code>kind=</code> of the plot to create.</p>
-<div id="5cc2b56b" class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="588e3c71-2591-40d7-cad5-611c19486724">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>table.plot(kind <span class="op">=</span> <span class="st">"bar"</span>, rot <span class="op">=</span> <span class="dv">0</span>) <span class="co">#can use additional arg rather than additional function call</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="588e3c71-2591-40d7-cad5-611c19486724">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>table.plot(kind <span class="op">=</span> <span class="st">"bar"</span>, rot <span class="op">=</span> <span class="dv">0</span>) <span class="co">#can use additional arg rather than additional function call</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>&lt;Axes: &gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -531,10 +512,10 @@ Name: embarkedC, dtype: int64</code></pre>
 <li>For instance, we can color the bars by another categorical variable in the <code>dataframe</code> pretty easily!</li>
 </ul>
 <p>First, create the contingency table for two variables (remember this returns a <code>DataFrame</code>)</p>
-<div id="41b325c6" class="cell" data-fig.align="center" data-message="false" data-out.height="250px" data-out.width="450px" data-outputid="1d5620d6-d996-405a-bff6-fac2cc800166">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.crosstab(sub_titanic_data[<span class="st">"embarkedC"</span>], sub_titanic_data[<span class="st">"survivedC"</span>])</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(table))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="1d5620d6-d996-405a-bff6-fac2cc800166">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.crosstab(sub_titanic_data[<span class="st">"embarkedC"</span>], sub_titanic_data[<span class="st">"survivedC"</span>])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(table))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;</code></pre>
 </div>
@@ -544,7 +525,7 @@ Name: embarkedC, dtype: int64</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">survivedC</th>
@@ -575,6 +556,7 @@ Name: embarkedC, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -783,36 +765,33 @@ Name: embarkedC, dtype: int64</code></pre>
 </div>
 </div>
 <p>Now let’s use the <code>.plot.bar()</code> method on this data frame.</p>
-<div id="tBP7lk11mvur" class="cell" data-outputid="2bd2d89d-0995-4097-f5f5-71683a29c46e">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar(stacked <span class="op">=</span> <span class="va">True</span>, rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-outputid="2bd2d89d-0995-4097-f5f5-71683a29c46e">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar(stacked <span class="op">=</span> <span class="va">True</span>, rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>We can do this with the <code>.plot()</code> method as well.</p>
-<div id="TBPlyaYJm9Uw" class="cell" data-outputid="fd66a1d9-b329-490b-e932-9b0652b20728">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>table.plot(stacked <span class="op">=</span> <span class="va">True</span>, kind <span class="op">=</span> <span class="st">"bar"</span>, rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-outputid="fd66a1d9-b329-490b-e932-9b0652b20728">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>table.plot(stacked <span class="op">=</span> <span class="va">True</span>, kind <span class="op">=</span> <span class="st">"bar"</span>, rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <p>If we want side-by-side bar plots, we can just remove the <code>stacked = True</code> argument.</p>
-<div id="0a57b00a" class="cell" data-fig.align="center" data-message="false" data-out.height="250px" data-out.width="450px" data-results="false" data-outputid="6fa16ecb-ce48-4dce-8c6f-0a528d4113c8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar(rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="6fa16ecb-ce48-4dce-8c6f-0a528d4113c8">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar(rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -830,36 +809,31 @@ Name: embarkedC, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="histogram-with-pandas">Histogram with <code>pandas</code></h3>
 <p><strong>Histogram</strong> - Bin data to show distribution of observations - Done via <code>.plot.hist()</code> or <code>.plot(kind = "hist")</code> method on a series or data frame - A <code>.hist()</code> method also exists!</p>
 <p>First, the <code>.plot.hist()</code> method on a series (we’ll also fix it up a bit using <code>matplotlib.pyplot</code> functionality.</p>
-<div id="8f272405" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="6c9aea5e-7459-4722-f5b7-5053c15e99ad">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"age"</span>].plot.hist()</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Age for Titanic Passengers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="6c9aea5e-7459-4722-f5b7-5053c15e99ad">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"age"</span>].plot.hist()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Age for Titanic Passengers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Text(0.5, 1.0, 'Histogram of Age for Titanic Passengers')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="20-Plotting_pandas_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
 <li>Specify # of bins with <code>bins =</code></li>
 <li>Note we also return the series in a different way here (just to show you can use either)</li>
 </ul>
-<div id="c287300b" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="373fc821-bf34-46d9-d991-037f81003da5">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can add label/title here (xlabel doesn't seem to work as intended...)</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#instead we'll use the .set() method on the histogram to set the xlabel</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.hist(bins <span class="op">=</span> <span class="dv">20</span>, title <span class="op">=</span> <span class="st">"Histogram of Age for Titanic Passengers"</span>) <span class="op">\</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="373fc821-bf34-46d9-d991-037f81003da5">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can add label/title here (xlabel doesn't seem to work as intended...)</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#instead we'll use the .set() method on the histogram to set the xlabel</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.hist(bins <span class="op">=</span> <span class="dv">20</span>, title <span class="op">=</span> <span class="st">"Histogram of Age for Titanic Passengers"</span>) <span class="op">\</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>[Text(0.5, 0, 'Age')]</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <section id="overlaying-two-histograms" class="level4">
@@ -872,10 +846,10 @@ Name: embarkedC, dtype: int64</code></pre>
 </ul></li>
 </ul>
 <p>Let’s create histograms of age for those that Survived and those that Died. - We should also set up the bins manually so they are the same bin widths and locations (for better comparison) - bins can be specified via the <code>bins =</code> argument</p>
-<div id="a379cf24" class="cell" data-message="false" data-outputid="b0410448-fcd8-4551-e1dc-90ce864bd6f4">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>bin_ends <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [i<span class="op">*</span><span class="bu">max</span>(sub_titanic_data.age)<span class="op">/</span>bin_ends <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, bin_ends <span class="op">+</span> <span class="dv">1</span>)]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="b0410448-fcd8-4551-e1dc-90ce864bd6f4">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>bin_ends <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [i<span class="op">*</span><span class="bu">max</span>(sub_titanic_data.age)<span class="op">/</span>bin_ends <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, bin_ends <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0.0, 8.0, 16.0, 24.0, 32.0, 40.0, 48.0, 56.0, 64.0, 72.0, 80.0]</code></pre>
 </div>
@@ -883,23 +857,22 @@ Name: embarkedC, dtype: int64</code></pre>
 <ul>
 <li>Obtain subsets of data needed</li>
 </ul>
-<div id="75efbdc2" class="cell" data-fig.align="center" data-out.width="325px">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>age_died <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Died"</span>, <span class="st">"age"</span>] <span class="co">#series for died</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Survived"</span>, <span class="st">"age"</span>] <span class="co">#series for survived</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig.align="center" data-out.width="325px">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>age_died <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Died"</span>, <span class="st">"age"</span>] <span class="co">#series for died</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Survived"</span>, <span class="st">"age"</span>] <span class="co">#series for survived</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create the plot using the <code>.plot.hist()</code> method. By creating two plots in the same cell, they will be overlayed. - Notice the use of <code>label()</code> to automatically create a legend (similar to what we did with <code>matplotlib</code></p>
-<div id="b2a5ca21" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="ca00712a-98b9-4784-9818-ca46236d0d15">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>age_died.plot.hist(bins <span class="op">=</span> bins, alpha <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"Died"</span>,</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                   title <span class="op">=</span> <span class="st">"Ages for those that survived vs those that died"</span>) <span class="op">\</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>age_survived.plot.hist(bins <span class="op">=</span> bins, alpha <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"Survived"</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="ca00712a-98b9-4784-9818-ca46236d0d15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>age_died.plot.hist(bins <span class="op">=</span> bins, alpha <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"Died"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                   title <span class="op">=</span> <span class="st">"Ages for those that survived vs those that died"</span>) <span class="op">\</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                   .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>age_survived.plot.hist(bins <span class="op">=</span> bins, alpha <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"Survived"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>&lt;matplotlib.legend.Legend at 0x7b3e0f3b3490&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-15-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
@@ -910,27 +883,26 @@ Name: embarkedC, dtype: int64</code></pre>
 <li>Need two columns, one representing ages for those that survived and one for those that died</li>
 </ul></li>
 </ul>
-<div id="7fae3306" class="cell" data-fig.align="center" data-out.width="325px">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>age_died <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Died"</span>, <span class="st">"age"</span>] <span class="co">#809 values</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Survived"</span>, <span class="st">"age"</span>] <span class="co">#500 values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig.align="center" data-out.width="325px">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>age_died <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Died"</span>, <span class="st">"age"</span>] <span class="co">#809 values</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Survived"</span>, <span class="st">"age"</span>] <span class="co">#500 values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Note the difference in the number of observations! This means that putting them together into a data frame isn’t super seamless.</li>
 </ul>
-<div id="85rwKLFqtfhw" class="cell" data-outputid="b8a5cdf3-5516-4d5d-b1bc-f8156983760c">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(age_died, age_survived), columns <span class="op">=</span> [<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp.shape)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#only has 500 rows instead of 809!</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>temp.plot.hist(alpha <span class="op">=</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="b8a5cdf3-5516-4d5d-b1bc-f8156983760c">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(age_died, age_survived), columns <span class="op">=</span> [<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp.shape)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#only has 500 rows instead of 809!</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>temp.plot.hist(alpha <span class="op">=</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(500, 2)</code></pre>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>&lt;Axes: ylabel='Frequency'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-17-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
@@ -939,9 +911,9 @@ Name: embarkedC, dtype: int64</code></pre>
 <li>We can fill in <code>NaN</code> values for the shorter series so they end up the same length.</li>
 </ul></li>
 </ul>
-<div id="f7d5b2b5" class="cell" data-outputid="7ff6a99b-c1f9-4410-9d17-b823f9cd7420">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> age_survived.append(pd.Series([np.nan <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">308</span>)]))</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>age_survived</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="7ff6a99b-c1f9-4410-9d17-b823f9cd7420">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> age_survived.append(pd.Series([np.nan <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">308</span>)]))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>age_survived</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
   age_survived = age_survived.append(pd.Series([np.nan for _ in range(308)]))</code></pre>
@@ -964,21 +936,20 @@ Length: 808, dtype: float64</code></pre>
 <ul>
 <li>Now we can zip these together into a data frame and plot as we’d like!</li>
 </ul>
-<div id="7d42a600" class="cell" data-outputid="1cc61f8a-0303-41a4-ec43-8fcca88d1597">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plotting_df <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(age_died, age_survived),</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                      columns <span class="op">=</span> [<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plotting_df.shape)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>plotting_df.plot.hist(alpha <span class="op">=</span> <span class="fl">0.5</span>, title <span class="op">=</span> <span class="st">"Ages for those that survived vs those that died"</span>) <span class="op">\</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="1cc61f8a-0303-41a4-ec43-8fcca88d1597">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>plotting_df <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(age_died, age_survived),</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                      columns <span class="op">=</span> [<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plotting_df.shape)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>plotting_df.plot.hist(alpha <span class="op">=</span> <span class="fl">0.5</span>, title <span class="op">=</span> <span class="st">"Ages for those that survived vs those that died"</span>) <span class="op">\</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(808, 2)</code></pre>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>[Text(0.5, 0, 'Age')]</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-19-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -991,25 +962,21 @@ Length: 808, dtype: float64</code></pre>
 </ul></li>
 <li>These don’t have the same bin widths</li>
 </ul>
-<div id="41f215f3" class="cell" data-fig.align="center" data-out.width="300px" data-outputid="345c652e-61e3-457e-a579-6750e1eb318a">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.hist(column <span class="op">=</span> <span class="st">"age"</span>, by <span class="op">=</span> <span class="st">"survivedC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig.align="center" data-out.width="300px" data-outputid="345c652e-61e3-457e-a579-6750e1eb318a">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.hist(column <span class="op">=</span> <span class="st">"age"</span>, by <span class="op">=</span> <span class="st">"survivedC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>array([&lt;Axes: title={'center': 'Died'}&gt;,
        &lt;Axes: title={'center': 'Survived'}&gt;], dtype=object)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="20-Plotting_pandas_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
 <li>We could also use the <code>.groupby()</code> functionality but the result is a bit subpar as it doesn’t label the graphs.</li>
 </ul>
-<div id="pZBJyzzuyX2B" class="cell" data-outputid="a9438ea7-456c-4db0-95a1-2642c7657a57">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"survivedC"</span>]].groupby(<span class="st">"survivedC"</span>).hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a9438ea7-456c-4db0-95a1-2642c7657a57">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"survivedC"</span>]].groupby(<span class="st">"survivedC"</span>).hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>survivedC
 Died        [[Axes(0.125,0.11;0.775x0.77)]]
@@ -1017,18 +984,10 @@ Survived    [[Axes(0.125,0.11;0.775x0.77)]]
 dtype: object</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="20-Plotting_pandas_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-21-output-3.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="20-Plotting_pandas_files/figure-html/cell-21-output-3.png" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -1049,18 +1008,17 @@ dtype: object</code></pre>
 </ul></li>
 </ul></li>
 </ul>
-<div id="7adb7f61" class="cell" data-outputid="0f869a20-ec94-4cec-bb43-ba70eebb4b15">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.1</span>, label <span class="op">=</span> <span class="st">"bw = 0.1"</span>,</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                                  title <span class="op">=</span> <span class="st">"Density Plots of Age for Titanic Passengers"</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.25</span>, label <span class="op">=</span> <span class="st">"bw = 0.25"</span>)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"bw = 0.5"</span>)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-outputid="0f869a20-ec94-4cec-bb43-ba70eebb4b15">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.1</span>, label <span class="op">=</span> <span class="st">"bw = 0.1"</span>,</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                                  title <span class="op">=</span> <span class="st">"Density Plots of Age for Titanic Passengers"</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.25</span>, label <span class="op">=</span> <span class="st">"bw = 0.25"</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"bw = 0.5"</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>&lt;matplotlib.legend.Legend at 0x7b3e0ef94e80&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -1079,28 +1037,26 @@ dtype: object</code></pre>
 </ul></li>
 </ul>
 <p>First the <code>.plot.box()</code> method on a series</p>
-<div id="2e240e4d" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="cf59991c-f064-4b96-a8ca-8ed94114bd28">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.box()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="cf59991c-f064-4b96-a8ca-8ed94114bd28">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.box()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>&lt;Axes: &gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-23-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
 <li>Fine.. but usually we want to compare these boxplots across another variable. To do this the <code>.boxplot()</code> method on a data frame is very useful!</li>
 <li>Similar to the <code>.hist()</code> method we specify a <code>column</code> and <code>by</code> variable</li>
 </ul>
-<div id="d90d19f4" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="5ed8edfc-dcbc-46d8-c32a-130666a2286b">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.boxplot(column <span class="op">=</span> [<span class="st">"age"</span>], by <span class="op">=</span> <span class="st">"survivedC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="5ed8edfc-dcbc-46d8-c32a-130666a2286b">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.boxplot(column <span class="op">=</span> [<span class="st">"age"</span>], by <span class="op">=</span> <span class="st">"survivedC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>&lt;Axes: title={'center': 'age'}, xlabel='survivedC'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -1113,28 +1069,26 @@ dtype: object</code></pre>
 <li>Use <code>.plot.scatter()</code> or <code>plot(kind = "scatter")</code> method on a data frame with <code>x =</code>, and <code>y =</code></li>
 </ul></li>
 </ul>
-<div id="c85a0ea0" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="07032ffb-953a-4deb-d656-9a66c20da9d1">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, title <span class="op">=</span> <span class="st">"Scatter plots rule!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="07032ffb-953a-4deb-d656-9a66c20da9d1">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, title <span class="op">=</span> <span class="st">"Scatter plots rule!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<pre><code>&lt;Axes: title={'center': 'Scatter plots rule!'}, xlabel='age', ylabel='fare'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
 <li>Easy to modify! <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.scatter.html#pandas.DataFrame.plot.scatter">Check the help for arguments</a> (specifically the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot">keyword arguments</a> that get passed to <code>.plot()</code>) but we can specify different <code>marker</code> values, a <code>title</code>, and more!</li>
 </ul>
-<div id="d9a3185b" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-results="false" data-outputid="111b7842-81ee-4f12-ec02-28b44d33fdc0">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#c = color, marker is a matplotlib option</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, c <span class="op">=</span> <span class="st">"Red"</span>, marker <span class="op">=</span> <span class="st">"v"</span>, title <span class="op">=</span> <span class="st">"Oh, V's!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="111b7842-81ee-4f12-ec02-28b44d33fdc0">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#c = color, marker is a matplotlib option</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, c <span class="op">=</span> <span class="st">"Red"</span>, marker <span class="op">=</span> <span class="st">"v"</span>, title <span class="op">=</span> <span class="st">"Oh, V's!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>&lt;Axes: title={'center': "Oh, V's!"}, xlabel='age', ylabel='fare'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
@@ -1142,15 +1096,14 @@ dtype: object</code></pre>
 <li>This is great as it allows us to bring a third varaible in</li>
 <li>Here we color by a category variable</li>
 </ul>
-<div id="bbe46b36" class="cell" data-fig.align="center" data-message="false" data-out.width="350px" data-outputid="916f8735-ed8e-405c-cbd8-48d1412546e8">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#s for size (should be a numeric column), cmap can be used with c for specifying color scales</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, c <span class="op">=</span> <span class="st">"survivedC"</span>, cmap <span class="op">=</span> <span class="st">"viridis"</span>, s <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="916f8735-ed8e-405c-cbd8-48d1412546e8">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#s for size (should be a numeric column), cmap can be used with c for specifying color scales</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, c <span class="op">=</span> <span class="st">"survivedC"</span>, cmap <span class="op">=</span> <span class="st">"viridis"</span>, s <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>&lt;Axes: xlabel='age', ylabel='fare'&gt;</code></pre>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="20-Plotting_pandas_files/figure-html/cell-27-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -1160,8 +1113,8 @@ dtype: object</code></pre>
 <li><code>.plotting.scatter_matrix()</code> function will produce basic graphs showing relationships!</li>
 <li>Here we grab the numeric variables from the data frame</li>
 </ul>
-<div id="matrix" class="cell" data-dev="png" data-fig.align="center" data-message="false" data-tags="[&quot;remove_output&quot;]" data-outputid="b80ed3d2-b55c-4f18-e0b0-6185c3375647">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pd.plotting.scatter_matrix(sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"survived"</span>, <span class="st">"sibsp"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="matrix" class="cell" data-dev="png" data-fig.align="center" data-tags="[&quot;remove_output&quot;]" data-outputid="b80ed3d2-b55c-4f18-e0b0-6185c3375647">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>pd.plotting.scatter_matrix(sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"survived"</span>, <span class="st">"sibsp"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="matrix-1" class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>array([[&lt;Axes: xlabel='age', ylabel='age'&gt;,
         &lt;Axes: xlabel='fare', ylabel='age'&gt;,
@@ -1181,11 +1134,7 @@ dtype: object</code></pre>
         &lt;Axes: xlabel='sibsp', ylabel='sibsp'&gt;]], dtype=object)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="20-Plotting_pandas_files/figure-html/matrix-output-2.png" id="matrix-2" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="20-Plotting_pandas_files/figure-html/matrix-output-2.png" id="matrix-2" class="img-fluid"></p>
 </div>
 </div>
 <hr>
@@ -1195,9 +1144,9 @@ dtype: object</code></pre>
 <section id="quick-video" class="level2">
 <h2 class="anchored" data-anchor-id="quick-video">Quick Video</h2>
 <p>This video shows an example of using pandas for plotting (Coming soon!)</p>
-<div id="e-ZG0ETU48rE" class="cell" data-outputid="e396eac2-4a9b-496a-d57a-575a98269ab8" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f4e2bc16-1757-4f1e-8df9-b103016c97d2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="e396eac2-4a9b-496a-d57a-575a98269ab8" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f4e2bc16-1757-4f1e-8df9-b103016c97d2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
         <iframe width="720" height="405" src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f4e2bc16-1757-4f1e-8df9-b103016c97d2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" frameborder="0" allowfullscreen=""></iframe>
@@ -1205,7 +1154,6 @@ dtype: object</code></pre>
 </div>
 </div>
 <hr>
-</section>
 </section>
 <section id="recap" class="level1">
 <h1>Recap</h1>
@@ -1303,27 +1251,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1333,17 +1264,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1355,130 +1277,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1522,7 +1321,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1548,32 +1346,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1635,18 +1407,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="pagination-link" aria-label="Plotting with `matplotlib`">
+      <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Plotting with <code>matplotlib</code></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/21-Error_Handling.html" class="pagination-link" aria-label="Error Handling">
+      <a href="../01_Programming_in_python/21-Error_Handling.html" class="pagination-link">
         <span class="nav-page-text">Error Handling</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
