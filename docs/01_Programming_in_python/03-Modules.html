@@ -386,11 +386,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#commonly-used-built-in-already-downloaded-modules" id="toc-commonly-used-built-in-already-downloaded-modules" class="nav-link" data-scroll-target="#commonly-used-built-in-already-downloaded-modules">Commonly Used Built-in (Already Downloaded) Modules</a></li>
   <li><a href="#importing-a-module" id="toc-importing-a-module" class="nav-link" data-scroll-target="#importing-a-module">Importing a Module</a>
   <ul class="collapse">
-  <li><a href="#using-modules-functionobjects" id="toc-using-modules-functionobjects" class="nav-link" data-scroll-target="#using-modules-functionobjects">Using Modules Function/Objects</a></li>
+  <li><a href="#using-a-modules-functionobjects" id="toc-using-a-modules-functionobjects" class="nav-link" data-scroll-target="#using-a-modules-functionobjects">Using a Module’s Function/Objects</a></li>
   </ul></li>
   <li><a href="#module-variables" id="toc-module-variables" class="nav-link" data-scroll-target="#module-variables">Module Variables</a>
   <ul class="collapse">
-  <li><a href="#random-module" id="toc-random-module" class="nav-link" data-scroll-target="#random-module">Random Module</a></li>
+  <li><a href="#random-module" id="toc-random-module" class="nav-link" data-scroll-target="#random-module"><code>random</code> Module</a></li>
   </ul></li>
   <li><a href="#importing-as" id="toc-importing-as" class="nav-link" data-scroll-target="#importing-as">Importing <code>as</code></a></li>
   <li><a href="#selective-import" id="toc-selective-import" class="nav-link" data-scroll-target="#selective-import">Selective Import</a></li>
@@ -425,11 +425,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/03-Modules.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <blockquote class="blockquote">
 <p>Justin Post</p>
 </blockquote>
 <hr>
 <p>Now that we know the basics of how python works and a little bit about how our programming environment functions, we can look at python ‘modules’. If you know R, these are smilar to R packages.</p>
+<p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/03-Modules.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
+<hr>
 <section id="what-is-a-module" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-module">What is a Module?</h2>
 <ul>
@@ -449,6 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="commonly-used-built-in-already-downloaded-modules" class="level2">
 <h2 class="anchored" data-anchor-id="commonly-used-built-in-already-downloaded-modules">Commonly Used Built-in (Already Downloaded) Modules</h2>
+<p>These modules are already downloaded but not loaded in when starting <code>python</code> or a <code>Jupyterlab</code> notebook.</p>
 <ul>
 <li><code>math</code>
 <ul>
@@ -472,353 +476,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="importing-a-module" class="level2">
 <h2 class="anchored" data-anchor-id="importing-a-module">Importing a Module</h2>
 <ul>
-<li>For built-in modules, we can load them into our session with <code>import</code></li>
+<li>For built-in modules or modules we’ve downloaded ourselves, we can load the <strong>entire module</strong> into our session with <code>import module_name</code></li>
 </ul>
-<div class="cell" data-outputid="f1ee5bcd-cb41-4325-fa7f-d3b2dccc818c">
+<div class="cell" data-outputid="fdcfd5ce-9d64-4321-dfbb-6712fb986ebf" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>module</code></pre>
 </div>
 </div>
 <ul>
-<li>Can see the functionality using <code>help()</code></li>
+<li>We can see the functionality using <code>help()</code> on the module but it is usually better to find the documentation on the web!</li>
 </ul>
-<div class="cell" data-outputid="edba49f7-0196-478c-f6c2-e173ae213690">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Help on built-in module math:
-
-NAME
-    math
-
-DESCRIPTION
-    This module provides access to the mathematical functions
-    defined by the C standard.
-
-FUNCTIONS
-    acos(x, /)
-        Return the arc cosine (measured in radians) of x.
-        
-        The result is between 0 and pi.
-    
-    acosh(x, /)
-        Return the inverse hyperbolic cosine of x.
-    
-    asin(x, /)
-        Return the arc sine (measured in radians) of x.
-        
-        The result is between -pi/2 and pi/2.
-    
-    asinh(x, /)
-        Return the inverse hyperbolic sine of x.
-    
-    atan(x, /)
-        Return the arc tangent (measured in radians) of x.
-        
-        The result is between -pi/2 and pi/2.
-    
-    atan2(y, x, /)
-        Return the arc tangent (measured in radians) of y/x.
-        
-        Unlike atan(y/x), the signs of both x and y are considered.
-    
-    atanh(x, /)
-        Return the inverse hyperbolic tangent of x.
-    
-    ceil(x, /)
-        Return the ceiling of x as an Integral.
-        
-        This is the smallest integer &gt;= x.
-    
-    comb(n, k, /)
-        Number of ways to choose k items from n items without repetition and without order.
-        
-        Evaluates to n! / (k! * (n - k)!) when k &lt;= n and evaluates
-        to zero when k &gt; n.
-        
-        Also called the binomial coefficient because it is equivalent
-        to the coefficient of k-th term in polynomial expansion of the
-        expression (1 + x)**n.
-        
-        Raises TypeError if either of the arguments are not integers.
-        Raises ValueError if either of the arguments are negative.
-    
-    copysign(x, y, /)
-        Return a float with the magnitude (absolute value) of x but the sign of y.
-        
-        On platforms that support signed zeros, copysign(1.0, -0.0)
-        returns -1.0.
-    
-    cos(x, /)
-        Return the cosine of x (measured in radians).
-    
-    cosh(x, /)
-        Return the hyperbolic cosine of x.
-    
-    degrees(x, /)
-        Convert angle x from radians to degrees.
-    
-    dist(p, q, /)
-        Return the Euclidean distance between two points p and q.
-        
-        The points should be specified as sequences (or iterables) of
-        coordinates.  Both inputs must have the same dimension.
-        
-        Roughly equivalent to:
-            sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
-    
-    erf(x, /)
-        Error function at x.
-    
-    erfc(x, /)
-        Complementary error function at x.
-    
-    exp(x, /)
-        Return e raised to the power of x.
-    
-    expm1(x, /)
-        Return exp(x)-1.
-        
-        This function avoids the loss of precision involved in the direct evaluation of exp(x)-1 for small x.
-    
-    fabs(x, /)
-        Return the absolute value of the float x.
-    
-    factorial(x, /)
-        Find x!.
-        
-        Raise a ValueError if x is negative or non-integral.
-    
-    floor(x, /)
-        Return the floor of x as an Integral.
-        
-        This is the largest integer &lt;= x.
-    
-    fmod(x, y, /)
-        Return fmod(x, y), according to platform C.
-        
-        x % y may differ.
-    
-    frexp(x, /)
-        Return the mantissa and exponent of x, as pair (m, e).
-        
-        m is a float and e is an int, such that x = m * 2.**e.
-        If x is 0, m and e are both 0.  Else 0.5 &lt;= abs(m) &lt; 1.0.
-    
-    fsum(seq, /)
-        Return an accurate floating point sum of values in the iterable seq.
-        
-        Assumes IEEE-754 floating point arithmetic.
-    
-    gamma(x, /)
-        Gamma function at x.
-    
-    gcd(*integers)
-        Greatest Common Divisor.
-    
-    hypot(...)
-        hypot(*coordinates) -&gt; value
-        
-        Multidimensional Euclidean distance from the origin to a point.
-        
-        Roughly equivalent to:
-            sqrt(sum(x**2 for x in coordinates))
-        
-        For a two dimensional point (x, y), gives the hypotenuse
-        using the Pythagorean theorem:  sqrt(x*x + y*y).
-        
-        For example, the hypotenuse of a 3/4/5 right triangle is:
-        
-            &gt;&gt;&gt; hypot(3.0, 4.0)
-            5.0
-    
-    isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
-        Determine whether two floating point numbers are close in value.
-        
-          rel_tol
-            maximum difference for being considered "close", relative to the
-            magnitude of the input values
-          abs_tol
-            maximum difference for being considered "close", regardless of the
-            magnitude of the input values
-        
-        Return True if a is close in value to b, and False otherwise.
-        
-        For the values to be considered close, the difference between them
-        must be smaller than at least one of the tolerances.
-        
-        -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That
-        is, NaN is not close to anything, even itself.  inf and -inf are
-        only close to themselves.
-    
-    isfinite(x, /)
-        Return True if x is neither an infinity nor a NaN, and False otherwise.
-    
-    isinf(x, /)
-        Return True if x is a positive or negative infinity, and False otherwise.
-    
-    isnan(x, /)
-        Return True if x is a NaN (not a number), and False otherwise.
-    
-    isqrt(n, /)
-        Return the integer part of the square root of the input.
-    
-    lcm(*integers)
-        Least Common Multiple.
-    
-    ldexp(x, i, /)
-        Return x * (2**i).
-        
-        This is essentially the inverse of frexp().
-    
-    lgamma(x, /)
-        Natural logarithm of absolute value of Gamma function at x.
-    
-    log(...)
-        log(x, [base=math.e])
-        Return the logarithm of x to the given base.
-        
-        If the base not specified, returns the natural logarithm (base e) of x.
-    
-    log10(x, /)
-        Return the base 10 logarithm of x.
-    
-    log1p(x, /)
-        Return the natural logarithm of 1+x (base e).
-        
-        The result is computed in a way which is accurate for x near zero.
-    
-    log2(x, /)
-        Return the base 2 logarithm of x.
-    
-    modf(x, /)
-        Return the fractional and integer parts of x.
-        
-        Both results carry the sign of x and are floats.
-    
-    nextafter(x, y, /)
-        Return the next floating-point value after x towards y.
-    
-    perm(n, k=None, /)
-        Number of ways to choose k items from n items without repetition and with order.
-        
-        Evaluates to n! / (n - k)! when k &lt;= n and evaluates
-        to zero when k &gt; n.
-        
-        If k is not specified or is None, then k defaults to n
-        and the function returns n!.
-        
-        Raises TypeError if either of the arguments are not integers.
-        Raises ValueError if either of the arguments are negative.
-    
-    pow(x, y, /)
-        Return x**y (x to the power of y).
-    
-    prod(iterable, /, *, start=1)
-        Calculate the product of all the elements in the input iterable.
-        
-        The default start value for the product is 1.
-        
-        When the iterable is empty, return the start value.  This function is
-        intended specifically for use with numeric values and may reject
-        non-numeric types.
-    
-    radians(x, /)
-        Convert angle x from degrees to radians.
-    
-    remainder(x, y, /)
-        Difference between x and the closest integer multiple of y.
-        
-        Return x - n*y where n*y is the closest integer multiple of y.
-        In the case where x is exactly halfway between two multiples of
-        y, the nearest even value of n is used. The result is always exact.
-    
-    sin(x, /)
-        Return the sine of x (measured in radians).
-    
-    sinh(x, /)
-        Return the hyperbolic sine of x.
-    
-    sqrt(x, /)
-        Return the square root of x.
-    
-    tan(x, /)
-        Return the tangent of x (measured in radians).
-    
-    tanh(x, /)
-        Return the hyperbolic tangent of x.
-    
-    trunc(x, /)
-        Truncates the Real x to the nearest Integral toward 0.
-        
-        Uses the __trunc__ magic method.
-    
-    ulp(x, /)
-        Return the value of the least significant bit of the float x.
-
-DATA
-    e = 2.718281828459045
-    inf = inf
-    nan = nan
-    pi = 3.141592653589793
-    tau = 6.283185307179586
-
-FILE
-    (built-in)
-
-</code></pre>
-</div>
 </div>
 <hr>
-<section id="using-modules-functionobjects" class="level3">
-<h3 class="anchored" data-anchor-id="using-modules-functionobjects">Using Modules Function/Objects</h3>
+<section id="using-a-modules-functionobjects" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-modules-functionobjects">Using a Module’s Function/Objects</h3>
 <ul>
-<li>Functions cannot be called as a built-in function:</li>
+<li>Functions contained in our module cannot be called as a built-in function when using <code>import module_name</code>:</li>
+<li>For instance, the <code>math</code> module contains the <code>sqrt()</code> function</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sqrt(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="7bdf9670-7f49-484e-87f4-75e18e1e1ada" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sqrt(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'sqrt' is not defined</code></pre>
+</div>
 </div>
 <ul>
-<li>Must use the module prefix:</li>
+<li>An error!</li>
+<li>We <strong>must use the module prefix</strong> when calling the function:</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>math.sqrt(<span class="dv">9</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="dde03d5b-75a6-4d21-baf4-18ef9addd404" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">9</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.0</code></pre>
 </div>
-<section id="math-module-functions" class="level4">
-<h4 class="anchored" data-anchor-id="math-module-functions">Math Module Functions</h4>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>120</code></pre>
+</div>
+</div>
 <ul>
-<li><code>math</code> module allows for common statistical computations</li>
+<li>With the <code>math</code> module we could do a common statistical computation such as evaulating the Normal distribution PDF</li>
 </ul>
 <p><span class="math display">\[
-f(1;\mu = 0, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 0)^2}
+f(1;\mu = 3, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 3)^2}
 \]</span></p>
 <ul>
 <li>This Normal distribution PDF expression can be evaluated using:</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">/</span>math.sqrt(<span class="dv">2</span><span class="op">*</span>math.pi))<span class="op">*</span>math.exp(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span> <span class="fl">0.0</span>)<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="e52373fe-1ffa-4ecb-8254-4bb7498bf67a" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">/</span>math.sqrt(<span class="dv">2</span><span class="op">*</span>math.pi))<span class="op">*</span>math.exp(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span> <span class="fl">3.0</span>)<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>0.05399096651318806</code></pre>
+</div>
 </div>
 <hr>
 </section>
 </section>
-</section>
 <section id="module-variables" class="level2">
 <h2 class="anchored" data-anchor-id="module-variables">Module Variables</h2>
-<p>Modules can contain more than functions</p>
+<p>Modules can contain more than functions!</p>
 <ul>
-<li><code>math</code> module also defines variables like <code>e</code> and <code>pi</code></li>
+<li>The <code>math</code> module also defines variables like <code>e</code> and <code>pi</code></li>
 </ul>
-<div class="cell" data-outputid="b24bea98-c2f8-4d84-c144-eb7cdcbe3929">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>math.e</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>math.pi</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The area is'</span>, math.pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="62d0970f-35c7-4135-eed0-36ee4ceb873d" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.e)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The area is'</span>, math.pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The area is 78.53981633974483</code></pre>
+<pre><code>2.718281828459045
+3.141592653589793
+The area is 78.53981633974483</code></pre>
 </div>
 </div>
 <ul>
@@ -826,43 +558,52 @@ f(1;\mu = 0, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 0)^2}
 </ul>
 <hr>
 <section id="random-module" class="level3">
-<h3 class="anchored" data-anchor-id="random-module">Random Module</h3>
+<h3 class="anchored" data-anchor-id="random-module"><code>random</code> Module</h3>
 <ul>
 <li>We’ll deal with random sampling from time to time<br>
 </li>
-<li><code>random</code> module gives functionality to do so (although we’ll use other modules later)</li>
+<li>The <code>random</code> module gives functionality to do so (although we’ll use other modules when we do this later)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(random)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(random)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Set a ‘seed’ for reproducibility and obtain some random observations between 0 and 1
+<li>When we do <em>random</em> number generation, we are really getting pseudo random values</li>
+<li>The values are actually generated from some algorithm</li>
+<li>We can se the starting point of that algorithm by setting a <em>seed</em></li>
+<li>This allows us to ensure reproducibility of our process!
 <ul>
-<li>A seed sets a starting point for the ‘random’ number generator. This allows you to get the same ‘random’ numbers the next time you run the code.</li>
+<li>Important: A seed sets a starting point for the ‘random’ number generator. This allows you to get the same ‘random’ numbers the next time you run the code.</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="54ce2815-e15a-4bd8-9bfc-e86d72ae4277">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a30d1c0c-d414-42c7-dc1c-3344ff4e8daf" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.5811521325045647
 0.1947544955341367
-0.9652511070611112
-0.5811521325045647</code></pre>
+0.9652511070611112</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="59be04ee-0756-43d1-ab85-c6d6f458a13f" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#notice we can get the same 'random value if we set the seed back to the same starting point</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.5811521325045647</code></pre>
 </div>
 </div>
 <ul>
-<li>Obtain random integers between 10 and 25</li>
+<li>We can also randomly obtain integers from a particular range of values</li>
+<li>We use the <code>range()</code> function to return an iterator that is able to produce values</li>
+<li>Here we obtain random integers between 10 and 25 and use <code>random.sample()</code> to obtain four values from that range</li>
 </ul>
-<div class="cell" data-outputid="6c2591f9-112c-4d95-92f0-26a3665b8fa1">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>random.sample(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">25</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell" data-outputid="23deef92-6cb6-42aa-8b36-60ae0b7c44fa" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>random.sample(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">25</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>[13, 18, 15, 17]</code></pre>
 </div>
 </div>
@@ -872,14 +613,15 @@ f(1;\mu = 0, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 0)^2}
 <section id="importing-as" class="level2">
 <h2 class="anchored" data-anchor-id="importing-as">Importing <code>as</code></h2>
 <ul>
-<li>Can import with a different name for brevity</li>
+<li>Often we want to use a shorter module name for brevity</li>
+<li>We can do so with <code>as</code> when we use <code>import</code></li>
 </ul>
-<div class="cell" data-outputid="a0f1a538-8bd3-47d4-c291-46f00308f5c0">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> ran</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ran.seed(<span class="dv">101</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a457931f-f25a-4b43-a752-63253770aad8" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> ran</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ran.seed(<span class="dv">101</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.5811521325045647
 0.1947544955341367
@@ -889,33 +631,48 @@ f(1;\mu = 0, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 0)^2}
 <ul>
 <li>Obtain random integers between 11 and 26</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ran.sample(<span class="bu">range</span>(<span class="dv">11</span>, <span class="dv">26</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="dbca26b4-26d0-44f1-bb48-95225f5b29ea" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ran.sample(<span class="bu">range</span>(<span class="dv">11</span>, <span class="dv">26</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>[25, 16, 18, 11]</code></pre>
 </div>
+</div>
+<p>We’ll see that most of the commonly used modules have common aliases. For instance, <code>numpy</code> as <code>np</code>, <code>pandas</code> as <code>pd</code>, and <code>pyspark</code> as <code>ps</code>.</p>
 <hr>
 </section>
 <section id="selective-import" class="level2">
 <h2 class="anchored" data-anchor-id="selective-import">Selective Import</h2>
 <ul>
-<li>Can also selectively import functions and variables from a module</li>
+<li>We can also selectively import functions and variables from a module directly into our main namespace</li>
+<li>This allows us to call the functions without the module prefix</li>
+<li>Use <code>from module import object1, object2</code> to do this</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sqrt(<span class="dv">9</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="be8de355-6cc0-4b71-89c3-854a4fa470ad" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(<span class="dv">9</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.0</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>3.141592653589793</code></pre>
+</div>
 </div>
 <ul>
-<li>Or import everything from a module into the current namespace. Be careful with this as you can overwrite things!</li>
+<li>Alternatively, if you intend to use a function often you can assign it to a local name</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="fd11aa5b-67b5-46e2-fd29-35558e95922e" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> random.random</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>0.6634706445300605</code></pre>
+</div>
 </div>
 <ul>
-<li>If you intend to use a function often you can assign it to a local name</li>
+<li>Or import everything from a module into the current namespace. Be careful with this as you can overwrite things you rely on!</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> random.random</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -934,9 +691,9 @@ f(1;\mu = 0, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 0)^2}
 </ul>
 <p><code>pip install scipy</code></p></li>
 </ul>
-<p>Colab has most everything we need for now but we’ll need to do some installing later in the course.</p>
+<p>Colab has most everything we need for now but we’ll need to do some installing later in the course!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -950,6 +707,8 @@ f(1;\mu = 0, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 0)^2}
 <li>Can selectively import</li>
 </ul></li>
 </ul>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/04-JupyterLab_Notebooks_Markdown.html">our next lesson</a>!</p>
 
 
 </section>

@@ -19,4 +19,6 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 - <a href = "07-Common_Uses_For_Data.html" target = "_blank">HTML version</a>
 - <a href = "PDFs/07-Common_Uses_For_Data.pdf" target = "_blank">PDF version</a>
 
-Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
+This wraps up the content for week 1. You should head back to our [Moodle site](https://wolfware.ncsu.edu/) to check out your homework assignment for this week.
+
+Otherwise, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

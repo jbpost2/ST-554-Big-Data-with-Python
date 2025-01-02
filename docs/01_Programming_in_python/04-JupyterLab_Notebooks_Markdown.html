@@ -417,13 +417,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/04-JupyterLab_Notebooks_Markdown.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<hr>
+<p>You’ve seen that we can include text cells that get ‘marked up’ into a nicer format in our notebooks. This notebook discusses this <em>markdown</em> syntax!</p>
+<p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/04-JupyterLab_Notebooks_Markdown.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
 <hr>
 <section id="what-is-markdown" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-markdown">What is Markdown?</h2>
 <ul>
 <li>Most have heard of HTML (HyperText Mark-up Language)
 <ul>
-<li>Write plain text that the browser interprets and renders</li>
+<li>There we write plain text that the browser interprets and renders</li>
 </ul></li>
 <li>Markdown is a specific ‘mark-up’ language
 <ul>
@@ -439,34 +443,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="markdown-syntax" class="level2">
 <h2 class="anchored" data-anchor-id="markdown-syntax">Markdown Syntax</h2>
+<p>Let’s just go through examples of some of the most commonly used syntax (you can always see the syntax used in our notebooks by opening them in Colab and double clicking a cell!)</p>
 <ul>
 <li>General link: [link](URL or relative link)
 <ul>
-<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html">Markdown Reference from Jupyter</a></li>
+<li><a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html">Markdown Reference from Jupyter</a> with much more info than what we’ll go through here</li>
 </ul></li>
 <li><code>*italics*</code> <em>and</em> <code>_italics_</code></li>
 <li><code>**bold**</code> <strong>and</strong> <code>__bold__</code></li>
+<li><code>_**italics and bold!**_</code> is <em><strong>fancy and loud</strong></em></li>
 <li><code>~~strikethrough~~</code> becomes <del>strikethrough</del></li>
 </ul>
 <hr>
 <ul>
 <li><code>---</code> Three dashes for a thematic break</li>
 <li># Level 1 Header, ## Level 2 Header, to six levels</li>
-<li>Use of headers can automatically creates a Table of Contents!
+<li><strong>Important!</strong>: The use of headers can automatically creates a Table of Contents! This is super important for jumping through your document.
 <ul>
 <li>See top left icon on Colab</li>
 </ul></li>
-<li>Include an image: ![](path/to/file.png)
+<li>Include an image: ![](path/to/file.png) (double click this cell to see the URL we pull this image from)
 <ul>
 <li><img src="https://www4.stat.ncsu.edu/~online/datasets/slr.png" class="img-fluid"></li>
 </ul></li>
-<li>Surround <code>text</code> with a backtick to make ‘code font’</li>
+<li>Surround <code>text</code> with backticks to make ‘code font’ (this makes it look like you know what you are doing :)</li>
 </ul>
 <hr>
 </section>
 <section id="widgets-and-such" class="level2">
 <h2 class="anchored" data-anchor-id="widgets-and-such">Widgets and Such</h2>
-<p><a href="https://github.com/jupyter-widgets">Widget Info</a></p>
+<p>We can bring in lots of HTML style widgets into our notebooks! <a href="https://github.com/jupyter-widgets">Widget Info</a></p>
 <ul>
 <li>Lots of fun widgets that you can add
 <ul>
@@ -477,15 +483,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Check boxes</li>
 <li>Etc.</li>
 </ul></li>
-<li>Things won’t always work quite right in <code>Colab</code> but will when we move to <code>JupyterLab</code>!</li>
+<li>Things won’t always work quite right in <code>Colab</code> but will when we move to <code>JupyterLab</code> later in the semester!</li>
 </ul>
 <hr>
 </section>
 <section id="video-demo" class="level2">
 <h2 class="anchored" data-anchor-id="video-demo">Video Demo</h2>
-<p>This quick video demo shows how we can include some interactive HTML content in our <code>Colab</code> notebook.</p>
-<div class="cell" data-outputid="b05b0cce-2085-47af-ce45-451fab41d225" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rom IPython.display <span class="im">import</span> IFrame</span>
+<p>This quick video demo shows how we can include some interactive HTML content in our <code>Colab</code> notebook. (Of course you can see we are bringing in a video here as well!)</p>
+<p>Remember to pop the video out into the full player using the button in the bottom right.</p>
+<div class="cell" data-outputid="8cb75225-5e8a-4c50-b052-4953eb85bc57" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>IFrame(src <span class="op">=</span> <span class="st">'https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=32a49a33-bc92-49ab-b767-b0ef0167e1b3&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all'</span>, width <span class="op">=</span> <span class="st">'720'</span>, height <span class="op">=</span> <span class="st">'405'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
@@ -500,7 +507,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Markdown is a basic language for formatting text</p></li>
 <li><p><code>Colab</code> and <code>JupyterLab</code> give a lot of functionality for markdown and more!</p></li>
+<li><p><a href="https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html">Markdown Reference from Jupyter</a></p></li>
 </ul>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/05-List_Basics_Strings.html">our next lesson</a>!</p>
 
 
 </section>
