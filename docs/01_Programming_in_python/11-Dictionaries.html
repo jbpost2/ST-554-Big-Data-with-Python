@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python) - Plan</title>
+<title>ST 554 Analysis of Big Data (with Python) - Dictionaries</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/11-Dictionaries.html">Plan</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/11-Dictionaries.html">Dictionaries</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -232,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/08-User_Defined_Functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Course Plan</span></a>
+ <span class="menu-text">User Defined Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/11-Dictionaries.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Plan</span></a>
+ <span class="menu-text">Dictionaries</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -383,11 +383,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link active" data-scroll-target="#dictionaries">Dictionaries</a>
+  <li><a href="#creating-a-dictionary" id="toc-creating-a-dictionary" class="nav-link active" data-scroll-target="#creating-a-dictionary">Creating a Dictionary</a>
   <ul class="collapse">
-  <li><a href="#creating-a-dictionary" id="toc-creating-a-dictionary" class="nav-link" data-scroll-target="#creating-a-dictionary">Creating a Dictionary</a>
-  <ul class="collapse">
-  <li><a href="#creating-a-dictionary-using-dict-and" id="toc-creating-a-dictionary-using-dict-and" class="nav-link" data-scroll-target="#creating-a-dictionary-using-dict-and">Creating a dictionary using <code>dict()</code> and <code>{}</code></a></li>
+  <li><a href="#creating-a-dictionary-using-dict-or" id="toc-creating-a-dictionary-using-dict-or" class="nav-link" data-scroll-target="#creating-a-dictionary-using-dict-or">Creating a dictionary using <code>dict()</code> or <code>{}</code></a></li>
   <li><a href="#creating-a-dictionary-using-lists" id="toc-creating-a-dictionary-using-lists" class="nav-link" data-scroll-target="#creating-a-dictionary-using-lists">Creating a dictionary using lists</a></li>
   <li><a href="#creating-a-dictionary-with-dictionary-comprehensions" id="toc-creating-a-dictionary-with-dictionary-comprehensions" class="nav-link" data-scroll-target="#creating-a-dictionary-with-dictionary-comprehensions">Creating a dictionary with dictionary comprehensions</a></li>
   </ul></li>
@@ -397,7 +395,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dictionary-packing-unpacking" id="toc-dictionary-packing-unpacking" class="nav-link" data-scroll-target="#dictionary-packing-unpacking">Dictionary Packing &amp; Unpacking</a></li>
   </ul></li>
   <li><a href="#dictionary-methods" id="toc-dictionary-methods" class="nav-link" data-scroll-target="#dictionary-methods">Dictionary Methods</a></li>
-  </ul></li>
   <li><a href="#video-demo" id="toc-video-demo" class="nav-link" data-scroll-target="#video-demo">Video Demo</a></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
@@ -408,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Plan</h1>
+<h1 class="title">Dictionaries</h1>
 </div>
 
 
@@ -429,36 +426,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/11_Dictionaries.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<p>Go through common data types</p>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/11-Dictionaries.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<hr>
+<p>Recall our plan: Go through common data types and</p>
 <ul>
-<li>Learn how to create</li>
+<li>Learn how to create them</li>
 <li>Consider commonly used functions and methods</li>
 <li>See control flow and other tricks along the way</li>
 </ul>
 <p>This topic, compound objects: - <strong>Dictionaries</strong></p>
-<hr>
-<section id="dictionaries" class="level1">
-<h1>Dictionaries</h1>
-<p>Data object that has <code>keys</code> and <code>values</code></p>
+<p>Dictionaries are data objects that have <code>key</code>-<code>value</code> pairs associated with it</p>
 <ul>
 <li>keys must be unique</li>
 <li>keys can be any <strong>immutable</strong> object (containing no mutable elements)</li>
 </ul>
-<p>A flexible data type that is</p>
+<p>Dictionaries are a flexible data type that is</p>
 <ul>
 <li>unordered</li>
 <li>mutable</li>
 </ul>
+<p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/11-Dictionaries.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
 <hr>
 <section id="creating-a-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="creating-a-dictionary">Creating a Dictionary</h2>
-<section id="creating-a-dictionary-using-dict-and" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-dictionary-using-dict-and">Creating a dictionary using <code>dict()</code> and <code>{}</code></h3>
+<section id="creating-a-dictionary-using-dict-or" class="level3">
+<h3 class="anchored" data-anchor-id="creating-a-dictionary-using-dict-or">Creating a dictionary using <code>dict()</code> or <code>{}</code></h3>
 <ul>
 <li>Use <code>dict(supply_key_value_pairs)</code> or <code>{supply_key_value_pairs}</code></li>
 </ul>
-<div class="cell" data-outputid="3d5eaa76-7f4d-4ffd-90c7-4817d8206e56">
+<div class="cell" data-outputid="4132a8aa-232d-4519-d065-eb60b69a4df7" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{} <span class="co">#empty dictionary</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mydict <span class="op">=</span> {</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"key1"</span>: [<span class="dv">12</span>, <span class="op">-</span><span class="dv">10</span>, <span class="st">"value1"</span>],  <span class="co">#key is specified first (must be immutable)</span></span>
@@ -466,17 +462,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"key3"</span>: <span class="st">"value3"</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mydict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>{'key1': [12, -10, 'value1'], 'key2': [11, 'value2'], 'key3': 'value3'}</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="ad1350c2-67e3-4895-a4d4-1c781f6a6fa3">
+<div class="cell" data-outputid="576df3d9-96d9-4610-9abc-211ddb6f9b14" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mydict2 <span class="op">=</span> <span class="bu">dict</span>([</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">1</span>, [<span class="st">'hee'</span>, <span class="st">'haw'</span>]),        <span class="co">#passing key value pairs as a tuple</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  (<span class="dv">2</span>, <span class="st">'fa'</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  ])</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>mydict2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>{1: ['hee', 'haw'], 2: 'fa'}</code></pre>
 </div>
 </div>
@@ -486,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>You can create a dictionary using two lists and the <code>zip()</code> function</li>
 </ul>
-<div class="cell" data-outputid="5a084e32-8cff-48a5-fe16-996abd9ef2c3">
+<div class="cell" data-outputid="00b7654b-1fc6-4852-c489-c190af453393" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>keys <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="st">"abcdefgh"</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [y <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">8</span>)]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(keys)</span>
@@ -496,9 +492,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [0, 1, 2, 3, 4, 5, 6, 7]</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="d7e1859d-248e-4d46-bb94-cd2c8e768586">
+<div class="cell" data-outputid="6cc3482f-2202-4b28-d1df-74c24ddddfc4" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dict</span>(<span class="bu">zip</span>(keys, values))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7}</code></pre>
 </div>
 </div>
@@ -509,17 +505,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Can create a dictionary using dictionary comprehensions!</li>
 <li>Smilar to list comprehensions but we use <code>{</code> instead of <code>[</code></li>
 </ul>
-<div class="cell" data-outputid="6a976723-bcfe-4541-b750-adc44562c064">
+<div class="cell" data-outputid="2f18e3a0-9642-4359-8ea1-6049fa1a003a" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mydict <span class="op">=</span> {i: i <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">6</span>)}</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mydict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>{0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5}</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="594066d8-68ab-420d-849b-6e82ab1b5a99">
+<div class="cell" data-outputid="9b1b24f5-d53f-4da8-8b5d-32d4ef88aba2" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mydict <span class="op">=</span> {<span class="st">"abcdef"</span>[i]: i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">6</span>)}</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mydict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>{'a': 0, 'b': 1, 'c': 4, 'd': 9, 'e': 16, 'f': 25}</code></pre>
 </div>
 </div>
@@ -533,23 +529,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Index with a <code>[key]</code> (remember unordered!)</li>
 </ul>
-<div class="cell" data-outputid="df259631-7fcf-4903-f533-3b4537ecc5e3">
+<div class="cell" data-outputid="e969e414-b813-416b-b772-572064952118" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"North"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"East"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"West"</span> : [<span class="st">"Raiders"</span>, <span class="st">"Chiefs"</span>, <span class="st">"Chargers"</span>, <span class="st">"Broncos"</span>]</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>AFCDivisions[<span class="st">"North"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
 </div>
 </div>
 <ul>
 <li>You can access the returned object in the same line of code</li>
 </ul>
-<div class="cell" data-outputid="bdead048-439b-4a06-bf49-c0bb0352f744">
+<div class="cell" data-outputid="c9888bdc-9914-45ec-dc78-ce7e54328528" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions[<span class="st">"North"</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>'Steelers'</code></pre>
 </div>
 </div>
@@ -557,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We can add new key/value pairs by simply referencing a key that doesn’t exist</li>
 <li>Here we add the “South” key with a silly value</li>
 </ul>
-<div class="cell" data-outputid="fe7bc4c4-55e2-4913-e4f9-b29e0d96e9fc">
+<div class="cell" data-outputid="69897477-0bf5-4ec3-9d20-b285a10cfa7c" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"North"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"East"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -565,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>AFCDivisions[<span class="st">"South"</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>]</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>AFCDivisions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>{'North': ['Steelers', 'Browns', 'Ravens', 'Bengals'],
  'East': ['Patriots', 'Jets', 'Dolphins', 'Bills'],
  'West': ['Raiders', 'Chiefs', 'Chargers', 'Broncos'],
@@ -575,9 +571,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>You can iterate over the keys in a dictionary</li>
 </ul>
-<div class="cell" data-outputid="39172769-e7ef-4c79-9d1e-8e5fb76d1eed">
+<div class="cell" data-outputid="5e7e4d81-a2ad-4e03-c7a1-d0b4f50d736c" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key <span class="kw">in</span> AFCDivisions:              <span class="co">#keys are what are iterated over</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, <span class="st">' : '</span>, AFCDivisions[key])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, <span class="st">' : '</span>, AFCDivisions[key]) <span class="co">#we access the value associated with the key</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>North  :  ['Steelers', 'Browns', 'Ravens', 'Bengals']
 East  :  ['Patriots', 'Jets', 'Dolphins', 'Bills']
@@ -588,7 +584,7 @@ South  :  [1, 2]</code></pre>
 <ul>
 <li>You can overwrite the values similar to how you can add a key/value pair after the fact. Here we overwrite the “South” value.</li>
 </ul>
-<div class="cell" data-outputid="0f4d8c25-83fe-46f7-accc-17fa7f722db9">
+<div class="cell" data-outputid="4206cf04-37e9-4b08-e828-90b8750500bd" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"North"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"East"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -613,7 +609,7 @@ South  :  ['Texans', 'Colts', 'Jaguars', 'Titans']</code></pre>
 <li>We can <strong>pack</strong> dictionaries using <code>**</code> similar to how we packed a list!</li>
 <li>Here we create a dictionary called <code>Divisions</code> where we pack two dictionaries inside it</li>
 </ul>
-<div class="cell" data-outputid="6ad56bd3-b309-474d-bd26-8bb806b1a979">
+<div class="cell" data-outputid="3f4b59a6-ca57-49fb-ded5-fa3ce63c85aa" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCNorth"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCEast"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -645,10 +641,13 @@ NFCEast  :  ['Giants', 'Cowboys', 'Eagles', 'Admirals']</code></pre>
 <h2 class="anchored" data-anchor-id="dictionary-methods">Dictionary Methods</h2>
 <p><a href="https://www.tutorialspoint.com/python/python_dictionary.htm">Many useful methods</a></p>
 <ul>
-<li>Index with <code>.get()</code> instead of the other ways we’ve done</li>
-<li>Advantage is that it doesn’t throw an error if key doesn’t exist</li>
+<li>We saw how to index with <code>[]</code> similar to lists/tuples</li>
+<li>We can index with <code>.get()</code> instead
+<ul>
+<li>Advantage is that it doesn’t throw an error if the key doesn’t exist</li>
+</ul></li>
 </ul>
-<div class="cell" data-outputid="1877bdcb-57d6-4670-a120-c1b44f4b184b">
+<div class="cell" data-outputid="375747d2-0403-4d4c-8f5c-fb260da26d81" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"North"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"East"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -656,14 +655,14 @@ NFCEast  :  ['Giants', 'Cowboys', 'Eagles', 'Admirals']</code></pre>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"South"</span>: [<span class="st">"Texans"</span>, <span class="st">"Colts"</span>, <span class="st">"Jaguars"</span>, <span class="st">"Titans"</span>]</span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>AFCDivisions.get(<span class="st">"South"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>['Texans', 'Colts', 'Jaguars', 'Titans']</code></pre>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions.get(<span class="st">"Northeast"</span>) <span class="co">#doesn't throw an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="43a0ea54-6d29-4b72-d419-7f0dd45b1660">
+<div class="cell" data-outputid="0948acbd-0478-4683-ef20-a47c2922a6bb" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions[<span class="st">"Northeast"</span>] <span class="co">#throws an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>KeyError: 'Northeast'</code></pre>
@@ -672,7 +671,7 @@ NFCEast  :  ['Giants', 'Cowboys', 'Eagles', 'Admirals']</code></pre>
 <ul>
 <li>Return keys with <code>.keys()</code>; values with <code>.values()</code></li>
 </ul>
-<div class="cell" data-outputid="7501a60f-129f-443f-878b-68b993b3cf82">
+<div class="cell" data-outputid="92786e1d-0b2e-4c9d-9273-a3d8bc78e345" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"North"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"East"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -680,20 +679,20 @@ NFCEast  :  ['Giants', 'Cowboys', 'Eagles', 'Admirals']</code></pre>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"South"</span>: [<span class="st">"Texans"</span>, <span class="st">"Colts"</span>, <span class="st">"Jaguars"</span>, <span class="st">"Titans"</span>]</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>AFCDivisions.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>dict_keys(['North', 'East', 'West', 'South'])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="8df0dac2-8867-4c10-8263-b744b58adefa">
+<div class="cell" data-outputid="6585b89a-5780-4b3b-bf47-1e4525d8820e" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions.values()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>dict_values([['Steelers', 'Browns', 'Ravens', 'Bengals'], ['Patriots', 'Jets', 'Dolphins', 'Bills'], ['Raiders', 'Chiefs', 'Chargers', 'Broncos'], ['Texans', 'Colts', 'Jaguars', 'Titans']])</code></pre>
 </div>
 </div>
 <ul>
-<li>Return and remove a specified key with <code>.pop()</code> (similar to the list method)</li>
+<li>Return and remove a specified key with <code>.pop()</code> (similar to the <code>list</code> method)</li>
 </ul>
-<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="0fa8bb06-44ad-409b-823d-ea9eb9d8ba81">
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="e326b125-42d9-4095-a752-976f5161eb75" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"North"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"East"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -701,13 +700,13 @@ NFCEast  :  ['Giants', 'Cowboys', 'Eagles', 'Admirals']</code></pre>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"South"</span>: [<span class="st">"Texans"</span>, <span class="st">"Colts"</span>, <span class="st">"Jaguars"</span>, <span class="st">"Titans"</span>]</span>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>AFCDivisions.pop(<span class="st">"North"</span>) <span class="co">#modifies the dictionary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="b1817649-d595-4189-e7d4-50883970f2a2">
+<div class="cell" data-outputid="328f71be-747e-4533-b5d5-7fd669c73cad" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key <span class="kw">in</span> AFCDivisions:</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, <span class="st">' : '</span>, AFCDivisions[key])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, <span class="st">' : '</span>, AFCDivisions[key]) <span class="co">#North no longer exists!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>East  :  ['Patriots', 'Jets', 'Dolphins', 'Bills']
 West  :  ['Raiders', 'Chiefs', 'Chargers', 'Broncos']
@@ -716,9 +715,9 @@ South  :  ['Texans', 'Colts', 'Jaguars', 'Titans']</code></pre>
 </div>
 <ul>
 <li>Merge in another dictionary with <code>.update()</code></li>
-<li>Very similar to dictionary packing done above but it replaces modifies one of the dictionaries</li>
+<li>Very similar to dictionary packing done above but it modifies one of the dictionaries</li>
 </ul>
-<div class="cell" data-outputid="24936df1-5360-4fa8-eae1-3d0304ade36a">
+<div class="cell" data-outputid="defb104f-7b19-4261-d82e-4c5d3c9184a5" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Divisions <span class="op">=</span> {</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCNorth"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCEast"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -726,7 +725,7 @@ South  :  ['Texans', 'Colts', 'Jaguars', 'Titans']</code></pre>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCSouth"</span>: [<span class="st">"Texans"</span>, <span class="st">"Colts"</span>, <span class="st">"Jaguars"</span>, <span class="st">"Titans"</span>]</span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>NFCNorth <span class="op">=</span> {</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NorthNFC"</span>: [<span class="st">"Lions"</span>, <span class="st">"Packers"</span>, <span class="st">"Bears"</span>, <span class="st">"Vikings"</span>]</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NFCNorth"</span>: [<span class="st">"Lions"</span>, <span class="st">"Packers"</span>, <span class="st">"Bears"</span>, <span class="st">"Vikings"</span>]</span>
 <span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>Divisions.update(NFCNorth) <span class="co">#combine the dictionaries</span></span>
 <span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key <span class="kw">in</span> Divisions.keys():</span>
@@ -736,19 +735,19 @@ South  :  ['Texans', 'Colts', 'Jaguars', 'Titans']</code></pre>
 AFCEast  :  ['Patriots', 'Jets', 'Dolphins', 'Bills']
 AFCWest  :  ['Raiders', 'Chiefs', 'Chargers', 'Broncos']
 AFCSouth  :  ['Texans', 'Colts', 'Jaguars', 'Titans']
-NorthNFC  :  ['Lions', 'Packers', 'Bears', 'Vikings']</code></pre>
+NFCNorth  :  ['Lions', 'Packers', 'Bears', 'Vikings']</code></pre>
 </div>
 </div>
 <hr>
 </section>
-</section>
 <section id="video-demo" class="level1">
 <h1>Video Demo</h1>
-<p>This quick video demo shows an example of creating dictionaries with lists as the values, creating with tuples as the keys, and checking if some values occur in the dictionary using <code>in</code> and/or <code>not in</code>.</p>
-<div class="cell" data-outputid="f7046558-3f23-434a-e0b6-af8eb6c9c103" data-execution_count="1">
+<p>This quick video demo shows an example of creating dictionaries with lists as the values, creating with tuples as the keys, and checking if some values occur in the dictionary using <code>in</code> and/or <code>not in</code>. Remember to pop the video out into the full player.</p>
+<p>The notebook written in the video is <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb">available here</a>.</p>
+<div class="cell" data-outputid="1bd78cd2-248d-4c89-8e71-a20d4b940170" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=b270f285-6973-4e6b-aeae-b0f800f38b96&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="22">
 
         <iframe width="720" height="405" src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=b270f285-6973-4e6b-aeae-b0f800f38b96&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" frameborder="0" allowfullscreen=""></iframe>
         
@@ -767,6 +766,8 @@ NorthNFC  :  ['Lions', 'Packers', 'Bears', 'Vikings']</code></pre>
 <li><p>Mutable</p></li>
 <li><p>Unordered - access via <code>[key]</code> or using <code>.get()</code> method</p></li>
 </ul>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/12-Numpy.html">our next lesson</a>!</p>
 
 
 </section>
