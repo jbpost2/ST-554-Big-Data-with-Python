@@ -65,6 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../01_Programming_in_python/17-Numerical_Summaries.html" rel="next">
+<link href="../01_Programming_in_python/15-Pandas_Data_Frames.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -150,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Pandas for Reading Raw Data</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/16-Pandas_For_Reading_Data.html">Pandas for Reading Raw Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -259,6 +261,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/13-EDA_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/14-Pandas_Series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>Pandas</code> Series</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/15-Pandas_Data_Frames.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Data Frames</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/16-Pandas_For_Reading_Data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Pandas for Reading Raw Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/17-Numerical_Summaries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numerical Summaries</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/18-More_Function_Writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">More on Writing Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>matplotlib</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/20-Plotting_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>pandas</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Error Handling</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -308,39 +375,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/01_Programming_in_python/16_Pandas_For_Reading_Data.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/16-Pandas_For_Reading_Data.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <p>Justin Post</p>
 <ul>
 <li><p><code>pandas</code> library has functionality for reading <strong>delimited data</strong>, Excel data, SAS data, JSON data, and more!</p></li>
-<li><p>Remember we’ll need to import the <code>pandas</code> library</p></li>
+<li><p>Remember we’ll need to import the <code>pandas</code> library in order to use it!</p></li>
 </ul>
-<div class="cell">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/16-Pandas_For_Reading_Data.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
 <hr>
 <section id="data-formats" class="level2">
 <h2 class="anchored" data-anchor-id="data-formats">Data Formats</h2>
+<p>Raw data comes in many different formats. Understanding the raw data format is essential for reading that data into <code>python</code>. Some raw data types include:</p>
 <ul>
 <li><p>‘Delimited’ data: Character (such as <a href="https://www4.stat.ncsu.edu/~online/datasets/scores.csv">‘,’</a> , <a href="https://www4.stat.ncsu.edu/~online/datasets/umps2012.txt">‘&gt;’</a>, or [’ ’]) separated data</p></li>
 <li><p><a href="https://www4.stat.ncsu.edu/~online/datasets/cigarettes.txt">Fixed field</a> data</p></li>
 <li><p><a href="https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx">Excel</a> data</p></li>
 <li><p>From other statistical software, Ex: <a href="https://www4.stat.ncsu.edu/~online/datasets/bodyFat.sav">SPSS formatted</a> data or <a href="https://www4.stat.ncsu.edu/~online/datasets/smoke2003.sas7bdat">SAS data sets</a></p></li>
-<li><p>From an Application Programming Interface (API) (often returned as a JSON file - key value pairs, similar to a dictionary)</p></li>
+<li><p>From an Application Programming Interface (API) (often returned as a <code>JSON</code> file - key/value pairs, similar to a dictionary)</p></li>
 <li><p>From a database</p></li>
 </ul>
 <hr>
 </section>
 <section id="delimited-data" class="level2">
 <h2 class="anchored" data-anchor-id="delimited-data">Delimited Data</h2>
+<p>Let’s start with delimited data.</p>
 <ul>
 <li><p>One common format for <strong>raw</strong> data is delimited data</p>
 <ul>
 <li><p>Data that has a character or characters that separates the data values</p></li>
 <li><p>Character(s) is (are) called <strong>delimiter(s)</strong></p></li>
 </ul></li>
-<li><p>Using <code>pandas</code> the <code>read_csv()</code> function can read in this kind of data (although <code>csv</code> stands for ‘comma separated value’, this function is used for reading most delimited data)</p>
+<li><p>Using <code>pandas</code> the <code>read_csv()</code> function can read in this kind of data (although <code>csv</code> stands for ‘comma separated value’, this function is used for reading most delimited data via <code>pandas</code>)</p>
 <ul>
-<li>Just need to tell python where to find it!</li>
+<li>If the raw data is well-formatted, we just need to tell <code>python</code> where to find it!</li>
 </ul></li>
 </ul>
 <hr>
@@ -348,9 +418,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="locating-a-file" class="level2">
 <h2 class="anchored" data-anchor-id="locating-a-file">Locating a File</h2>
 <ul>
-<li><p>How does python locate the file?<br>
-</p></li>
-<li><p>Not in colab</p>
+<li>How does python locate the file?<br>
+</li>
+<li>Not in colab
 <ul>
 <li>You can give file <em>full path name</em>
 <ul>
@@ -360,42 +430,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 </ul></li>
 </ul></li>
-<li><p>Or use local paths!</p>
+<li>Or use local paths!
 <ul>
 <li>Determine your <strong>working directory</strong></li>
 <li>Use a path <strong>relative</strong> to that</li>
 <li>If your working directory is ‘S:/Documents/repos/ST-554’ you can get to ‘data.csv’ via ‘datasets/data.csv’</li>
 </ul></li>
-<li><p>The <code>os</code> module gives you access to function for finding and setting your working directory</p></li>
-<li><p>In colab you can</p>
-<ul>
-<li><a href="https://stackoverflow.com/questions/48376580/how-to-read-data-in-google-colab-from-my-google-drive">Mount your google drive</a></li>
-<li>Read files from URLs</li>
-<li>Upload files via the menu on the left (folder icon, then upload a file via the icons there)</li>
-</ul></li>
+<li>The <code>os</code> module gives you access to function for finding and setting your working directory</li>
 </ul>
-<div class="cell" data-outputid="4131a924-8d11-4823-eef7-29c8caf43911">
+<p>Using a cloud-based platform complicates things a bit - In colab you can + <a href="https://stackoverflow.com/questions/48376580/how-to-read-data-in-google-colab-from-my-google-drive">Mount your google drive</a> + Read files from URLs + Upload files via the menu on the left (folder icon, then upload a file via the icons there)</p>
+<div class="cell" data-outputid="f0a5907f-0ebf-4770-86f4-98852aecdf9c" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>os.getcwd() <span class="co">#shows the directory you can get to via the folder icon on the left</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#os.chdir("S:/Documents/repos/ST-554") #won't work in colab</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#getcwd() stands for get current working directory</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>os.getcwd() <span class="co">#shows the directory you can get to via the folder icon on the left</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#chdir() stands for change current directory</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#os.chdir("S:/Documents/repos/ST-554") #won't work in colab but would work on a local python session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'/content'</code></pre>
 </div>
 </div>
+<p>This <code>/content</code> refers to the main folder on the left hand side of <code>Colab</code>!</p>
 <hr>
 </section>
 <section id="reading-files-locally-in-colab" class="level2">
 <h2 class="anchored" data-anchor-id="reading-files-locally-in-colab">Reading Files ‘Locally’ in Colab</h2>
 <ul>
 <li><p>Nicely formatted <code>.csv</code> files can be read in with the <code>read_csv()</code> function from <code>pandas</code></p></li>
-<li><p><code>neuralgia.csv</code> has been loaded into the folder on colab in my session. Therefore, it exists in my <strong>working directory</strong> (this won’t be the case for you unless you upload the data during your session!)</p></li>
+<li><p><code>neuralgia.csv</code> has been loaded into the folder on colab in my session. Therefore, it exists in my <strong>working directory</strong>. This won’t be the case for you unless you upload the data during your session! You can click on the folder icon on the left, then click the upload button to upload <a href="https://www4.stat.ncsu.edu/online/datasets/neuralgia.csv" target="_blank"> this data set</a>.</p></li>
 </ul>
-<div class="cell" data-outputid="7d6a1785-d92f-4fa1-f514-d45a1380efdd">
+<div class="cell" data-outputid="95552a46-fcb7-4c8b-8640-e98090d45d2e" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>neuralgia_data <span class="op">=</span> pd.read_csv(<span class="st">"neuralgia.csv"</span>) <span class="co">#neuralgia.csv file was uploaded to colab for my session</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>neuralgia_data.head() <span class="co">#this code block won't work unless you upload the data in your session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="5">
 
-  <div id="df-d4b258ec-d0dd-4351-9c82-710a6aad43ff" class="colab-df-container">
+  <div id="df-e864831a-8084-4d92-86e3-a1b5658926d0" class="colab-df-container">
     <div>
 
 
@@ -459,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d4b258ec-d0dd-4351-9c82-710a6aad43ff')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-e864831a-8084-4d92-86e3-a1b5658926d0')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -509,12 +577,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d4b258ec-d0dd-4351-9c82-710a6aad43ff button.colab-df-convert');
+        document.querySelector('#df-e864831a-8084-4d92-86e3-a1b5658926d0 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d4b258ec-d0dd-4351-9c82-710a6aad43ff');
+        const element = document.querySelector('#df-e864831a-8084-4d92-86e3-a1b5658926d0');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -534,8 +602,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-<div id="df-66b13970-1d4c-42a8-904f-d43fa01fecd5">
-  <button class="colab-df-quickchart" onclick="quickchart('df-66b13970-1d4c-42a8-904f-d43fa01fecd5')" title="Suggest charts" style="display:none;">
+<div id="df-1312bc10-d512-48a6-9908-51e2d9a2b3bd">
+  <button class="colab-df-quickchart" onclick="quickchart('df-1312bc10-d512-48a6-9908-51e2d9a2b3bd')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -651,19 +719,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-66b13970-1d4c-42a8-904f-d43fa01fecd5 button');
+        document.querySelector('#df-1312bc10-d512-48a6-9908-51e2d9a2b3bd button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="be4d9580-868e-467a-f6fc-cfc6c230fcf6">
+<div class="cell" data-outputid="936da41f-b68d-4022-978d-681e1e67e5e9" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>neuralgia_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(60, 5)</code></pre>
 </div>
 </div>
@@ -675,12 +744,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Nicely formatted <code>.csv</code> files can be read in with the <code>read_csv()</code> function from <code>pandas</code></p></li>
 <li><p><code>scoresFull.csv</code> file at a <strong>URL</strong> given by ‘https://www4.stat.ncsu.edu/~online/datasets/scoresFull.csv’</p></li>
 </ul>
-<div class="cell" data-outputid="25eee212-e8f3-4a1d-cfde-38a47b7cd0a2">
+<div class="cell" data-outputid="3bf9612a-b3d9-4a94-ee5e-ff8979fc3308" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scores_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/scoresFull.csv"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>scores_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="7">
 
-  <div id="df-46fd185c-4c55-4c8b-b4de-cc712b60a995" class="colab-df-container">
+  <div id="df-bf74c45b-50a1-49a8-9933-b64fb413a588" class="colab-df-container">
     <div>
 
 
@@ -841,7 +910,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-46fd185c-4c55-4c8b-b4de-cc712b60a995')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bf74c45b-50a1-49a8-9933-b64fb413a588')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -891,12 +960,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-46fd185c-4c55-4c8b-b4de-cc712b60a995 button.colab-df-convert');
+        document.querySelector('#df-bf74c45b-50a1-49a8-9933-b64fb413a588 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-46fd185c-4c55-4c8b-b4de-cc712b60a995');
+        const element = document.querySelector('#df-bf74c45b-50a1-49a8-9933-b64fb413a588');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -916,8 +985,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-<div id="df-190ff740-adf7-42d5-a4d3-f461f69ff0aa">
-  <button class="colab-df-quickchart" onclick="quickchart('df-190ff740-adf7-42d5-a4d3-f461f69ff0aa')" title="Suggest charts" style="display:none;">
+<div id="df-832925fc-0348-4d03-ae66-7f8b065428af">
+  <button class="colab-df-quickchart" onclick="quickchart('df-832925fc-0348-4d03-ae66-7f8b065428af')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -1033,19 +1102,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-190ff740-adf7-42d5-a4d3-f461f69ff0aa button');
+        document.querySelector('#df-832925fc-0348-4d03-ae66-7f8b065428af button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="af40383d-3989-4282-e89c-13082e26459c">
+<div class="cell" data-outputid="c75ef1bc-4d95-4101-e65e-411912222325" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scores_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(3471, 82)</code></pre>
 </div>
 </div>
@@ -1056,9 +1126,271 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><code>chemical.txt</code> file (space delimiter) stored at “https://www4.stat.ncsu.edu/~online/datasets/chemical.txt”</li>
 </ul>
-<div class="cell">
+<div class="cell" data-outputid="dea4a958-2c2a-494b-a5a2-7415bb947895" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chem_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/chemical.txt"</span>, sep<span class="op">=</span><span class="st">" "</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>chem_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>chem_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+  <div id="df-7047c834-887f-46ae-9db3-9abde2ac1802" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">temp</th>
+<th data-quarto-table-cell-role="th">conc</th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>45.9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.0</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>60.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-1.0</td>
+<td>1.0</td>
+<td>-1.0</td>
+<td>57.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>-1.0</td>
+<td>58.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-1.0</td>
+<td>-1.0</td>
+<td>1.0</td>
+<td>53.3</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7047c834-887f-46ae-9db3-9abde2ac1802')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7047c834-887f-46ae-9db3-9abde2ac1802 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7047c834-887f-46ae-9db3-9abde2ac1802');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-1929a1ff-e65d-4813-bd17-1544069a2391">
+  <button class="colab-df-quickchart" onclick="quickchart('df-1929a1ff-e65d-4813-bd17-1544069a2391')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-1929a1ff-e65d-4813-bd17-1544069a2391 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div>
 </div>
 <ul>
 <li><code>crabs.txt</code> file (tab delimiter) stored at “https://www4.stat.ncsu.edu/~online/datasets/crabs.txt”
@@ -1066,9 +1398,283 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Tab is <code>\t</code></li>
 </ul></li>
 </ul>
-<div class="cell">
+<div class="cell" data-outputid="ca749776-9ea4-465e-ca35-083f75086d85" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>crabs_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/crabs.txt"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>crabs_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>crabs_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+
+  <div id="df-64ba337d-b007-4a14-a2b9-ca8e7f13a06a" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">color</th>
+<th data-quarto-table-cell-role="th">spine</th>
+<th data-quarto-table-cell-role="th">width</th>
+<th data-quarto-table-cell-role="th">satell</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>3</td>
+<td>3</td>
+<td>28.3</td>
+<td>8</td>
+<td>3050</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4</td>
+<td>3</td>
+<td>22.5</td>
+<td>0</td>
+<td>1550</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>1</td>
+<td>26.0</td>
+<td>9</td>
+<td>2300</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>3</td>
+<td>24.8</td>
+<td>0</td>
+<td>2100</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>3</td>
+<td>26.0</td>
+<td>4</td>
+<td>2600</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-64ba337d-b007-4a14-a2b9-ca8e7f13a06a')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-64ba337d-b007-4a14-a2b9-ca8e7f13a06a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-64ba337d-b007-4a14-a2b9-ca8e7f13a06a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-674c9b4e-6dd3-4a28-a383-590c359b4468">
+  <button class="colab-df-quickchart" onclick="quickchart('df-674c9b4e-6dd3-4a28-a383-590c359b4468')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-674c9b4e-6dd3-4a28-a383-590c359b4468 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div>
 </div>
 <ul>
 <li><code>umps2012.txt</code> file (<code>&gt;</code> delimiter) stored at “https://www4.stat.ncsu.edu/~online/datasets/umps2012.txt”
@@ -1077,15 +1683,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Can specify <code>header = None</code> and give column names when reading (via <code>names = [list of names]</code>)</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="62102e31-d47e-4462-d93c-0148673a8109">
+<div class="cell" data-outputid="d15ed20c-5eb9-4147-882a-43d0cddc87ef" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ump_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/umps2012.txt"</span>,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                      sep<span class="op">=</span><span class="st">"&gt;"</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                      header<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      names<span class="op">=</span>[<span class="st">"Year"</span>, <span class="st">"Month"</span>, <span class="st">"Day"</span>, <span class="st">"Home"</span>, <span class="st">"Away"</span>, <span class="st">"HPUmpire"</span>])</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ump_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="13">
 
-  <div id="df-8e7f6369-1297-4553-bdb8-9aa9bc842d23" class="colab-df-container">
+  <div id="df-fcdfea0d-2afd-4bfe-ab18-50dda8c93fa1" class="colab-df-container">
     <div>
 
 
@@ -1155,7 +1761,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-8e7f6369-1297-4553-bdb8-9aa9bc842d23')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-fcdfea0d-2afd-4bfe-ab18-50dda8c93fa1')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -1205,12 +1811,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-8e7f6369-1297-4553-bdb8-9aa9bc842d23 button.colab-df-convert');
+        document.querySelector('#df-fcdfea0d-2afd-4bfe-ab18-50dda8c93fa1 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8e7f6369-1297-4553-bdb8-9aa9bc842d23');
+        const element = document.querySelector('#df-fcdfea0d-2afd-4bfe-ab18-50dda8c93fa1');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1230,8 +1836,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-<div id="df-14475a16-5181-46a8-b0ae-a55db9f45f56">
-  <button class="colab-df-quickchart" onclick="quickchart('df-14475a16-5181-46a8-b0ae-a55db9f45f56')" title="Suggest charts" style="display:none;">
+<div id="df-a3a1357a-cdda-4178-be81-481cb943316a">
+  <button class="colab-df-quickchart" onclick="quickchart('df-a3a1357a-cdda-4178-be81-481cb943316a')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -1347,12 +1953,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-14475a16-5181-46a8-b0ae-a55db9f45f56 button');
+        document.querySelector('#df-a3a1357a-cdda-4178-be81-481cb943316a button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
@@ -1365,26 +1972,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Use the <code>ExcelFile()</code> function from <code>pandas</code></p></li>
 <li><p><code>censusEd.xlsx</code> file located at “https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx”</p></li>
 </ul>
-<div class="cell" data-outputid="6f2f3d4c-4267-4303-a43d-999b2135ea24">
+<div class="cell" data-outputid="baeccead-8231-4e15-d9b7-4a3abc7244ba" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.ExcelFile(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ed_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>&lt;pandas.io.excel._base.ExcelFile at 0x79ac84d74760&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>&lt;pandas.io.excel._base.ExcelFile at 0x7d6ef1627880&gt;</code></pre>
 </div>
 </div>
 <ul>
-<li>Different attributes associated with this data frame!</li>
+<li>Unfortunately, there are different attributes associated with this data object!</li>
 </ul>
-<div class="cell" data-outputid="e4a540a5-9178-4a6b-a2a3-ee66891dfc49">
+<div class="cell" data-outputid="9d470cdd-4975-42aa-a790-021a530a6a1d" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ed_data.head(), ed_data.info() won't work!</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
+      pre.function-repr-contents {
+        overflow-x: auto;
+        padding: 8px 12px;
+        max-height: 500px;
+      }
+
+      pre.function-repr-contents.function-repr-contents-collapsed {
+        cursor: pointer;
+        max-height: 100px;
+      }
+    </style>
+    <pre style="white-space: initial; background:
+         var(--colab-secondary-surface-color); padding: 8px 12px;
+         border-bottom: 1px solid var(--colab-border-color);"><b>pandas.io.excel._base.ExcelFile</b><br>def __init__(path_or_buffer, engine: str | None=None, storage_options: StorageOptions | None=None, engine_kwargs: dict | None=None) -&gt; None</pre><pre class="function-repr-contents function-repr-contents-collapsed" style=""><a class="filepath" style="display:none" href="#">/usr/local/lib/python3.10/dist-packages/pandas/io/excel/_base.py</a>Class for parsing tabular Excel sheets into DataFrame objects.
+
+See read_excel for more documentation.
+
+Parameters
+----------
+path_or_buffer : str, bytes, path object (pathlib.Path or py._path.local.LocalPath),
+    A file-like object, xlrd workbook or openpyxl workbook.
+    If a string or path object, expected to be a path to a
+    .xls, .xlsx, .xlsb, .xlsm, .odf, .ods, or .odt file.
+engine : str, default None
+    If io is not a buffer or path, this must be set to identify io.
+    Supported engines: ``xlrd``, ``openpyxl``, ``odf``, ``pyxlsb``, ``calamine``
+    Engine compatibility :
+
+    - ``xlrd`` supports old-style Excel files (.xls).
+    - ``openpyxl`` supports newer Excel file formats.
+    - ``odf`` supports OpenDocument file formats (.odf, .ods, .odt).
+    - ``pyxlsb`` supports Binary Excel files.
+    - ``calamine`` supports Excel (.xls, .xlsx, .xlsm, .xlsb)
+      and OpenDocument (.ods) file formats.
+
+    .. versionchanged:: 1.2.0
+
+       The engine `xlrd &lt;https://xlrd.readthedocs.io/en/latest/&gt;`_
+       now only supports old-style ``.xls`` files.
+       When ``engine=None``, the following logic will be
+       used to determine the engine:
+
+       - If ``path_or_buffer`` is an OpenDocument format (.odf, .ods, .odt),
+         then `odf &lt;https://pypi.org/project/odfpy/&gt;`_ will be used.
+       - Otherwise if ``path_or_buffer`` is an xls format,
+         ``xlrd`` will be used.
+       - Otherwise if ``path_or_buffer`` is in xlsb format,
+         `pyxlsb &lt;https://pypi.org/project/pyxlsb/&gt;`_ will be used.
+
+       .. versionadded:: 1.3.0
+
+       - Otherwise if `openpyxl &lt;https://pypi.org/project/openpyxl/&gt;`_ is installed,
+         then ``openpyxl`` will be used.
+       - Otherwise if ``xlrd &gt;= 2.0`` is installed, a ``ValueError`` will be raised.
+
+       .. warning::
+
+        Please do not report issues when using ``xlrd`` to read ``.xlsx`` files.
+        This is not supported, switch to using ``openpyxl`` instead.
+engine_kwargs : dict, optional
+    Arbitrary keyword arguments passed to excel engine.
+
+Examples
+--------
+&gt;&gt;&gt; file = pd.ExcelFile('myfile.xlsx')  # doctest: +SKIP
+&gt;&gt;&gt; with pd.ExcelFile("myfile.xls") as xls:  # doctest: +SKIP
+...     df1 = pd.read_excel(xls, "Sheet1")  # doctest: +SKIP</pre>
+      <script>
+      if (google.colab.kernel.accessAllowed && google.colab.files && google.colab.files.view) {
+        for (const element of document.querySelectorAll('.filepath')) {
+          element.style.display = 'block'
+          element.onclick = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            google.colab.files.view(element.textContent, 1435);
+          };
+        }
+      }
+      for (const element of document.querySelectorAll('.function-repr-contents')) {
+        element.onclick = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          element.classList.toggle('function-repr-contents-collapsed');
+        };
+      }
+      </script>
+      </div>
+</div>
+</div>
+<div class="cell" data-outputid="900ff340-d6a6-4ab0-a73e-cddf2ac5f21a" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ed_data.sheet_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>pandas.io.excel._base.ExcelFile</code></pre>
-</div>
-</div>
-<div class="cell" data-outputid="62e769f8-eb1e-4246-9781-8b31ca9601ef">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ed_data.sheet_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>['EDU01A',
  'EDU01B',
  'EDU01C',
@@ -1400,15 +2094,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Use <code>.parse()</code> method with sheet to obtain a usual <code>DataFrame</code></li>
 </ul>
-<div class="cell" data-outputid="9471b71a-2a82-4877-f463-84043c0fa2d1">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ed_data.parse(<span class="st">'EDU01A'</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="2790e576-3f0a-45c3-ce57-624976f931b7" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ed_data.parse(<span class="st">'EDU01A'</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.10/dist-packages/openpyxl/worksheet/header_footer.py:48: UserWarning: Cannot parse header or footer so it will be ignored
   warn("""Cannot parse header or footer so it will be ignored""")</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="19">
 
-  <div id="df-dc68b558-81e1-4200-8c92-e019c105619f" class="colab-df-container">
+  <div id="df-022607c2-146e-4fb4-bf9d-92694b06bf83" class="colab-df-container">
     <div>
 
 
@@ -1569,7 +2263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-dc68b558-81e1-4200-8c92-e019c105619f')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-022607c2-146e-4fb4-bf9d-92694b06bf83')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -1619,12 +2313,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-dc68b558-81e1-4200-8c92-e019c105619f button.colab-df-convert');
+        document.querySelector('#df-022607c2-146e-4fb4-bf9d-92694b06bf83 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-dc68b558-81e1-4200-8c92-e019c105619f');
+        const element = document.querySelector('#df-022607c2-146e-4fb4-bf9d-92694b06bf83');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1644,8 +2338,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-<div id="df-e4b7b6f1-8eed-4ad1-b3c3-46545f4c9a70">
-  <button class="colab-df-quickchart" onclick="quickchart('df-e4b7b6f1-8eed-4ad1-b3c3-46545f4c9a70')" title="Suggest charts" style="display:none;">
+<div id="df-fba5ed7b-25f0-40b6-938f-4206acc8a5f4">
+  <button class="colab-df-quickchart" onclick="quickchart('df-fba5ed7b-25f0-40b6-938f-4206acc8a5f4')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -1761,12 +2455,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-e4b7b6f1-8eed-4ad1-b3c3-46545f4c9a70 button');
+        document.querySelector('#df-fba5ed7b-25f0-40b6-938f-4206acc8a5f4 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
@@ -1776,17 +2471,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>This reads things in to a standard <code>DataFrame</code> but you have to specify a sheet to read in (or it defaults to the 1st)</p></li>
 <li><p><code>censusEd.xlsx</code> file located at “https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx”</p></li>
 </ul>
-<div class="cell" data-outputid="0b080057-3f36-4ef9-986e-befa4d08f462">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.read_excel(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                        sheet_name <span class="op">=</span> <span class="dv">0</span>) <span class="co">#or "EDU01A"</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>ed_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="6d74ce5d-49d1-42bc-e808-fa83f18d9531" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.read_excel(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                        sheet_name <span class="op">=</span> <span class="dv">0</span>) <span class="co">#or "EDU01A"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ed_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.10/dist-packages/openpyxl/worksheet/header_footer.py:48: UserWarning: Cannot parse header or footer so it will be ignored
   warn("""Cannot parse header or footer so it will be ignored""")</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="20">
 
-  <div id="df-5779828f-5441-4d92-b3f2-afba9d7352d0" class="colab-df-container">
+  <div id="df-7821d9b6-005e-46f2-829e-f64ade8056e3" class="colab-df-container">
     <div>
 
 
@@ -1947,7 +2642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-5779828f-5441-4d92-b3f2-afba9d7352d0')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7821d9b6-005e-46f2-829e-f64ade8056e3')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -1997,12 +2692,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-5779828f-5441-4d92-b3f2-afba9d7352d0 button.colab-df-convert');
+        document.querySelector('#df-7821d9b6-005e-46f2-829e-f64ade8056e3 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-5779828f-5441-4d92-b3f2-afba9d7352d0');
+        const element = document.querySelector('#df-7821d9b6-005e-46f2-829e-f64ade8056e3');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2022,8 +2717,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-<div id="df-d41b66c4-2e98-4674-bd83-2bacf9acaedb">
-  <button class="colab-df-quickchart" onclick="quickchart('df-d41b66c4-2e98-4674-bd83-2bacf9acaedb')" title="Suggest charts" style="display:none;">
+<div id="df-6ef31d94-26e3-4190-afa8-bbb11e8aac34">
+  <button class="colab-df-quickchart" onclick="quickchart('df-6ef31d94-26e3-4190-afa8-bbb11e8aac34')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -2139,68 +2834,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-d41b66c4-2e98-4674-bd83-2bacf9acaedb button');
+        document.querySelector('#df-6ef31d94-26e3-4190-afa8-bbb11e8aac34 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
-</div>
-</div>
-<div class="cell" data-outputid="ea003913-e7f2-440b-dbcf-05b65ac754f4">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ed_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
-RangeIndex: 3198 entries, 0 to 3197
-Data columns (total 42 columns):
- #   Column       Non-Null Count  Dtype 
----  ------       --------------  ----- 
- 0   Area_name    3198 non-null   object
- 1   STCOU        3198 non-null   int64 
- 2   EDU010187F   3198 non-null   int64 
- 3   EDU010187D   3198 non-null   int64 
- 4   EDU010187N1  3198 non-null   int64 
- 5   EDU010187N2  3198 non-null   int64 
- 6   EDU010188F   3198 non-null   int64 
- 7   EDU010188D   3198 non-null   int64 
- 8   EDU010188N1  3198 non-null   int64 
- 9   EDU010188N2  3198 non-null   int64 
- 10  EDU010189F   3198 non-null   int64 
- 11  EDU010189D   3198 non-null   int64 
- 12  EDU010189N1  3198 non-null   int64 
- 13  EDU010189N2  3198 non-null   int64 
- 14  EDU010190F   3198 non-null   int64 
- 15  EDU010190D   3198 non-null   int64 
- 16  EDU010190N1  3198 non-null   int64 
- 17  EDU010190N2  3198 non-null   int64 
- 18  EDU010191F   3198 non-null   int64 
- 19  EDU010191D   3198 non-null   int64 
- 20  EDU010191N1  3198 non-null   int64 
- 21  EDU010191N2  3198 non-null   int64 
- 22  EDU010192F   3198 non-null   int64 
- 23  EDU010192D   3198 non-null   int64 
- 24  EDU010192N1  3198 non-null   int64 
- 25  EDU010192N2  3198 non-null   int64 
- 26  EDU010193F   3198 non-null   int64 
- 27  EDU010193D   3198 non-null   int64 
- 28  EDU010193N1  3198 non-null   int64 
- 29  EDU010193N2  3198 non-null   int64 
- 30  EDU010194F   3198 non-null   int64 
- 31  EDU010194D   3198 non-null   int64 
- 32  EDU010194N1  3198 non-null   int64 
- 33  EDU010194N2  3198 non-null   int64 
- 34  EDU010195F   3198 non-null   int64 
- 35  EDU010195D   3198 non-null   int64 
- 36  EDU010195N1  3198 non-null   int64 
- 37  EDU010195N2  3198 non-null   int64 
- 38  EDU010196F   3198 non-null   int64 
- 39  EDU010196D   3198 non-null   int64 
- 40  EDU010196N1  3198 non-null   int64 
- 41  EDU010196N2  3198 non-null   int64 
-dtypes: int64(41), object(1)
-memory usage: 1.0+ MB</code></pre>
 </div>
 </div>
 <ul>
@@ -2211,29 +2853,29 @@ memory usage: 1.0+ MB</code></pre>
 <li>Values are the <code>DataFrame</code>s from each sheet</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="12661ac2-2089-409f-b302-f1464a94196a">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.read_excel(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>,</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                        sheet_name <span class="op">=</span> <span class="va">None</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="c5df5fdd-e203-4a62-86ed-b75229b3cf9b" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.read_excel(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                        sheet_name <span class="op">=</span> <span class="va">None</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.10/dist-packages/openpyxl/worksheet/header_footer.py:48: UserWarning: Cannot parse header or footer so it will be ignored
   warn("""Cannot parse header or footer so it will be ignored""")</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>dict</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="bbc93ed0-95c2-4886-8c7c-042cf6f9e2a9">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ed_data.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell" data-outputid="fd1935fd-44b2-4838-9a4f-4b04e17d5df6" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ed_data.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>dict_keys(['EDU01A', 'EDU01B', 'EDU01C', 'EDU01D', 'EDU01E', 'EDU01F', 'EDU01G', 'EDU01H', 'EDU01I', 'EDU01J'])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="d48aa8be-fbc1-46ec-9492-0fd2fed6e74e">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ed_data.get(<span class="st">"EDU01A"</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell" data-outputid="46c74a38-4ee2-4918-8cbc-2803b8d63fcc" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ed_data.get(<span class="st">"EDU01A"</span>).head() <span class="co">#get one DataFrame using its key!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 
-  <div id="df-8987bfe9-cffd-4a06-9c2b-9ce7feeb8330" class="colab-df-container">
+  <div id="df-eae0412d-62e4-48f7-9ebb-f5c0657458cf" class="colab-df-container">
     <div>
 
 
@@ -2394,7 +3036,7 @@ memory usage: 1.0+ MB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-8987bfe9-cffd-4a06-9c2b-9ce7feeb8330')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-eae0412d-62e4-48f7-9ebb-f5c0657458cf')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -2444,12 +3086,12 @@ memory usage: 1.0+ MB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-8987bfe9-cffd-4a06-9c2b-9ce7feeb8330 button.colab-df-convert');
+        document.querySelector('#df-eae0412d-62e4-48f7-9ebb-f5c0657458cf button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8987bfe9-cffd-4a06-9c2b-9ce7feeb8330');
+        const element = document.querySelector('#df-eae0412d-62e4-48f7-9ebb-f5c0657458cf');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2469,8 +3111,8 @@ memory usage: 1.0+ MB</code></pre>
   </div>
 
 
-<div id="df-f5db1c7b-9cdf-4a1f-9116-e74ce34d03dd">
-  <button class="colab-df-quickchart" onclick="quickchart('df-f5db1c7b-9cdf-4a1f-9116-e74ce34d03dd')" title="Suggest charts" style="display:none;">
+<div id="df-c1bccb8c-ca0d-41e6-96f1-56ebd9832388">
+  <button class="colab-df-quickchart" onclick="quickchart('df-c1bccb8c-ca0d-41e6-96f1-56ebd9832388')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -2586,12 +3228,13 @@ memory usage: 1.0+ MB</code></pre>
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-f5db1c7b-9cdf-4a1f-9116-e74ce34d03dd button');
+        document.querySelector('#df-c1bccb8c-ca0d-41e6-96f1-56ebd9832388 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
@@ -2622,13 +3265,13 @@ memory usage: 1.0+ MB</code></pre>
 <li><code>read_json()</code> function from <code>pandas</code> will work!</li>
 <li>Read in data from URL: “https://api.exchangerate-api.com/v4/latest/USD”</li>
 </ul>
-<div class="cell" data-outputid="f6220415-8249-4a75-ab9b-ef16898e96fb">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.exchangerate-api.com/v4/latest/USD"</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>usd_data <span class="op">=</span> pd.read_json(url)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>usd_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell" data-outputid="123f3186-b544-4451-9003-428f021280da" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.exchangerate-api.com/v4/latest/USD"</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>usd_data <span class="op">=</span> pd.read_json(url)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>usd_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 
-  <div id="df-cef96581-b04e-4e0f-af85-a128482eaf8d" class="colab-df-container">
+  <div id="df-279f6ede-66c5-4beb-a1ea-ae989bb59ff9" class="colab-df-container">
     <div>
 
 
@@ -2647,54 +3290,54 @@ memory usage: 1.0+ MB</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
+<td data-quarto-table-cell-role="th">USD</td>
+<td>https://www.exchangerate-api.com</td>
+<td>https://www.exchangerate-api.com/docs/free</td>
+<td>https://www.exchangerate-api.com/terms</td>
+<td>USD</td>
+<td>2025-01-03</td>
+<td>1735862402</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
 <td data-quarto-table-cell-role="th">AED</td>
 <td>https://www.exchangerate-api.com</td>
 <td>https://www.exchangerate-api.com/docs/free</td>
 <td>https://www.exchangerate-api.com/terms</td>
 <td>USD</td>
-<td>2024-01-20</td>
-<td>1705708802</td>
+<td>2025-01-03</td>
+<td>1735862402</td>
 <td>3.67</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">AFN</td>
 <td>https://www.exchangerate-api.com</td>
 <td>https://www.exchangerate-api.com/docs/free</td>
 <td>https://www.exchangerate-api.com/terms</td>
 <td>USD</td>
-<td>2024-01-20</td>
-<td>1705708802</td>
-<td>72.88</td>
+<td>2025-01-03</td>
+<td>1735862402</td>
+<td>70.58</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td data-quarto-table-cell-role="th">ALL</td>
 <td>https://www.exchangerate-api.com</td>
 <td>https://www.exchangerate-api.com/docs/free</td>
 <td>https://www.exchangerate-api.com/terms</td>
 <td>USD</td>
-<td>2024-01-20</td>
-<td>1705708802</td>
-<td>95.71</td>
+<td>2025-01-03</td>
+<td>1735862402</td>
+<td>94.12</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td data-quarto-table-cell-role="th">AMD</td>
 <td>https://www.exchangerate-api.com</td>
 <td>https://www.exchangerate-api.com/docs/free</td>
 <td>https://www.exchangerate-api.com/terms</td>
 <td>USD</td>
-<td>2024-01-20</td>
-<td>1705708802</td>
-<td>405.28</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ANG</td>
-<td>https://www.exchangerate-api.com</td>
-<td>https://www.exchangerate-api.com/docs/free</td>
-<td>https://www.exchangerate-api.com/terms</td>
-<td>USD</td>
-<td>2024-01-20</td>
-<td>1705708802</td>
-<td>1.79</td>
+<td>2025-01-03</td>
+<td>1735862402</td>
+<td>396.72</td>
 </tr>
 </tbody>
 </table>
@@ -2704,7 +3347,7 @@ memory usage: 1.0+ MB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-cef96581-b04e-4e0f-af85-a128482eaf8d')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-279f6ede-66c5-4beb-a1ea-ae989bb59ff9')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -2754,12 +3397,12 @@ memory usage: 1.0+ MB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-cef96581-b04e-4e0f-af85-a128482eaf8d button.colab-df-convert');
+        document.querySelector('#df-279f6ede-66c5-4beb-a1ea-ae989bb59ff9 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-cef96581-b04e-4e0f-af85-a128482eaf8d');
+        const element = document.querySelector('#df-279f6ede-66c5-4beb-a1ea-ae989bb59ff9');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2779,8 +3422,8 @@ memory usage: 1.0+ MB</code></pre>
   </div>
 
 
-<div id="df-c2fbeafd-d5a5-4dc1-882f-3da974b73a88">
-  <button class="colab-df-quickchart" onclick="quickchart('df-c2fbeafd-d5a5-4dc1-882f-3da974b73a88')" title="Suggest charts" style="display:none;">
+<div id="df-4ee6d60b-3879-4263-b9d4-650cde0d33d5">
+  <button class="colab-df-quickchart" onclick="quickchart('df-4ee6d60b-3879-4263-b9d4-650cde0d33d5')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -2896,34 +3539,38 @@ memory usage: 1.0+ MB</code></pre>
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-c2fbeafd-d5a5-4dc1-882f-3da974b73a88 button');
+        document.querySelector('#df-4ee6d60b-3879-4263-b9d4-650cde0d33d5 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
 </div>
+<p>Every API is different so contacting them and returning data differs depending on the website you use. This is an important way we obtain data these days!</p>
 <hr>
 </section>
 <section id="writing-out-a-dataframe" class="level1">
 <h1>Writing Out a <code>DataFrame</code></h1>
 <ul>
-<li>Can write out data using <code>.to_csv()</code> method</li>
+<li>We can write out data using the <code>.to_csv()</code> method</li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>usd_data.to_csv(<span class="st">'usd_data.csv'</span>, index <span class="op">=</span> <span class="va">False</span>) <span class="co">#this goes to the folder on the left in colab!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>usd_data.to_csv(<span class="st">'usd_data.csv'</span>, index <span class="op">=</span> <span class="va">False</span>) <span class="co">#this goes to the folder on the left in colab!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
 <section id="quick-video" class="level1">
 <h1>Quick Video</h1>
 <p>This video shows some examples of reading in some SAS data and data from an API.</p>
-<div class="cell" data-outputid="2611c034-dd48-4b4c-8e3c-6c8124b58170" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=30db871f-1750-4e5d-9de8-b0ff000c225c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Remember to pop the video out into the full player.</p>
+<p>The notebook written in the video is <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb">available here</a>.</p>
+<div class="cell" data-outputid="2611c034-dd48-4b4c-8e3c-6c8124b58170">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=30db871f-1750-4e5d-9de8-b0ff000c225c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
         <iframe width="720" height="405" src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=30db871f-1750-4e5d-9de8-b0ff000c225c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" frameborder="0" allowfullscreen=""></iframe>
@@ -2943,6 +3590,8 @@ memory usage: 1.0+ MB</code></pre>
 </ul></li>
 <li><p>Write to a <code>.csv</code> with <code>.to_csv()</code></p></li>
 </ul>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/17-Numerical_Summaries.html">our next lesson</a>!</p>
 
 
 </section>
@@ -3181,6 +3830,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../01_Programming_in_python/15-Pandas_Data_Frames.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Pandas Data Frames</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../01_Programming_in_python/17-Numerical_Summaries.html" class="pagination-link">
+        <span class="nav-page-text">Numerical Summaries</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

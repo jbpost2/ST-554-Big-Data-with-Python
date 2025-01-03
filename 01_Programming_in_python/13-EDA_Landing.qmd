@@ -20,22 +20,13 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 - <a href = "PDFs/13-EDA.pdf" target = "_blank">PDF version</a>
 
 
-EDA
+## Additional Readings for Week 3
 
 Exploratory Data Analysis (EDA) is often the first step of dealing with data.  However, EDA is somewhat of an art and something that you get better at with experience.  Often people new to EDA don't know what they should be looking for!  Here are some articles that discuss different strategies for EDA.
 
-        https://shopify.engineering/conducting-exploratory-data-analysis
-        https://www.ibm.com/cloud/learn/exploratory-data-analysis
-        https://en.wikipedia.org/wiki/Exploratory_data_analysis
-        https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm
-
-Modeling Basics
-
-Here are some useful resources for learning about modeling, metrics, etc.
-
-    ISLR book (opens in new window): Read section (Big picture ideas) 2.1, 2.2, (Basic regression) 3.1, 3.2, 3.3, (CV) 5.1, (Regularized models) 6.2
-    Google's open course materials has information about these models, loss functions, metrics, etc: https://developers.google.com/machine-learning/crash-course/classification/video-lecture (opens in new window)
-    LASSO basics in python (opens in new window)
-
+- <a href = "https://shopify.engineering/conducting-exploratory-data-analysis" target = "_blank">Shopify page</a>
+- <a href = "https://www.ibm.com/cloud/learn/exploratory-data-analysis" target = "_blank">IBM page</a>
+- <a href = "https://en.wikipedia.org/wiki/Exploratory_data_analysis" target = "_blank">Wikipedia page</a>
+- <a href = "https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm" target = "_blank">NIST page</a>
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

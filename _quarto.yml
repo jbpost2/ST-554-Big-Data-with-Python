@@ -63,6 +63,17 @@ website:
           - 01_Programming_in_python/10-Lists_Tuples.ipynb
           - 01_Programming_in_python/11-Dictionaries.ipynb
           - 01_Programming_in_python/12-Numpy.ipynb
+      - section: "Topic 2: Dealing with Data in `python`"
+        contents:
+          - 01_Programming_in_python/13-EDA_Landing.qmd
+          - 01_Programming_in_python/14-Pandas_Series.ipynb
+          - 01_Programming_in_python/15-Pandas_Data_Frames.ipynb
+          - 01_Programming_in_python/16-Pandas_For_Reading_Data.ipynb
+          - 01_Programming_in_python/17-Numerical_Summaries.ipynb
+          - 01_Programming_in_python/18-More_Function_Writing.ipynb
+          - 01_Programming_in_python/19-Plotting_matplotlib.ipynb
+          - 01_Programming_in_python/20-Plotting_pandas.ipynb
+          - 01_Programming_in_python/21-Error_Handling.ipynb
   page-navigation: true
   reader-mode: true
 
