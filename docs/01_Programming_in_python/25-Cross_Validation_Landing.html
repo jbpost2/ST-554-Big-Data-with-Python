@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-01-02">
 
-<title>ST 554 Analysis of Big Data (with Python) - Common Uses for Data</title>
+<title>ST 554 Analysis of Big Data (with Python) - Cross Validation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" rel="next">
+<link href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -113,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Common Uses for Data</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/22-Big_Recap_Landing.html">Topic 3: Basics of Predictive Modeling</a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/25-Cross_Validation_Landing.html">Cross Validation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -287,6 +289,53 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Big Recap!</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prediction and Training/Test Set Ideas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Cross Validation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LASSO Models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -306,7 +355,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Common Uses for Data</h1>
+<h1 class="title">Cross Validation</h1>
 </div>
 
 
@@ -327,14 +376,14 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The video below discusses the common ways we use data. We discuss the general idea of statistical learning and using data for descriptive purposes, for predictive purposes, in order to make statistical inferences, and to find patterns in data.</p>
+<p>The video below talks about the idea of cross validation (CV). This is a method of evaluating a predictive model while not necessarily needing to split the data into a training and test set (although sometimes we will still do this and just apply CV on the training set).</p>
 <p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6bb5d60f-a161-44c8-abd0-b0f0014391fb&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="Course Goals"></iframe>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d069a914-ab44-4d5c-8f2e-b10a012faff2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="25-Cross Validation"></iframe>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><a href="07-Common_Uses_For_Data.html" target="_blank">HTML version</a></li>
-<li><a href="PDFs/07-Common_Uses_For_Data.pdf" target="_blank">PDF version</a></li>
+<li><a href="25-Cross_Validation.html" target="_blank">HTML version</a></li>
+<li><a href="PDFs/25-Cross_Validation.pdf" target="_blank">PDF version</a></li>
 </ul>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
@@ -575,6 +624,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prediction and Training/Test Set Ideas</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="pagination-link">
+        <span class="nav-page-text">Multiple Linear Regression</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

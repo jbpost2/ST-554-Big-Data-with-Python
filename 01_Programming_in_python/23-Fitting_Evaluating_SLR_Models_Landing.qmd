@@ -1,22 +1,22 @@
 ---
-title: "Common Uses for Data"
+title: "Fitting & Evaluating SLR Models"
 format: html
 toc: TRUE
 editor_options: 
   chunk_output_type: inline
 ---
 
-The video below discusses the common ways we use data.  We discuss the general idea of statistical learning and using data for descriptive purposes, for predictive purposes, in order to make statistical inferences, and to find patterns in data.
+The video below introduces the language and ideas around fitting and evaluating predictive models using the very basic simple linear regression (SLR) model as the example. This simply model is ubiquitous and is a decent starting point for modeling a quantitative response.
 
 I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
 ```{=html}
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6bb5d60f-a161-44c8-abd0-b0f0014391fb&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="Course Goals" ></iframe>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6c86f851-668a-4fdd-8fa9-b10a0109e5ef&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="23-Fitting and Evaluating SLR Models" ></iframe>
 ```
 
 ## Notes
 
-- <a href = "07-Common_Uses_For_Data.html" target = "_blank">HTML version</a>
-- <a href = "PDFs/07-Common_Uses_For_Data.pdf" target = "_blank">PDF version</a>
+- <a href = "23-Fitting_Evaluating_SLR_Models.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/23-Fitting_Evaluating_SLR_Models.pdf" target = "_blank">PDF version</a>
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

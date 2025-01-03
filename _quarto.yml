@@ -74,6 +74,14 @@ website:
           - 01_Programming_in_python/19-Plotting_matplotlib.ipynb
           - 01_Programming_in_python/20-Plotting_pandas.ipynb
           - 01_Programming_in_python/21-Error_Handling.ipynb
+      - section: "Topic 3: Basics of Predictive Modeling"
+        contents:
+          - 01_Programming_in_python/22-Big_Recap_Landing.qmd
+          - 01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.qmd
+          - 01_Programming_in_python/24-Prediction_Testing_Training_Landing.qmd
+          - 01_Programming_in_python/25-Cross_Validation_Landing.qmd
+          - 01_Programming_in_python/26-Multiple_Linear_Regression_Landing.qmd
+          - 01_Programming_in_python/27-LASSO_Landing.qmd
   page-navigation: true
   reader-mode: true
 
