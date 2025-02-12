@@ -1,0 +1,119 @@
+---
+title: "Big Data Concepts"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+    self_contained: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = TRUE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+#use_python("C:\\python\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+
+
+---
+
+# Where are we?
+
+- Foundation in Python through `JupyterLab`
+
+Now:
+
+- What is Big Data?
+- What are common things we'll run into with Big Data?
+- What issues are we going to try and tackle?
+
+---
+
+# What is Big Data?
+
+Useful definition:
+
+- Big data = data that you can't handle 'normally'
+
+      + Data won't fit on a single computer
+      + Data is constantly being added/updated
+      
+- Big Data usually requires learning of new tools
+
+- [Want to feel overwhelmed?](https://mattturck.com/data2021/) 
+
+
+---
+
+# What are Common Attributes of Big Data?
+
+- Fifth **V** = Value. ([Article 1](https://www.ibm.com/blogs/watson-health/the-5-vs-of-big-data/), [Article 2](https://www.geeksforgeeks.org/5-vs-of-big-data/))
+
+```{r, echo = FALSE, fig.align='center', out.width = "650px"}
+knitr::include_graphics("img/fourvs.jpg")
+```
+
+
+---
+
+# What are We Going to Consider?
+
+- Basics of Big Data storage  
+<br><br><br>
+<!--storage systems, file types, splitting the data up, backups/fault recovery-->
+- Basics of Big Data querying  
+<br><br><br>
+<!--querying data in a Data Lake, Data Warehouse, and Database-->
+- Basics of handling streaming data  
+<br><br><br>
+<!--Create our own streaming data and do some basic responses to it-->
+- Summarizing and modeling Big Data  
+<br><br><br>
+<!--sampling from big data, mapreduce for counting/basic stuff, sufficient statistics and updating models-->
+
+
+
+---
+
+# Recap
+
+- Big Data requires learning new tools
+
+- Big Data doesn't mean we have **everything**
+
+- Statistics and machine learning can still be applied to Big Data but will require some modifications
+
