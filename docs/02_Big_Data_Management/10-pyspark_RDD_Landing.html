@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-02-12">
 
-<title>Analysis of Big Data – ST 554 Analysis of Big Data (with Python)</title>
+<title>pyspark: Resilient Distributed Data Sets – ST 554 Analysis of Big Data (with Python)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,23 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./01_Programming_in_python/01-Course_Goals_Landing.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -80,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
@@ -91,11 +90,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -121,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Analysis of Big Data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><code>pyspark</code>: Resilient Distributed Data Sets</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Analysis of Big Data</span></a>
   </div>
 </li>
@@ -158,73 +157,73 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Goals &amp; Other Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/02-Basic_Use_Of_Python.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/02-Basic_Use_Of_Python.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Use of Python</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/03-Modules.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/03-Modules.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Modules</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/04-JupyterLab_Notebooks_Markdown.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/04-JupyterLab_Notebooks_Markdown.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markdown Capabilities</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/05-List_Basics_Strings.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/05-List_Basics_Strings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">List Basics &amp; Strings</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/06-Numeric_Types_Booleans.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/06-Numeric_Types_Booleans.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Numeric Types (Int and Float) &amp; Booleans</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Common Uses for Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/08-User_Defined_Functions.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/08-User_Defined_Functions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">User Defined Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/09-Control_Flow.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/09-Control_Flow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Control Flow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/10-Lists_Tuples.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/10-Lists_Tuples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lists and Tuples</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/11-Dictionaries.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/11-Dictionaries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dictionaries</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/12-Numpy.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/12-Numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>NumPy</code></span></a>
   </div>
 </li>
@@ -241,55 +240,55 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/13-EDA_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/13-EDA_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exploratory Data Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/14-Pandas_Series.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/14-Pandas_Series.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>Pandas</code> Series</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/15-Pandas_Data_Frames.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/15-Pandas_Data_Frames.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pandas Data Frames</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/16-Pandas_For_Reading_Data.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/16-Pandas_For_Reading_Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pandas for Reading Raw Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/17-Numerical_Summaries.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/17-Numerical_Summaries.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Numerical Summaries</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/18-More_Function_Writing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/18-More_Function_Writing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">More on Writing Functions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/19-Plotting_matplotlib.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/19-Plotting_matplotlib.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting with <code>matplotlib</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/20-Plotting_pandas.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/20-Plotting_pandas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting with <code>pandas</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Error Handling</span></a>
   </div>
 </li>
@@ -306,37 +305,37 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Big Recap!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prediction and Training/Test Set Ideas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cross Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LASSO Models</span></a>
   </div>
 </li>
@@ -360,10 +359,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-learning-outcomes" id="toc-course-learning-outcomes" class="nav-link active" data-scroll-target="#course-learning-outcomes">Course Learning Outcomes</a></li>
-  <li><a href="#weekly-to-do-list" id="toc-weekly-to-do-list" class="nav-link" data-scroll-target="#weekly-to-do-list">Weekly To-do List</a></li>
-  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help!</a></li>
-  <li><a href="#spring-2025-course-schedule" id="toc-spring-2025-course-schedule" class="nav-link" data-scroll-target="#spring-2025-course-schedule">Spring 2025 Course Schedule</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#additional-readings-for-week-3" id="toc-additional-readings-for-week-3" class="nav-link" data-scroll-target="#additional-readings-for-week-3">Additional Readings for Week 3</a></li>
   </ul>
 </nav>
     </div>
@@ -372,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analysis of Big Data</h1>
+<h1 class="title"><code>pyspark</code>: Resilient Distributed Data Sets</h1>
 </div>
 
 
@@ -395,215 +392,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to ST 554 - Analysis of Big Data (with <code>python</code>)</p>
-<p>In this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:</p>
-<p>Volume, Variety, Velocity, Veracity (Variability), and Value</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01_Programming_in_python/img/big-data-characteristics.png" class="img-fluid figure-img" width="500"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The course covers</p>
+<p>The video below describes the underlying data structure in <code>spark</code> called the <em>resilient distributed data</em> (RDD) data set. While we rarely utilize these data structures and their functionality exactly, it is useful to have an idea about RDDs and the functionality they have.</p>
+<p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
+<p><strong>update video</strong></p>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae82211f-546d-4e2d-9c91-b0fe018434ea&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-EDA"></iframe>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li>Programming in <code>python</code></li>
-<li>Understanding how big data is managed</li>
-<li>Predictive modeling in <code>python</code> and with <code>Spark</code> via <code>pyspark</code></li>
-<li>Handling streaming data</li>
-</ul>
-<p>Using <code>python</code> as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use <code>pyspark</code> as our interface to the <code>Spark</code> software, which is commonly used to handle big data.</p>
-<section id="course-learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="course-learning-outcomes">Course Learning Outcomes</h2>
-<p>At the end of this course students will be able to</p>
-<ul>
-<li>explain the steps and purpose of <code>python</code> programs (CO 1)</li>
-<li>efficiently read in, combine, and manipulate data in python (CO 2)</li>
-<li>utilize help and other resources to customize programs (CO 3)</li>
-<li>write programs using good programming practices (CO 4)</li>
-<li>explore, manage, and solve common common problems with big data (CO 5)</li>
+<li><a href="10-pyspark_RDD.html" target="_blank">HTML version</a></li>
+<li><a href="PDFs/10-pyspark_RDD.pdf" target="_blank">PDF version</a></li>
 </ul>
 </section>
-<section id="weekly-to-do-list" class="level2">
-<h2 class="anchored" data-anchor-id="weekly-to-do-list">Weekly To-do List</h2>
-<p>Generally speaking, each week will have a few videos to watch and readings to do as well as corresponding homework assignments (see the syllabus on <a href="https://wolfware.ncsu.edu">Moodle</a> for homework policies).</p>
+<section id="additional-readings-for-week-3" class="level2">
+<h2 class="anchored" data-anchor-id="additional-readings-for-week-3">Additional Readings for Week 3</h2>
+<p>Exploratory Data Analysis (EDA) is often the first step of dealing with data. However, EDA is somewhat of an art and something that you get better at with experience. Often people new to EDA don’t know what they should be looking for! Here are some articles that discuss different strategies for EDA.</p>
 <ul>
-<li>There will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.</li>
-<li>There will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment.</li>
+<li><a href="https://shopify.engineering/conducting-exploratory-data-analysis" target="_blank">Shopify page</a></li>
+<li><a href="https://www.ibm.com/cloud/learn/exploratory-data-analysis" target="_blank">IBM page</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Exploratory_data_analysis" target="_blank">Wikipedia page</a></li>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm" target="_blank">NIST page</a></li>
 </ul>
-</section>
-<section id="getting-help" class="level2">
-<h2 class="anchored" data-anchor-id="getting-help">Getting Help!</h2>
-<p>To obtain course help there are a number of options:</p>
-<ul>
-<li>Discussion Forum on Moodle - This should be used for any question you feel comfortable asking and having others view. The TA, other students, and I will answer questions on this board. This will be the fastest way to receive a response!</li>
-<li>E-mail - If there is a question that you don’t feel comfortable asking the whole class you can use e-mail. The TA and I will be checking daily (during the regular work week).</li>
-<li>Zoom Office Hour Sessions - These sessions can be used to share screens and have multiple users. You can do text chat, voice, and video. They are great for a class like this!</li>
-</ul>
-</section>
-<section id="spring-2025-course-schedule" class="level2">
-<h2 class="anchored" data-anchor-id="spring-2025-course-schedule">Spring 2025 Course Schedule</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 50%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Topic/Week</th>
-<th>Learning Materials</th>
-<th>Assignments</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Week 1<br>
-1/6-1/10</td>
-<td>01 - Course Goals &amp; Other Resources<br>
-02 - Basic Use of Python<br>
-03 - Modules<br>
-04 - JupyterLab Notebooks &amp; Markdown<br>
-05 - List Basics and Strings<br>
-06 - Numeric Types and Booleans<br>
-07 - Common Uses for Data</td>
-<td>HW 1 due W, 1/15</td>
-</tr>
-<tr class="even">
-<td>Week 2<br>
-1/13-1/17</td>
-<td>08 - User Defined Functions<br>
-09 - Control Flow<br>
-10 - Lists and Tuples<br>
-11 - Dictionaries<br>
-12 - Numpy</td>
-<td>HW 2 due W, 1/22</td>
-</tr>
-<tr class="odd">
-<td>Week 3<br>
-1/21-1/24 (Off M)</td>
-<td>13 - Exploratory Data Analysis Concepts<br>
-14 - Pandas Series<br>
-15 - Pandas DataFrames<br>
-16 - Pandas for Reading Data<br>
-17 - Numeric Summaries</td>
-<td>HW 3 due W, 1/29</td>
-</tr>
-<tr class="even">
-<td>Week 4<br>
-1/27-1/31</td>
-<td>18 - More Function Writing<br>
-19 - Plotting with Matplotlib<br>
-20 - Plotting with pandas<br>
-21 - Error Handling</td>
-<td>HW 4 due W, 2/5</td>
-</tr>
-<tr class="odd">
-<td>Week 5<br>
-2/3-2/7</td>
-<td>22 - Big Recap!<br>
-23 - Fitting and Evaluating SLR Models<br>
-24 - Prediction and Training/Test Set Ideas<br>
-25 - Cross-Validation<br>
-26 - Multiple Linear Regression<br>
-27 - LASSO</td>
-<td><p>Exam 1 Th/F 2/6-2/7 - covers weeks 1-4</p>
-<p>Project 1 due W, 2/19</p></td>
-</tr>
-<tr class="even">
-<td>Week 6<br>
-2/10-2/14 (Off T)</td>
-<td>No new material. Project work time!</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Week 7<br>
-2/17-2/21</td>
-<td>28 - Big Data Concepts<br>
-29 - Bias and Other Issues with Big Data<br>
-30 - SQL Basics<br>
-31 - SQL Joins<br>
-32 - SQL Readings</td>
-<td>HW 5 due W, 2/26</td>
-</tr>
-<tr class="even">
-<td>Week 8<br>
-2/24-2/28</td>
-<td>33 - Data Flow, Data Warehouses, and Data Lakes<br>
-34 - HDFS</td>
-<td>HW 6 due W, 3/5</td>
-</tr>
-<tr class="odd">
-<td>Week 9<br>
-3/3-3/7</td>
-<td>35 - Connecting to our JupyterHub Environment<br>
-35 - Spark for Dealing with Big Data<br>
-36 - pyspark: RDDs<br>
-37 - pyspark: pandas-on-Spark<br>
-38 - pyspark: Spark SQL</td>
-<td>Project 2 due W, 3/19</td>
-</tr>
-<tr class="even">
-<td>Week 10<br>
-3/10-3/14</td>
-<td>No new material - spring break</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Week 11<br>
-3/17-3/21</td>
-<td>39 - Modeling Recap<br>
-40 - Modeling Example<br>
-41 - Logistic Regression Basics<br>
-42 - Logistic Regression Extensions<br>
-43 - Regularized Regression</td>
-<td>HW 7 due W, 3/26</td>
-</tr>
-<tr class="even">
-<td>Week 12<br>
-3/24-3/28</td>
-<td>44 - Loss Functions &amp; Model Performance<br>
-45 - Classification &amp; Regression Trees<br>
-46 - Bagging Trees &amp; Random Forests</td>
-<td>HW 8 due W, 4/2</td>
-</tr>
-<tr class="odd">
-<td>Week 13<br>
-3/31-4/4</td>
-<td>47 - Spark MLlib Basics<br>
-48 - Model Pipelines in MLlib<br>
-49 - MLflow<br>
-50 - MLOps</td>
-<td>HW 9 due W, 4/9</td>
-</tr>
-<tr class="even">
-<td>Week 14<br>
-4/7-4/11</td>
-<td>51 - Streaming Data Concepts<br>
-52 - Basic Summaries on Streaming Data<br>
-53 - Preprocessing, Sending Alerts, &amp; Combining Streams</td>
-<td><p>Exam 2 Th/F 4/10-4/11 - covers weeks 1-13</p>
-<p>(emphasis on 5-13)</p></td>
-</tr>
-<tr class="odd">
-<td>Week 15<br>
-4/14-4/18</td>
-<td>54 - Spark Structured Streaming<br>
-55 - Reading &amp; Writing Streams with Spark Structured Streaming<br>
-56 - Transformations, Windowing, &amp; Aggregations<br>
-57 - Streaming Joins</td>
-<td>Final Project due M, 4/28</td>
-</tr>
-<tr class="even">
-<td>Week 16<br>
-4/21-4/22</td>
-<td>No new material.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
 
 </section>
@@ -1029,15 +838,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./01_Programming_in_python/01-Course_Goals_Landing.html" class="pagination-link" aria-label="Course Goals &amp; Other Resources">
-        <span class="nav-page-text">Course Goals &amp; Other Resources</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
