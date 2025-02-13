@@ -404,7 +404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02_Big_Data_Management/05-SQL_Resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploratory Data Analysis</span></a>
+ <span class="menu-text">SQL Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -441,6 +441,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>pyspark</code>: Pandas-on-Spark</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>pyspark</code>: Spark SQL</span></a>
   </div>
 </li>
       </ul>
@@ -521,7 +527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-With-Python-Course-Notes/blob/main/Learning_Python.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <section id="basics-of-python" class="level2">
 <h2 class="anchored" data-anchor-id="basics-of-python">Basics of python</h2>
 <p>Create a <strong>list</strong>!</p>
@@ -7636,7 +7642,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="more-function-writing">More Function Writing</h2>
 <p>Let’s look at the use of a lambda function as the key to the <code>sorted()</code> function. We’ll use a toy data set we create with an <code>id</code> column that we want to sort by.</p>
 <p>We can use list comprehensions to generate <code>ids</code> of the form ‘id#’ and some <code>cost</code> values we just make up. Then we’ll put those into a data frame to inspect.</p>
-<div class="cell" data-outputid="9e12ad63-f386-4c97-a52e-78e58ce0e21b" data-execution_count="21">
+<div class="cell" data-outputid="9e12ad63-f386-4c97-a52e-78e58ce0e21b">
 <div class="sourceCode cell-code" id="cb188"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb188-2"><a href="#cb188-2" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">10</span>, <span class="dv">22</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">1</span>]</span>
 <span id="cb188-3"><a href="#cb188-3" aria-hidden="true" tabindex="-1"></a>ids <span class="op">=</span> [<span class="st">"id"</span> <span class="op">+</span> <span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> nums]</span>
@@ -7647,7 +7653,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 </div>
 <p>Put those into a data frame.</p>
-<div class="cell" data-outputid="10609791-d390-4887-9d53-7c8b07a5e86e" data-execution_count="22">
+<div class="cell" data-outputid="10609791-d390-4887-9d53-7c8b07a5e86e">
 <div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="op">=</span> pd.DataFrame(cost, index <span class="op">=</span> ids, columns <span class="op">=</span> [<span class="st">"cost"</span>])</span>
 <span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -7899,7 +7905,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 </div>
 <p>Now let’s see how the sorted function acts on the <code>ids</code> column.</p>
-<div class="cell" data-outputid="3718eea5-4599-4721-c51d-07a98fb65db0" data-execution_count="23">
+<div class="cell" data-outputid="3718eea5-4599-4721-c51d-07a98fb65db0">
 <div class="sourceCode cell-code" id="cb191"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(my_df.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>['id1', 'id10', 'id12', 'id22', 'id4', 'id5']</code></pre>
@@ -7907,14 +7913,14 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 <p>Not quite what we want! We can sort with a <code>key</code>. A <code>lambda</code> function can be used to make a quick function that will take the id column’s value and look at the 2nd element on, converting that to an <code>int</code>.</p>
 <p>Passing this as the function to use for the <code>key</code> will give us what we want!</p>
-<div class="cell" data-outputid="ffa47685-4d2c-4f91-c266-cb7074da81a9" data-execution_count="26">
+<div class="cell" data-outputid="ffa47685-4d2c-4f91-c266-cb7074da81a9">
 <div class="sourceCode cell-code" id="cb193"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(my_df.index, key <span class="op">=</span> <span class="kw">lambda</span> x: <span class="bu">int</span>(x[<span class="dv">2</span>:]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>['id1', 'id4', 'id5', 'id10', 'id12', 'id22']</code></pre>
 </div>
 </div>
 <p>Now we can sort the data frame using this sorting.</p>
-<div class="cell" data-outputid="328658b8-9a33-4351-d936-a66a7af1f2e8" data-execution_count="29">
+<div class="cell" data-outputid="328658b8-9a33-4351-d936-a66a7af1f2e8">
 <div class="sourceCode cell-code" id="cb195"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[<span class="bu">sorted</span>(my_df.index, key <span class="op">=</span> <span class="kw">lambda</span> x: <span class="bu">int</span>(x[<span class="dv">2</span>:]))]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 
@@ -8171,7 +8177,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <p>A statistical theory called the Law of Large Numbers (LLN) says that the behavior of sample average type statistics should get closer to the population value as the sample size grows.</p>
 <p>We can demonstrate this behavior by using our <code>find_means()</code> function for increasingly large random samples from the standard normal distribution! We know the true value is 0 so we can see how close it gets using our simulations.</p>
 <p>First, let’s create our <code>find_means()</code> function and bring in numpy as needed.</p>
-<div class="cell" data-execution_count="47">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> default_rng</span>
 <span id="cb196-3"><a href="#cb196-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> default_rng(<span class="dv">3</span>)</span>
@@ -8186,11 +8192,11 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <span id="cb196-12"><a href="#cb196-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can use <code>map()</code> to create samples of varying sizes easily!</p>
-<div class="cell" data-execution_count="48">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb197"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a>standard_normal_data <span class="op">=</span> <span class="bu">map</span>(rng.standard_normal, <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">51</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can pass that list using <code>*</code> to unpack it. The elements will be read into the unlimited positional argument we defined, <code>args</code>.</p>
-<div class="cell" data-outputid="938d8282-9888-4750-a3e6-8756cb0f56b7" data-execution_count="49">
+<div class="cell" data-outputid="938d8282-9888-4750-a3e6-8756cb0f56b7">
 <div class="sourceCode cell-code" id="cb198"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb198-1"><a href="#cb198-1" aria-hidden="true" tabindex="-1"></a>find_means(<span class="op">*</span>standard_normal_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>[2.0409,
@@ -8251,7 +8257,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="plotting-matplotlib">Plotting matplotlib</h2>
 <p>Let’s take our function that was able to output many means from normal random samples and use it to make a plot! This will visualize the result we were seeing.</p>
 <p>Let’s first manually create the plot, then put the plot functionality into a function! We really have a sample size associated with each of these means. Let’s first create a data frame that has the sample size and the calculated mean.</p>
-<div class="cell" data-outputid="5aaea586-fd87-4ff8-a5f2-2fa312225d29" data-execution_count="56">
+<div class="cell" data-outputid="5aaea586-fd87-4ff8-a5f2-2fa312225d29">
 <div class="sourceCode cell-code" id="cb200"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb200-1"><a href="#cb200-1" aria-hidden="true" tabindex="-1"></a>standard_normal_data <span class="op">=</span> <span class="bu">map</span>(rng.standard_normal, <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">51</span>))</span>
 <span id="cb200-2"><a href="#cb200-2" aria-hidden="true" tabindex="-1"></a>my_means <span class="op">=</span> find_means(<span class="op">*</span>standard_normal_data)</span>
 <span id="cb200-3"><a href="#cb200-3" aria-hidden="true" tabindex="-1"></a>mean_df <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(my_means, <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">51</span>)), columns <span class="op">=</span> [<span class="st">"means"</span>, <span class="st">"n"</span>])</span>
@@ -8507,7 +8513,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 </div>
 <p>Now import <code>matplotlib.pyplot</code> and let’s make a plot!</p>
-<div class="cell" data-outputid="0685256d-d870-44d7-a84b-f0bfbbc978cf" data-execution_count="58">
+<div class="cell" data-outputid="0685256d-d870-44d7-a84b-f0bfbbc978cf">
 <div class="sourceCode cell-code" id="cb201"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb201-2"><a href="#cb201-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(mean_df.n, mean_df.means)</span>
 <span id="cb201-3"><a href="#cb201-3" aria-hidden="true" tabindex="-1"></a>plt.axhline(y <span class="op">=</span> <span class="dv">0</span>, color <span class="op">=</span> <span class="st">'r'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -8519,7 +8525,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 </div>
 <p>Great, now let’s make a function that does this for us! The function will just take in a sample size and then produce the plot from that. Our <code>find_means()</code> function will be used as a helper function.</p>
-<div class="cell" data-execution_count="61">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb203"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_means(n <span class="op">=</span> <span class="dv">50</span>):</span>
 <span id="cb203-2"><a href="#cb203-2" aria-hidden="true" tabindex="-1"></a>  standard_normal_data <span class="op">=</span> <span class="bu">map</span>(rng.standard_normal, <span class="bu">range</span>(<span class="dv">1</span>, n<span class="op">+</span><span class="dv">1</span>))</span>
 <span id="cb203-3"><a href="#cb203-3" aria-hidden="true" tabindex="-1"></a>  my_means <span class="op">=</span> find_means(<span class="op">*</span>standard_normal_data)</span>
@@ -8527,13 +8533,13 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <span id="cb203-5"><a href="#cb203-5" aria-hidden="true" tabindex="-1"></a>  plt.scatter(mean_df.n, mean_df.means)</span>
 <span id="cb203-6"><a href="#cb203-6" aria-hidden="true" tabindex="-1"></a>  plt.axhline(y <span class="op">=</span> <span class="dv">0</span>, color <span class="op">=</span> <span class="st">'r'</span>, linestyle <span class="op">=</span> <span class="st">'-'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="4d1050b5-fc80-4405-9af3-2312fe914bc6" data-execution_count="62">
+<div class="cell" data-outputid="4d1050b5-fc80-4405-9af3-2312fe914bc6">
 <div class="sourceCode cell-code" id="cb204"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb204-1"><a href="#cb204-1" aria-hidden="true" tabindex="-1"></a>plot_means(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Learning_Python_files/figure-html/cell-123-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-outputid="87f47b46-07ee-4604-f5d7-cb7d42318961" data-execution_count="63">
+<div class="cell" data-outputid="87f47b46-07ee-4604-f5d7-cb7d42318961">
 <div class="sourceCode cell-code" id="cb205"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb205-1"><a href="#cb205-1" aria-hidden="true" tabindex="-1"></a>plot_means(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Learning_Python_files/figure-html/cell-124-output-1.png" class="img-fluid"></p>
@@ -8543,7 +8549,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <section id="plotting-with-pandas" class="level2">
 <h2 class="anchored" data-anchor-id="plotting-with-pandas">Plotting with pandas</h2>
 <p>Let’s revisit our NFL data example from previous. We’ll then look at line plots.</p>
-<div class="cell" data-outputid="6bbef1b1-ea81-4371-e138-23b8e6eb8190" data-execution_count="64">
+<div class="cell" data-outputid="6bbef1b1-ea81-4371-e138-23b8e6eb8190">
 <div class="sourceCode cell-code" id="cb206"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb206-1"><a href="#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb206-2"><a href="#cb206-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/scoresFull.csv"</span>)</span>
 <span id="cb206-3"><a href="#cb206-3" aria-hidden="true" tabindex="-1"></a>scores.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -8913,7 +8919,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 </div>
 <p>We saw we could get summaries of the data in a number of ways. One was the <code>.agg()</code> method.</p>
-<div class="cell" data-outputid="f53b626f-3dd2-4c35-a0be-a25429efa5b5" data-execution_count="65">
+<div class="cell" data-outputid="f53b626f-3dd2-4c35-a0be-a25429efa5b5">
 <div class="sourceCode cell-code" id="cb207"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a>scores <span class="op">\</span></span>
 <span id="cb207-2"><a href="#cb207-2" aria-hidden="true" tabindex="-1"></a>.groupby(<span class="st">"season"</span>) <span class="op">\</span></span>
 <span id="cb207-3"><a href="#cb207-3" aria-hidden="true" tabindex="-1"></a>.agg(max_AtotalYds <span class="op">=</span> (<span class="st">"AtotalYds"</span>, <span class="st">"max"</span>),</span>
@@ -9215,7 +9221,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 </div>
 <p>Line graphs are especially useful when you have data over time. For instance, the summary above is over season. We can put season on the x-axis and see how our summaries change over time. The <code>plot.line()</code> method is great for creating these types of plots. It prefers data where each column will be plotted and the index represents the time. That is exactly what we have outputted from above!</p>
 <p>Let’s add a mean and median variable for the <code>AtotalYds</code> and then create a line plot for these four variables.</p>
-<div class="cell" data-outputid="c62ce410-ad3a-440f-d061-15f3dc201e59" data-execution_count="67">
+<div class="cell" data-outputid="c62ce410-ad3a-440f-d061-15f3dc201e59">
 <div class="sourceCode cell-code" id="cb208"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb208-1"><a href="#cb208-1" aria-hidden="true" tabindex="-1"></a>summaries <span class="op">=</span> scores <span class="op">\</span></span>
 <span id="cb208-2"><a href="#cb208-2" aria-hidden="true" tabindex="-1"></a>.groupby(<span class="st">"season"</span>) <span class="op">\</span></span>
 <span id="cb208-3"><a href="#cb208-3" aria-hidden="true" tabindex="-1"></a>.agg(max_AtotalYds <span class="op">=</span> (<span class="st">"AtotalYds"</span>, <span class="st">"max"</span>),</span>
@@ -9492,7 +9498,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="c5405dff-3bc9-49d8-981f-cb8315646205" data-execution_count="68">
+<div class="cell" data-outputid="c5405dff-3bc9-49d8-981f-cb8315646205">
 <div class="sourceCode cell-code" id="cb209"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a>summaries.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>&lt;Axes: xlabel='season'&gt;</code></pre>
@@ -9505,7 +9511,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <section id="error-handling" class="level2">
 <h2 class="anchored" data-anchor-id="error-handling">Error Handling</h2>
 <p>Let’s use our <code>find_means()</code> function and add a <code>try</code> block to keep processing if one of our arguments passed isn’t appropriate.</p>
-<div class="cell" data-execution_count="82">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb211"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb211-1"><a href="#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_means(<span class="op">*</span>args, decimals <span class="op">=</span> <span class="dv">4</span>):</span>
 <span id="cb211-2"><a href="#cb211-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb211-3"><a href="#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Assume that args will be a bunch of numpy arrays (1D) or pandas series</span></span>
@@ -9515,13 +9521,13 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <span id="cb211-7"><a href="#cb211-7" aria-hidden="true" tabindex="-1"></a>        means.append(np.mean(x).<span class="bu">round</span>(decimals))</span>
 <span id="cb211-8"><a href="#cb211-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="cfd5d577-d399-4f77-ec94-13111474c32f" data-execution_count="83">
+<div class="cell" data-outputid="cfd5d577-d399-4f77-ec94-13111474c32f">
 <div class="sourceCode cell-code" id="cb212"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb212-1"><a href="#cb212-1" aria-hidden="true" tabindex="-1"></a>find_means(np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="st">"hi"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>UFuncTypeError: ufunc 'add' did not contain a loop with signature matching types (dtype('&lt;U21'), dtype('&lt;U21')) -&gt; None</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="84">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb214"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb214-1"><a href="#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_means(<span class="op">*</span>args, decimals <span class="op">=</span> <span class="dv">4</span>):</span>
 <span id="cb214-2"><a href="#cb214-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb214-3"><a href="#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Assume that args will be a bunch of numpy arrays (1D) or pandas series</span></span>
@@ -9535,7 +9541,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <span id="cb214-11"><a href="#cb214-11" aria-hidden="true" tabindex="-1"></a>            means.append(np.nan)</span>
 <span id="cb214-12"><a href="#cb214-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="c9bc17f0-e22c-4809-8a18-9ebdabf777fe" data-execution_count="85">
+<div class="cell" data-outputid="c9bc17f0-e22c-4809-8a18-9ebdabf777fe">
 <div class="sourceCode cell-code" id="cb215"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb215-1"><a href="#cb215-1" aria-hidden="true" tabindex="-1"></a>find_means(np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="st">"hi"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>It appears that the data type is wrong!</code></pre>
@@ -9544,7 +9550,7 @@ Name: AtotalYdsCut, dtype: int64</code></pre>
 <pre><code>[nan]</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="1da87c77-8b7f-40ea-9cbe-8432867ec248" data-execution_count="87">
+<div class="cell" data-outputid="1da87c77-8b7f-40ea-9cbe-8432867ec248">
 <div class="sourceCode cell-code" id="cb218"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a>find_means(np.array([<span class="dv">424</span>,<span class="dv">13</span>,<span class="dv">13</span>]), np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>, <span class="st">"hi"</span>]), np.array([<span class="st">"yo"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>It appears that the data type is wrong!

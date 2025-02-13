@@ -403,7 +403,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02_Big_Data_Management/05-SQL_Resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploratory Data Analysis</span></a>
+ <span class="menu-text">SQL Resources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -440,6 +440,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>pyspark</code>: Pandas-on-Spark</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>pyspark</code>: Spark SQL</span></a>
   </div>
 </li>
       </ul>
@@ -503,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Let’s process our titanic data from the previous notebook.</li>
 </ul>
 <p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/20-Plotting_pandas.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
-<div class="cell" data-tags="[&quot;remove_input&quot;]" data-execution_count="1">
+<div class="cell" data-tags="[&quot;remove_input&quot;]">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -531,7 +537,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>.plot.bar()</code> method on a <code>series</code> or <code>dataframe</code></li>
 <li><code>.plot()</code> method with <code>kind = 'bar'</code> specified</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="450px" data-outputid="1bcb8e17-ab2c-41e9-c797-abc533aa7074" data-execution_count="2">
+<div class="cell" data-fig.align="center" data-out.width="450px" data-outputid="1bcb8e17-ab2c-41e9-c797-abc533aa7074">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> sub_titanic_data.embarkedC.value_counts()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(table))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -573,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Note that this is a <code>pandas</code> <code>series</code>. We can use the <code>.plot.bar()</code> method on this series to get a bar plot.</p>
-<div class="cell" data-fig.align="center" data-out.height="350px" data-out.width="450px" data-outputid="c751a227-67d0-465b-ebb0-bfc956fd80a5" data-execution_count="3">
+<div class="cell" data-fig.align="center" data-out.height="350px" data-out.width="450px" data-outputid="c751a227-67d0-465b-ebb0-bfc956fd80a5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
@@ -583,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can then apply the <code>matplotlib</code> functionality to update/modify the plot (notice we already read in <code>matplotlib.pyplot</code> as <code>plt</code>.</p>
-<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="400px" data-outputid="fee64af6-5405-4e64-ea1b-090611346ef5" data-execution_count="4">
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="400px" data-outputid="fee64af6-5405-4e64-ea1b-090611346ef5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -597,7 +603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Alternatively, we can use the slightly more flexible <code>.plot()</code> method on a series where we specify the <code>kind=</code> of the plot to create.</p>
-<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="839c77b0-d581-48e5-b61b-67294e46f284" data-execution_count="5">
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="839c77b0-d581-48e5-b61b-67294e46f284">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>table.plot(kind <span class="op">=</span> <span class="st">"bar"</span>, rot <span class="op">=</span> <span class="dv">0</span>) <span class="co">#can use additional arg rather than additional function call</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
@@ -612,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>For instance, we can color the bars by another categorical variable in the <code>DataFrame</code> pretty easily!</li>
 </ul>
 <p>First, create the contingency table for two variables (remember this returns a <code>DataFrame</code>)</p>
-<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="908c3dd8-1645-4188-c4b0-94c332c3bb7c" data-execution_count="6">
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="908c3dd8-1645-4188-c4b0-94c332c3bb7c">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.crosstab(sub_titanic_data[<span class="st">"embarkedC"</span>], sub_titanic_data[<span class="st">"survivedC"</span>])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(table))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -918,7 +924,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now let’s use the <code>.plot.bar()</code> method on this <code>DataFrame</code> with the <code>stacked = True</code> argument.</p>
-<div class="cell" data-outputid="5d035e39-6823-485c-d442-d1664524c5f5" data-execution_count="8">
+<div class="cell" data-outputid="5d035e39-6823-485c-d442-d1664524c5f5">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar(stacked <span class="op">=</span> <span class="va">True</span>, rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
@@ -928,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can do this with the <code>.plot()</code> method as well.</p>
-<div class="cell" data-outputid="e1e916e2-d3df-42a2-f0e0-d3975a61035d" data-execution_count="9">
+<div class="cell" data-outputid="e1e916e2-d3df-42a2-f0e0-d3975a61035d">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table.plot(stacked <span class="op">=</span> <span class="va">True</span>, kind <span class="op">=</span> <span class="st">"bar"</span>, rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
@@ -938,7 +944,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>If we want side-by-side bar plots, we can just remove the <code>stacked = True</code> argument.</p>
-<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="8eaffa0d-b370-4c57-e012-3d4aa6846800" data-execution_count="10">
+<div class="cell" data-fig.align="center" data-out.height="250px" data-out.width="450px" data-outputid="8eaffa0d-b370-4c57-e012-3d4aa6846800">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>table.plot.bar(rot <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>&lt;Axes: xlabel='embarkedC'&gt;</code></pre>
@@ -962,7 +968,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="histogram-with-pandas">Histogram with <code>pandas</code></h3>
 <p><strong>Histogram</strong> - Bin data to show distribution of observations - Done via <code>.plot.hist()</code> or <code>.plot(kind = "hist")</code> method on a series or data frame - A <code>.hist()</code> method also exists!</p>
 <p>First, the <code>.plot.hist()</code> method on a series (we’ll also fix it up a bit using <code>matplotlib.pyplot</code> functionality.</p>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="feb8a4db-c0ca-41da-e329-d8c17656b803" data-execution_count="12">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="feb8a4db-c0ca-41da-e329-d8c17656b803">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"age"</span>].plot.hist()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Age"</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Age for Titanic Passengers"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -977,7 +983,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Specify # of bins with <code>bins =</code></li>
 <li>Note we also return the series in a different way here (just to show you can use either)</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="00fa4869-86ba-447d-a8dc-2924793b9cd6" data-execution_count="13">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="00fa4869-86ba-447d-a8dc-2924793b9cd6">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#can add label/title here (xlabel doesn't seem to work as intended...)</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#instead we'll use the .set() method on the histogram to set the xlabel</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.hist(bins <span class="op">=</span> <span class="dv">20</span>, title <span class="op">=</span> <span class="st">"Histogram of Age for Titanic Passengers"</span>) <span class="op">\</span></span>
@@ -999,7 +1005,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>Let’s create histograms of age for those that Survived and those that Died. - We should also set up the bins manually so they are the same bin widths and locations (for better comparison) - bins can be specified via the <code>bins =</code> argument</p>
-<div class="cell" data-outputid="88eb0b40-2ff4-4048-ce46-0e92770dea86" data-execution_count="14">
+<div class="cell" data-outputid="88eb0b40-2ff4-4048-ce46-0e92770dea86">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>bin_ends <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> [i<span class="op">*</span><span class="bu">max</span>(sub_titanic_data.age)<span class="op">/</span>bin_ends <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, bin_ends <span class="op">+</span> <span class="dv">1</span>)]</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1010,12 +1016,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Obtain subsets of data needed</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="325px" data-execution_count="15">
+<div class="cell" data-fig.align="center" data-out.width="325px">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>age_died <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Died"</span>, <span class="st">"age"</span>] <span class="co">#series for died</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Survived"</span>, <span class="st">"age"</span>] <span class="co">#series for survived</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create the plot using the <code>.plot.hist()</code> method. By creating two plots in the same cell, they will be overlayed. - Notice the use of <code>label()</code> to automatically create a legend (similar to what we did with <code>matplotlib</code></p>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="153a3f78-e42c-49bc-f3f1-e385696a2837" data-execution_count="16">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="153a3f78-e42c-49bc-f3f1-e385696a2837">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>age_died.plot.hist(bins <span class="op">=</span> bins, alpha <span class="op">=</span> <span class="fl">0.5</span>, label <span class="op">=</span> <span class="st">"Died"</span>,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                   title <span class="op">=</span> <span class="st">"Ages for those that survived vs those that died"</span>) <span class="op">\</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                   .<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Age"</span>)</span>
@@ -1036,14 +1042,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Need two columns, one representing ages for those that survived and one for those that died</li>
 </ul></li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="325px" data-execution_count="20">
+<div class="cell" data-fig.align="center" data-out.width="325px">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>age_died <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Died"</span>, <span class="st">"age"</span>] <span class="co">#809 values</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> sub_titanic_data.loc[sub_titanic_data.survivedC <span class="op">==</span> <span class="st">"Survived"</span>, <span class="st">"age"</span>] <span class="co">#500 values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Note the difference in the number of observations! This means that putting them together into a data frame isn’t super seamless.</li>
 </ul>
-<div class="cell" data-outputid="f3cc518a-7710-4670-bb62-7db148eaf3a0" data-execution_count="21">
+<div class="cell" data-outputid="f3cc518a-7710-4670-bb62-7db148eaf3a0">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(age_died, age_survived), columns <span class="op">=</span> [<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp.shape)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#only has 500 rows instead of 809!</span></span>
@@ -1064,7 +1070,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We can fill in <code>NaN</code> values for the shorter series so they end up the same length.</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="6bd46139-2521-43e3-c6aa-747449b31be0" data-execution_count="30">
+<div class="cell" data-outputid="6bd46139-2521-43e3-c6aa-747449b31be0">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>age_survived <span class="op">=</span> pd.concat([age_survived, pd.Series([np.nan <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">308</span>)])])</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>age_survived</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
@@ -1133,7 +1139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Now we can zip these together into a data frame and plot as we’d like!</li>
 </ul>
-<div class="cell" data-outputid="47f05c47-6e10-4770-c51f-22d126953ffe" data-execution_count="31">
+<div class="cell" data-outputid="47f05c47-6e10-4770-c51f-22d126953ffe">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plotting_df <span class="op">=</span> pd.DataFrame(<span class="bu">zip</span>(age_died, age_survived),</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                      columns <span class="op">=</span> [<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(plotting_df.shape)</span>
@@ -1159,7 +1165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li>These don’t have the same bin widths</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="300px" data-outputid="3d1aef10-3ef1-4e1a-f6a7-8abc0c2fff23" data-execution_count="32">
+<div class="cell" data-fig.align="center" data-out.width="300px" data-outputid="3d1aef10-3ef1-4e1a-f6a7-8abc0c2fff23">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.hist(column <span class="op">=</span> <span class="st">"age"</span>, by <span class="op">=</span> <span class="st">"survivedC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
@@ -1176,7 +1182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>We could also use the <code>.groupby()</code> functionality but the result is a bit subpar as it doesn’t label the graphs.</li>
 </ul>
-<div class="cell" data-outputid="66a9d275-da77-4e92-ee95-7224f5a047ec" data-execution_count="33">
+<div class="cell" data-outputid="66a9d275-da77-4e92-ee95-7224f5a047ec">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"survivedC"</span>]].groupby(<span class="st">"survivedC"</span>).hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
@@ -1236,7 +1242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="f7e6c462-3de6-4897-ecc2-ad09768af0c1" data-execution_count="34">
+<div class="cell" data-outputid="f7e6c462-3de6-4897-ecc2-ad09768af0c1">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.1</span>, label <span class="op">=</span> <span class="st">"bw = 0.1"</span>,</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>                                  title <span class="op">=</span> <span class="st">"Density Plots of Age for Titanic Passengers"</span>)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.density(bw_method <span class="op">=</span> <span class="fl">0.25</span>, label <span class="op">=</span> <span class="st">"bw = 0.25"</span>)</span>
@@ -1265,7 +1271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <p>First the <code>.plot.box()</code> method on a series</p>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="acbc0061-cec9-4eb3-deed-b563a28f42cc" data-execution_count="35">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="acbc0061-cec9-4eb3-deed-b563a28f42cc">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.plot.box()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>&lt;Axes: &gt;</code></pre>
@@ -1278,7 +1284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Fine.. but usually we want to compare these boxplots across another variable. To do this the <code>.boxplot()</code> method on a data frame is very useful!</li>
 <li>Similar to the <code>.hist()</code> method we specify a <code>column</code> and <code>by</code> variable</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="0add6b38-51f2-47e0-c3ff-fcff1920c923" data-execution_count="36">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="0add6b38-51f2-47e0-c3ff-fcff1920c923">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.boxplot(column <span class="op">=</span> [<span class="st">"age"</span>], by <span class="op">=</span> <span class="st">"survivedC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>&lt;Axes: title={'center': 'age'}, xlabel='survivedC'&gt;</code></pre>
@@ -1297,7 +1303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use <code>.plot.scatter()</code> or <code>plot(kind = "scatter")</code> method on a data frame with <code>x =</code>, and <code>y =</code></li>
 </ul></li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="75d10366-486a-4145-c651-54dbca4ff44a" data-execution_count="37">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="75d10366-486a-4145-c651-54dbca4ff44a">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, title <span class="op">=</span> <span class="st">"Scatter plots rule!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>&lt;Axes: title={'center': 'Scatter plots rule!'}, xlabel='age', ylabel='fare'&gt;</code></pre>
@@ -1309,7 +1315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Easy to modify! <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.scatter.html#pandas.DataFrame.plot.scatter">Check the help for arguments</a> (specifically the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot">keyword arguments</a> that get passed to <code>.plot()</code>) but we can specify different <code>marker</code> values, a <code>title</code>, and more!</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="9217dd32-d131-4256-a8be-28a0261c6d9f" data-execution_count="38">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="9217dd32-d131-4256-a8be-28a0261c6d9f">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#c = color, marker is a matplotlib option</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, c <span class="op">=</span> <span class="st">"Red"</span>, marker <span class="op">=</span> <span class="st">"v"</span>, title <span class="op">=</span> <span class="st">"Oh, V's!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
@@ -1324,7 +1330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>This is great as it allows us to bring a third varaible in</li>
 <li>Here we color by a category variable</li>
 </ul>
-<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="2262d7f2-366d-45e0-de28-2d72ac0ea69d" data-execution_count="39">
+<div class="cell" data-fig.align="center" data-out.width="350px" data-outputid="2262d7f2-366d-45e0-de28-2d72ac0ea69d">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#s for size (should be a numeric column), cmap can be used with c for specifying color scales</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.plot.scatter(x <span class="op">=</span> <span class="st">"age"</span>, y <span class="op">=</span> <span class="st">"fare"</span>, c <span class="op">=</span> <span class="st">"survivedC"</span>, cmap <span class="op">=</span> <span class="st">"viridis"</span>, s <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
@@ -1341,7 +1347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>.plotting.scatter_matrix()</code> function will produce basic graphs showing relationships!</li>
 <li>Here we grab the numeric variables from the data frame</li>
 </ul>
-<div id="matrix" class="cell" data-dev="png" data-fig.align="center" data-tags="[&quot;remove_output&quot;]" data-outputid="98f09e8d-b31b-4c8a-f703-bb8bf97f4796" data-execution_count="40">
+<div id="matrix" class="cell" data-dev="png" data-fig.align="center" data-tags="[&quot;remove_output&quot;]" data-outputid="98f09e8d-b31b-4c8a-f703-bb8bf97f4796">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>pd.plotting.scatter_matrix(sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"survived"</span>, <span class="st">"sibsp"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="matrix-1" class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>array([[&lt;Axes: xlabel='age', ylabel='age'&gt;,
@@ -1372,8 +1378,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="quick-video" class="level2">
 <h2 class="anchored" data-anchor-id="quick-video">Quick Video</h2>
 <p>This video shows an example of using pandas for plotting. Remember to pop the video out into the full player.</p>
-<p>The notebook written in the video is <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb">available here</a>.</p>
-<div class="cell" data-outputid="ba11e71a-6139-4009-f44b-4d107b6593e9" data-execution_count="41">
+<p>The notebook written in the video is <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/Learning_Python.html">available here</a>.</p>
+<div class="cell" data-outputid="ba11e71a-6139-4009-f44b-4d107b6593e9">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f4e2bc16-1757-4f1e-8df9-b103016c97d2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">

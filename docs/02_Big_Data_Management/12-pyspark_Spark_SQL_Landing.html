@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-02-13">
 
-<title>ST 554 Analysis of Big Data (with Python) - Cross Validation</title>
+<title>ST 554 Analysis of Big Data (with Python) - pyspark: Spark SQL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" rel="next">
-<link href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" rel="prev">
+<link href="../02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/22-Big_Recap_Landing.html">Topic 3: Basics of Predictive Modeling</a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/25-Cross_Validation_Landing.html">Cross Validation</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02_Big_Data_Management/01-Big_Data_Basics_Landing.html">Topic 4: Big Data Management</a></li><li class="breadcrumb-item"><a href="../02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html"><code>pyspark</code>: Spark SQL</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -291,13 +290,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
@@ -318,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cross Validation</span></a>
   </div>
 </li>
@@ -338,13 +337,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Topic 4: Big Data Management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02_Big_Data_Management/01-Big_Data_Basics_Landing.html" class="sidebar-item-text sidebar-link">
@@ -407,7 +406,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><code>pyspark</code>: Spark SQL</span></a>
   </div>
 </li>
@@ -424,6 +423,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#additional-readings-for-week-3" id="toc-additional-readings-for-week-3" class="nav-link" data-scroll-target="#additional-readings-for-week-3">Additional Readings for Week 3</a></li>
   </ul>
 </nav>
     </div>
@@ -432,7 +432,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cross Validation</h1>
+<h1 class="title"><code>pyspark</code>: Spark SQL</h1>
 </div>
 
 
@@ -453,14 +453,25 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The video below talks about the idea of cross validation (CV). This is a method of evaluating a predictive model while not necessarily needing to split the data into a training and test set (although sometimes we will still do this and just apply CV on the training set).</p>
+<p>The video below discusses how <code>pyspark</code> can be used using its SQL style data frame and functionality.</p>
 <p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d069a914-ab44-4d5c-8f2e-b10a012faff2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="25-Cross Validation"></iframe>
+<p><strong>update video</strong></p>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae82211f-546d-4e2d-9c91-b0fe018434ea&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-EDA"></iframe>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><a href="25-Cross_Validation.html" target="_blank">HTML version</a></li>
-<li><a href="PDFs/25-Cross_Validation.pdf" target="_blank">PDF version</a></li>
+<li><a href="12-pyspark_Spark_SQL.html" target="_blank">HTML version</a></li>
+<li><a href="PDFs/12-pyspark_Spark_SQL.pdf" target="_blank">PDF version</a></li>
+</ul>
+</section>
+<section id="additional-readings-for-week-3" class="level2">
+<h2 class="anchored" data-anchor-id="additional-readings-for-week-3">Additional Readings for Week 3</h2>
+<p>Exploratory Data Analysis (EDA) is often the first step of dealing with data. However, EDA is somewhat of an art and something that you get better at with experience. Often people new to EDA don’t know what they should be looking for! Here are some articles that discuss different strategies for EDA.</p>
+<ul>
+<li><a href="https://shopify.engineering/conducting-exploratory-data-analysis" target="_blank">Shopify page</a></li>
+<li><a href="https://www.ibm.com/cloud/learn/exploratory-data-analysis" target="_blank">IBM page</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Exploratory_data_analysis" target="_blank">Wikipedia page</a></li>
+<li><a href="https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm" target="_blank">NIST page</a></li>
 </ul>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
@@ -703,14 +714,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prediction and Training/Test Set Ideas</span>
+      <a href="../02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><code>pyspark</code>: Pandas-on-Spark</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="pagination-link">
-        <span class="nav-page-text">Multiple Linear Regression</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
