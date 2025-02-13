@@ -33,7 +33,7 @@ project:
     - 01_Programming_in_python/27-LASSO_Landing.qmd
     - 02_Big_Data_Management/01-Big_Data_Basics_Landing.qmd
     - 02_Big_Data_Management/02-Role_of_Statistics_Landing.qmd
-    - 02_Big_Data_Management/03-Databases_SQL.qmd
+    - 02_Big_Data_Management/03-Databases_SQL.ipynb
     - 02_Big_Data_Management/04-SQL_Joins.ipynb
     - 02_Big_Data_Management/05-SQL_Resources.qmd
     - 02_Big_Data_Management/06-Data_Pipelines_Storage_Landing.qmd
