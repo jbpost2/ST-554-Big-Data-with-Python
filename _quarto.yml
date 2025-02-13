@@ -31,10 +31,11 @@ project:
     - 01_Programming_in_python/25-Cross_Validation_Landing.qmd
     - 01_Programming_in_python/26-Multiple_Linear_Regression_Landing.qmd
     - 01_Programming_in_python/27-LASSO_Landing.qmd
+    - 01_Programming_in_python/Learning_Python.ipynb
     - 02_Big_Data_Management/01-Big_Data_Basics_Landing.qmd
     - 02_Big_Data_Management/02-Role_of_Statistics_Landing.qmd
     - 02_Big_Data_Management/03-Databases_SQL.ipynb
-    - 02_Big_Data_Management/04-SQL_Joins.ipynb
+    - 02_Big_Data_Management/04-SQL_Joins.qmd
     - 02_Big_Data_Management/05-SQL_Resources.qmd
     - 02_Big_Data_Management/06-Data_Pipelines_Storage_Landing.qmd
     - 02_Big_Data_Management/07-Legacy_Software_HDFS_Landing.qmd
@@ -43,6 +44,7 @@ project:
     - 02_Big_Data_Management/10-pyspark_RDD_Landing.qmd
     - 02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.qmd
     - 02_Big_Data_Management/12-pyspark_Spark_SQL.qmd
+    - 02_Big_Data_Mangaement/Big_Data_Management_Notebook.ipynb
 
 website:
   title: "ST 554 Analysis of Big Data (with Python)"
@@ -95,7 +97,19 @@ website:
           - 01_Programming_in_python/26-Multiple_Linear_Regression_Landing.qmd
           - 01_Programming_in_python/27-LASSO_Landing.qmd
       - section: "Topic 4: Big Data Management"
-      - section: "Topic 5: Big Data Software"
+        contents:
+          - 02_Big_Data_Management/01-Big_Data_Basics_Landing.qmd
+          - 02_Big_Data_Management/02-Role_of_Statistics_Landing.qmd
+          - 02_Big_Data_Management/03-Databases_SQL.ipynb
+          - 02_Big_Data_Management/04-SQL_Joins_Landing.qmd
+          - 02_Big_Data_Management/05-SQL_Resources.qmd
+          - 02_Big_Data_Management/06-Data_Pipelines_Storage_Landing.qmd
+          - 02_Big_Data_Management/07-Legacy_Software_HDFS_Landing.qmd
+          - 02_Big_Data_Management/08-Connecting_to_JupyterHub.qmd
+          - 02_Big_Data_Management/09-Spark_for_Big_Data_Landing.qmd
+          - 02_Big_Data_Management/10-pyspark_RDD_Landing.qmd
+          - 02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.qmd
+          - 02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.qmd
   page-navigation: true
   reader-mode: true
 

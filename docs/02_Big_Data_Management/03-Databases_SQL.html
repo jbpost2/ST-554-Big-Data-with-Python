@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-02-12">
+<meta name="dcterms.date" content="2025-02-13">
 
-<title>sql_joins – ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Data Storage and Basic SQL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,13 +58,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../02_Big_Data_Management/04-SQL_Joins_Landing.qmd" rel="next">
+<link href="../02_Big_Data_Management/02-Role_of_Statistics_Landing.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -95,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -113,36 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -150,17 +144,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02_Big_Data_Management/01-Big_Data_Basics_Landing.html">Topic 4: Big Data Management</a></li><li class="breadcrumb-item"><a href="../02_Big_Data_Management/03-Databases_SQL.html">Data Storage and Basic SQL</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -169,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -185,9 +180,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -268,9 +263,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -333,9 +328,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -379,26 +374,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Topic 4: Big Data Management</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Topic 5: Big Data Software</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Topic 4: Big Data Management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/01-Big_Data_Basics_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Big Data Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/02-Role_of_Statistics_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Role of Statistics in Big Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/03-Databases_SQL.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Storage and Basic SQL</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/05-SQL_Resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/06-Data_Pipelines_Storage_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Pipelines &amp; Data Storage</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/07-Legacy_Software_HDFS_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Legacy Big Data Software: Hadoop Distributed File System</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/08-Connecting_to_JupyterHub.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>spark</code>: Big Data Software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/09-Spark_for_Big_Data_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>spark</code>: Big Data Software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/10-pyspark_RDD_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>pyspark</code>: Resilient Distributed Data Sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>pyspark</code>: Pandas-on-Spark</span></a>
+  </div>
+</li>
+      </ul>
   </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-storage-and-basic-sql" id="toc-data-storage-and-basic-sql" class="nav-link active" data-scroll-target="#data-storage-and-basic-sql">Data Storage and Basic SQL</a>
-  <ul class="collapse">
-  <li><a href="#common-database-software" id="toc-common-database-software" class="nav-link" data-scroll-target="#common-database-software">Common Database Software</a></li>
+  <li><a href="#common-database-software" id="toc-common-database-software" class="nav-link active" data-scroll-target="#common-database-software">Common Database Software</a></li>
   <li><a href="#actions-on-databases" id="toc-actions-on-databases" class="nav-link" data-scroll-target="#actions-on-databases">Actions on Databases</a></li>
   <li><a href="#accessing-an-sqlite-database-in-python" id="toc-accessing-an-sqlite-database-in-python" class="nav-link" data-scroll-target="#accessing-an-sqlite-database-in-python">Accessing an SQLite Database in <code>python</code></a>
   <ul class="collapse">
@@ -416,8 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select">SELECT</a></li>
   </ul></li>
   <li><a href="#clean-up" id="toc-clean-up" class="nav-link" data-scroll-target="#clean-up">Clean Up</a></li>
-  </ul></li>
-  <li><a href="#sql-joins-on-chinook" id="toc-sql-joins-on-chinook" class="nav-link" data-scroll-target="#sql-joins-on-chinook">SQL Joins on chinook</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
     </div>
@@ -426,6 +481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Data Storage and Basic SQL</h1>
 </div>
 
 
@@ -436,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-02-12</p>
+      <p class="date">2025-02-13</p>
     </div>
   </div>
   
@@ -444,13 +500,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
-<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/02_Big_Data_Management/03_Databases.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="data-storage-and-basic-sql" class="level1">
-<h1>Data Storage and Basic SQL</h1>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/02_Big_Data_Management/03_Databases_SQL.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <blockquote class="blockquote">
 <p>Justin Post</p>
 </blockquote>
@@ -515,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>As we need to have the ability to write to the database from our notebook, we can’t share the same database. That means you’ll need to <a href="https://www4.stat.ncsu.edu/online/datasets/chinook.db">download the <code>chinook.db</code> file</a> and upload it to your folder area on the left!</li>
 <li>If you want the changes to remain after you are done, you’d need to download that file before closing the session!</li>
 </ul>
-<div id="bf19bb02-a4b1-427e-ba38-11636a5b3c29" class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bring in the module</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#make the connection to the .db file. My file is in the main folder on the left</span></span>
@@ -537,7 +589,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Below we use the multiline comment (three quotation marks to start and end) in order to write more legible SQL code</li>
 </ul>
-<div id="88842b3d-0318-4d22-bdd4-8b952fc57735" class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a 'cursor' object from our connection</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>cursor.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now look at what is stored in <code>result</code>. Here it is actually a <code>list</code> that we can cycle through and print information from.</p>
-<div id="8AviH0rX3huW" class="cell" data-outputid="6f6d0cd1-0c45-4367-b65b-7752ac08dbeb" data-execution_count="28">
+<div class="cell" data-outputid="6f6d0cd1-0c45-4367-b65b-7752ac08dbeb" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(result))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> result:</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -581,10 +633,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Often we want to put this information into our common <code>pandas</code> data frame format!</p>
-<div id="ytTXgaOj7zBW" class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="vgApsQXX8C2v" class="cell" data-outputid="1dcec1ef-c281-4ad0-e09f-31927b064e7c" data-execution_count="29">
+<div class="cell" data-outputid="1dcec1ef-c281-4ad0-e09f-31927b064e7c" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a data frame</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>schema_df <span class="op">=</span> pd.DataFrame(result)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>schema_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -594,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -712,6 +764,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -973,14 +1026,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Pretty good, just missing column names. For the <a href="https://www.sqlite.org/schematab.html">schema table, those are standardized</a>.</p>
-<div id="3Ac-21Xi9ZdD" class="cell" data-outputid="453a4c6b-185c-4425-817d-46a4249d288b" data-execution_count="30">
+<div class="cell" data-outputid="453a4c6b-185c-4425-817d-46a4249d288b" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#current column names</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>schema_df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>RangeIndex(start=0, stop=5, step=1)</code></pre>
 </div>
 </div>
-<div id="CnGfKfZy8RfO" class="cell" data-outputid="7512e221-fa26-43a5-f048-d78c0187b72d" data-execution_count="31">
+<div class="cell" data-outputid="7512e221-fa26-43a5-f048-d78c0187b72d" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>schema_df.rename(columns<span class="op">=</span>{<span class="dv">0</span>: <span class="st">'type'</span>, <span class="dv">1</span>: <span class="st">'name'</span>, <span class="dv">2</span>: <span class="st">'tbl_name'</span>, <span class="dv">3</span>: <span class="st">'rootpage'</span>, <span class="dv">4</span>: <span class="st">'sql'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>schema_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -989,7 +1042,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1107,6 +1160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1371,7 +1425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Here we don’t need a <code>cursor</code> object, we just pass the <code>SQL</code> string and the connection object.</li>
 </ul>
-<div id="MjmfIlhu-KCb" class="cell" data-outputid="4ab16b31-393c-4215-d9a9-ea753a83c288" data-execution_count="32">
+<div class="cell" data-outputid="4ab16b31-393c-4215-d9a9-ea753a83c288" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>schema_df2 <span class="op">=</span> pd.read_sql(get_schema, con)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>schema_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1380,7 +1434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1498,6 +1552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1772,7 +1827,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Close the conneciton made by the cursor (<code>cursor.close()</code>)</li>
 </ol>
 <p>The <code>FROM</code> function allows us to choose which table to query. <code>LIMIT 20</code> says to limit what is returned to 20 rows.</p>
-<div id="0e4b4b8c-80bb-474b-9431-3d55facf2a89" class="cell" data-outputid="afb9ac87-7695-4924-8ff1-2300497795e5" data-execution_count="33">
+<div class="cell" data-outputid="afb9ac87-7695-4924-8ff1-2300497795e5" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create the cursor instance</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create the SQL string</span></span>
@@ -1813,7 +1868,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Ok, when just reading a table, let’s go with <code>pd.read_sql()</code> instead since it returns things in a nicer format!</p>
-<div id="aZQsVKkjALhH" class="cell" data-outputid="78f92e67-3d76-4aa7-f217-6cefc5d450a9" data-execution_count="34">
+<div class="cell" data-outputid="78f92e67-3d76-4aa7-f217-6cefc5d450a9" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>album_results <span class="op">=</span> pd.read_sql(get_albums, con)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>album_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -1822,7 +1877,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1954,6 +2009,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2247,7 +2303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We specify the type of data the variable will hold after naming the variable</li>
 <li>Check <a href="https://www.sqlite.org/datatype3.html">this reference</a> for possible data types!</li>
 </ul>
-<div id="a0dccd2e-4e13-4d64-88ad-aae309170138" class="cell" data-outputid="e9c63184-5453-42e5-aad3-d0be90001831" data-execution_count="35">
+<div class="cell" data-outputid="e9c63184-5453-42e5-aad3-d0be90001831" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create the cursor instance</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#write our SQL to create a table</span></span>
@@ -2264,7 +2320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s check that it worked before we close the connection!</p>
-<div id="_oGbOg7kBoyY" class="cell" data-outputid="264988ff-fb61-4da3-c47a-ea859df33cf8" data-execution_count="37">
+<div class="cell" data-outputid="264988ff-fb61-4da3-c47a-ea859df33cf8" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">'''</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">        SELECT *</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM justin_music;</span></span>
@@ -2275,7 +2331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2286,6 +2342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2371,11 +2428,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Cool, now let’s close the connection.</p>
-<div id="9UWShjO3BzAV" class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can see we’ll do this process a lot. It may be best to create a function to help us out. (Modified from https://realpython.com/python-sql-libraries/)</p>
-<div id="f0636062-8853-47bd-83eb-6a311ef3d8c1" class="cell" data-execution_count="40">
+<div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> execute_query(connection, query):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
@@ -2386,7 +2443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function will execute the query for us and close the cursor.</p>
-<div id="UiWjUKS2CHqT" class="cell" data-outputid="91b08a00-3731-473e-cf3b-3e48554fc1cd" data-execution_count="43">
+<div class="cell" data-outputid="91b08a00-3731-473e-cf3b-3e48554fc1cd" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>execute_query(con, ct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Query executed successfully</code></pre>
@@ -2396,7 +2453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="insert-into" class="level3">
 <h3 class="anchored" data-anchor-id="insert-into">INSERT INTO</h3>
 <p>Now lets add some data to our table using <code>INSERT INTO</code>. We need to pass the table name, optionally the columns we’ll specify, and the values to fill with.</p>
-<div id="a5c07922-8610-45e6-bb2a-8f4d5669a78c" class="cell" data-outputid="7a62d03f-162e-433d-c709-1f307ed36403" data-execution_count="44">
+<div class="cell" data-outputid="7a62d03f-162e-433d-c709-1f307ed36403" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>create_rows <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="st">       INSERT INTO</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="st">           justin_music (album, artist)</span></span>
@@ -2412,7 +2469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s check if it worked!</p>
-<div id="3ec215f7-0b3f-4765-be25-bfd41bdb9bcf" class="cell" data-outputid="22a447a3-1d5a-4994-891b-0982f8db0db9" data-execution_count="47">
+<div class="cell" data-outputid="22a447a3-1d5a-4994-891b-0982f8db0db9" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 
@@ -2420,7 +2477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2451,6 +2508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2660,7 +2718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now let’s add a row with only an artist.</p>
-<div id="22227aa8-5f0c-4a4c-b37d-5dd1b1ff79a4" class="cell" data-outputid="a7f5444f-fc2b-451e-d22c-4fc422077a5f" data-execution_count="48">
+<div class="cell" data-outputid="a7f5444f-fc2b-451e-d22c-4fc422077a5f" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>create_row <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">       INSERT INTO</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">           justin_music (artist)</span></span>
@@ -2674,7 +2732,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This inserts a <code>None</code> into the data frame but note that the value in the original table is actually a <code>NULL</code>.</p>
-<div id="bea820bb-b72b-47b2-97b4-2b31ae20ec41" class="cell" data-outputid="2e5decd5-b843-4e8f-c2a0-f7f82b139d82" data-execution_count="51">
+<div class="cell" data-outputid="2e5decd5-b843-4e8f-c2a0-f7f82b139d82" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 
@@ -2682,7 +2740,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2718,6 +2776,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2936,7 +2995,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>WHERE to describe which records (rows) to modify</li>
 </ul>
 <p>We can use <code>AND</code>, <code>OR</code>, <code>IN</code>, and other logical operators in our SQL code! (See <a href="https://www.sqlite.org/lang_expr.html">Operators and Parse-Affecting Attributes</a>)</p>
-<div id="4178ccfa-c5c2-45f3-ac24-527d50562601" class="cell" data-outputid="81552c55-3dd8-4339-f847-6cfa0b4b91e4" data-execution_count="52">
+<div class="cell" data-outputid="81552c55-3dd8-4339-f847-6cfa0b4b91e4" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mod_row <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="st">    UPDATE justin_music</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="st">    SET album = "Red (Taylor's Version)", artist = "Taylor Swift"</span></span>
@@ -2948,7 +3007,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Query executed successfully</code></pre>
 </div>
 </div>
-<div id="8bbaf64a-fcc2-4ff8-902f-4911dd30f945" class="cell" data-outputid="074086ac-1cc6-4ef1-f22c-f07aa4cadec7" data-execution_count="53">
+<div class="cell" data-outputid="074086ac-1cc6-4ef1-f22c-f07aa4cadec7" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 
@@ -2956,7 +3015,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2992,6 +3051,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3208,7 +3268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>DELETE FROM to specify the table</li>
 <li>a WHERE condition to determine what is deleted</li>
 </ul>
-<div id="a7a95980-41b4-40e8-9711-84854f9b0027" class="cell" data-outputid="a1f4379c-e9fb-45b8-8f88-91604d00c347" data-execution_count="54">
+<div class="cell" data-outputid="a1f4379c-e9fb-45b8-8f88-91604d00c347" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>del_row <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="st">    DELETE FROM justin_music</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE artist = "Taylor Swift";</span></span>
@@ -3219,7 +3279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Query executed successfully</code></pre>
 </div>
 </div>
-<div id="df685c4a-7bac-4836-a899-a94ec7ddf21b" class="cell" data-outputid="1c461bc2-39d8-40d5-956e-b25ea3c11593" data-execution_count="55">
+<div class="cell" data-outputid="1c461bc2-39d8-40d5-956e-b25ea3c11593" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 
@@ -3227,7 +3287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3253,6 +3313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3465,13 +3526,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="drop-table" class="level3">
 <h3 class="anchored" data-anchor-id="drop-table">DROP TABLE</h3>
 <p>And of course we can remove an entire table using DROP TABLE. Just specify the table to remove!</p>
-<div id="fe84586c-4f52-4ede-8402-ef88c011803a" class="cell" data-outputid="542c8a2e-aa80-4cc3-8ada-e1adec791626" data-execution_count="56">
+<div class="cell" data-outputid="542c8a2e-aa80-4cc3-8ada-e1adec791626" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>execute_query(con, <span class="st">"DROP TABLE justin_music"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Query executed successfully</code></pre>
 </div>
 </div>
-<div id="d979c50a-52ee-4fdf-92f0-8fc3ac2938b0" class="cell" data-outputid="06111bcf-f203-4b85-ccbd-49057c503a08" data-execution_count="57">
+<div class="cell" data-outputid="06111bcf-f203-4b85-ccbd-49057c503a08" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(get_schema, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 
@@ -3479,7 +3540,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3597,6 +3658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3818,7 +3880,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Specifing the records (rows) of interest with a WHERE</li>
 </ul>
 <p>First, let’s see a way to look at all columns in a table.</p>
-<div id="e9581d3a-73b4-4a04-b928-b8f818c9c7e2" class="cell" data-outputid="6a70edad-0eaf-4920-9fcb-6a3ae6a58a9c" data-execution_count="59">
+<div class="cell" data-outputid="6a70edad-0eaf-4920-9fcb-6a3ae6a58a9c" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">'SELECT * FROM albums'</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 
@@ -3826,7 +3888,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3904,6 +3966,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 <p>347 rows × 3 columns</p>
 </div>
@@ -4114,7 +4177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now let’s select the Title and ArtistID columns only. <code>LIMIT</code> is a good way to only return (up to) a certain number of results.</p>
-<div id="6f903ab7-31ba-47ba-9aa6-89479d26dfd9" class="cell" data-outputid="65b17b27-6a6a-47df-f0de-609b0344d51d" data-execution_count="60">
+<div class="cell" data-outputid="65b17b27-6a6a-47df-f0de-609b0344d51d" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT Title, artistID FROM albums LIMIT 10;"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 
@@ -4122,7 +4185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4183,6 +4246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -4392,29 +4456,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>WHERE allows us to specify conditions on rows.</p>
-<div id="e6748e77-7436-4336-9756-1314bb029aa3" class="cell" data-outputid="c8021c04-82bb-473c-e293-d84ea92350f0">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql<span class="st">"SELECT * FROM albums WHERE artistID = 2 LIMIT 10;"</span>).fetchall()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>[(2, 'Balls to the Wall', 2), (3, 'Restless and Wild', 2)]</code></pre>
-</div>
-</div>
-<p>Ok, so the above is straight SQL code. That’s a great skill to learn. We can easily switch to using <code>pandas</code> to turn the result into easy to work with data frames!</p>
-<div id="4bcf2239-f14b-43bc-b285-8c720c13e5dd" class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The function <code>pd.read_sql(sql, con)</code> returns the results as a data frame.</p>
-<div id="b39c29cc-fceb-4f73-bb43-39e551e9a940" class="cell" data-outputid="b2729202-fc3b-4de0-a71a-4283cc6f147e">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT Title, artistID FROM albums LIMIT 10;"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell" data-outputid="cf96d8c4-9c9f-45de-cddb-4848285667ac" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM albums WHERE artistID = 2 LIMIT 10;"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="62">
 
-  <div id="df-db0f9d7f-0cf9-414b-a6c8-ee034bba474a" class="colab-df-container">
+  <div id="df-14a09029-25b9-4499-98b9-d300f533a3a4" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">AlbumId</th>
 <th data-quarto-table-cell-role="th">Title</th>
 <th data-quarto-table-cell-role="th">ArtistId</th>
 </tr>
@@ -4422,62 +4476,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
 <td>Balls to the Wall</td>
 <td>2</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3</td>
 <td>Restless and Wild</td>
 <td>2</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Let There Be Rock</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Big Ones</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Jagged Little Pill</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>Facelift</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>Warner 25 Anos</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>Plays Metallica By Four Cellos</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>Audioslave</td>
-<td>8</td>
-</tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-db0f9d7f-0cf9-414b-a6c8-ee034bba474a')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-14a09029-25b9-4499-98b9-d300f533a3a4')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -4527,12 +4544,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-db0f9d7f-0cf9-414b-a6c8-ee034bba474a button.colab-df-convert');
+        document.querySelector('#df-14a09029-25b9-4499-98b9-d300f533a3a4 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-db0f9d7f-0cf9-414b-a6c8-ee034bba474a');
+        const element = document.querySelector('#df-14a09029-25b9-4499-98b9-d300f533a3a4');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -4552,8 +4569,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-<div id="df-cddec733-48cb-47c5-8101-18620c93dd00">
-  <button class="colab-df-quickchart" onclick="quickchart('df-cddec733-48cb-47c5-8101-18620c93dd00')" title="Suggest charts" style="display:none;">
+<div id="df-4cf7f92f-d650-4a50-a847-aeafd2316c7f">
+  <button class="colab-df-quickchart" onclick="quickchart('df-4cf7f92f-d650-4a50-a847-aeafd2316c7f')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -4669,2097 +4686,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-cddec733-48cb-47c5-8101-18620c93dd00 button');
+        document.querySelector('#df-4cf7f92f-d650-4a50-a847-aeafd2316c7f button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
   </script>
 </div>
+
     </div>
   </div>
 </div>
 </div>
-<div id="9b1d04ac-103e-4bc6-812d-f4b061d4e465" class="cell" data-outputid="0f5ecd81-32ce-4958-8352-1915aec3df1c">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM tracks"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-
-  <div id="df-ea93daf3-b9f6-4274-b5c2-bf1afe308b59" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">TrackId</th>
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">AlbumId</th>
-<th data-quarto-table-cell-role="th">MediaTypeId</th>
-<th data-quarto-table-cell-role="th">GenreId</th>
-<th data-quarto-table-cell-role="th">Composer</th>
-<th data-quarto-table-cell-role="th">Milliseconds</th>
-<th data-quarto-table-cell-role="th">Bytes</th>
-<th data-quarto-table-cell-role="th">UnitPrice</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1</td>
-<td>For Those About To Rock (We Salute You)</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>343719</td>
-<td>11170334</td>
-<td>0.99</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2</td>
-<td>Balls to the Wall</td>
-<td>2</td>
-<td>2</td>
-<td>1</td>
-<td>None</td>
-<td>342562</td>
-<td>5510424</td>
-<td>0.99</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>3</td>
-<td>Fast As a Shark</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>F. Baltes, S. Kaufman, U. Dirkscneider &amp; W. Ho...</td>
-<td>230619</td>
-<td>3990994</td>
-<td>0.99</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4</td>
-<td>Restless and Wild</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>F. Baltes, R.A. Smith-Diesel, S. Kaufman, U. D...</td>
-<td>252051</td>
-<td>4331779</td>
-<td>0.99</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5</td>
-<td>Princess of the Dawn</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>Deaffy &amp; R.A. Smith-Diesel</td>
-<td>375418</td>
-<td>6290521</td>
-<td>0.99</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3498</td>
-<td>3499</td>
-<td>Pini Di Roma (Pinien Von Rom) \ I Pini Della V...</td>
-<td>343</td>
-<td>2</td>
-<td>24</td>
-<td>None</td>
-<td>286741</td>
-<td>4718950</td>
-<td>0.99</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3499</td>
-<td>3500</td>
-<td>String Quartet No. 12 in C Minor, D. 703 "Quar...</td>
-<td>344</td>
-<td>2</td>
-<td>24</td>
-<td>Franz Schubert</td>
-<td>139200</td>
-<td>2283131</td>
-<td>0.99</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3500</td>
-<td>3501</td>
-<td>L'orfeo, Act 3, Sinfonia (Orchestra)</td>
-<td>345</td>
-<td>2</td>
-<td>24</td>
-<td>Claudio Monteverdi</td>
-<td>66639</td>
-<td>1189062</td>
-<td>0.99</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3501</td>
-<td>3502</td>
-<td>Quintet for Horn, Violin, 2 Violas, and Cello ...</td>
-<td>346</td>
-<td>2</td>
-<td>24</td>
-<td>Wolfgang Amadeus Mozart</td>
-<td>221331</td>
-<td>3665114</td>
-<td>0.99</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3502</td>
-<td>3503</td>
-<td>Koyaanisqatsi</td>
-<td>347</td>
-<td>2</td>
-<td>10</td>
-<td>Philip Glass</td>
-<td>206005</td>
-<td>3305164</td>
-<td>0.99</td>
-</tr>
-</tbody>
-</table>
-
-<p>3503 rows × 9 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-ea93daf3-b9f6-4274-b5c2-bf1afe308b59')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-ea93daf3-b9f6-4274-b5c2-bf1afe308b59 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-ea93daf3-b9f6-4274-b5c2-bf1afe308b59');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-14e1e4b6-309e-4657-b286-958b19101c06">
-  <button class="colab-df-quickchart" onclick="quickchart('df-14e1e4b6-309e-4657-b286-958b19101c06')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-14e1e4b6-309e-4657-b286-958b19101c06 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<p>Niiiice! That’s now going to be very easy to summarize and plot.</p>
 </section>
 </section>
 <section id="clean-up" class="level2">
 <h2 class="anchored" data-anchor-id="clean-up">Clean Up</h2>
 <p>If we want to save any changes made to our database, we need to do a <code>commit()</code> to the connection via <code>con.commit()</code>. This saves the changes made and releases any locks on the data. Other connections to the database can only see changes you’ve made if you commit them.</p>
-<p>When you are doing working you should also close your connection. This is done with the <code>close()</code> method.</p>
-<div id="2700c253-6ca4-45ba-a353-6335646872a6" class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>con.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When you are done working you should also close your connection. This is done with the <code>close()</code> method.</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>con.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We skimmed over some of the syntax that SQL follows. You should read over the <a href="https://www.w3resource.com/sqlite/arithmetic-operators.php">arithmetic operators</a>, <a href="https://www.w3resource.com/sqlite/comparison-operators.php">comparison operators</a>, and the other operators linked on the left of that page.</p>
+<hr>
 </section>
-</section>
-<section id="sql-joins-on-chinook" class="level1">
-<h1>SQL Joins on chinook</h1>
-<p>Now let’s do some joins on the chinook database. We’ll reread in the packages are make our connection to the database.</p>
-<div id="a737d1fc-80ce-4673-a411-297bf2fd3bb4" class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"chinook.db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img src="https://drive.google.com/uc?export=view&amp;id=1uk0kQci8_fJdXoBJ4SuEx9KeG9eEP6Gf.png" class="img-fluid"></p>
-<p>Using pandas we can check out the tables returned as a data frame.</p>
-<div id="f5850738-1660-404d-b121-c1cb4efd0eb4" class="cell" data-outputid="714c84c4-f3b2-4095-c2a0-8bd3f8e4a7f3">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM sqlite_schema WHERE type = 'table';"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-
-  <div id="df-a30e6229-f6a8-46df-94d5-7ae216c7e292" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">type</th>
-<th data-quarto-table-cell-role="th">name</th>
-<th data-quarto-table-cell-role="th">tbl_name</th>
-<th data-quarto-table-cell-role="th">rootpage</th>
-<th data-quarto-table-cell-role="th">sql</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>table</td>
-<td>albums</td>
-<td>albums</td>
-<td>2</td>
-<td>CREATE TABLE "albums"\r\n(\r\n [AlbumId] IN...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>table</td>
-<td>sqlite_sequence</td>
-<td>sqlite_sequence</td>
-<td>3</td>
-<td>CREATE TABLE sqlite_sequence(name,seq)</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>table</td>
-<td>artists</td>
-<td>artists</td>
-<td>4</td>
-<td>CREATE TABLE "artists"\r\n(\r\n [ArtistId] ...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>table</td>
-<td>customers</td>
-<td>customers</td>
-<td>5</td>
-<td>CREATE TABLE "customers"\r\n(\r\n [Customer...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>table</td>
-<td>employees</td>
-<td>employees</td>
-<td>8</td>
-<td>CREATE TABLE "employees"\r\n(\r\n [Employee...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>table</td>
-<td>genres</td>
-<td>genres</td>
-<td>10</td>
-<td>CREATE TABLE "genres"\r\n(\r\n [GenreId] IN...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>table</td>
-<td>invoices</td>
-<td>invoices</td>
-<td>11</td>
-<td>CREATE TABLE "invoices"\r\n(\r\n [InvoiceId...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>table</td>
-<td>invoice_items</td>
-<td>invoice_items</td>
-<td>13</td>
-<td>CREATE TABLE "invoice_items"\r\n(\r\n [Invo...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>table</td>
-<td>media_types</td>
-<td>media_types</td>
-<td>15</td>
-<td>CREATE TABLE "media_types"\r\n(\r\n [MediaT...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>table</td>
-<td>playlists</td>
-<td>playlists</td>
-<td>16</td>
-<td>CREATE TABLE "playlists"\r\n(\r\n [Playlist...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>table</td>
-<td>playlist_track</td>
-<td>playlist_track</td>
-<td>17</td>
-<td>CREATE TABLE "playlist_track"\r\n(\r\n [Pla...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>table</td>
-<td>tracks</td>
-<td>tracks</td>
-<td>20</td>
-<td>CREATE TABLE "tracks"\r\n(\r\n [TrackId] IN...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>table</td>
-<td>sqlite_stat1</td>
-<td>sqlite_stat1</td>
-<td>864</td>
-<td>CREATE TABLE sqlite_stat1(tbl,idx,stat)</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>table</td>
-<td>justin_music</td>
-<td>justin_music</td>
-<td>865</td>
-<td>CREATE TABLE justin_music (\n album TEX...</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a30e6229-f6a8-46df-94d5-7ae216c7e292')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-a30e6229-f6a8-46df-94d5-7ae216c7e292 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a30e6229-f6a8-46df-94d5-7ae216c7e292');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-fc7ba33b-735f-4e2e-8051-e6e165f3c069">
-  <button class="colab-df-quickchart" onclick="quickchart('df-fc7ba33b-735f-4e2e-8051-e6e165f3c069')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-fc7ba33b-735f-4e2e-8051-e6e165f3c069 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<p>The tracks and albums tables each share a variable/column/key of <code>AlbumId</code>. Let’s do an inner join on those using <code>pd.merge()</code>. Remember that we can pull the full tables into pandas using <code>pd.read_sql()</code> and then use <code>pandas</code> to do the join!</p>
-<div id="b291bdd8-7f58-4551-9f67-229e8ccaf171" class="cell" data-outputid="a7c7065c-78d1-4d6b-c43b-50c9f1fa2070">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>tracks_albums <span class="op">=</span> pd.merge(left <span class="op">=</span> pd.read_sql(<span class="st">"SELECT * FROM tracks"</span>, con), right <span class="op">=</span> pd.read_sql(<span class="st">"SELECT * FROM albums"</span>, con),</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>         how <span class="op">=</span> <span class="st">"inner"</span>,</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>         on <span class="op">=</span> <span class="st">"AlbumId"</span>)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>tracks_albums</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-
-  <div id="df-8a17b9f7-64ea-4ce5-a91e-42a2879b2444" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">TrackId</th>
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">AlbumId</th>
-<th data-quarto-table-cell-role="th">MediaTypeId</th>
-<th data-quarto-table-cell-role="th">GenreId</th>
-<th data-quarto-table-cell-role="th">Composer</th>
-<th data-quarto-table-cell-role="th">Milliseconds</th>
-<th data-quarto-table-cell-role="th">Bytes</th>
-<th data-quarto-table-cell-role="th">UnitPrice</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">ArtistId</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1</td>
-<td>For Those About To Rock (We Salute You)</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>343719</td>
-<td>11170334</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>6</td>
-<td>Put The Finger On You</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>205662</td>
-<td>6713451</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>7</td>
-<td>Let's Get It Up</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>233926</td>
-<td>7636561</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>8</td>
-<td>Inject The Venom</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>210834</td>
-<td>6852860</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>9</td>
-<td>Snowballed</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>203102</td>
-<td>6599424</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3498</td>
-<td>3499</td>
-<td>Pini Di Roma (Pinien Von Rom) \ I Pini Della V...</td>
-<td>343</td>
-<td>2</td>
-<td>24</td>
-<td>None</td>
-<td>286741</td>
-<td>4718950</td>
-<td>0.99</td>
-<td>Respighi:Pines of Rome</td>
-<td>226</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3499</td>
-<td>3500</td>
-<td>String Quartet No. 12 in C Minor, D. 703 "Quar...</td>
-<td>344</td>
-<td>2</td>
-<td>24</td>
-<td>Franz Schubert</td>
-<td>139200</td>
-<td>2283131</td>
-<td>0.99</td>
-<td>Schubert: The Late String Quartets &amp; String Qu...</td>
-<td>272</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3500</td>
-<td>3501</td>
-<td>L'orfeo, Act 3, Sinfonia (Orchestra)</td>
-<td>345</td>
-<td>2</td>
-<td>24</td>
-<td>Claudio Monteverdi</td>
-<td>66639</td>
-<td>1189062</td>
-<td>0.99</td>
-<td>Monteverdi: L'Orfeo</td>
-<td>273</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3501</td>
-<td>3502</td>
-<td>Quintet for Horn, Violin, 2 Violas, and Cello ...</td>
-<td>346</td>
-<td>2</td>
-<td>24</td>
-<td>Wolfgang Amadeus Mozart</td>
-<td>221331</td>
-<td>3665114</td>
-<td>0.99</td>
-<td>Mozart: Chamber Music</td>
-<td>274</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3502</td>
-<td>3503</td>
-<td>Koyaanisqatsi</td>
-<td>347</td>
-<td>2</td>
-<td>10</td>
-<td>Philip Glass</td>
-<td>206005</td>
-<td>3305164</td>
-<td>0.99</td>
-<td>Koyaanisqatsi (Soundtrack from the Motion Pict...</td>
-<td>275</td>
-</tr>
-</tbody>
-</table>
-
-<p>3503 rows × 11 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-8a17b9f7-64ea-4ce5-a91e-42a2879b2444')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-8a17b9f7-64ea-4ce5-a91e-42a2879b2444 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8a17b9f7-64ea-4ce5-a91e-42a2879b2444');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-96758aac-0618-4d0c-bf85-47f1824ac60d">
-  <button class="colab-df-quickchart" onclick="quickchart('df-96758aac-0618-4d0c-bf85-47f1824ac60d')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-96758aac-0618-4d0c-bf85-47f1824ac60d button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<p>Now we’ll join that table we just made with another table, <code>invoice_items</code> and do a left join (treating <code>invoice_items</code> as the left table). We’ll join on the key that is shared, <code>trackId</code>.</p>
-<div id="149dc65a-30c2-48f3-a249-fe3aaf016e39" class="cell" data-outputid="cbe3b22c-4b11-4a4c-c7a2-54cb685426a9">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span> <span class="op">=</span> pd.merge(left <span class="op">=</span> pd.read_sql(<span class="st">"SELECT * FROM invoice_items"</span>, con),</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>         right<span class="op">=</span> tracks_albums,</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>         how <span class="op">=</span> <span class="st">"left"</span>,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>         on <span class="op">=</span> <span class="st">"TrackId"</span>)</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="bu">next</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
-
-  <div id="df-2f7d7c97-305f-4b65-8b61-d1d87a98c40a" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">InvoiceLineId</th>
-<th data-quarto-table-cell-role="th">InvoiceId</th>
-<th data-quarto-table-cell-role="th">TrackId</th>
-<th data-quarto-table-cell-role="th">UnitPrice_x</th>
-<th data-quarto-table-cell-role="th">Quantity</th>
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">AlbumId</th>
-<th data-quarto-table-cell-role="th">MediaTypeId</th>
-<th data-quarto-table-cell-role="th">GenreId</th>
-<th data-quarto-table-cell-role="th">Composer</th>
-<th data-quarto-table-cell-role="th">Milliseconds</th>
-<th data-quarto-table-cell-role="th">Bytes</th>
-<th data-quarto-table-cell-role="th">UnitPrice_y</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">ArtistId</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1</td>
-<td>1</td>
-<td>2</td>
-<td>0.99</td>
-<td>1</td>
-<td>Balls to the Wall</td>
-<td>2</td>
-<td>2</td>
-<td>1</td>
-<td>None</td>
-<td>342562</td>
-<td>5510424</td>
-<td>0.99</td>
-<td>Balls to the Wall</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>2</td>
-<td>1</td>
-<td>4</td>
-<td>0.99</td>
-<td>1</td>
-<td>Restless and Wild</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>F. Baltes, R.A. Smith-Diesel, S. Kaufman, U. D...</td>
-<td>252051</td>
-<td>4331779</td>
-<td>0.99</td>
-<td>Restless and Wild</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>3</td>
-<td>2</td>
-<td>6</td>
-<td>0.99</td>
-<td>1</td>
-<td>Put The Finger On You</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>205662</td>
-<td>6713451</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4</td>
-<td>2</td>
-<td>8</td>
-<td>0.99</td>
-<td>1</td>
-<td>Inject The Venom</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>210834</td>
-<td>6852860</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>5</td>
-<td>2</td>
-<td>10</td>
-<td>0.99</td>
-<td>1</td>
-<td>Evil Walks</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>263497</td>
-<td>8611245</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2235</td>
-<td>2236</td>
-<td>411</td>
-<td>3136</td>
-<td>0.99</td>
-<td>1</td>
-<td>Looking For Love</td>
-<td>141</td>
-<td>1</td>
-<td>3</td>
-<td>Sykes</td>
-<td>391941</td>
-<td>12769847</td>
-<td>0.99</td>
-<td>Greatest Hits</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2236</td>
-<td>2237</td>
-<td>411</td>
-<td>3145</td>
-<td>0.99</td>
-<td>1</td>
-<td>Sweet Lady Luck</td>
-<td>141</td>
-<td>1</td>
-<td>3</td>
-<td>Vandenberg</td>
-<td>273737</td>
-<td>8919163</td>
-<td>0.99</td>
-<td>Greatest Hits</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2237</td>
-<td>2238</td>
-<td>411</td>
-<td>3154</td>
-<td>0.99</td>
-<td>1</td>
-<td>Feirinha da Pavuna/Luz do Repente/Bagaço da La...</td>
-<td>248</td>
-<td>1</td>
-<td>7</td>
-<td>Arlindo Cruz/Franco/Marquinhos PQD/Negro, Jove...</td>
-<td>107206</td>
-<td>3593684</td>
-<td>0.99</td>
-<td>Ao Vivo [IMPORT]</td>
-<td>155</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2238</td>
-<td>2239</td>
-<td>411</td>
-<td>3163</td>
-<td>0.99</td>
-<td>1</td>
-<td>Samba pras moças</td>
-<td>248</td>
-<td>1</td>
-<td>7</td>
-<td>Grazielle/Roque Ferreira</td>
-<td>152816</td>
-<td>5121366</td>
-<td>0.99</td>
-<td>Ao Vivo [IMPORT]</td>
-<td>155</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2239</td>
-<td>2240</td>
-<td>412</td>
-<td>3177</td>
-<td>1.99</td>
-<td>1</td>
-<td>Hot Girl</td>
-<td>249</td>
-<td>3</td>
-<td>19</td>
-<td>None</td>
-<td>1325458</td>
-<td>267836576</td>
-<td>1.99</td>
-<td>The Office, Season 1</td>
-<td>156</td>
-</tr>
-</tbody>
-</table>
-
-<p>2240 rows × 15 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-2f7d7c97-305f-4b65-8b61-d1d87a98c40a')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-2f7d7c97-305f-4b65-8b61-d1d87a98c40a button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-2f7d7c97-305f-4b65-8b61-d1d87a98c40a');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-f8521de1-1069-4bd9-9904-cc552bdeba4c">
-  <button class="colab-df-quickchart" onclick="quickchart('df-f8521de1-1069-4bd9-9904-cc552bdeba4c')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-f8521de1-1069-4bd9-9904-cc552bdeba4c button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<p>Lastly, we’ll now combine that table with the <code>invoices</code> table using an outer join on the key <code>InvoiceId</code>. Note that you can actually do all of these joins in SQL using one call (which is likely much more efficient!). Please see the additional readings for topic 2 for more information.</p>
-<div id="e3ef892b-b13c-4af1-a839-967dc598d4c2" class="cell" data-outputid="266d6b62-298b-4499-ec98-b8ac8321b085">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>pd.merge(left <span class="op">=</span> pd.read_sql(<span class="st">"SELECT * FROM invoices"</span>, con),</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>         right <span class="op">=</span> <span class="bu">next</span>,</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>         how <span class="op">=</span> <span class="st">"outer"</span>,</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>         on <span class="op">=</span> <span class="st">"InvoiceId"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-
-  <div id="df-58384b33-dd53-45c3-8371-3d14fd8f4063" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">InvoiceId</th>
-<th data-quarto-table-cell-role="th">CustomerId</th>
-<th data-quarto-table-cell-role="th">InvoiceDate</th>
-<th data-quarto-table-cell-role="th">BillingAddress</th>
-<th data-quarto-table-cell-role="th">BillingCity</th>
-<th data-quarto-table-cell-role="th">BillingState</th>
-<th data-quarto-table-cell-role="th">BillingCountry</th>
-<th data-quarto-table-cell-role="th">BillingPostalCode</th>
-<th data-quarto-table-cell-role="th">Total</th>
-<th data-quarto-table-cell-role="th">InvoiceLineId</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">AlbumId</th>
-<th data-quarto-table-cell-role="th">MediaTypeId</th>
-<th data-quarto-table-cell-role="th">GenreId</th>
-<th data-quarto-table-cell-role="th">Composer</th>
-<th data-quarto-table-cell-role="th">Milliseconds</th>
-<th data-quarto-table-cell-role="th">Bytes</th>
-<th data-quarto-table-cell-role="th">UnitPrice_y</th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">ArtistId</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1</td>
-<td>2</td>
-<td>2009-01-01 00:00:00</td>
-<td>Theodor-Heuss-Straße 34</td>
-<td>Stuttgart</td>
-<td>None</td>
-<td>Germany</td>
-<td>70174</td>
-<td>1.98</td>
-<td>1</td>
-<td>...</td>
-<td>Balls to the Wall</td>
-<td>2</td>
-<td>2</td>
-<td>1</td>
-<td>None</td>
-<td>342562</td>
-<td>5510424</td>
-<td>0.99</td>
-<td>Balls to the Wall</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>1</td>
-<td>2</td>
-<td>2009-01-01 00:00:00</td>
-<td>Theodor-Heuss-Straße 34</td>
-<td>Stuttgart</td>
-<td>None</td>
-<td>Germany</td>
-<td>70174</td>
-<td>1.98</td>
-<td>2</td>
-<td>...</td>
-<td>Restless and Wild</td>
-<td>3</td>
-<td>2</td>
-<td>1</td>
-<td>F. Baltes, R.A. Smith-Diesel, S. Kaufman, U. D...</td>
-<td>252051</td>
-<td>4331779</td>
-<td>0.99</td>
-<td>Restless and Wild</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2</td>
-<td>4</td>
-<td>2009-01-02 00:00:00</td>
-<td>Ullevålsveien 14</td>
-<td>Oslo</td>
-<td>None</td>
-<td>Norway</td>
-<td>0171</td>
-<td>3.96</td>
-<td>3</td>
-<td>...</td>
-<td>Put The Finger On You</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>205662</td>
-<td>6713451</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>2</td>
-<td>4</td>
-<td>2009-01-02 00:00:00</td>
-<td>Ullevålsveien 14</td>
-<td>Oslo</td>
-<td>None</td>
-<td>Norway</td>
-<td>0171</td>
-<td>3.96</td>
-<td>4</td>
-<td>...</td>
-<td>Inject The Venom</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>210834</td>
-<td>6852860</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2</td>
-<td>4</td>
-<td>2009-01-02 00:00:00</td>
-<td>Ullevålsveien 14</td>
-<td>Oslo</td>
-<td>None</td>
-<td>Norway</td>
-<td>0171</td>
-<td>3.96</td>
-<td>5</td>
-<td>...</td>
-<td>Evil Walks</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>Angus Young, Malcolm Young, Brian Johnson</td>
-<td>263497</td>
-<td>8611245</td>
-<td>0.99</td>
-<td>For Those About To Rock We Salute You</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2235</td>
-<td>411</td>
-<td>44</td>
-<td>2013-12-14 00:00:00</td>
-<td>Porthaninkatu 9</td>
-<td>Helsinki</td>
-<td>None</td>
-<td>Finland</td>
-<td>00530</td>
-<td>13.86</td>
-<td>2236</td>
-<td>...</td>
-<td>Looking For Love</td>
-<td>141</td>
-<td>1</td>
-<td>3</td>
-<td>Sykes</td>
-<td>391941</td>
-<td>12769847</td>
-<td>0.99</td>
-<td>Greatest Hits</td>
-<td>100</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2236</td>
-<td>411</td>
-<td>44</td>
-<td>2013-12-14 00:00:00</td>
-<td>Porthaninkatu 9</td>
-<td>Helsinki</td>
-<td>None</td>
-<td>Finland</td>
-<td>00530</td>
-<td>13.86</td>
-<td>2237</td>
-<td>...</td>
-<td>Sweet Lady Luck</td>
-<td>141</td>
-<td>1</td>
-<td>3</td>
-<td>Vandenberg</td>
-<td>273737</td>
-<td>8919163</td>
-<td>0.99</td>
-<td>Greatest Hits</td>
-<td>100</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2237</td>
-<td>411</td>
-<td>44</td>
-<td>2013-12-14 00:00:00</td>
-<td>Porthaninkatu 9</td>
-<td>Helsinki</td>
-<td>None</td>
-<td>Finland</td>
-<td>00530</td>
-<td>13.86</td>
-<td>2238</td>
-<td>...</td>
-<td>Feirinha da Pavuna/Luz do Repente/Bagaço da La...</td>
-<td>248</td>
-<td>1</td>
-<td>7</td>
-<td>Arlindo Cruz/Franco/Marquinhos PQD/Negro, Jove...</td>
-<td>107206</td>
-<td>3593684</td>
-<td>0.99</td>
-<td>Ao Vivo [IMPORT]</td>
-<td>155</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2238</td>
-<td>411</td>
-<td>44</td>
-<td>2013-12-14 00:00:00</td>
-<td>Porthaninkatu 9</td>
-<td>Helsinki</td>
-<td>None</td>
-<td>Finland</td>
-<td>00530</td>
-<td>13.86</td>
-<td>2239</td>
-<td>...</td>
-<td>Samba pras moças</td>
-<td>248</td>
-<td>1</td>
-<td>7</td>
-<td>Grazielle/Roque Ferreira</td>
-<td>152816</td>
-<td>5121366</td>
-<td>0.99</td>
-<td>Ao Vivo [IMPORT]</td>
-<td>155</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2239</td>
-<td>412</td>
-<td>58</td>
-<td>2013-12-22 00:00:00</td>
-<td>12,Community Centre</td>
-<td>Delhi</td>
-<td>None</td>
-<td>India</td>
-<td>110017</td>
-<td>1.99</td>
-<td>2240</td>
-<td>...</td>
-<td>Hot Girl</td>
-<td>249</td>
-<td>3</td>
-<td>19</td>
-<td>None</td>
-<td>1325458</td>
-<td>267836576</td>
-<td>1.99</td>
-<td>The Office, Season 1</td>
-<td>156</td>
-</tr>
-</tbody>
-</table>
-
-<p>2240 rows × 23 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-58384b33-dd53-45c3-8371-3d14fd8f4063')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-58384b33-dd53-45c3-8371-3d14fd8f4063 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-58384b33-dd53-45c3-8371-3d14fd8f4063');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-b80ad501-a04d-41e7-8c01-d531d28b2a3d">
-  <button class="colab-df-quickchart" onclick="quickchart('df-b80ad501-a04d-41e7-8c01-d531d28b2a3d')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-b80ad501-a04d-41e7-8c01-d531d28b2a3d button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
+<section id="recap" class="level1">
+<h1>Recap</h1>
+<p>Database is a term usually used to represent a set of related tables and the software used to interact with them.</p>
+<p>In <code>python</code> you can connect to most any kind of database. We looked at connecting to the easy, light-weight, <code>sqlite</code> database.</p>
+<p>The most important actions are given by CRUD (Create, Read, Update, and Delete).</p>
+<p>We’ll get much more into python when we start dealing with <code>pyspark</code>!</p>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/02_Big_Data_Management/05-SQL_Joins.html">our next lesson</a>!</p>
 
 
 </section>
@@ -6800,7 +4757,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -6832,50 +4800,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -6885,17 +4814,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -6907,130 +4827,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -7074,7 +4871,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -7100,32 +4896,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -7185,8 +4955,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../02_Big_Data_Management/02-Role_of_Statistics_Landing.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">The Role of Statistics in Big Data</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../02_Big_Data_Management/04-SQL_Joins_Landing.qmd" class="pagination-link">
+        <span class="nav-page-text"></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
-
 
 
 

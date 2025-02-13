@@ -1,0 +1,26 @@
+---
+title: "SQL Joins"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below discusses SQL joins. These actions are used to combine data across two or more tables in a database. These are extremely important and useful in practice!
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+The notebook written in the video is available [here](https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/02_Big_Data_Management/Big_Data_Management_Notebook.ipynb).
+
+**Update video**
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae82211f-546d-4e2d-9c91-b0fe018434ea&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-EDA" ></iframe>
+```
+
+## Notes
+
+- <a href = "04-SQL_Joins.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/04-SQL_Joins.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
