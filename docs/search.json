@@ -52,7 +52,7 @@
     "href": "02_Big_Data_Management/10-pyspark_RDD_Landing.html#additional-readings-for-week-9",
     "title": "pyspark: Resilient Distributed Data Sets",
     "section": "Additional Readings for Week 9",
-    "text": "Additional Readings for Week 9\n\npyspark\n\nQuick-start guide\nAnother guide\nSQL API\npandas-on-Spark user guide\npandas-on-Spark example\n\n\n\nLooking for More?\n\nData Engineering Topics to Learn\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "text": "Additional Readings for Week 9\n\npyspark\n\nQuick-start guide\nSQL API\npyspark SQL cheat sheet\npandas-on-Spark user guide\npandas-on-Spark example\n\n\n\nLooking for More?\n\nData Engineering Topics to Learn\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
     "crumbs": [
       "Home",
       "Topic 4: Big Data Management",
@@ -88,7 +88,7 @@
     "href": "02_Big_Data_Management/07-Legacy_Software_HDFS_Landing.html#additional-readings-for-week-8",
     "title": "Legacy Big Data Software: Hadoop Distributed File System",
     "section": "Additional Readings for Week 8",
-    "text": "Additional Readings for Week 8\n\nHadoop\n\nHadoop YARN: Docs, Article\nHDFS & the Cloud: Article 1, Book (not free though)\nObject Storage with Apache Spark (we won’t cover this but it may be more common going forward)\nS3 storage\nHadoop vs S3\nAzure Blob Storage\n\n\n\nMapReduce\n\nMapReduce Examples: Article 1, Article 2\nA good intro through an example using PySpark\nHadoop vs Spark\n\n\n\nSpark\n\nWhat is spark?\nBasics of Spark: Article 1, Article 2, Article 3, Article 4\nSpark APIs\nMore on DAGs\nSpark cheat sheet\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "text": "Additional Readings for Week 8\n\nHadoop\n\nHadoop Tutorial, Hadoop Architecture, Wikipedia article on Hadoop, What is Hadoop?, Another Intro to Hadoop\nHadoop YARN: Docs, Article\nHDFS & the Cloud: Article 1, Book (not free though)\nS3 storage\nAzure Blob Storage\n\n\n\nMapReduce\n\nMapReduce Examples: Article 1, Article 2\nA good intro through an example using PySpark\nHadoop vs Spark (IBM)\n\n\n\nSpark\n\nWhat is spark?\nBasic Spark Tutorial\nSpark APIs (databricks)\nMore on DAGs\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
     "crumbs": [
       "Home",
       "Topic 4: Big Data Management",
@@ -1647,19 +1647,7 @@
     "href": "02_Big_Data_Management/05-SQL_Resources.html",
     "title": "SQL Resources",
     "section": "",
-    "text": "The video below discusses the common steps when investigating data. This is usually referred to as an exploratory data analysis (EDA).\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.",
-    "crumbs": [
-      "Home",
-      "Topic 4: Big Data Management",
-      "SQL Resources"
-    ]
-  },
-  {
-    "objectID": "02_Big_Data_Management/05-SQL_Resources.html#additional-readings-for-week-3",
-    "href": "02_Big_Data_Management/05-SQL_Resources.html#additional-readings-for-week-3",
-    "title": "SQL Resources",
-    "section": "Additional Readings for Week 3",
-    "text": "Additional Readings for Week 3\nExploratory Data Analysis (EDA) is often the first step of dealing with data. However, EDA is somewhat of an art and something that you get better at with experience. Often people new to EDA don’t know what they should be looking for! Here are some articles that discuss different strategies for EDA.\n\nShopify page\nIBM page\nWikipedia page\nNIST page\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "text": "Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
     "crumbs": [
       "Home",
       "Topic 4: Big Data Management",
@@ -1858,7 +1846,7 @@
     "href": "02_Big_Data_Management/01-Big_Data_Basics_Landing.html#additional-readings-for-week-7",
     "title": "Big Data Basics",
     "section": "Additional Readings for Week 7",
-    "text": "Additional Readings for Week 7\n\nThe Big Data Paradigm\n\nAcademic overview\nOverview 2\nOverview 3\n\n\n\nDatabases\n\nBasics of Databases(SQL and NoSQL)\nWhat is a database?, what is a relational database?\nPython SQL Libraries\nSQLite in python\nSQLite schema table\nThree plus table joins\n\n\n\nData Storage\n\nThe first answer here is useful to read\nData Warehouses: Article 1, Article 2\nDatabases and Data Warehouses: Article 1, Article 2\nData Marts\nMDM\nDatabases, Data Warehouses, and Data Lake: Article 1, Article 2, Article 3\nData Lakes: Article 1, Article 2\nLake House\n\n\n\nBig Data Storage\n\nData pipelines: Article 1, Article 2\nHadoop Tutorial, Hadoop Architecture, Wikipedia article on Hadoop, What is Hadoop?, Another Intro to Hadoop\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "text": "Additional Readings for Week 7\n\nThe Big Data Paradigm\n\nAcademic overview\nOverview 2 (Suse)\nOverview 3 (Oracle)\n\n\n\nDatabases\n\nBasics of Databases(SQL and NoSQL)\nWhat is a database?, what is a relational database? (Oracle)\nPython SQL Libraries (realpython - a nice site but some stuff goes out of date!)\nSQLite in python (tutorial from pynative.com)\nSQLite schema table (sqlite.org documentation - a lot of other useful stuff there)\nThree plus table joins (learnsql.com)\n\n\n\nData Storage\n\nThe first answer here is useful to read\nData Warehouses: Article 1 (Oracle), Article 2 (Amazon)\nDatabases and Data Warehouses: Article 1, Article 2\nData Marts (IBM)\nMDM (SAS)\nDatabases, Data Warehouses, and Data Lake: Article 1, Article 2, Article 3\nData Lakes: Article 1, Article 2\nLake House (databricks - they actually have a lot of useful training resources as well!)\n\n\n\nBig Data Storage\n\nData pipelines: Article 1, Article 2\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
     "crumbs": [
       "Home",
       "Topic 4: Big Data Management",
