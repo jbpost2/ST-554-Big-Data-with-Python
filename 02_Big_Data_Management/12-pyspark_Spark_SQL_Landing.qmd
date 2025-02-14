@@ -20,14 +20,4 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 - <a href = "12-pyspark_Spark_SQL.html" target = "_blank">HTML version</a>
 - <a href = "PDFs/12-pyspark_Spark_SQL.pdf" target = "_blank">PDF version</a>
 
-
-## Additional Readings for Week 3
-
-Exploratory Data Analysis (EDA) is often the first step of dealing with data.  However, EDA is somewhat of an art and something that you get better at with experience.  Often people new to EDA don't know what they should be looking for!  Here are some articles that discuss different strategies for EDA.
-
-- <a href = "https://shopify.engineering/conducting-exploratory-data-analysis" target = "_blank">Shopify page</a>
-- <a href = "https://www.ibm.com/cloud/learn/exploratory-data-analysis" target = "_blank">IBM page</a>
-- <a href = "https://en.wikipedia.org/wiki/Exploratory_data_analysis" target = "_blank">Wikipedia page</a>
-- <a href = "https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm" target = "_blank">NIST page</a>
-
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

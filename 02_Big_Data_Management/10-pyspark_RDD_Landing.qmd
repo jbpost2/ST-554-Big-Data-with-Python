@@ -21,13 +21,18 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 - <a href = "PDFs/10-pyspark_RDD.pdf" target = "_blank">PDF version</a>
 
 
-## Additional Readings for Week 3
+## Additional Readings for Week 9
 
-Exploratory Data Analysis (EDA) is often the first step of dealing with data.  However, EDA is somewhat of an art and something that you get better at with experience.  Often people new to EDA don't know what they should be looking for!  Here are some articles that discuss different strategies for EDA.
+### pyspark
 
-- <a href = "https://shopify.engineering/conducting-exploratory-data-analysis" target = "_blank">Shopify page</a>
-- <a href = "https://www.ibm.com/cloud/learn/exploratory-data-analysis" target = "_blank">IBM page</a>
-- <a href = "https://en.wikipedia.org/wiki/Exploratory_data_analysis" target = "_blank">Wikipedia page</a>
-- <a href = "https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm" target = "_blank">NIST page</a>
+- <a href="https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_df.html" target="_blank">Quick-start guide</a>
+- <a href="https://towardsdatascience.com/beginners-guide-to-pyspark-bbe3b553b79f" target="_blank">Another guide</a>
+- <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank">SQL API</a>
+- <a href="https://spark.apache.org/docs/latest/api/python/user_guide/pandas_on_spark/index.html" target="_blank">pandas-on-Spark user guide</a>
+- <a href="https://towardsdatascience.com/run-pandas-as-fast-as-spark-f5eefe780c45" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">pandas-on-Spark</a> example
+
+### Looking for More?
+
+- <a href="https://awesomedataengineering.com/" target="_blank">Data Engineering Topics to Learn</a>
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
