@@ -3,7 +3,6 @@ title: "Data Flow, Data Warehouses, and Data Lakes"
 author: "Justin Post"
 output:
   xaringan::moon_reader:
-    seal: false
     lib_dir: libs
     css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
     nature:
@@ -38,8 +37,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -50,13 +49,6 @@ class: title-slide-section-red, middle
 
 # Data Flow, Data Warehouses, and Data Lakes
 Justin Post 
-
----
-layout: true
-
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
-
-
 
 ---
 
@@ -302,7 +294,7 @@ google, microsoft, and amazon (kineses for streaming) offer cloud managed servic
 
 - Also a host of open source tools that require management (and you can mix and match)
 
-- [Maybe feeling a little less overwhelmed?](https://mattturck.com/data2021/) 
+- [Maybe feeling a little less overwhelmed?](https://mattturck.com/landscape/mad2024.pdf)
 
 <!--Also open source tools like flink, spark, kafka but you have to manage them-->
 

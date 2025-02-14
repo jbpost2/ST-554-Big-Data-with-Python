@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>SQL Joins</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# `SQL` Joins
+Justin Post 
+
+---
+
+# Relational Databases
+
+- Often want to combine data from multiple tables to summarize/model
+
+&lt;img src="https://www4.stat.ncsu.edu/online/datasets/chinook-database-diagram.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Create Our Own Database and Do Joins!
+
+
+```python
+import sqlite3
+import pandas as pd
+con = sqlite3.connect(':memory:')
+cursor = con.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS dept (name TEXT, rank TEXT);")
+```
+
+```
+## &lt;sqlite3.Cursor object at 0x0000022F83CABE30&gt;
+```
+
+&lt;div style="float: left; width: 45%;"&gt;
+
+```python
+cursor.execute(
+  """
+    INSERT INTO 
+      dept (name, rank)
+    VALUES
+      ("Justin", "Associate"),
+      ("Jung-Ying", "Full"),
+      ("Arnab", "Associate"),
+      ("Spencer", "Full");
+    """)
+```
+
+```
+## &lt;sqlite3.Cursor object at 0x0000022F83CABE30&gt;
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+
+```python
+pd.read_sql("SELECT * FROM dept", con)
+```
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;!--comment--&gt;
+
+---
+
+# Create Our Own Database and Do Joins!
+
+
+```python
+cursor = con.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS seminar (name TEXT, topic TEXT);")
+```
+
+```
+## &lt;sqlite3.Cursor object at 0x0000022F83CDC260&gt;
+```
+&lt;div style="float: left; width: 45%;"&gt;
+
+```python
+cursor.execute(
+  """
+    INSERT INTO 
+      seminar (name, topic)
+    VALUES
+      ("Jung-Ying", "Genetics"),
+      ("Jonathan", "Design"),
+      ("Arnab", "ML"),
+      ("Dennis", "Non-parametrics");
+    """)
+```
+
+```
+## &lt;sqlite3.Cursor object at 0x0000022F83CDC260&gt;
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+
+```python
+pd.read_sql("SELECT * FROM seminar", con)
+```
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;!--comment--&gt;
+
+---
+
+# Joins
+
+Combining two (or more) tables in `SQL` is called doing a **join**
+
+- Many types of joins: `left_join()`, `right_join()`, `inner_join()`, `full_join()` are most common  
+
+- Inner Join: Returns records with matching keys in both tables
+
+&lt;img src="img/inner_join.png" width="350px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Inner Join: Returns records with matching keys
+
+&lt;div style="float: left; width: 45%;"&gt;
+`Dept`
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+`seminar`
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;div style = "content: ''; clear: both; display: table;"&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+&lt;br&gt;
+
+```python
+inner = """
+  SELECT d.name, d.rank, s.topic FROM dept as d
+  INNER JOIN seminar as s ON s.name = d.name
+  """
+pd.read_sql(inner, con)
+```
+
+```
+##         name       rank     topic
+## 0  Jung-Ying       Full  Genetics
+## 1      Arnab  Associate        ML
+```
+
+
+---
+
+# Inner Join: Returns records with matching keys
+
+&lt;div style="float: left; width: 45%;"&gt;
+`Dept`
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+`seminar`
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;div style = "content: ''; clear: both; display: table;"&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+&lt;br&gt;
+
+
+```python
+pd.merge(
+  left = pd.read_sql("SELECT * FROM dept", con), 
+  right = pd.read_sql("SELECT * FROM seminar", con),
+  how = "inner", 
+  on = "name")
+```
+
+```
+##         name       rank     topic
+## 0  Jung-Ying       Full  Genetics
+## 1      Arnab  Associate        ML
+```
+
+
+---
+
+# Joins
+
+- Left Join: Returns all records from the 'left' table and any matching records from the 'right' table
+
+&lt;img src="img/left_join.png" width="350px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Left Join: Return left table and matching right records
+
+&lt;div style="float: left; width: 45%;"&gt;
+`Dept`
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+`seminar`
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;div style = "content: ''; clear: both; display: table;"&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+&lt;br&gt;
+
+
+```python
+left = """
+  SELECT d.name, d.rank, s.topic FROM dept as d
+  LEFT JOIN seminar as s ON s.name = d.name
+  """
+pd.read_sql(left, con)
+```
+
+```
+##         name       rank     topic
+## 0     Justin  Associate      None
+## 1  Jung-Ying       Full  Genetics
+## 2      Arnab  Associate        ML
+## 3    Spencer       Full      None
+```
+
+
+---
+
+# Left Join: Return left table and matching right records
+
+&lt;div style="float: left; width: 45%;"&gt;
+`Dept`
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+`seminar`
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;div style = "content: ''; clear: both; display: table;"&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+&lt;br&gt;
+
+
+```python
+pd.merge(
+  left = pd.read_sql("SELECT * FROM dept", con), 
+  right = pd.read_sql("SELECT * FROM seminar", con),
+  how = "left", 
+  on = "name")
+```
+
+```
+##         name       rank     topic
+## 0     Justin  Associate       NaN
+## 1  Jung-Ying       Full  Genetics
+## 2      Arnab  Associate        ML
+## 3    Spencer       Full       NaN
+```
+
+
+---
+
+# Joins
+
+- Right Join: Returns all records from the 'right' table and any matching records from the 'left' table
+
+&lt;img src="img/right_join.png" width="350px" style="display: block; margin: auto;" /&gt;
+
+- Not supported in `sqlite`'s `SQL`!  Just do a left join and switch the tables.
+
+---
+
+# Joins
+
+- Outer Join: Returns all records when there is a match from the 'left' or 'right' table
+
+&lt;img src="img/outer_join.png" width="350px" style="display: block; margin: auto;" /&gt;
+
+- Not supported in `sqlite`'s `SQL`!  Have to do some work!  
+
+
+---
+
+# Outer Join: Return all matches from both tables
+
+&lt;div style="float: left; width: 45%;"&gt;
+`Dept`
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+`seminar`
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;div style = "content: ''; clear: both; display: table;"&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+&lt;br&gt;
+
+
+```python
+outer = """
+  SELECT d.name, d.rank, s.topic FROM dept as d
+      LEFT JOIN seminar as s ON s.name = d.name
+  UNION
+  SELECT s.name, d.rank, s.topic FROM seminar as s
+      LEFT JOIN dept as d ON s.name = d.name
+  """
+pd.read_sql(outer, con)
+```
+
+```
+##         name       rank            topic
+## 0      Arnab  Associate               ML
+## 1     Dennis       None  Non-parametrics
+## 2   Jonathan       None           Design
+## 3  Jung-Ying       Full         Genetics
+## 4     Justin  Associate             None
+## 5    Spencer       Full             None
+```
+
+
+---
+
+# Outer Join: Return all matches from both tables
+
+&lt;div style="float: left; width: 45%;"&gt;
+`Dept`
+
+```
+##         name       rank
+## 0     Justin  Associate
+## 1  Jung-Ying       Full
+## 2      Arnab  Associate
+## 3    Spencer       Full
+```
+&lt;/div&gt;
+&lt;div style="float: right; width: 45%;"&gt;
+`seminar`
+
+```
+##         name            topic
+## 0  Jung-Ying         Genetics
+## 1   Jonathan           Design
+## 2      Arnab               ML
+## 3     Dennis  Non-parametrics
+```
+&lt;/div&gt;
+&lt;div style = "content: ''; clear: both; display: table;"&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+&lt;br&gt;
+
+
+```python
+pd.merge(
+  left = pd.read_sql("SELECT * FROM dept", con), 
+  right = pd.read_sql("SELECT * FROM seminar", con),
+  how = "outer", 
+  on = "name")
+```
+
+```
+##         name       rank            topic
+## 0     Justin  Associate              NaN
+## 1  Jung-Ying       Full         Genetics
+## 2      Arnab  Associate               ML
+## 3    Spencer       Full              NaN
+## 4   Jonathan        NaN           Design
+## 5     Dennis        NaN  Non-parametrics
+```
+
+
+---
+
+# Cross Join
+
+Other `sqlite` supported join is the cross join
+
+- Returns every combination of rows from the left table with the right table
+
+
+```python
+cross = """
+  SELECT * FROM dept
+      CROSS JOIN seminar 
+  """
+pd.read_sql(cross, con)
+```
+
+```
+##          name       rank       name            topic
+## 0      Justin  Associate  Jung-Ying         Genetics
+## 1      Justin  Associate   Jonathan           Design
+## 2      Justin  Associate      Arnab               ML
+## 3      Justin  Associate     Dennis  Non-parametrics
+## 4   Jung-Ying       Full  Jung-Ying         Genetics
+## 5   Jung-Ying       Full   Jonathan           Design
+## 6   Jung-Ying       Full      Arnab               ML
+## 7   Jung-Ying       Full     Dennis  Non-parametrics
+## 8       Arnab  Associate  Jung-Ying         Genetics
+## 9       Arnab  Associate   Jonathan           Design
+## 10      Arnab  Associate      Arnab               ML
+## 11      Arnab  Associate     Dennis  Non-parametrics
+## 12    Spencer       Full  Jung-Ying         Genetics
+## 13    Spencer       Full   Jonathan           Design
+## 14    Spencer       Full      Arnab               ML
+## 15    Spencer       Full     Dennis  Non-parametrics
+```
+
+---
+
+# Other Joins
+
+Lots of other joins out there!
+
+- [See here for examples](https://www.sqlitetutorial.net/sqlite-join/) of how to implement them in sqlite!  
+
+    + The right sidebar has more than the standard joins.
+
+- Also ways to do [if then else type logic](https://www.sqlitetutorial.net/sqlite-case/), [intersections](https://www.sqlitetutorial.net/sqlite-intersect/), etc.
+
+- Can do basic [summaries using `SQL`](https://www.sqlitetutorial.net/sqlite-avg/) as well (including [grouping](https://www.sqlitetutorial.net/sqlite-group-by/)), but we'll just use `python` for that!
+
+
+---
+
+# To JupyterLab!
+
+- Let's look at the chinook database and more involved joins!
+
+
+---
+
+# Recap
+
+- Joins allows us to combine two (or more) tables into one
+
+- inner, left, and cross are all supported by `sqlite`
+
+- `pandas` allows for left, right, outer, inner, and cross via the `pd.merge()` function
+
+- Can write `SQL` code and use `pd.read_sql()`
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

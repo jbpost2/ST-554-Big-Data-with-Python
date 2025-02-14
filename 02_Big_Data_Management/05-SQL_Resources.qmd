@@ -7,4 +7,42 @@ editor_options:
 ---
 
 
+There is a ton more to learn about `SQL` if you are interested. We'll be using it a bit more to interact with `Spark`. `Spark` has a `pandas-on-Spark` API (way of interacting) and a `Spark-SQL` API. While `pandas` is generally easier, it isn't as functional as the `SQL` interface. 
+
+Luckily, we'll mostly use `SQL` to rename variables, select data, filter observations, and maybe create a new observation or two.  As such, it is useful to understand a bit more about it than we covered in lecture/readings. 
+
+
+## Variable Types
+
+We briefly discussed the difference between `python` using `None` and `SQLite` using `NULL`. Generally, `python` data types are going to get transformed to `SQLite` (or, later, `Spark`) when we move data in and out. 
+
+`SQLite` and `Python` types:
+
+- `SQLite` natively supports the following types: 
+
+    - NULL
+    - INTEGER
+    - REAL
+    - TEXT
+    - BLOB
+
+- The following `Python` types can be sent to `SQLite` and will be converted as follows:
+
+|`Python` type | `SQLite` type |
+|--------|------------------------|
+| `None` | `NULL`   |
+| `int`  | `INTEGER`|
+| `float`  | `REAL`|
+| `str` (depends on `text_factory`)  | `TEXT`|
+| `bytes`  | `BLOG`|
+
+
+## `SQLite` Practice (Non-graded)
+
+You should 
+
+- head to the [`sqlitetutorial.net`](https://www.sqlitetutorial.net/sqlite-select/) site and read through the tutorials based around the `SELECT` statement (there are 7 or so listed on the page linked).
+- then read through the five '`SQLite` function' pages (For example: <https://www.sqlitetutorial.net/sqlite-avg/>)
+- Lastly, for those that want more practice, head to [`datalemur.com`](https://datalemur.com/) and try some of the 'easy' tasks! This will help prepare you for the logic of our later `SQL` work in `Spark`!
+
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

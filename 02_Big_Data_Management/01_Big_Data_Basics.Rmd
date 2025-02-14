@@ -1,9 +1,8 @@
 ---
-title: "Big Data Concepts"
+title: "Big Data Basics"
 author: "Justin Post"
 output:
   xaringan::moon_reader:
-    seal: false
     lib_dir: libs
     css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
     nature:
@@ -38,18 +37,13 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
 #use_python("C:\\python\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
 
-layout: true
 
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
-
-
----
 
 # Where are we?
 
@@ -60,6 +54,7 @@ Now:
 - What is Big Data?
 - What are common things we'll run into with Big Data?
 - What issues are we going to try and tackle?
+- What software can be useful?
 
 ---
 
@@ -69,19 +64,31 @@ Useful definition:
 
 - Big data = data that you can't handle 'normally'
 
-      + Data won't fit on a single computer
-      + Data is constantly being added/updated
-      
+<!--too big to fit in memory, data being added constantly, etc.-->
+
+---
+
+# What is Big Data?
+
+Useful definition:
+
+- Big data = data that you can't handle 'normally'
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+
 - Big Data usually requires learning of new tools
 
-- [Want to feel overwhelmed?](https://mattturck.com/data2021/) 
+- [Want to feel overwhelmed?](https://mattturck.com/landscape/mad2024.pdf) 
 
 
 ---
 
 # What are Common Attributes of Big Data?
 
-- Fifth **V** = Value. ([Article 1](https://www.ibm.com/blogs/watson-health/the-5-vs-of-big-data/), [Article 2](https://www.geeksforgeeks.org/5-vs-of-big-data/))
+- Fifth **V** = [Value](https://www.ibm.com/think/topics/big-data-analytics)
 
 ```{r, echo = FALSE, fig.align='center', out.width = "650px"}
 knitr::include_graphics("img/fourvs.jpg")
@@ -109,11 +116,23 @@ knitr::include_graphics("img/fourvs.jpg")
 
 ---
 
+# Data and Model Pipelines
+
+In the end, we should have a reasonable idea of how data comes in, gets transformed/combined/etc., can be used to build models or predict an outcome!
+
+```{r, echo = FALSE, out.width = "700px", fig.cap = "Image from informatica.com", fig.align = 'center'}
+knitr::include_graphics("img/Data-Processing-Pipelines-patterns-informatica.png")
+```
+
+
+---
+
 # Recap
 
-- Big Data requires learning new tools
+- Big Data requires learning new tools & considering different algorithms
 
-- Big Data doesn't mean we have **everything**
+- Storage and retrieval of data is important
 
-- Statistics and machine learning can still be applied to Big Data but will require some modifications
+- Modeling and summarizing data can be done
 
+- Should consider overall process/pipeline of data from start to finish

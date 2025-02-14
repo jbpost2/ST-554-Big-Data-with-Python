@@ -3,7 +3,6 @@ title: "The Role of Statistics in Big Data"
 author: "Justin Post"
 output:
   xaringan::moon_reader:
-    seal: false
     lib_dir: libs
     css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
     nature:
@@ -38,120 +37,37 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
 
 
-layout: true
+# What Do Statisticians Do? 
 
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+- Understand and account for variability in data
 
-# What is Big Data?
+    + Populations & Samples
+    + Sampling Distributions and Likelihoods
+    + Inferences on the population
 
-Useful definition:
-
-- Big data = data that you can't handle 'normally'
-
-      + Data won't fit on a single computer
-      + Data is constantly being added/updated
-      
 
 ---
 
-# Do we still need statistics with Big Data?
+# Basic Inference Idea
 
 - Statisticians usually consider **populations** and **samples**
-<br><br><br><br><br><br><!-- Introduce/recap those terms and discuss the ideas of relating sample data to populations-->
 
-- Make assumptions about the data generating processes and try to make inference or predict using **sampling distributions**
-<!--Define sampling distribution and talk about CI and HT ideas-->
+- Example:
 
+    - Population - all customers at a bank  
+    - Parameter - p = proportion of customers willing to open an additional account
+    - Sample - Observe 40 *independent* customers  
+    - Statistic - Sample proportion = $\hat{p} = 8/40 = 0.2$
 
-
----
-
-# Sampling Distributions
-
-- Population - all customers at a bank  
-- Parameter - p = proportion of customers willing to open an additional account (historically 0.15)  
-- Sample - Observe 40 *independent* customers  
-- Statistic - Sample proportion = $\hat{p} = 8/40 = 0.2$
-
-
----
-
-# Sampling Distributions
-
-- Population - all customers at a bank  
-- Parameter - p = proportion of customers willing to open an additional account (historically 0.15)    
-- Sample - Observe 40 *independent* customers  
-- Statistic - Sample proportion = $\hat{p} = 8/40 = 0.2$
-<br><br><br>
-- Question: Is the (population) proportion greater than 0.15? 
+- Question: Bank makes money if the population proportion is greater than 0.15. Can we conclude that?
 - Answer:  ?? Is observing $\hat{p} = 8/40 = 0.2$ reasonable if $p = 0.15$ is the true proportion?
-
-
----
-
-# Data Variability
-
- - For $n=40$, how likely are sample proportions near 0.2 if the true proportion is 0.15?  
- 
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/p=0.15circles.png")
-```
-
-
----
-
-# Data Variability  
-
- - For $n=40$, how likely are sample proportions near 0.2 if the true proportion is 0.15?  
- 
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/p=0.15circles.png")
-```
-
-One possible sample: $\hat{p} = 6/40$
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/circles1.png")
-```
-
-
----
-
-# Data Variability
-
- - For $n=40$, how likely are sample proportions near 0.2 if the true proportion is 0.15?  
- 
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/p=0.15circles.png")
-```
-
-One possible sample: $\hat{p} = 8/40$
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/circles2.png")
-```
-
-
----
-
-# Data Variability
-
- - For $n=40$, how likely are sample proportions near 0.2 if the true proportion is 0.15?  
- 
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/p=0.15circles.png")
-```
-
-One possible sample: $\hat{p} = 11/40$
-```{r, out.width = '600px', echo = FALSE}
-knitr::include_graphics("img/circles3.png")
-```
-
 
 ---
 
@@ -232,27 +148,20 @@ plt.close()
 
 - Assume something about the population  
 
-    + Sample data  
-    
-    + Estimate things with the data  
-    
-    + Understand variability (distribution) in estimators  
-    
-- Use probability to quantify uncertainty in estimate  
+    + Collect data around a quantity of interest
+    + Estimate the quantity
+    + Use probability to quantify uncertainty in estimate  
 
 - If result unlikely to be seen under assumptions, reject assumption  
-
-- Otherwise, fail to reject assumption  
 
 
 ---
 
-# Do we still need statistics with Big Data?
+# $n =$ all or $n = 1$
 
-- Sometimes we can record every user action... don't we have everything?  Is there any variability to consider?
+- Sometimes we can record every user action... don't we have everything?  
 
-    + i.e. "With enough data, the numbers speak for themselves"...
-    
+    + Is there any variability to consider?
     + Is our sample size the population size?  **n = all**
 
 <!-- 
@@ -260,119 +169,130 @@ Still can consider the data as a sample from a **super population** and try to m
 Is all the data really collected?
 -->
 
-
 ---
 
-# **n = 1** 
+# $n =$ all or $n = 1$
 
-- On the other hand, can now consider **user-level** (or observational unit level) modeling!
+- Can now consider **user-level** (or observational unit level) modeling!
 
     + Example [modeling user intention on social media networks](https://www.sciencedirect.com/science/article/pii/S0268401219313325) to detect depression
 
+```{r, echo = FALSE, fig.align='center', out.width = "700px"}
+knitr::include_graphics("img/depression.jpg")
+```
 
 
 ---
 
-# Rare Events in Big Data
+# What Do Statisticians Do?
 
-Can happen more often than you'd think!
+.left35[
+- Carefully consider data sources and **bias**
+
+    + Combining data sets
+    + Understanding data quality
+    + Causal relationships
+]
+
+.right65[
+```{r, echo = FALSE, fig.align='center', out.width = "400px"}
+knitr::include_graphics("img/RCTs_RWD_Combo.png")
+```
+]
+
+---
+
+# What Do Statisticians Do?
+
+- Model data
+
+    + Define assumptions, model structure, and relationships
+    + Investigate behavior <!--make inferences, understand importance, etc.-->
+    + Provide error measurements
+
+```{r, echo = FALSE, fig.align='center', out.width = "700px"}
+knitr::include_graphics("img/functional_data_ideas.png")
+```
+
+---
+
+# Modeling Big Data
+
+- Explaining variable importance (Random forests, Deep learning)
+- Understanding how models relate (Trees as MLR models, a framework for penalized regression)
+- Updating models with streaming data 
+
+```{r, echo = FALSE, fig.align='center', out.width = "700px", fig.cap="https://academic.oup.com/biomet/article/110/4/841/7048657"}
+knitr::include_graphics("img/updating_beta.png")
+```
+
+
+---
+
+# What Do Statisticians Do?
+
+- Consider how to be smarter with data
+
+```{r, echo = FALSE, fig.align='center', out.width = "600px"}
+knitr::include_graphics("img/training_cost.png")
+```
+
+
+---
+
+# Thinking Critically About Models
+
+
+<div style = "float: left; width: 35%;">
+```{r, echo = FALSE, fig.align='center', out.width = "400px"}
+knitr::include_graphics("img/accuracy_images.png")
+```
+</div>
+
+<div style = "float: right; width: 60%;">
+
+<ul>
+<li> Statistical accuracy and computational cost trade-off</li>
+  <ul>
+    <li> Active Learning - which data to acquire (DOE) and causal relationships</li>
+    <li> Coresets - a small, weighted subset of the data, that approximates the full dataset</li>
+    <li> Divide and conquer algorithms</li>
+  </ul>
+</ul>
+</div>
+
+
+
+<!--identify subsets of data that capture the essential patterns-->
+<!--Parallel computation with guaranteed performance when recombining-->
+
+---
+
+# What Do Statisticians Do?
+
+- Understand randomness and rare events
 
 - If you have enough data, you'll eventually see weird things just by chance (similar to multiple testing idea in hypothesis testing)
 
 
-
 ---
 
-# Rare Events in Big Data
+# What Do Statisticians Do?
 
-Can happen more often than you'd think!
+- Understand randomness and rare events
 
 - If you have enough data, you'll eventually see weird things just by chance (similar to multiple testing idea in hypothesis testing)
 
-- **Independence of Events**:
+- Rare Events & Expected Numbers
 
-    - Two events A and B are independent if $P(A\cap B)=P(A)P(B)$
- 
-    - Intuitively implies that knowledge of one event tells nothing about the probability of another
-
-
----
-
-# Rare Events in Big Data
-
-Is a certain type of coin fair (equal probability of flipping a head and a tail)?  
-
-- Assume $p = P(Head) = 0.5$
-
-- Experiment:
-
-    + Flip one of these coins 10 times
-    + If 10 heads or 10 tails appear, declare coin **biased**
+    -  Suppose we have an event that occurs with probability $p$
+    - We run $k$ different **independent** experiments$$P(\mbox{At least 1 occurrence})=1-(1-p)^{k}$$
+    - We would expect to see the following number of occurrences of the event$$E(\mbox{# of occurrences}) = k*p$$
 
 
 ---
 
-# Rare Events in Big Data
-
-Is a certain type of coin fair (equal probability of flipping a head and a tail)?  
-
-- Assume $p = P(Head) = 0.5$
-
-- Experiment:
-
-    + Flip one of these coins 10 times
-    + If 10 heads or 10 tails appear, declare coin **biased**
-
-$$P(\mbox{False Positive}) = P(\mbox{Concluding coin is biased}) = P(10~heads) + P(10~tails)$$
-$$ = (0.5)^{10} + (0.5)^{10} = 0.001953125$$
-Very rare!  
-
-
----
-
-# Rare Events in Big Data
-
-- Suppose we now look at 1000 separate (independent) runs of the experiment
-
-- Seeing any 1 coin of the 1000 being declared biased is quite likely!
-$$P(\mbox{All 1000 coins identified as fair}) = P(\mbox{1st fair}\cap \mbox{2nd fair}\cap ... \mbox{1000th fair})$$
-$$= (1-0.001953125)^{1000} = 0.1416$$
-$$P(\mbox{At least 1 false positive}) = P(\mbox{At least 1 coin of the 1000 is classified as biased})$$
-$$= 1-0.1416 = 0.8584$$
-
-
----
-
-# Rare Events in Big Data
-
-- Suppose we now look at 1000 separate (independent) runs of the experiment
-
-- Seeing any 1 coin of the 1000 being declared biased is quite likely!
-$$P(\mbox{All 1000 coins identified as fair}) = P(\mbox{1st fair}\cap \mbox{2nd fair}\cap ... \mbox{1000th fair})$$
-$$= (1-0.001953125)^{1000} = 0.1416$$
-$$P(\mbox{At least 1 false positive}) = P(\mbox{At least 1 coin of the 1000 is classified as biased})$$
-$$= 1-0.1416 = 0.8584$$
-
-- We'd actually **expect** 1000*0.00195 = 1.95 coins to be classified as biased here!
-
-
----
-
-# Rare Events & Expected Numbers
-
-- Suppose we have an event that occurs with probability $p$
-
-- We run $k$ different **independent** experiments
-
-$$P(\mbox{At least 1 occurrence})=1-(1-p)^{k}$$
-- We would expect to see the following number of occurrences of the event
-
-$$E(\mbox{# of occurrences}) = k*p$$
-
-
----
-
-# Example
+# Rare Events Example
 
 - Suppose you have an app that screens phone calls for people
 $$P(\mbox{Detected}|\mbox{Spam}) = 0.99999$$
@@ -380,28 +300,15 @@ $$P(\mbox{Detected}|\mbox{Non-spam}) = 0.00002$$
 And generally, you know that
 $$P(\mbox{Spam}) = 0.2, P(\mbox{Non-spam}) = 0.8$$
 
-
-
 ---
 
-# Example
+# Rare Events Example
 
 - Given a call is detected as spam, what is the probability it wasn't a spam call?
 
 $$P(\mbox{Non-spam}|\mbox{Detected}) = \frac{P(\mbox{Detected}|\mbox{Non-spam})P(\mbox{Non-spam})}{P(\mbox{Det}|\mbox{Non-spam})P(\mbox{Non-spam})+P(\mbox{Det }|\mbox{Spam})P(\mbox{Spam})}$$
 $$= \frac{0.00002*0.8}{0.00002*0.8+0.99999*0.2} = 0.00008$$
-
-
----
-
-# Example
-
-- Given a call is detected as spam, what is the probability it wasn't a spam call?
-
-$$P(\mbox{Non-spam}|\mbox{Detected}) = \frac{P(\mbox{Detected}|\mbox{Non-spam})P(\mbox{Non-spam})}{P(\mbox{Det}|\mbox{Non-spam})P(\mbox{Non-spam})+P(\mbox{Det }|\mbox{Spam})P(\mbox{Spam})}$$
-$$= \frac{0.00002*0.8}{0.00002*0.8+0.99999*0.2} = 0.00008$$
-- Our event of interest!  Given a call is detected as spam, we were wrong. $p = 0.00008$
-
+- Our event of interest: Given a call is detected as spam, we were wrong has a tiny probability of happening!
 
 ---
 
@@ -423,9 +330,12 @@ $$= \frac{0.00002*0.8}{0.00002*0.8+0.99999*0.2} = 0.00008$$
 
 # Recap
 
-- Big Data requires learning new tools
+Although big data has a lot of info, statisticians help us extract that info in a meaningful way!
 
-- Big Data doesn't mean we have **everything**
+Some things statisticians do: 
 
-- Statistics and machine learning can still be applied to Big Data but will require some modifications
-
+- Understand and account for variability in data
+- Carefully consider data sources and bias
+- Model data
+- Consider how to be smarter with data
+- Understand randomness and rare events

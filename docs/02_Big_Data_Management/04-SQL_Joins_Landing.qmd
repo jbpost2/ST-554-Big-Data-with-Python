@@ -10,7 +10,7 @@ The video below discusses SQL joins. These actions are used to combine data acro
 
 I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
-The notebook written in the video is available [here](https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/02_Big_Data_Management/Big_Data_Management_Notebook.ipynb).
+The notebook written in the video is available [here](https://jbpost2.github.io/ST-554-Big-Data-with-Python/02_Big_Data_Management/Big_Data_Management_Notebook.html).
 
 **Update video**
 

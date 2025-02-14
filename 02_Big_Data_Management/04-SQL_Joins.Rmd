@@ -37,8 +37,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -47,14 +47,8 @@ options(reticulate.repl.quiet = TRUE)
 layout: false
 class: title-slide-section-red, middle
 
-# SQL Joins
+# `SQL` Joins
 Justin Post 
-
----
-layout: true
-
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
-
 
 ---
 
@@ -63,7 +57,7 @@ layout: true
 - Often want to combine data from multiple tables to summarize/model
 
 ```{r, echo = FALSE, fig.align='center', out.width = '600px'}
-knitr::include_graphics("img/dbDiagram.jpg")
+knitr::include_graphics("https://www4.stat.ncsu.edu/online/datasets/chinook-database-diagram.png")
 ```
 
 
@@ -134,7 +128,7 @@ pd.read_sql("SELECT * FROM seminar", con)
 
 # Joins
 
-Combining two (or more) tables in SQL is called doing a **join**
+Combining two (or more) tables in `SQL` is called doing a **join**
 
 - Many types of joins: `left_join()`, `right_join()`, `inner_join()`, `full_join()` are most common  
 
@@ -285,7 +279,7 @@ pd.merge(
 knitr::include_graphics("img/right_join.png")
 ```
 
-- Not supported in sqlite's SQL!  Just do a left join and switch the tables.
+- Not supported in `sqlite`'s `SQL`!  Just do a left join and switch the tables.
 
 ---
 
@@ -297,7 +291,7 @@ knitr::include_graphics("img/right_join.png")
 knitr::include_graphics("img/outer_join.png")
 ```
 
-- Not supported in sqlite's SQL!  Have to do some work!  
+- Not supported in `sqlite`'s `SQL`!  Have to do some work!  
 
 
 ---
@@ -367,7 +361,7 @@ pd.merge(
 
 # Cross Join
 
-Other sqlite supported join is the cross join
+Other `sqlite` supported join is the cross join
 
 - Returns every combination of rows from the left table with the right table
 
@@ -391,7 +385,7 @@ Lots of other joins out there!
 
 - Also ways to do [if then else type logic](https://www.sqlitetutorial.net/sqlite-case/), [intersections](https://www.sqlitetutorial.net/sqlite-intersect/), etc.
 
-- Can do basic [summaries using SQL](https://www.sqlitetutorial.net/sqlite-avg/) as well (including [grouping](https://www.sqlitetutorial.net/sqlite-group-by/)), but we'll just use python for that!
+- Can do basic [summaries using `SQL`](https://www.sqlitetutorial.net/sqlite-avg/) as well (including [grouping](https://www.sqlitetutorial.net/sqlite-group-by/)), but we'll just use `python` for that!
 
 
 ---
@@ -407,9 +401,11 @@ Lots of other joins out there!
 
 - Joins allows us to combine two (or more) tables into one
 
-- inner, left, and cross are all supported by sqlite
+- inner, left, and cross are all supported by `sqlite`
 
-- `pandas` allows for left, right, outer, inner, and cross via the `merge()` function
+- `pandas` allows for left, right, outer, inner, and cross via the `pd.merge()` function
+
+- Can write `SQL` code and use `pd.read_sql()`
 
 
 

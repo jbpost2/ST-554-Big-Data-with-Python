@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-02-13">
+<meta name="dcterms.date" content="2025-02-14">
 
-<title>basic_use_of_python – ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Basic Use of Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,13 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -97,14 +91,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -115,36 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -152,17 +144,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/02-Basic_Use_Of_Python.html">Basic Use of Python</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/02-Basic_Use_Of_Python.html">Basic Use of Python</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -171,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -187,9 +180,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -270,9 +263,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -335,9 +328,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -382,9 +375,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Topic 4: Big Data Management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -460,16 +453,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basic-use-of-python" id="toc-basic-use-of-python" class="nav-link active" data-scroll-target="#basic-use-of-python">Basic Use of Python</a>
-  <ul class="collapse">
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
   <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables">Creating Variables</a></li>
   <li><a href="#object-types" id="toc-object-types" class="nav-link" data-scroll-target="#object-types">Object Types</a></li>
   <li><a href="#multiple-assignment" id="toc-multiple-assignment" class="nav-link" data-scroll-target="#multiple-assignment">Multiple Assignment</a></li>
@@ -483,7 +474,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#continuing-a-line-of-code" id="toc-continuing-a-line-of-code" class="nav-link" data-scroll-target="#continuing-a-line-of-code">Continuing a Line of Code</a></li>
   <li><a href="#functions-methods" id="toc-functions-methods" class="nav-link" data-scroll-target="#functions-methods">Functions &amp; Methods</a></li>
   <li><a href="#video-demo" id="toc-video-demo" class="nav-link" data-scroll-target="#video-demo">Video Demo</a></li>
-  </ul></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
@@ -491,8 +481,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/02-Basic_Use_Of_Python.html">Basic Use of Python</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Basic Use of Python</h1>
 </div>
 
 
@@ -503,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-02-13</p>
+      <p class="date">2025-02-14</p>
     </div>
   </div>
   
@@ -511,13 +502,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/02-Basic_Use_Of_Python.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="basic-use-of-python" class="level1">
-<h1>Basic Use of Python</h1>
 <blockquote class="blockquote">
 <p>Justin Post (Some notes modified from Dr.&nbsp;Eric Chi)</p>
 </blockquote>
@@ -532,7 +519,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When you open a new notebook in <code>colab</code> by default it will use python to run any ‘code cells’ (this can be changed in the ‘notebook settings’ under the View -&gt; ‘Notebook info’ menu).</p>
 <p>There are two types of cells: - Code cells: allow you to submit code - Text cells: allow you to write text using ‘markdown’ (we’ll learn more about that shortly!)</p>
 <p>These can be added in the top left of the notebook (<code>+ Code</code> and <code>+ Text</code>). Below is a python code cell. These can be run by clicking ‘shift-enter’ when you click on the cell.</p>
-<div id="3fae54e0" class="cell" data-outputid="cc67904d-e28c-4033-b2bd-ce39455dae62">
+<div class="cell" data-outputid="cc67904d-e28c-4033-b2bd-ce39455dae62">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A comment - this text is not evaluated</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="op">+</span> <span class="dv">6</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">*</span> <span class="dv">2</span></span>
@@ -544,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Only the last bit of code is ‘printed’ unless you specifically print it. We’ll do this much of the time with <code>print()</code> function.</li>
 </ul>
-<div id="783b9bad" class="cell" data-outputid="373a352c-e833-40f6-949e-5a251c52c37f">
+<div class="cell" data-outputid="373a352c-e833-40f6-949e-5a251c52c37f">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># % is mod, // is floor</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">/</span> <span class="dv">3</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">10</span> <span class="op">%</span> <span class="dv">3</span>)</span>
@@ -558,32 +545,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Operators are applied left to right, except for exponentiation</li>
 </ul>
-<div id="67f6af3f" class="cell" data-outputid="9290c091-06ba-43cb-fff4-1343ddf939e5">
+<div class="cell" data-outputid="9290c091-06ba-43cb-fff4-1343ddf939e5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span> <span class="op">-</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="uqMpAc6qiYko" class="cell" data-outputid="405c74ca-ddd1-4347-d481-14a72f39dc66">
+<div class="cell" data-outputid="405c74ca-ddd1-4347-d481-14a72f39dc66">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span> <span class="op">+</span> <span class="dv">4</span>) <span class="op">-</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>2</code></pre>
 </div>
 </div>
-<div id="33bd679e" class="cell" data-outputid="8358fab3-4b40-4027-b1d4-a6068164768a">
+<div class="cell" data-outputid="8358fab3-4b40-4027-b1d4-a6068164768a">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="op">**</span><span class="dv">2</span><span class="op">**</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>43046721</code></pre>
 </div>
 </div>
-<div id="IZG_CbJMiaoH" class="cell" data-outputid="648f1440-21b5-44c8-d138-b45023876766">
+<div class="cell" data-outputid="648f1440-21b5-44c8-d138-b45023876766">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#interpreted this way</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="op">**</span>(<span class="dv">2</span><span class="op">**</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>43046721</code></pre>
 </div>
 </div>
-<div id="c9a725ec" class="cell" data-outputid="7042ac37-4b17-4970-aec5-3eda5b32774f">
+<div class="cell" data-outputid="7042ac37-4b17-4970-aec5-3eda5b32774f">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#not this</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">3</span><span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -595,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="creating-variables" class="level2">
 <h2 class="anchored" data-anchor-id="creating-variables">Creating Variables</h2>
 <p>You can create an object using <code>=</code>. This saves the result in a variable you can call later.</p>
-<div id="dc18a27e" class="cell" data-outputid="aeeaeedf-8de2-4402-eff1-5772e66bdf58">
+<div class="cell" data-outputid="aeeaeedf-8de2-4402-eff1-5772e66bdf58">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello! "</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">'How are you?'</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
@@ -608,7 +595,7 @@ Hello! How are you?</code></pre>
 <ul>
 <li>Strings are automatically concatenated using the <code>+</code> operator. As with most programming languages, there are special characters like <code>\</code> which indicate something. For instance, <code>\n</code> is a line break. These appear differently depending on if you print something or just view the object.</li>
 </ul>
-<div id="348bfbe4" class="cell" data-outputid="f07f0fbd-ee0c-49da-8c42-0bec6518f1fc">
+<div class="cell" data-outputid="f07f0fbd-ee0c-49da-8c42-0bec6518f1fc">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"Hello! </span><span class="ch">\n</span><span class="st">"</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">'Then I asked, "How are you?"'</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -616,20 +603,20 @@ Hello! How are you?</code></pre>
 <pre><code>'Hello! \n'</code></pre>
 </div>
 </div>
-<div id="H4up8xGHjK3r" class="cell" data-outputid="97453851-130a-4120-d001-035c6b14b162">
+<div class="cell" data-outputid="97453851-130a-4120-d001-035c6b14b162">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello! 
 </code></pre>
 </div>
 </div>
-<div id="LW0V8UQJjL2n" class="cell" data-outputid="43b1814b-c31a-4fff-d8f6-aa89d3450b80">
+<div class="cell" data-outputid="43b1814b-c31a-4fff-d8f6-aa89d3450b80">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>'Hello! \nThen I asked, "How are you?"'</code></pre>
 </div>
 </div>
-<div id="FpbdQ2DvjNYO" class="cell" data-outputid="a5a83bbc-63a4-4986-c53a-bdfd4e41f574">
+<div class="cell" data-outputid="a5a83bbc-63a4-4986-c53a-bdfd4e41f574">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">+</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello! 
@@ -639,7 +626,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Variables can be used to simplify and generalize your code</li>
 </ul>
-<div id="87504cdd" class="cell" data-outputid="c3019a86-0d39-4549-b9f2-9312da4f7d7b">
+<div class="cell" data-outputid="c3019a86-0d39-4549-b9f2-9312da4f7d7b">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>degrees_celsius <span class="op">=</span> <span class="fl">26.0</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">9</span> <span class="op">/</span> <span class="dv">5</span> <span class="op">*</span> degrees_celsius <span class="op">+</span> <span class="dv">32</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>degrees_celsius <span class="op">=</span> <span class="dv">100</span></span>
@@ -661,7 +648,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Text Type: <code>str</code></li>
 </ul>
-<div id="cec24fbe" class="cell" data-outputid="e57b0df1-12e8-4f24-f9c6-2c4bb5ed728f">
+<div class="cell" data-outputid="e57b0df1-12e8-4f24-f9c6-2c4bb5ed728f">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"text string"</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -671,7 +658,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Numeric Types: <code>int</code>, <code>float</code></li>
 </ul>
-<div id="c1854ce8" class="cell" data-outputid="2d0f7b2a-9cc6-4545-9f48-ced6d5b8bd4c">
+<div class="cell" data-outputid="2d0f7b2a-9cc6-4545-9f48-ced6d5b8bd4c">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">10.4</span></span>
@@ -684,7 +671,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Boolean Type: <code>bool</code></li>
 </ul>
-<div id="7a3f8be2" class="cell" data-outputid="a70bfc25-bea8-4208-af61-5a23c7716a59">
+<div class="cell" data-outputid="a70bfc25-bea8-4208-af61-5a23c7716a59">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="va">True</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -694,7 +681,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Sequence Types: <code>list</code>, <code>tuple</code></li>
 </ul>
-<div id="b3291e5d" class="cell" data-outputid="4eae85eb-9b63-4164-c288-4652aeae92e0">
+<div class="cell" data-outputid="4eae85eb-9b63-4164-c288-4652aeae92e0">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">10</span>, <span class="st">"a"</span>, <span class="fl">11.5</span>, <span class="va">True</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -704,7 +691,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Mapping Type: <code>dict</code></li>
 </ul>
-<div id="42476271" class="cell" data-outputid="60b1349f-5139-4de3-ed77-74a0246f566e">
+<div class="cell" data-outputid="60b1349f-5139-4de3-ed77-74a0246f566e">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="st">"key1"</span>: <span class="st">"value1"</span>,</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">"key2"</span>: [<span class="st">"value2"</span>, <span class="dv">10</span>]}</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -720,7 +707,7 @@ Then I asked, "How are you?"</code></pre>
 <ul>
 <li>Assigning multiple variables on one line is easy in <code>python</code></li>
 </ul>
-<div id="b0c90adf" class="cell" data-outputid="4a78d2d4-7f70-43ad-d25e-3678b299495a">
+<div class="cell" data-outputid="4a78d2d4-7f70-43ad-d25e-3678b299495a">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x, y, z <span class="op">=</span> <span class="st">"Orange"</span>, <span class="st">"Banana"</span>, <span class="st">"Cherry"</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span>
@@ -731,7 +718,7 @@ Banana
 Cherry</code></pre>
 </div>
 </div>
-<div id="5a01856d" class="cell" data-outputid="48b9ef4e-5228-4b70-d239-325e56c6d82f">
+<div class="cell" data-outputid="48b9ef4e-5228-4b70-d239-325e56c6d82f">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> y <span class="op">=</span> z <span class="op">=</span> <span class="st">"Orange"</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -741,7 +728,7 @@ Orange</code></pre>
 </div>
 </div>
 <p>The use of <code>*</code> can allow you to ‘pack’ the remaining values into one object. Placement of the <code>*</code> is important here!</p>
-<div id="ce44c606" class="cell" data-outputid="918fa641-7e33-49a4-f79d-6b64fa983a2b">
+<div class="cell" data-outputid="918fa641-7e33-49a4-f79d-6b64fa983a2b">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x, <span class="op">*</span>y <span class="op">=</span> <span class="st">"Orange"</span>, <span class="st">"Banana"</span>, <span class="st">"Cherry"</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span>
@@ -754,7 +741,7 @@ Orange</code></pre>
 <pre><code>list</code></pre>
 </div>
 </div>
-<div id="09d3ce8f" class="cell" data-outputid="78ecbd56-f764-47db-fd78-0db5c207cf54">
+<div class="cell" data-outputid="78ecbd56-f764-47db-fd78-0db5c207cf54">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>x, y <span class="op">=</span> <span class="st">"Orange"</span>, <span class="st">"Banana"</span>, <span class="st">"Cherry"</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -769,71 +756,71 @@ Cherry</code></pre>
 <section id="variable" class="level2">
 <h2 class="anchored" data-anchor-id="variable"><code>_</code> Variable</h2>
 <p>When doing python interactively (as with a JupyterLab notebook), the last evaluated expression is assigned to the variable <code>_</code>. This carries across code cells.</p>
-<div id="187e2555" class="cell" data-outputid="7e08eff0-7c4a-4383-9246-f6d8dad0944e">
+<div class="cell" data-outputid="7e08eff0-7c4a-4383-9246-f6d8dad0944e">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x, y, z <span class="op">=</span> <span class="st">"Orange"</span>, <span class="st">"Banana"</span>, <span class="st">"Cherry"</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'Orange'</code></pre>
 </div>
 </div>
-<div id="3ecb216c" class="cell" data-outputid="5dcb546b-7e3a-4bb0-b868-361abc27ad64">
+<div class="cell" data-outputid="5dcb546b-7e3a-4bb0-b868-361abc27ad64">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>'Orange'</code></pre>
 </div>
 </div>
-<div id="297a346d" class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="0fe0762b-0237-4501-e800-8f530cefb0db">
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="0fe0762b-0237-4501-e800-8f530cefb0db">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>'Orange'</code></pre>
 </div>
 </div>
-<div id="443fa677" class="cell" data-outputid="5a57a8ba-c638-47c9-a0e1-09545cd73de9">
+<div class="cell" data-outputid="5a57a8ba-c638-47c9-a0e1-09545cd73de9">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print doesn't count toward the _!</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Banana</code></pre>
 </div>
 </div>
-<div id="9a45c8af" class="cell" data-outputid="cc1317d2-0ef9-40c2-b617-36230e7412f6">
+<div class="cell" data-outputid="cc1317d2-0ef9-40c2-b617-36230e7412f6">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>'Orange'</code></pre>
 </div>
 </div>
-<div id="1383cfd1" class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="1b1455ae-0ab5-4560-8b1f-54485f4377f0">
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="1b1455ae-0ab5-4560-8b1f-54485f4377f0">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>'Banana'</code></pre>
 </div>
 </div>
-<div id="IriGTJDQkcIr" class="cell" data-outputid="b719ced0-9195-46c1-f748-fbbc6563a8ba">
+<div class="cell" data-outputid="b719ced0-9195-46c1-f748-fbbc6563a8ba">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>'Banana'</code></pre>
 </div>
 </div>
 <p>We’ll use this <code>_</code> operator when doing computations where we don’t need to save things. For instance,</p>
-<div id="37d822ae" class="cell" data-outputid="58af4ea8-c7fb-4b84-d0e5-f8e10adaa0fe">
+<div class="cell" data-outputid="58af4ea8-c7fb-4b84-d0e5-f8e10adaa0fe">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>degrees_celcius <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">9</span> <span class="op">/</span> <span class="dv">5</span>) <span class="op">*</span> degrees_celcius <span class="op">+</span> <span class="dv">32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>212.0</code></pre>
 </div>
 </div>
-<div id="d436adee" class="cell" data-outputid="007c4f21-4a7d-4d82-e9d1-0100d9f35d6e">
+<div class="cell" data-outputid="007c4f21-4a7d-4d82-e9d1-0100d9f35d6e">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>202.0</code></pre>
 </div>
 </div>
-<div id="fe5904ed" class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="b528f081-2499-4f5e-f0e6-53572a3b79bb">
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="b528f081-2499-4f5e-f0e6-53572a3b79bb">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">9</span> <span class="op">/</span> <span class="dv">5</span>) <span class="op">*</span> degrees_celcius <span class="op">+</span> <span class="dv">32</span> <span class="op">-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>202.0</code></pre>
 </div>
 </div>
-<div id="3ae5ee67" class="cell" data-outputid="e6791252-61d0-4944-b376-c5aad3c8cbf3">
+<div class="cell" data-outputid="e6791252-61d0-4944-b376-c5aad3c8cbf3">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">*</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>2020.0</code></pre>
@@ -841,7 +828,7 @@ Cherry</code></pre>
 </div>
 <p>Where it really comes in handy is as a placeholder variable when doing computations in a for loop or list comprehension (again covered later more fully!).</p>
 <p>Here we replace the index of the for loop with <code>_</code>.</p>
-<div id="9e000ff5" class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="388107ef-a80e-4e97-e86c-6d138ae6a3ba">
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="388107ef-a80e-4e97-e86c-6d138ae6a3ba">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>sum_numbers <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">#no need to create a variable for the index</span></span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">101</span>):</span>
@@ -857,7 +844,7 @@ Cherry</code></pre>
 <h2 class="anchored" data-anchor-id="copying-vs-referencing">Copying vs Referencing</h2>
 <p><em>Careful</em> when modifying elements of a compound object: ‘assignment statements do not copy objects, they create bindings between a target (a spot in computer memory) and an object’!</p>
 <p>If you come from R, this is a very different behavior!</p>
-<div id="af5787fd" class="cell" data-outputid="bf0e397c-458d-4213-b2e7-5f5f89e37d57">
+<div class="cell" data-outputid="bf0e397c-458d-4213-b2e7-5f5f89e37d57">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Changing the original compound object (list) modifies both variables</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co">#First, create a 'list' of four values</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="st">"Cats Rule!"</span>]</span>
@@ -870,7 +857,7 @@ Cherry</code></pre>
 </div>
 </div>
 <p>We can modify a list element by using <code>[]</code> after the object name. Note that <code>python</code> starts counting at <code>0</code>. - Here we access and overwrite the <code>3</code> element (fourth element in the list)</p>
-<div id="Z6aUOAZ9m-nW" class="cell" data-outputid="98b51b3d-6101-4967-c5f6-a4121e7850e0">
+<div class="cell" data-outputid="98b51b3d-6101-4967-c5f6-a4121e7850e0">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Modifying x here actually modifies y too!</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>] <span class="op">=</span> <span class="st">"Dogs rule!"</span></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -882,7 +869,7 @@ Cherry</code></pre>
 <li>If you want to avoid this behavior, you can create a copy of the object instead of a reference</li>
 <li>To do so, we use the <code>.copy()</code> method. Methods are like functions but we append them to the rear of the object after a <code>.</code></li>
 </ul>
-<div id="2dd0592e" class="cell" data-outputid="332eb3f7-8a5e-4e2e-da39-509da7e8eb9c">
+<div class="cell" data-outputid="332eb3f7-8a5e-4e2e-da39-509da7e8eb9c">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Can create a (shallow) copy of the object rather than point to the same object in memory</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x.copy()</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">10</span></span>
@@ -915,7 +902,7 @@ Cherry</code></pre>
 <ul>
 <li>Quite often we want to take a value, add to it, and replace the old value</li>
 </ul>
-<div id="687e0a8b" class="cell" data-outputid="e216cf03-4aa5-42ec-e389-831d4f94d2fb">
+<div class="cell" data-outputid="e216cf03-4aa5-42ec-e389-831d4f94d2fb">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">=</span> winnings <span class="op">+</span> <span class="dv">20</span></span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>winnings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -926,7 +913,7 @@ Cherry</code></pre>
 <ul>
 <li>‘Augmented assignment’ gives a shorthand for doing this</li>
 </ul>
-<div id="7bf57f05" class="cell" data-outputid="c07ed56d-c209-43d8-90f2-16eda40b04a3">
+<div class="cell" data-outputid="c07ed56d-c209-43d8-90f2-16eda40b04a3">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">+=</span> <span class="dv">20</span></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>winnings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -937,7 +924,7 @@ Cherry</code></pre>
 <ul>
 <li>This works for all operators except negation</li>
 </ul>
-<div id="f508ad20" class="cell" data-outputid="388414f7-3ee2-4048-ebf6-a334e95e6258">
+<div class="cell" data-outputid="388414f7-3ee2-4048-ebf6-a334e95e6258">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subtraction</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>winnings</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">-=</span> <span class="dv">30</span></span>
@@ -946,7 +933,7 @@ Cherry</code></pre>
 <pre><code>90</code></pre>
 </div>
 </div>
-<div id="wP4klnEenicN" class="cell" data-outputid="b7e2ab76-4e05-4736-c298-002e59d17ad9">
+<div class="cell" data-outputid="b7e2ab76-4e05-4736-c298-002e59d17ad9">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">#multiplication</span></span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">*=</span> <span class="dv">40</span></span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>winnings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -954,7 +941,7 @@ Cherry</code></pre>
 <pre><code>3600</code></pre>
 </div>
 </div>
-<div id="sUesNIX6nlWO" class="cell" data-outputid="031c80f3-2080-49d9-f9b3-d96dc972d0e3">
+<div class="cell" data-outputid="031c80f3-2080-49d9-f9b3-d96dc972d0e3">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co">#exponentiation</span></span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">**=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>winnings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -971,7 +958,7 @@ Cherry</code></pre>
 <li><p>Store this new value in the memory address of the variable on the left of the <code>=</code>.</p></li>
 </ol>
 <p>This means the operator is applied <em>after</em> the expression on the right is evaluated.</p>
-<div id="3b587261" class="cell" data-outputid="e3f5f2d4-2801-454a-d9bc-88382e3ad0ba">
+<div class="cell" data-outputid="e3f5f2d4-2801-454a-d9bc-88382e3ad0ba">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>winnings <span class="op">+=</span> <span class="dv">100</span><span class="op">*</span><span class="dv">10</span></span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>winnings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -987,14 +974,14 @@ Cherry</code></pre>
 <ul>
 <li>For long lines of code, we can break the code across multiple lines using <code>\</code> or by wrapping the code in <code>()</code></li>
 </ul>
-<div id="8e121f94" class="cell" data-outputid="d2a2dd86-99e4-4d1c-97a1-f866f85c100e">
+<div class="cell" data-outputid="d2a2dd86-99e4-4d1c-97a1-f866f85c100e">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">-</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">\</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="op">/</span> <span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>-270.0</code></pre>
 </div>
 </div>
-<div id="eU6zntt0n4FF" class="cell" data-outputid="d334b672-d8f6-4d85-d797-e048f3b387ca">
+<div class="cell" data-outputid="d334b672-d8f6-4d85-d797-e048f3b387ca">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span> <span class="op">+</span> <span class="dv">20</span> <span class="op">-</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">60</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="op">/</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
@@ -1012,7 +999,7 @@ Cherry</code></pre>
 <li>Methods: <code>myvar.method(other_args)</code></li>
 </ul>
 <p>Functions are usually more generic actions that you could take on multiple types of objects. For instance, <code>len()</code> is a function we can run to see the ‘length’ of an object.</p>
-<div id="45b6a73f" class="cell" data-outputid="ae72e47a-6d6f-474d-a64f-9e0f0ea94e1e">
+<div class="cell" data-outputid="ae72e47a-6d6f-474d-a64f-9e0f0ea94e1e">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>]</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="co">#len function</span></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(myList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1021,7 +1008,7 @@ Cherry</code></pre>
 </div>
 </div>
 <p>Similarly, <code>max()</code> is another function we can use on many types of objects.</p>
-<div id="CH_DjQ1poC6s" class="cell" data-outputid="459a3bd5-23ae-41be-95b0-513dc222d60c">
+<div class="cell" data-outputid="459a3bd5-23ae-41be-95b0-513dc222d60c">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co">#max function</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(myList)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
@@ -1030,14 +1017,14 @@ Cherry</code></pre>
 </div>
 <p>Methods on the other hand are specific to the type of object you are dealing with. Lists will have different methods than a dictionary, for instance.</p>
 <p>Here we use the <code>.pop()</code> method on a this list. This returns and removes the last element from the list.</p>
-<div id="392f7a8b" class="cell" data-outputid="db6dd86f-30a5-45da-8589-a82bd570f024">
+<div class="cell" data-outputid="db6dd86f-30a5-45da-8589-a82bd570f024">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pop method</span></span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>myList.pop(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>1000</code></pre>
 </div>
 </div>
-<div id="cqVk4s3UoI6F" class="cell" data-outputid="299c9407-4ca5-43f3-afc0-9b38c0eb568c">
+<div class="cell" data-outputid="299c9407-4ca5-43f3-afc0-9b38c0eb568c">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co">#last element removed</span></span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>myList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
@@ -1045,7 +1032,7 @@ Cherry</code></pre>
 </div>
 </div>
 <p>The <code>.append()</code> method adds an element to the end of the list.</p>
-<div id="eVHBillEoLV0" class="cell" data-outputid="4b0dfab5-11db-4bf0-a4df-e3c2d97709c1">
+<div class="cell" data-outputid="4b0dfab5-11db-4bf0-a4df-e3c2d97709c1">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>myList.append(<span class="dv">100000</span>)</span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>myList</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
@@ -1058,7 +1045,7 @@ Cherry</code></pre>
 <h2 class="anchored" data-anchor-id="video-demo">Video Demo</h2>
 <p>This quick video shows how to open a new Google Colab notebook and run some basic python code. I’d pop the video out into the panopto player using the arrow icon in the bottom right.</p>
 <p>The notebook written in the video is <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/Learning_Python.html">available here</a>.</p>
-<div id="6DHci1opwQa0" class="cell" data-outputid="56f76ae3-44df-4af2-8803-5e0409e2d9fb">
+<div class="cell" data-outputid="56f76ae3-44df-4af2-8803-5e0409e2d9fb">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>IFrame(src <span class="op">=</span> <span class="st">'https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=bae161a8-bac0-4c44-a7a1-b0ef0163e90d&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all'</span>, width <span class="op">=</span> <span class="st">'620'</span>, height <span class="op">=</span> <span class="st">'380'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -1068,7 +1055,6 @@ Cherry</code></pre>
 </div>
 </div>
 <hr>
-</section>
 </section>
 <section id="recap" class="level1">
 <h1>Recap</h1>
@@ -1121,7 +1107,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1153,50 +1150,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1206,17 +1164,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1228,130 +1177,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1395,7 +1221,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1421,32 +1246,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1508,18 +1307,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="pagination-link" aria-label="Course Goals &amp; Other Resources">
+      <a href="../01_Programming_in_python/01-Course_Goals_Landing.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Course Goals &amp; Other Resources</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/03-Modules.html" class="pagination-link" aria-label="Modules">
+      <a href="../01_Programming_in_python/03-Modules.html" class="pagination-link">
         <span class="nav-page-text">Modules</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
