@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-02-14">
 
-<title>ST 554 Analysis of Big Data (with Python) - Multiple Linear Regression</title>
+<title>ST 554 Analysis of Big Data (with Python) - SQL Joins</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../01_Programming_in_python/27-LASSO_Landing.html" rel="next">
-<link href="../01_Programming_in_python/25-Cross_Validation_Landing.html" rel="prev">
+<link href="../02_Big_Data_Management/05-SQL_Resources.html" rel="next">
+<link href="../02_Big_Data_Management/03-Databases_SQL.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/22-Big_Recap_Landing.html">Topic 3: Basics of Predictive Modeling</a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html">Multiple Linear Regression</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02_Big_Data_Management/01-Big_Data_Basics_Landing.html">Topic 4: Big Data Management</a></li><li class="breadcrumb-item"><a href="../02_Big_Data_Management/04-SQL_Joins_Landing.html">SQL Joins</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -291,13 +291,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
@@ -324,7 +324,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
@@ -338,13 +338,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">Topic 4: Big Data Management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02_Big_Data_Management/01-Big_Data_Basics_Landing.html" class="sidebar-item-text sidebar-link">
@@ -365,7 +365,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02_Big_Data_Management/04-SQL_Joins_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../02_Big_Data_Management/04-SQL_Joins_Landing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">SQL Joins</span></a>
   </div>
 </li>
@@ -438,7 +438,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Multiple Linear Regression</h1>
+<h1 class="title">SQL Joins</h1>
 </div>
 
 
@@ -459,14 +459,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The video below goes into the ideas of mutliple linear regression (MLR). This is the extension of the SLR model that allows for multiple predictors, qualitative predictors, interactions, and more!</p>
+<p>The video below discusses SQL joins. These actions are used to combine data across two or more tables in a database. These are extremely important and useful in practice!</p>
 <p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=3ce60fca-198e-4ff7-9688-b10a0133e6e9&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="26-Mulitple Linear Regression"></iframe>
+<p>The notebook written in the video is available <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/02_Big_Data_Management/Big_Data_Management_Notebook.html">here</a>.</p>
+<p><strong>Update video</strong></p>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae82211f-546d-4e2d-9c91-b0fe018434ea&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-EDA"></iframe>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><a href="26-Multiple_Linear_Regression.html" target="_blank">HTML version</a></li>
-<li><a href="PDFs/26-Multiple_Linear_Regression.pdf" target="_blank">PDF version</a></li>
+<li><a href="04-SQL_Joins.html" target="_blank">HTML version</a></li>
+<li><a href="PDFs/04-SQL_Joins.pdf" target="_blank">PDF version</a></li>
 </ul>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
@@ -709,13 +711,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cross Validation</span>
+      <a href="../02_Big_Data_Management/03-Databases_SQL.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Storage and Basic SQL</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="pagination-link">
-        <span class="nav-page-text">LASSO Models</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../02_Big_Data_Management/05-SQL_Resources.html" class="pagination-link">
+        <span class="nav-page-text">SQL Resources</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
