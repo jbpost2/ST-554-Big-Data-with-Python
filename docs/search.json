@@ -39,7 +39,7 @@
     "href": "02_Big_Data_Management/07-Legacy_Software_HDFS_Landing.html",
     "title": "Legacy Big Data Software: Hadoop Distributed File System",
     "section": "",
-    "text": "The video below discusses a legacy big data software called Hadoop along with the common Map-Reduce actions that Hadoop allows one to perform on big data. While not a widely used software at this point, understanding the language and ideas of what made Hadoop popular are important.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nUpdate video"
+    "text": "The video below discusses a legacy big data software called Hadoop along with the common Map-Reduce actions that Hadoop allows one to perform on big data. While not a widely used software at this point, understanding the language and ideas of what made Hadoop popular are important.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe Charles Dickens text analyzed can be found here."
   },
   {
     "objectID": "02_Big_Data_Management/07-Legacy_Software_HDFS_Landing.html#notes",
@@ -1299,7 +1299,7 @@
     "href": "02_Big_Data_Management/08-Connecting_to_JupyterHub.html",
     "title": "Connecting to our JupyterHub",
     "section": "",
-    "text": "Process…\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "We have a dedicated JupyterHub here in the college of sciences! The JupyterHub has pyspark enabled in it so we don’t have to set things up ourselves!\nTo connect:\n\nConnect to the NC State VPN.\n\nYou want to download Cisco AnyConnect VPN software.\nOnce installed, you need to login. See this site for info. Basically, you connect to vpn.ncsu.edu and login with your username and password. You also need to do a duo login (I usually use a push notification - type ‘push’ in as the second password)\nOnce connect, you log into the JupyterHub here.\nThen you can select a pyspark kernel!\n\n\nThe video below shows a quick walkthrough of this process.\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
     "objectID": "02_Big_Data_Management/10-pyspark_RDD_Landing.html",
