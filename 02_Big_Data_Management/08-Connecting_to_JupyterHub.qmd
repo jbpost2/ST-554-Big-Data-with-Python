@@ -20,7 +20,7 @@ To connect:
 The video below shows a quick walkthrough of this process.
 
 ```{=html}
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=0b4ad9a6-4c0c-4a1b-86ab-b118015be773&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="08-Connecting_to_JupyterHub" ></iframe>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=726d11bb-80ae-4342-9db8-b28700e918ae&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="08-Connecting_to_JupyterHub" ></iframe>
 ```
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
