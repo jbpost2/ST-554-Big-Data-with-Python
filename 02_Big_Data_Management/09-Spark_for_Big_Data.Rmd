@@ -38,8 +38,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\python\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -51,10 +51,6 @@ class: title-slide-section-red, middle
 # Spark for Dealing with Big Data
 Justin Post 
 
----
-layout: true
-
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
 
 ---
 
@@ -105,11 +101,12 @@ Five major parts to Spark
 
 - Spark Core as its foundation
 - Spark SQL for SQL type queries
+- pandas-on-Spark for pandas type functionality
 - Spark Streaming for real-time analytics
 - Spark MLlib for machine learning
 - Spark GraphX for graph processing
 
-```{r, echo = FALSE, fig.align='center', out.width="400px"}
+```{r, echo = FALSE, fig.align='center', out.width="600px"}
 knitr::include_graphics("img/sparkParts.png")
 ```
       
@@ -286,12 +283,15 @@ But mostly RDDs are created when making a spark DataFrame
 
 ```{python, eval = FALSE}
 import pandas as pd
+import datetime
 pandas_df = pd.DataFrame({
     'a': [1, 2, 3],
     'b': [2., 3., 4.],
     'c': ['string1', 'string2', 'string3'],
-    'd': [date(2000, 1, 1), date(2000, 2, 1), date(2000, 3, 1)],
-    'e': [datetime(2000, 1, 1, 12, 0), datetime(2000, 1, 2, 12, 0), datetime(2000, 1, 3, 12, 0)]
+    'd': [datetime.date(2000, 1, 1), datetime.date(2024, 10, 15), datetime.date(2024, 10, 15)],
+    'e': [datetime.datetime(2000, 1, 1, 12, 0),
+    datetime.datetime(2000, 1, 2, 12, 0), 
+    datetime.datetime(2000, 1, 3, 12, 0)]
 })
 df = spark.createDataFrame(pandas_df)
 #df: DataFrame[a: bigint, b: double, c: string, d: date, e: timestamp]
@@ -396,6 +396,7 @@ Spark - Distributed processing software for big data workloads
 Five major parts to Spark
 - Spark Core as its foundation
 - Spark SQL for SQL type queries
+- pandas-on-Spark for pandas type functionality
 - Spark Streaming for real-time analytics
 - Spark MLlib for machine learning
 - Spark GraphX for graph processing
