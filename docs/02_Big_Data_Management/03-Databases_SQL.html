@@ -514,7 +514,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/02_Big_Data_Management/03_Databases_SQL.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/02_Big_Data_Management/03-Databases_SQL.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <blockquote class="blockquote">
 <p>Justin Post</p>
 </blockquote>
@@ -579,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>As we need to have the ability to write to the database from our notebook, we can’t share the same database. That means you’ll need to <a href="https://www4.stat.ncsu.edu/online/datasets/chinook.db">download the <code>chinook.db</code> file</a> and upload it to your folder area on the left!</li>
 <li>If you want the changes to remain after you are done, you’d need to download that file before closing the session!</li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bring in the module</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#make the connection to the .db file. My file is in the main folder on the left</span></span>
@@ -601,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Below we use the multiline comment (three quotation marks to start and end) in order to write more legible SQL code</li>
 </ul>
-<div class="cell" data-execution_count="27">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a 'cursor' object from our connection</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -623,7 +623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>cursor.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now look at what is stored in <code>result</code>. Here it is actually a <code>list</code> that we can cycle through and print information from.</p>
-<div class="cell" data-outputid="6f6d0cd1-0c45-4367-b65b-7752ac08dbeb" data-execution_count="28">
+<div class="cell" data-outputid="6f6d0cd1-0c45-4367-b65b-7752ac08dbeb">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(result))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> result:</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -645,10 +645,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Often we want to put this information into our common <code>pandas</code> data frame format!</p>
-<div class="cell" data-execution_count="14">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="1dcec1ef-c281-4ad0-e09f-31927b064e7c" data-execution_count="29">
+<div class="cell" data-outputid="1dcec1ef-c281-4ad0-e09f-31927b064e7c">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a data frame</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>schema_df <span class="op">=</span> pd.DataFrame(result)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>schema_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1038,14 +1038,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Pretty good, just missing column names. For the <a href="https://www.sqlite.org/schematab.html">schema table, those are standardized</a>.</p>
-<div class="cell" data-outputid="453a4c6b-185c-4425-817d-46a4249d288b" data-execution_count="30">
+<div class="cell" data-outputid="453a4c6b-185c-4425-817d-46a4249d288b">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#current column names</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>schema_df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>RangeIndex(start=0, stop=5, step=1)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="7512e221-fa26-43a5-f048-d78c0187b72d" data-execution_count="31">
+<div class="cell" data-outputid="7512e221-fa26-43a5-f048-d78c0187b72d">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>schema_df.rename(columns<span class="op">=</span>{<span class="dv">0</span>: <span class="st">'type'</span>, <span class="dv">1</span>: <span class="st">'name'</span>, <span class="dv">2</span>: <span class="st">'tbl_name'</span>, <span class="dv">3</span>: <span class="st">'rootpage'</span>, <span class="dv">4</span>: <span class="st">'sql'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>schema_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
@@ -1437,7 +1437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Here we don’t need a <code>cursor</code> object, we just pass the <code>SQL</code> string and the connection object.</li>
 </ul>
-<div class="cell" data-outputid="4ab16b31-393c-4215-d9a9-ea753a83c288" data-execution_count="32">
+<div class="cell" data-outputid="4ab16b31-393c-4215-d9a9-ea753a83c288">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>schema_df2 <span class="op">=</span> pd.read_sql(get_schema, con)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>schema_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1839,7 +1839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Close the conneciton made by the cursor (<code>cursor.close()</code>)</li>
 </ol>
 <p>The <code>FROM</code> function allows us to choose which table to query. <code>LIMIT 20</code> says to limit what is returned to 20 rows.</p>
-<div class="cell" data-outputid="afb9ac87-7695-4924-8ff1-2300497795e5" data-execution_count="33">
+<div class="cell" data-outputid="afb9ac87-7695-4924-8ff1-2300497795e5">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create the cursor instance</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create the SQL string</span></span>
@@ -1880,7 +1880,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Ok, when just reading a table, let’s go with <code>pd.read_sql()</code> instead since it returns things in a nicer format!</p>
-<div class="cell" data-outputid="78f92e67-3d76-4aa7-f217-6cefc5d450a9" data-execution_count="34">
+<div class="cell" data-outputid="78f92e67-3d76-4aa7-f217-6cefc5d450a9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>album_results <span class="op">=</span> pd.read_sql(get_albums, con)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>album_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -2315,7 +2315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We specify the type of data the variable will hold after naming the variable</li>
 <li>Check <a href="https://www.sqlite.org/datatype3.html">this reference</a> for possible data types!</li>
 </ul>
-<div class="cell" data-outputid="e9c63184-5453-42e5-aad3-d0be90001831" data-execution_count="35">
+<div class="cell" data-outputid="e9c63184-5453-42e5-aad3-d0be90001831">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create the cursor instance</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#write our SQL to create a table</span></span>
@@ -2332,7 +2332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s check that it worked before we close the connection!</p>
-<div class="cell" data-outputid="264988ff-fb61-4da3-c47a-ea859df33cf8" data-execution_count="37">
+<div class="cell" data-outputid="264988ff-fb61-4da3-c47a-ea859df33cf8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">'''</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="st">        SELECT *</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM justin_music;</span></span>
@@ -2440,11 +2440,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Cool, now let’s close the connection.</p>
-<div class="cell" data-execution_count="38">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> con.cursor()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can see we’ll do this process a lot. It may be best to create a function to help us out. (Modified from https://realpython.com/python-sql-libraries/)</p>
-<div class="cell" data-execution_count="40">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> execute_query(connection, query):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
@@ -2455,7 +2455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function will execute the query for us and close the cursor.</p>
-<div class="cell" data-outputid="91b08a00-3731-473e-cf3b-3e48554fc1cd" data-execution_count="43">
+<div class="cell" data-outputid="91b08a00-3731-473e-cf3b-3e48554fc1cd">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>execute_query(con, ct)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Query executed successfully</code></pre>
@@ -2465,7 +2465,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="insert-into" class="level3">
 <h3 class="anchored" data-anchor-id="insert-into">INSERT INTO</h3>
 <p>Now lets add some data to our table using <code>INSERT INTO</code>. We need to pass the table name, optionally the columns we’ll specify, and the values to fill with.</p>
-<div class="cell" data-outputid="7a62d03f-162e-433d-c709-1f307ed36403" data-execution_count="44">
+<div class="cell" data-outputid="7a62d03f-162e-433d-c709-1f307ed36403">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>create_rows <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="st">       INSERT INTO</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="st">           justin_music (album, artist)</span></span>
@@ -2481,7 +2481,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s check if it worked!</p>
-<div class="cell" data-outputid="22a447a3-1d5a-4994-891b-0982f8db0db9" data-execution_count="47">
+<div class="cell" data-outputid="22a447a3-1d5a-4994-891b-0982f8db0db9">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 
@@ -2730,7 +2730,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now let’s add a row with only an artist.</p>
-<div class="cell" data-outputid="a7f5444f-fc2b-451e-d22c-4fc422077a5f" data-execution_count="48">
+<div class="cell" data-outputid="a7f5444f-fc2b-451e-d22c-4fc422077a5f">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>create_row <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">       INSERT INTO</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">           justin_music (artist)</span></span>
@@ -2744,7 +2744,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This inserts a <code>None</code> into the data frame but note that the value in the original table is actually a <code>NULL</code>.</p>
-<div class="cell" data-outputid="2e5decd5-b843-4e8f-c2a0-f7f82b139d82" data-execution_count="51">
+<div class="cell" data-outputid="2e5decd5-b843-4e8f-c2a0-f7f82b139d82">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 
@@ -3007,7 +3007,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>WHERE to describe which records (rows) to modify</li>
 </ul>
 <p>We can use <code>AND</code>, <code>OR</code>, <code>IN</code>, and other logical operators in our SQL code! (See <a href="https://www.sqlite.org/lang_expr.html">Operators and Parse-Affecting Attributes</a>)</p>
-<div class="cell" data-outputid="81552c55-3dd8-4339-f847-6cfa0b4b91e4" data-execution_count="52">
+<div class="cell" data-outputid="81552c55-3dd8-4339-f847-6cfa0b4b91e4">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mod_row <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="st">    UPDATE justin_music</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="st">    SET album = "Red (Taylor's Version)", artist = "Taylor Swift"</span></span>
@@ -3019,7 +3019,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Query executed successfully</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="074086ac-1cc6-4ef1-f22c-f07aa4cadec7" data-execution_count="53">
+<div class="cell" data-outputid="074086ac-1cc6-4ef1-f22c-f07aa4cadec7">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 
@@ -3280,7 +3280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>DELETE FROM to specify the table</li>
 <li>a WHERE condition to determine what is deleted</li>
 </ul>
-<div class="cell" data-outputid="a1f4379c-e9fb-45b8-8f88-91604d00c347" data-execution_count="54">
+<div class="cell" data-outputid="a1f4379c-e9fb-45b8-8f88-91604d00c347">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>del_row <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="st">    DELETE FROM justin_music</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE artist = "Taylor Swift";</span></span>
@@ -3291,7 +3291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Query executed successfully</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="1c461bc2-39d8-40d5-956e-b25ea3c11593" data-execution_count="55">
+<div class="cell" data-outputid="1c461bc2-39d8-40d5-956e-b25ea3c11593">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM justin_music"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 
@@ -3538,13 +3538,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="drop-table" class="level3">
 <h3 class="anchored" data-anchor-id="drop-table">DROP TABLE</h3>
 <p>And of course we can remove an entire table using DROP TABLE. Just specify the table to remove!</p>
-<div class="cell" data-outputid="542c8a2e-aa80-4cc3-8ada-e1adec791626" data-execution_count="56">
+<div class="cell" data-outputid="542c8a2e-aa80-4cc3-8ada-e1adec791626">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>execute_query(con, <span class="st">"DROP TABLE justin_music"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Query executed successfully</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="06111bcf-f203-4b85-ccbd-49057c503a08" data-execution_count="57">
+<div class="cell" data-outputid="06111bcf-f203-4b85-ccbd-49057c503a08">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(get_schema, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 
@@ -3892,7 +3892,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Specifing the records (rows) of interest with a WHERE</li>
 </ul>
 <p>First, let’s see a way to look at all columns in a table.</p>
-<div class="cell" data-outputid="6a70edad-0eaf-4920-9fcb-6a3ae6a58a9c" data-execution_count="59">
+<div class="cell" data-outputid="6a70edad-0eaf-4920-9fcb-6a3ae6a58a9c">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">'SELECT * FROM albums'</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 
@@ -4189,7 +4189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now let’s select the Title and ArtistID columns only. <code>LIMIT</code> is a good way to only return (up to) a certain number of results.</p>
-<div class="cell" data-outputid="65b17b27-6a6a-47df-f0de-609b0344d51d" data-execution_count="60">
+<div class="cell" data-outputid="65b17b27-6a6a-47df-f0de-609b0344d51d">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT Title, artistID FROM albums LIMIT 10;"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 
@@ -4468,7 +4468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>WHERE allows us to specify conditions on rows.</p>
-<div class="cell" data-outputid="cf96d8c4-9c9f-45de-cddb-4848285667ac" data-execution_count="62">
+<div class="cell" data-outputid="cf96d8c4-9c9f-45de-cddb-4848285667ac">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pd.read_sql(<span class="st">"SELECT * FROM albums WHERE artistID = 2 LIMIT 10;"</span>, con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 
@@ -4715,7 +4715,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="clean-up">Clean Up</h2>
 <p>If we want to save any changes made to our database, we need to do a <code>commit()</code> to the connection via <code>con.commit()</code>. This saves the changes made and releases any locks on the data. Other connections to the database can only see changes you’ve made if you commit them.</p>
 <p>When you are done working you should also close your connection. This is done with the <code>close()</code> method.</p>
-<div class="cell" data-execution_count="63">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>con.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We skimmed over some of the syntax that SQL follows. You should read over the <a href="https://www.w3resource.com/sqlite/arithmetic-operators.php">arithmetic operators</a>, <a href="https://www.w3resource.com/sqlite/comparison-operators.php">comparison operators</a>, and the other operators linked on the left of that page.</p>
