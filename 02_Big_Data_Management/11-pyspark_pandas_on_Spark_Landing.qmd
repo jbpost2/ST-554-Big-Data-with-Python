@@ -10,10 +10,14 @@ The video below discusses the use of `pyspark` and the `pandas-on-spark` framewo
 
 I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
+The `pyspark` code used in the notes and the example done at the end of the notes is <a href = "pyspark_notebook.ipynb" target = "_blank">available in this notebook</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
+
 **update video**
 ```{=html}
 <iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae82211f-546d-4e2d-9c91-b0fe018434ea&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-EDA" ></iframe>
 ```
+
+If you are not an NC State student, you can download docker and gain access to [Spark with a Jupyter notebook interface](https://hub.docker.com/r/jupyter/all-spark-notebook) reasonably quickly! 
 
 ## Notes
 

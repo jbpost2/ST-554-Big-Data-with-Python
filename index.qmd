@@ -86,20 +86,20 @@ To obtain course help there are a number of options:
 | Week 6\           | No new material. Project work time!                             |                                           |
 | 2/10-2/14 (Off T) |                                                                 |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 7\           | 28 - Big Data Concepts\                                         | HW 5 due W, 2/26                          |
-| 2/17-2/21         | 29 - Bias and Other Issues with Big Data\                       |                                           |
-|                   | 30 - SQL Basics\                                                |                                           |
-|                   | 31 - SQL Joins\                                                 |                                           |
-|                   | 32 - SQL Readings                                               |                                           |
+| Week 7\           | 01 - Big Data Basics\                                           | HW 5 due W, 2/26                          |
+| 2/17-2/21         | 02 - The Role of Statistics in Big Data\                        |                                           |
+|                   | 03 - Databases & SQL\                                           |                                           |
+|                   | 04 - SQL Joins\                                                 |                                           |
+|                   | 05 - SQL Resources\                                             |                                           |
+|                   | 06 - Data Pipelines & Storage                                   |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 8\           | 33 - Data Flow, Data Warehouses, and Data Lakes\                | HW 6 due W, 3/5                           |
-| 2/24-2/28         | 34 - HDFS                                                       |                                           |
+| Week 8\           | 07 - Legacy Software: HDFS\                                     | HW 6 due W, 3/5                           |
+| 2/24-2/28         | 08 - Connecting to our JupyterHub Environment\                  |                                           |
+|                   | 09 - Spark for Big Data                                         |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 9\           | 35 - Connecting to our JupyterHub Environment\                  | Project 2 due W, 3/19                     |
-| 3/3-3/7           | 35 - Spark for Dealing with Big Data\                           |                                           |
-|                   | 36 - pyspark: RDDs\                                             |                                           |
-|                   | 37 - pyspark: pandas-on-Spark\                                  |                                           |
-|                   | 38 - pyspark: Spark SQL                                         |                                           |
+| Week 9\           | 10 - pyspark: RDDs\                                             | Project 2 due W, 3/19                     |
+| 3/3-3/7           | 11 - pyspark: pandas-on-Spark\                                  |                                           |
+|                   | 12 - pyspark: Spark SQL                                         |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
 | Week 10\          | No new material - spring break                                  |                                           |
 | 3/10-3/14         |                                                                 |                                           |

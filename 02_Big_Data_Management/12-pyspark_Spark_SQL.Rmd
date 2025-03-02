@@ -38,8 +38,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -52,27 +52,24 @@ class: title-slide-section-red, middle
 Justin Post 
 
 ---
-layout: true
-
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
-
-
----
 
 # Spark
 
 Spark - Distributed processing software for big data workloads
-+ Faster than MapReduce (and more flexible)
++ Generally faster than Hadoop's MapReduce (and much more flexible)
 + DAGs make it fault tolerant and improve computational speed
 
 
-Five major parts to Spark
-- Spark Core as its foundation
-- Spark SQL for SQL type queries
-- Spark Streaming for real-time analytics
-- Spark MLlib for machine learning
-- Spark GraphX for graph processing
+Five major parts to (py)Spark
+- Spark Core and RDDs as its foundation
+- Spark SQL and DataFrames
+- Pandas on Spark
+- Spark Structured Streaming
+- Spark Machine Learning (MLlib)
 
+```{r, echo = FALSE, fig.align='center', out.width='500px'}
+knitr::include_graphics("img/sparkPartsNew.png")
+```
 
 ---
 
@@ -88,8 +85,8 @@ Five major parts to Spark
     + When actions are done, computation starts and results returned
 
 Two major DataFrame APIs in `pyspark`
-- [pandas-on-Spark](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html) DataFrames through the `pyspark.pandas` module
-- [Spark SQL](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.sql.html) DataFrames through `pyspark.sql` module
+- [`pandas`-on-Spark](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html) DataFrames through the `pyspark.pandas` module
+- [Spark SQL](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/index.html) DataFrames through `pyspark.sql` module
 
 
 ---
@@ -168,7 +165,7 @@ df
 - Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
 - Can read data in directly in from a file
 ```{python, eval = FALSE}
-df = spark.read.load("neuralgia.csv",
+df = spark.read.load("data/neuralgia.csv",
                      format="csv", 
                      sep=",", 
                      inferSchema="true", 
@@ -185,7 +182,7 @@ df
 - Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
 - Can read data in directly in from a file
 ```{python, eval = FALSE}
-df = spark.read.load("neuralgia.csv",
+df = spark.read.load("data/neuralgia.csv",
                      format="csv", 
                      sep=",", 
                      inferSchema="true", 
@@ -237,7 +234,7 @@ type(sdf)
 <pre>pyspark.sql.dataframe.DataFrame</pre>
 
 ```{python, eval = FALSE}
-dfps = sdf.to_pandas_on_spark()
+dfps = sdf.pandas_api()
 type(dfps)
 ```
 <pre>pyspark.pandas.frame.DataFrame</pre>
@@ -306,8 +303,6 @@ df.columns
     
 ---
 
-layout: false 
-
 # Common Actions on a Spark SQL Data Frame
 
 - Spark SQL Data Frames act more like RDDs by default
@@ -371,7 +366,7 @@ df.take(3)
 spark.conf.set('spark.sql.repl.eagerEval.enabled', True)
 ```
 
-- Now computation is done immediately and results returned
+- Now computation is done immediately and results returned (not recommended generally!)
 
 
 
@@ -486,7 +481,7 @@ only showing top 3 rows
 - Performing Actions on a Column
 
     - `.withColumn()` method is useful to create a new column from another
-    - [Lots of SQL functions](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.sql/functions.html) available
+    - [Lots of SQL functions](https://spark.apache.org/docs/3.5.0/api/python/reference/pyspark.sql/functions.html) available
 ```{python, eval = FALSE}
 from pyspark.sql.functions import *
 df.withColumn("Age_cat", 
@@ -515,7 +510,7 @@ only showing top 3 rows
 - Performing Actions on a Column
 
     - `.withColumn()` method is useful to create a new column from another
-    - [Lots of SQL functions](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.sql/functions.html) available
+    - [Lots of SQL functions](https://spark.apache.org/docs/3.5.0/api/python/reference/pyspark.sql/functions.html) available
 ```{python, eval = FALSE}
 df.withColumn("Age_cat", 
                when(df.Age>75, "75+")

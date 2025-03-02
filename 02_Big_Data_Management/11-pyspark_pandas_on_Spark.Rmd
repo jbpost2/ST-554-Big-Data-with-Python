@@ -38,8 +38,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -51,28 +51,26 @@ class: title-slide-section-red, middle
 # `pyspark`: pandas-on-Spark
 Justin Post 
 
----
-layout: true
-
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
-
 
 ---
 
 # Spark Recap
 
 Spark - Distributed processing software for big data workloads
-+ Generally faster than Hadoop's MapReduce (and more flexible)
++ Generally faster than Hadoop's MapReduce (and much more flexible)
 + DAGs make it fault tolerant and improve computational speed
 
 
-Five major parts to Spark
-- Spark Core as its foundation
-- Spark SQL for SQL type queries
-- Spark Streaming for real-time analytics
-- Spark MLlib for machine learning
-- Spark GraphX for graph processing
+Five major parts to (py)Spark
+- Spark Core and RDDs as its foundation
+- Spark SQL and DataFrames
+- Pandas on Spark
+- Spark Structured Streaming
+- Spark Machine Learning (MLlib)
 
+```{r, echo = FALSE, fig.align='center', out.width='500px'}
+knitr::include_graphics("img/sparkPartsNew.png")
+```
 
 ---
 
@@ -101,16 +99,16 @@ Five major parts to Spark
     + When actions are done, computation starts and results returned
 
 Two major DataFrame APIs in `pyspark`
-- [pandas-on-Spark](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html) DataFrames through the `pyspark.pandas` module
-- [Spark SQL](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.sql.html) DataFrames through `pyspark.sql` module
+- [`pandas`-on-Spark](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html) DataFrames through the `pyspark.pandas` module
+- [Spark SQL](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/index.html) DataFrames through `pyspark.sql` module
 
 
 
 ---
 
-# pandas-on-Spark
+# `pandas`-on-Spark
 
-- pandas API on spark is super easy to use since we know `pandas`!
+- `pandas` API on spark is super easy to use since we know `pandas`!
 
 - First we can import our modules
 
@@ -122,9 +120,9 @@ import pyspark.pandas as ps
 
 ---
 
-# pandas-on-Spark
+# `pandas`-on-Spark
 
-- Now you can create `pandas-on-Spark` series or `pandas-on-Spark` DataFrame
+- Now you can create a `pandas-on-Spark` series or a `pandas-on-Spark` DataFrame
 - Note the `ps` not `pd`!
 
 ```{python, eval = FALSE}
@@ -143,9 +141,9 @@ dtype: float64
 
 ---
 
-# pandas-on-Spark
+# `pandas`-on-Spark
 
-- Now you can create `pandas-on-Spark` series or `pandas-on-Spark` DataFrame
+- Now you can create a `pandas-on-Spark` series or a `pandas-on-Spark` DataFrame
 - Note the `ps` not `pd`!
 
 ```{python, eval = FALSE}
@@ -165,8 +163,6 @@ knitr::include_graphics("img/psdf1.png")
 
 # pandas-on-Spark
 
-- Now you can create `pandas-on-Spark` series or `pandas-on-Spark` DataFrame
-
 - We can also convert from `pandas` to `pandas-on-Spark`
 
 ```{python, eval = FALSE}
@@ -183,7 +179,7 @@ knitr::include_graphics("img/psdf2.PNG")
 
 # pandas-on-Spark
 
-- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html))
+- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html))
 
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
@@ -195,7 +191,7 @@ knitr::include_graphics("img/psdf2.PNG")
 
 # pandas-on-Spark
 
-- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html))
+- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html))
 
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
@@ -214,7 +210,7 @@ knitr::include_graphics("img/psdf3.PNG")
 
 # pandas-on-Spark
 
-- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html))
+- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html))
 
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
@@ -222,7 +218,7 @@ knitr::include_graphics("img/psdf3.PNG")
     + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
     
 ```{python, eval = FALSE}
-titanic_ps = ps.read_csv("titanic.csv") #can't call from URL
+titanic_ps = ps.read_csv("titanic.csv") #data uploaded to jhub in data folder
 titanic_ps["survived"].value_counts()
 ```
 ```{r, echo = FALSE, out.width="400px"}
@@ -233,7 +229,7 @@ knitr::include_graphics("img/psdf6.png")
 
 # pandas-on-Spark
 
-- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html))
+- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html))
 
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
@@ -252,7 +248,7 @@ knitr::include_graphics("img/psdf5.png")
 
 # pandas-on-Spark
 
-- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/3.3.1/api/python/reference/pyspark.pandas/index.html))
+- We now have a much of the same functionality from `pandas` available through `pandas-on-Spark` ([API reference guide](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/index.html))
 
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
@@ -271,10 +267,10 @@ knitr::include_graphics("img/psdf4.png")
 
 # pandas-on-Spark
 
-- `.transform()` and `.apply()` methods allow you to perform [operations on columns or rows](https://spark.apache.org/docs/3.3.1/api/python/user_guide/pandas_on_spark/transform_apply.html)
+- `.transform()` and `.apply()` methods allow you to perform [operations on columns or rows](https://spark.apache.org/docs/latest/api/python/reference/pyspark.pandas/api/pyspark.pandas.DataFrame.transform.html#pyspark.pandas.DataFrame.transform)
 
 ```{python, eval = FALSE}
-def standardize(pser):
+def standardize(pser) -> ps.Series[np.float64]:
      return (pser + pser.mean())/pser.std()  # should always return the same length as input.
 ```
 
@@ -289,12 +285,12 @@ layout: false
 
 
 ```{python, eval = FALSE}
-def standardize(pser):
+def standardize(pser) -> ps.Series[np.float64]:
      return (pser + pser.mean())/pser.std()  # should always return the same length as input.
 ```
 
 ```{python, eval = FALSE}
-titanic_ps[["age", "fare"]] \
+std_res = titanic_ps[["age", "fare"]] \
     .rename(columns = {"age": "o_age", "fare": "o_fare"}) \
     .join(titanic_ps[["age", "fare"]]
               .transform(standardize))
@@ -303,6 +299,27 @@ titanic_ps[["age", "fare"]] \
 knitr::include_graphics("img/psdf7.png")
 ```
 
+---
+
+# pandas-on-Spark
+
+- `.transform()` and `.apply()` methods allow you to perform [operations on columns or rows](https://spark.apache.org/docs/3.3.1/api/python/user_guide/pandas_on_spark/transform_apply.html)
+
+
+```{python, eval = FALSE}
+def standardize(pser) -> ps.Series[np.float64]:
+     return (pser + pser.mean())/pser.std()  # should always return the same length as input.
+```
+
+```{python, eval = FALSE}
+std_res = titanic_ps[["age", "fare"]] \
+    .rename(columns = {"age": "o_age", "fare": "o_fare"}) \
+    .join(titanic_ps[["age", "fare"]]
+              .transform(standardize))
+std_res.shape
+```
+
+`(1310, 4)`
 
 ---
 
@@ -311,7 +328,7 @@ knitr::include_graphics("img/psdf7.png")
 - `.transform()` and `.apply()` methods allow you to perform [operations on columns or rows](https://spark.apache.org/docs/3.3.1/api/python/user_guide/pandas_on_spark/transform_apply.html)
 
 ```{python, eval = FALSE}
-def standardize_positives(pser):
+def standardize_positives(pser) -> ps.Series[np.float64]:
      return (pser[pser>30] + pser[pser>30].mean())/pser[pser>30].std()  
 # can return something short than input length
 ```
@@ -324,17 +341,37 @@ def standardize_positives(pser):
 - `.transform()` and `.apply()` methods allow you to perform [operations on columns or rows](https://spark.apache.org/docs/3.3.1/api/python/user_guide/pandas_on_spark/transform_apply.html)
 
 ```{python, eval = FALSE}
-def standardize_positives(pser):
+def standardize_positives(pser) -> ps.Series[np.float64]:
      return (pser[pser>30] + pser[pser>30].mean())/pser[pser>30].std()  
 # can return something short than input length
 ```
 
 ```{python, eval = FALSE}
-titanic_ps[["age"]].apply(standardize_positives).head()
+std_pos = titanic_ps[["age"]].apply(standardize_positives)
+std_pos.head()
 ```
 ```{r, echo = FALSE, out.width="150px"}
 knitr::include_graphics("img/psdf8.png")
 ```
+
+
+---
+
+# pandas-on-Spark
+
+- `.transform()` and `.apply()` methods allow you to perform [operations on columns or rows](https://spark.apache.org/docs/3.3.1/api/python/user_guide/pandas_on_spark/transform_apply.html)
+
+```{python, eval = FALSE}
+def standardize_positives(pser) -> ps.Series[np.float64]:
+     return (pser[pser>30] + pser[pser>30].mean())/pser[pser>30].std()  
+# can return something short than input length
+```
+
+```{python, eval = FALSE}
+std_pos = titanic_ps[["age"]].apply(standardize_positives)
+std_pos.shape
+```
+`(437, 1)`
 
 
 ---
@@ -358,3 +395,4 @@ knitr::include_graphics("img/psdf8.png")
 
 - Lazy eval allows you to build up your transformations and then execute only when an action is performed
 
+[Important to know **limitations on `pandas` functionality**](https://spark.apache.org/docs/latest/api/python/user_guide/pandas_on_spark/supported_pandas_api.html)
