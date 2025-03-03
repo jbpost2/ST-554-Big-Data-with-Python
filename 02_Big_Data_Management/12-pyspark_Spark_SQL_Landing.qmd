@@ -14,9 +14,8 @@ The `pyspark` code used in the notes and the example done at the end of the note
 
 Remember, if you are off campus you should log in to the VPN and then you can [access our `JupyterHub`](https://jhub.cos.ncsu.edu/).
 
-**update video**
 ```{=html}
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=ae82211f-546d-4e2d-9c91-b0fe018434ea&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-EDA" ></iframe>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=0d3d42da-131d-44b6-8d13-b29500d58678&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="12-pyspark_spark_SQL" ></iframe>
 ```
 
 If you are not an NC State student, you can download docker and gain access to [Spark with a Jupyter notebook interface](https://hub.docker.com/r/jupyter/all-spark-notebook) reasonably quickly! 
