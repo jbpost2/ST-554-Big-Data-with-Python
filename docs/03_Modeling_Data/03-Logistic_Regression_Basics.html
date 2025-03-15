@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Logistic Regression Basics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Logistic Regression Basics
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+---
+
+# Logistic Regression Model
+
+Used when you have a **binary** response variable
+
+- Consider just a binary response
+
+    + What is the mean of the response?
+
+&lt;!-- Here write out some 0 and 1's as the population values. Look at probability as the mean--&gt;    
+
+    
+---
+
+# Logistic Regression Model
+
+Suppose you have a predictor variable as well, call it `\(x\)`
+    
+- Given two values of `\(x\)` we could model separate proportions
+
+`$$E(Y|x=x_1) = P(Y=1|x = x_1)$$`
+`$$E(Y|x=x_2) = P(Y=1|x = x_2)$$`
+
+
+---
+
+# Logistic Regression Model
+
+Suppose you have a predictor variable as well, call it `\(x\)`
+    
+- Given two values of `\(x\)` we could model separate proportions
+
+`$$E(Y|x=x_1) = P(Y=1|x = x_1)$$`
+`$$E(Y|x=x_2) = P(Y=1|x = x_2)$$`
+
+- For a continuous `\(x\)`, we could consider a SLR model
+
+`$$E(Y|x) = P(Y=1|x) = \beta_0+\beta_1x$$`
+
+---
+
+# Linear Regression Isn't Appropriate
+
+- Consider data about [water potability](https://www.kaggle.com/code/leabenzvi/water-potability-classification)
+
+
+```python
+import pandas as pd
+water = pd.read_csv("data/water_potability.csv")
+water.head()
+```
+
+```
+##          ph    Hardness        Solids  ...  Trihalomethanes  Turbidity  Potability
+## 0       NaN  204.890455  20791.318981  ...        86.990970   2.963135           0
+## 1  3.716080  129.422921  18630.057858  ...        56.329076   4.500656           0
+## 2  8.099124  224.236259  19909.541732  ...        66.420093   3.055934           0
+## 3  8.316766  214.373394  22018.417441  ...       100.341674   4.628771           0
+## 4  9.092223  181.101509  17978.986339  ...        31.997993   4.075075           0
+## 
+## [5 rows x 10 columns]
+```
+
+
+---
+
+# Potability Summary
+
+- Summarize water potability
+
+
+```python
+water.Potability.value_counts()
+```
+
+```
+## 0    1998
+## 1    1278
+## Name: Potability, dtype: int64
+```
+
+
+```python
+water.groupby("Potability")[["Hardness", "Chloramines"]].describe()
+```
+
+```
+##            Hardness                         ... Chloramines                     
+##               count        mean        std  ...         50%       75%        max
+## Potability                                  ...                                 
+## 0            1998.0  196.733292  31.057540  ...    7.090334  8.066462  12.653362
+## 1            1278.0  195.800744  35.547041  ...    7.215163  8.199261  13.127000
+## 
+## [2 rows x 16 columns]
+```
+
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+- Plot SLR model fit
+
+
+```python
+import seaborn as sns
+sns.regplot(x = water["Hardness"], y = water["Potability"])
+```
+
+&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-5-1.svg" width="400px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+- Plot SLR model fit with jittered points
+
+
+```python
+import seaborn as sns
+sns.regplot(x = water["Hardness"], y = water["Potability"], y_jitter = 0.1)
+```
+
+&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-6-3.svg" width="400px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+
+
+```python
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+water["Hardnessgroups"] = pd.cut(water['Hardness'], range(45, 335, 10))
+props = water[["Hardnessgroups", "Potability"]] \
+    .groupby("Hardnessgroups") \
+    .agg(prop = ('Potability', 'mean'), counts = ('Potability', 'count'))
+    
+sc = plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+plt.xlabel("Hardness")
+plt.ylabel("Proportion of Potable Water")
+plt.ylim([-0.1, 1.1])
+plt.legend(*sc.legend_elements("sizes", num=5, color = "blue"))
+plt.show()
+```
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+
+
+```
+## Text(0.5, 0, 'Hardness')
+## Text(0, 0.5, 'Proportion of Potable Water')
+## (-0.1, 1.1)
+```
+
+&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-8-5.svg" width="450px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Logistic Regression
+
+- Response = success/failure, then modeling average number of successes for a given `\(x\)` is a probability!
+
+    + predictions should never go below 0  
+    + predictions should never go above 1  
+
+- Basic Logistic Regression models success probability using the *logistic function*
+ 
+`$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$`
+ 
+
+---
+
+# Logistic Regression
+
+&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-9-7.svg" width="500px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Logistic Regression
+
+`$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$`  
+
+- The logistic regression model doesn't have a closed form solution (maximum likelihood often used to fit parameters)  
+
+
+    
+---
+
+# Logistic Regression
+
+`$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$`  
+
+- The logistic regression model doesn't have a closed form solution (maximum likelihood often used to fit parameters)  
+
+- Back-solving shows the *logit* or *log-odds* of success is linear in the parameters  
+
+`$$log\left(\frac{P(success|x)}{1-P(success|x)}\right) = \beta_0+\beta_1 x$$`
+
+
+ 
+---
+
+# Logistic Regression
+
+`$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$`  
+
+- The logistic regression model doesn't have a closed form solution (maximum likelihood often used to fit parameters)  
+
+- Back-solving shows the *logit* or *log-odds* of success is linear in the parameters  
+
+`$$log\left(\frac{P(success|x)}{1-P(success|x)}\right) = \beta_0+\beta_1 x$$`
+
+- Coefficient interpretation changes greatly from linear regression model!  
+
+- `\(\beta_1\)` represents a change in the log-odds of success  
+
+
+---
+
+# Hypotheses of Interest
+
+For inference, what do you think would indicate that `\(x\)` is related to the probability of success here?
+
+
+---
+
+# Fitting a Logistic Regression Model in Python
+
+- Use `sklearn` to fit model
+
+
+```python
+from sklearn.linear_model import LogisticRegression
+```
+
+- Similar to fitting an MLR model, we create an instance and then use the `.fit()` method
+
+
+---
+
+# Fitting a Logistic Regression Model in Python
+
+- Use `sklearn` to fit model
+
+
+```python
+from sklearn.linear_model import LogisticRegression
+```
+
+- Similar to fitting an MLR model, we create an instance and then use the `.fit()` method
+
+
+
+
+```python
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water["Hardness"].values.reshape(-1,1), y = water["Potability"].values)
+```
+
+
+```python
+print(log_reg.intercept_, log_reg.coef_)
+```
+
+```
+## [-0.27748213] [[-0.00086296]]
+```
+
+
+---
+
+# Prediction with a Logistic Regression Model
+
+- Still use the `.predict()` method to predict success or failure
+
+
+
+```python
+import numpy as np
+log_reg.predict(np.array([[50], [150], [200], [250], [300]]))
+```
+
+```
+## array([0, 0, 0, 0, 0], dtype=int64)
+```
+
+
+---
+
+# Prediction with a Logistic Regression Model
+
+- Still use the `.predict()` method to predict success or failure
+
+
+
+```python
+import numpy as np
+log_reg.predict(np.array([[50], [150], [200], [250], [300]]))
+```
+
+```
+## array([0, 0, 0, 0, 0], dtype=int64)
+```
+
+- Also have `.predict_log_proba()` and `.predict_proba()` to obtain log probabilities and probabilities, respectively
+
+
+```python
+log_reg.predict_proba(np.array([[50], [150], [200], [250], [300]])) 
+#returns P(Y=0), P(Y=1) estimates for each value
+```
+
+```
+## array([[0.57947776, 0.42052224],
+##        [0.60035045, 0.39964955],
+##        [0.61065667, 0.38934333],
+##        [0.62086496, 0.37913504],
+##        [0.63096734, 0.36903266]])
+```
+
+
+---
+
+# Plotting the Fit
+
+
+```python
+sc = plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+preds = log_reg.predict_proba(np.array(range(50,330)).reshape(-1,1))
+plt.scatter(x = np.array(range(50,330)), y = preds[:,1])
+plt.ylim([-0.1,1.1]); plt.xlabel("Hardness"); plt.ylabel("Proportion of Potable Water"); plt.show()
+```
+
+&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-18-1.svg" width="400px" style="display: block; margin: auto;" /&gt;&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-18-2.svg" width="400px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Truly is a sigmoid type function!
+
+
+```python
+preds = log_reg.predict_proba(np.array(range(-2500,2500)).reshape(-1,1))
+plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+plt.scatter(x = np.array(range(-2500,2500)), y = preds[:,1])
+plt.ylim([-0.1,1.1]); plt.xlabel("Hardness"); plt.ylabel("Proportion of Potable Water"); plt.show()
+```
+
+&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-19-5.svg" width="400px" style="display: block; margin: auto;" /&gt;&lt;img src="03-Logistic_Regression_Basics_files/figure-html/unnamed-chunk-19-6.svg" width="400px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Inference with a Logistic Regression Model
+
+- Not implemented in `sklearn`... can use `statsmodels` package!
+
+
+```python
+import statsmodels.api as sm
+log_reg = sm.GLM(water["Potability"], water["Hardness"], family=sm.families.Binomial())
+res = log_reg.fit()
+print(res.summary())
+```
+
+```
+##                  Generalized Linear Model Regression Results                  
+## ==============================================================================
+## Dep. Variable:             Potability   No. Observations:                 3276
+## Model:                            GLM   Df Residuals:                     3275
+## Model Family:                Binomial   Df Model:                            0
+## Link Function:                  Logit   Scale:                          1.0000
+## Method:                          IRLS   Log-Likelihood:                -2191.5
+## Date:                Sat, 15 Mar 2025   Deviance:                       4383.0
+## Time:                        13:21:51   Pearson chi2:                 3.28e+03
+## No. Iterations:                     4   Pseudo R-squ. (CS):         -0.0003092
+## Covariance Type:            nonrobust                                         
+## ==============================================================================
+##                  coef    std err          z      P&gt;|z|      [0.025      0.975]
+## ------------------------------------------------------------------------------
+## Hardness      -0.0022      0.000    -12.421      0.000      -0.003      -0.002
+## ==============================================================================
+```
+
+
+---
+
+# Recap
+
+- Logistic regression often a reasonable model for a binary response
+
+- Uses a sigmoid function to ensure valid predictions
+
+- Can predict success or failure using estimated probabilities
+
+    + Usually predict success if probability `\(&gt;\)` 0.5
+    
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

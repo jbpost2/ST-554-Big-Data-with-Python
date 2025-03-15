@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Modeling Data Recap</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Modeling Data Recap
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+
+# Recap
+
+- Programming in python
+- 5 V's of Big Data
+    + Volume
+    + Variety
+    + Velocity
+    + Veracity (Variability)
+    + Value
+- Understanding of the Big Data pipeline and basics of handling Big Data
+    + Databases/Data Lakes/Data Warehouses/etc.
+    + SQL basics
+    + Hadoop
+    + Spark
+- Now: Modeling (Big) Data
+
+
+---
+
+# Common Uses for Data
+
+Four major goals with data:
+1. Description (EDA)
+2. Inference
+3. Prediction/Classification
+4. Pattern Finding
+
+
+---
+
+# Statistical Learning
+
+**Statistical learning** - Inference, prediction/classification, and pattern finding
+
+- Supervised learning - a variable (or variables) represents an **output** or **response** of interest
+
+    + May model response and
+        - Make **inference** on the model parameters  
+        - **predict** a value or **classify** an observation
+
+&lt;img src="img/tree.png" width="450px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# What is a Statistical Model?
+
+- A mathematical representation of some phenomenon on which you've observed data
+
+- Predictive model used to:
+
+    + *Predict* a **numeric response** 
+    + *Classify* an observation into a **category**
+
+
+---
+
+# What is a Statistical Model?
+
+- A mathematical representation of some phenomenon on which you've observed data
+
+- Predictive model used to:
+
+    + *Predict* a **numeric response** 
+    + *Classify* an observation into a **category**
+
+
+- Common Supervised Learning Models
+
+    + Least Squares Regression  
+    + Penalized regression  
+    + Generalized linear models  
+    + Regression/classification trees  
+    + Random forests, boosting, bagging  
+
+... and many more - tons of models!
+
+
+---
+
+# Fitting a Model
+
+Given a model, we **fit** or **train** it using the data
+
+&lt;img src="img/slr.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Fitting a Model
+
+Given a model, we **fit** or **train** it using the data
+
+&lt;img src="img/slr.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+- Models can be used to yield predicted responses for each observation, call these `\(\hat{y}_i\)`
+
+
+---
+
+# Quantifying How Well the Model Predicts
+
+Need a way to quantify how well our prediction is doing (a model metric)
+
+- For a numeric response, we commonly use squared error loss to evaluate a prediction
+`$$L(y_i,\hat{y}_i) = (y_i-\hat{y}_i)^2$$`
+
+
+---
+
+# Quantifying How Well the Model Predicts
+
+Need a way to quantify how well our prediction is doing (a model metric)
+
+- For a numeric response, we commonly use squared error loss to evaluate a prediction
+`$$L(y_i,\hat{y}_i) = (y_i-\hat{y}_i)^2$$`
+
+- Use Root Mean Square Error as a metric across all observations
+`$$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n} L(y_i, \hat{y}_i)} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}$$`
+
+
+---
+
+# Quantifying How Well the Model Predicts
+
+Need a way to quantify how well our prediction is doing (a model metric)
+
+- For classification (binary response here), we can look at accuracy 
+
+- Accuracy
+`$$\frac{\mbox{Sum of correct predictions}}{\mbox{Total number of predictions}}$$`
+
+
+---
+
+# Training vs Test Sets
+
+Ideally we want our model to predict well for observations **it has yet to see**
+
+
+---
+
+# Training vs Test Sets
+
+Ideally we want our model to predict well for observations **it has yet to see**
+- Predictions over the observations used to fit or train the model are called the **training (set) error**
+
+`$$\mbox{Training RMSE} = \sqrt{\frac{1}{\mbox{# of obs used to fit model}}\sum_{\mbox{obs used to fit model}}(y-\hat{y})^2}$$`
+
+- If we only consider this, we'll have no idea how the model will fare on data it hasn't seen!
+
+
+
+
+---
+
+# Training vs Test Sets
+One method is to split the data into a **training set** and **test set**
+- On the training set we can fit (or train) our models
+- We can then predict for the test set observations and judge effectiveness with RMSE
+
+&lt;img src="img/trainingtest.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Issues with Trainging vs Test Sets
+
+Why may we not want to just do a basic training/test set?
+
+- If we don't have much data, we aren't using it all when fitting the models
+
+- Data is randomly split into training/test
+
+- Instead, we could consider splitting the data multiple ways and averaging the test error over the results!
+
+
+---
+
+# Cross-Validation Idea
+
+`\(k\)` fold Cross-Validation (CV)
+
+- Split data into k folds
+- Train model on first k-1 folds, find test error on kth fold
+- Train model on first k-2 folds and kth fold, find test error on (k-1)st fold
+- ...
+
+Find CV error by combining test errors appropriately
+
+---
+
+# Cross-Validation Idea
+
+`\(k\)` fold Cross-Validation (CV)
+
+- Split data into k folds
+- Train model on first k-1 folds, find test error on kth fold
+- Train model on first k-2 folds and kth fold, find test error on (k-1)st fold
+- ...
+
+Find CV error by combining test errors appropriately
+
+- Key = no predictions used in the RMSE were done on data used to train that model!
+- Once a best model is chosen, model is refit on entire data set
+
+
+---
+
+# May Use Both Training/Test &amp; CV
+
+- Recall: LASSO model is similar to an MLR model but shrinks coefficients and may set some to 0
+    + Tuning parameter must be chosen (usually by CV)
+    
+
+---
+
+# May Use Both Training/Test &amp; CV
+
+- Recall: LASSO model is similar to an MLR model but shrinks coefficients and may set some to 0
+    + Tuning parameter must be chosen (usually by CV)
+    
+- Training/Test split gives us a way to validate our model's performance
+    - CV can be used on the training set to select **tuning parameters**
+    - Helps determine the 'best' model for a class of models 
+    
+- With many competing model types, compare best models on test set via our metric
+
+
+---
+
+# Plan
+
+- May want to review the videos/notebooks from earlier
+- Learn more supervised learning methods
+- Implement in `sklearn` and `pyspark`
+- Consider nuances of different loss functions and model metrics
+- See how to use model **pipelines**
+
+
+&lt;img src="img/pipeline1.png" width="750px" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
