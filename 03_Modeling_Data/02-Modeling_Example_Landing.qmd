@@ -1,0 +1,21 @@
+---
+title: "Modeling Example"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video goes through an example of fitting a model and working with a training and test set to help remind of us those big topics.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+The code used in the video is <a href = "02-Modeling_Example.ipynb" target = "_blank">available in this notebook</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment (or run this in colab). You can use a `python` or `pyspark` kernel.
+
+Remember, if you are off campus you should log in to the VPN and then you can [access our `JupyterHub`](https://jhub.cos.ncsu.edu/).
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=0108d1dd-2366-465e-a924-b2a10117fc13&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="02-Modeling Example" ></iframe>
+```
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

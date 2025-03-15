@@ -1,0 +1,38 @@
+---
+title: "Spark MLlib Basics"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below discusses how to use `Spark` `MLlib` through `pyspark`.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+The `pyspark` code used in the notes is <a href = "MLlib_MLflow.ipynb" target = "_blank">available in this notebook</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
+
+Remember, if you are off campus you should log in to the VPN and then you can [access our `JupyterHub`](https://jhub.cos.ncsu.edu/).
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=58e1105e-79b7-40f3-b371-b2a0017fa370&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="10-Spark MLlib Basics" ></iframe>
+```
+
+## Notes
+
+- <a href = "10-MLlibBasics.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/10-MLlibBasics.pdf" target = "_blank">PDF version</a>
+
+## Additional Readings
+
+### MLlib Guide
+
+- <a href="https://spark.apache.org/docs/3.2.1/ml-guide.html" target="_blank">Available here</a>!
+- <a href="https://spark.apache.org/docs/3.2.1/api/python/reference/pyspark.ml.html" target="_blank">Python documentation</a>&nbsp;(using the search in the upper left has been pretty useful)
+
+### MLflow &amp; MLOps
+
+- <a href="https://mlflow.org/" target="_blank">https://mlflow.org/</a><br>
+- <a href="https://ml-ops.org/" target="_blank">https://ml-ops.org/</a><br>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

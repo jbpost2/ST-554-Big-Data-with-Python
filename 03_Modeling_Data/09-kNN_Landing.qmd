@@ -1,0 +1,23 @@
+---
+title: "k Nearest Neighbors"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below looks at the non-parametric model called k Nearest Neighbors (kNN). This isn't a model that we'll be able to implement in spark but is useful to learn about.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=cab3e5a9-3a9e-449a-86b7-b2a0017f72f4&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="09-kNN" ></iframe>
+```
+
+## Notes
+
+- <a href = "09-kNN.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/09-kNN.pdf" target = "_blank">PDF version</a>
+- <a href = "https://shiny.stat.ncsu.edu/jbpost2/kNN/" target = "_blank">Link to the shiny app</a> used in the notes
+
+This wraps up week 12! Head to the <a href = "https://wolfware.ncsu.edu/courses/my-wolfware/" target = "_blank">Moodle site</a> to get started on your next homework assignment or use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

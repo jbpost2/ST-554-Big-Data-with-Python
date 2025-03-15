@@ -1,0 +1,541 @@
+---
+title: "Logistic Regression Extensions"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = FALSE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+#use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\python\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Logistic Regression Extensions
+Justin Post 
+
+---
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+
+
+
+---
+
+# Logistic Regression
+
+As with linear regression, we can include multiple predictors and interaction terms!
+
+- Grab our data and fit a basic logistic regression model
+
+```{python, include = FALSE}
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+#read data
+water = pd.read_csv("data/water_potability.csv")
+#fit model
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water["Hardness"].values.reshape(-1,1), y = water["Potability"].values)
+```
+
+```{python, eval = FALSE}
+import pandas as pd; import numpy as np
+from sklearn.linear_model import LogisticRegression
+#read data
+water = pd.read_csv("data/water_potability.csv")
+#fit model
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water["Hardness"].values.reshape(-1,1), y = water["Potability"].values)
+```
+
+```{python}
+print(log_reg.intercept_, log_reg.coef_)
+```
+
+
+---
+
+# Visual
+
+```{python, echo = FALSE, out.width = '450px', fig.align = 'center'}
+import matplotlib.pyplot as plt; import matplotlib.patches as mpatches
+water["Hardnessgroups"] = pd.cut(water['Hardness'], range(45, 335, 10))
+props = water[["Hardnessgroups", "Potability"]].groupby("Hardnessgroups").agg(prop = ('Potability', 'mean'), counts = ('Potability', 'count'))
+sc = plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+preds = log_reg.predict_proba(np.array(range(50,330)).reshape(-1,1))
+plt.scatter(x = np.array(range(50,330)), y = preds[:,1])
+plt.xlabel("Hardness")
+plt.ylabel("Proportion of Potable Water")
+plt.ylim([-0.1, 1.1])
+plt.legend(*sc.legend_elements("sizes", num=5, color = "blue"))
+plt.show()
+```
+
+---
+
+# Predictors
+
+Can add a categorical variable as a predictor using dummy variables
+
+- Create a high and low chloramines variable
+
+```{python}
+water["Chlor_Cat"] = pd.cut(water["Chloramines"], [0.35, 9, 13.2], labels = ['low', 'high'])
+water['highChl'] = pd.get_dummies(data = water['Chlor_Cat'])['high']
+```
+
+
+---
+
+# Predictors
+
+Can add a categorical variable as a predictor using dummy variables
+
+- Create a high and low chloramines variable
+
+```{python, eval = FALSE}
+water["Chlor_Cat"] = pd.cut(water["Chloramines"], [0.35, 9, 13.2], labels = ['low', 'high'])
+water['highChl'] = pd.get_dummies(data = water['Chlor_Cat'])['high']
+```
+
+- Adding a dummy variable just changes the intercept!
+
+
+
+---
+
+# Visual of Models
+
+`highChl` variable mostly just shifts the logistic curve over in the part we care about:
+
+```{python, eval = FALSE}
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water[["Hardness", "highChl"]], y = water["Potability"])
+```
+
+```{python, include = FALSE}
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water[["Hardness", "highChl"]], y = water["Potability"])
+```
+
+```{python}
+print(log_reg.intercept_, log_reg.coef_)
+```
+
+---
+
+# Visual of Models
+
+`highChl` variable mostly just shifts the logistic curve over in the part we care about:
+
+```{python}
+to_pred = pd.DataFrame(np.array([[i, 1 if j == 1 else 0] for i in range(50, 330) for j in range(2)]), 
+                       columns = ["Hardness", "highChl"])
+to_pred.head()
+pred_probs = pd.DataFrame(log_reg.predict_proba(to_pred))
+pred_probs.head()
+```
+
+
+---
+
+# Visual of Models
+
+```{python, out.width = '450px', fig.align = 'center', echo = FALSE}
+props = water[["Hardnessgroups", "highChl", "Potability"]] \
+            .groupby(["Hardnessgroups", "highChl"]) \
+            .agg(prop = ('Potability', 'mean'), counts = ('Potability', 'count'))
+sc = plt.scatter(pd.Series(range(50,330,10)), props.loc[::2,"prop"], s = props.loc[::2,"counts"], label = "lowChl", color = "blue")
+plt.scatter(pd.Series(range(50,330,10)), props.iloc[1::2,0], s = props.iloc[1::2,1], label = "highChl", color = "red")
+
+plt.plot(np.array(range(50,330)), pred_probs.loc[::2,1], color = "blue", label = "lowChl")
+plt.plot(np.array(range(50,330)), pred_probs.loc[1::2,1], color = "red", label = "highChl")
+plt.xlabel("Hardness")
+plt.ylabel("Proportion of Potable Water")
+plt.ylim([-0.1, 1.1])
+plt.legend()
+plt.show()
+```
+
+---
+
+# Not a Constant Difference
+
+```{python, echo = FALSE, out.width = '400px', fig.align = 'center'}
+to_pred = pd.DataFrame(np.array([[i, 1 if j == 1 else 0] for i in range(-3500, 3500) for j in range(2)]), 
+                       columns = ["Hardness", "highChl"])
+pred_probs = pd.DataFrame(log_reg.predict_proba(to_pred))
+plt.plot(np.array(range(-3500, 3500)), pred_probs.loc[::2,1], color = "blue", label = "lowChl")
+plt.plot(np.array(range(-3500, 3500)), pred_probs.loc[1::2,1], color = "red", label = "highChl")
+plt.legend()
+plt.show()
+```
+
+
+
+---
+
+# Interaction Terms Can Be Included
+
+- If we fit an interaction term with our dummy variable, we essentially fit two separate logistic regression models
+
+
+---
+
+# Fitting an Interaction Model
+
+- To include interaction terms, create with `sklearn`
+
+```{python}
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(interaction_only=True, include_bias = False)
+design = poly.fit_transform(water[["Hardness", "highChl"]])
+design
+```
+
+---
+
+# Fitting an Interaction Model
+
+- To include interaction terms, create with `sklearn`
+
+```{python, eval = FALSE}
+from sklearn.preprocessing import PolynomialFeatures
+poly = PolynomialFeatures(interaction_only=True, include_bias = False)
+design = poly.fit_transform(water[["Hardness", "highChl"]])
+```
+
+```{python, eval = FALSE}
+log_reg = LogisticRegression(penalty = 'none', solver = "newton-cg")
+log_reg.fit(X = design, y = water["Potability"])
+```
+
+```{python, include= FALSE}
+log_reg = LogisticRegression(penalty = 'none', solver = "newton-cg")
+log_reg.fit(X = design, y = water["Potability"])
+```
+
+```{python}
+print(log_reg.intercept_, log_reg.coef_)
+```
+
+
+---
+
+# Visualizing the Interaction Model Fit
+
+```{python}
+to_pred = pd.DataFrame(np.array([[i, 1 if j == 1 else 0] for i in range(50, 330) for j in range(2)]), 
+                       columns = ["Hardness", "highChl"])
+to_pred.head()
+to_pred_int = poly.fit_transform(to_pred)
+to_pred_int
+```
+
+
+---
+
+# Visualizing the Interaction Model Fit
+
+```{python, eval = FALSE}
+to_pred = pd.DataFrame(np.array([[i, 1 if j == 1 else 0] for i in range(50, 330) for j in range(2)]), 
+                       columns = ["Hardness", "highChl"])
+to_pred.head()
+to_pred_int = poly.fit_transform(to_pred)
+```
+
+```{python}
+pred_probs = pd.DataFrame(log_reg.predict_proba(to_pred_int))
+pred_probs
+```
+
+---
+
+# Visualizing the Interaction Model Fit
+
+```{python, out.width = '450px', fig.align = 'center', echo = FALSE}
+sc = plt.scatter(pd.Series(range(50,330,10)), props.loc[::2,"prop"], s = props.loc[::2,"counts"], label = "lowChl", color = "blue")
+plt.scatter(pd.Series(range(50,330,10)), props.iloc[1::2,0], s = props.iloc[1::2,1], label = "highChl", color = "red")
+plt.plot(np.array(range(50,330)), pred_probs.loc[::2,1], color = "blue", label = "lowChl")
+plt.plot(np.array(range(50,330)), pred_probs.loc[1::2,1], color = "red", label = "highChl")
+plt.xlabel("Hardness")
+plt.ylabel("Proportion of Potable Water")
+plt.ylim([-0.1, 1.1])
+plt.legend()
+plt.show()
+```
+
+---
+
+# Logistic Regression with Polynomial Term
+
+- Adding in polynomial terms increases flexibility as well!
+
+```{r, echo = FALSE, out.width = '400px', fig.align = 'center'}
+x <- seq(-1, 5, 0.01)
+b0 <- -1
+b1 <- 3
+b2 <- -1
+exp_fun <- function(x, b0, b1, b2){exp(b0+b1*x+b2*x^2)}
+plot(x, exp_fun(x, b0, b1, b2)/(1+exp_fun(x, b0, b1, b2)), ylim = c(0,1), xlim = c(-1, 5), xlab = "x", ylab= "P(Success|x)", col = "red", type = "l", main = "True Model: logit = -1 + 3*x -x^2")
+```
+
+
+
+---
+
+# Selecting a Model
+
+- Recall we can use k-fold CV as a proxy for **test set** error if we don't want to split the data
+
+- Metric to quantify prediction quality? Basic measures:
+
+    + Accuracy: 
+$$\frac{\mbox{# of correct classifications}}{\mbox{Total # of classifications}}$$
+
+    + Misclassification Rate:  
+$$\frac{\mbox{# of incorrect classifications}}{\mbox{Total # of classifications}}$$
+
+---
+
+# Selecting a Model
+
+- Recall we can use k-fold CV as a proxy for **test set** error if we don't want to split the data
+
+- Metric to quantify prediction quality? Basic measures:
+
+    + Accuracy: 
+$$\frac{\mbox{# of correct classifications}}{\mbox{Total # of classifications}}$$
+
+    + Misclassification Rate:  
+$$\frac{\mbox{# of incorrect classifications}}{\mbox{Total # of classifications}}$$
+
+    + Log-loss: For each observation (y = 0 or 1), $-(ylog(\hat{p})+(1-y)log(1-\hat{p}))$
+
+
+---
+
+# Selecting a Model
+
+- Accuracy is used by default here
+
+```{python}
+from sklearn.model_selection import cross_validate
+log_reg1 = LogisticRegression(penalty = 'none')
+cv1 = cross_validate(log_reg1,
+      X = water[["Hardness", "highChl"]], 
+      y = water["Potability"].values,
+      cv = 5)
+cv1['test_score']
+```
+
+
+---
+
+# Selecting a Model
+
+- Fit a couple more models and compare CV accuracy
+
+```{python}
+cv2 = cross_validate(log_reg1,
+      water[["Hardness", "Solids", "Chloramines", "Conductivity", "Organic_carbon"]].values, 
+      y = water["Potability"].values,
+      cv = 5)
+cv2['test_score']
+```
+
+---
+
+# Selecting a Model
+
+- Likely want to do some scaling when using polynomials...
+
+```{python}
+log_reg2 = LogisticRegression(penalty = 'none', solver = "lbfgs", max_iter = 5000)
+poly = PolynomialFeatures(interaction_only=True, include_bias = False)
+poly.fit_transform(water[["Hardness", "Solids", "Chloramines"]])
+cv3 = cross_validate(log_reg2,
+      poly.fit_transform(water[["Hardness", "Solids", "Chloramines"]]), 
+      y = water["Potability"].values, cv = 5)
+```
+
+
+---
+
+# Selecting a Model
+
+- Compare models
+
+    + Can average accuracy measures here since we have basically the same number of observations in each fold
+
+```{python}
+[round(cv1['test_score'].mean(),4), round(cv2['test_score'].mean(),4), round(cv3['test_score'].mean(),4)]
+```
+
+
+---
+
+# Selecting a Model
+
+- Compare models
+
+    + Can average accuracy measures here since we have basically the same number of observations in each fold
+
+```{python}
+[round(cv1['test_score'].mean(),4), round(cv2['test_score'].mean(),4), round(cv3['test_score'].mean(),4)]
+```
+
+- Note: Proportion of non-potable water samples is `1998/(1998+1278) = 0.6099`
+
+    + Our best model is just barely better than always guessing non-potable!
+    
+
+---
+
+# Selecting a Model
+
+- Redo with `neg-log-loss` metric!
+- Takes into account probability being modeled, not just binary classification
+- Returns 'mean loss' by default
+
+```{python}
+cv1 = cross_validate(log_reg1,
+      water[["Hardness", "highChl"]], 
+      y = water["Potability"].values,
+      cv = 5,
+      scoring = "neg_log_loss")
+cv1['test_score']
+```
+
+
+---
+
+# Selecting a Model
+
+```{python}
+cv2 = cross_validate(log_reg1,
+      water[["Hardness", "Solids", "Chloramines", "Conductivity", "Organic_carbon"]], 
+      y = water["Potability"].values,
+      cv = 5,
+      scoring = "neg_log_loss")
+cv2['test_score']
+      
+cv3 = cross_validate(log_reg2,
+      poly.fit_transform(water[["Hardness", "Solids", "Chloramines"]]), 
+      y = water["Potability"].values,
+      cv = 5,
+      scoring = "neg_log_loss")
+cv3['test_score']
+```
+
+
+---
+
+# Selecting a Model
+
+- Compare models
+
+    + Can average metrics here since each fold has same number of values (roughly)
+
+```{python}
+[round(cv1['test_score'].mean(),4), round(cv2['test_score'].mean(),4), round(cv3['test_score'].mean(),4)]
+```
+
+
+---
+
+# Selecting a Model
+
+- Compare models
+
+    + Can average metrics here since each fold has same number of values (roughly)
+
+```{python}
+[round(cv1['test_score'].sum(),4), round(cv2['test_score'].sum(),4), round(cv3['test_score'].sum(),4)]
+```
+
+- Compare to `neg_log_loss` applied to always predicting non-potable with probability 1
+
+```{python}
+from sklearn.metrics import log_loss
+#returns 'mean loss per sample' by default
+-log_loss(water["Potability"].values, np.array([[1,0] for _ in range(len(water["Potability"]))]))
+```
+
+- We do much better here!
+
+---
+
+# Recap
+
+- With a binary response variable, logistic regression can be used
+
+- Model probability using a non-linear function
+    + Can include polynomial terms, categorical variables via dummy variables, interactions, ...
+
+- Fit model with `LogisticRegression()`
+
+- Can still use `cross_validate()` to select model 
+
+    + Commonly use accuracy/missclassification or log-loss as the loss function
+    
+
+---
+
+# Recap
+
+- With a binary response variable, logistic regression can be used
+
+- Model probability using a non-linear function
+    + Can include polynomial terms, categorical variables via dummy variables, interactions, ...
+
+- Fit model with `LogisticRegression()`
+
+- Can still use `cross_validate()` to select model 
+
+    + Commonly use accuracy/missclassification or log-loss as the loss function
+
+Note: Logistic Regression falls into a family of Generalized Linear Models (GLMs):
+
+- Allows for responses from non-normal distributions  
+    
+

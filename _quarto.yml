@@ -45,6 +45,21 @@ project:
     - 02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.qmd
     - 02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.qmd
     - 02_Big_Data_Management/SQL_Joins_Notebook.ipynb
+    - 03_Modeling_Data/01-Modeling_Data_Recap_Landing.qmd
+    - 03_Modeling_Data/02-Modeling_Example_Landing.qmd
+    - 03_Modeling_Data/03-Logistic_Regression_Basics_Landing.qmd
+    - 03_Modeling_Data/04-Logistic_Regression_Extensions_Landing.qmd
+    - 03_Modeling_Data/05-Regularized_Regression_Landing.qmd
+    - 03_Modeling_Data/06-Loss_Functions_and_Model_Metrics_Landing.qmd
+    - 03_Modeling_Data/07-Classification_And_Regression_Trees_Landing.qmd
+    - 03_Modeling_Data/08-Bagging_And_Random_Forests_Landing.qmd
+    - 03_Modeling_Data/09-kNN_Landing.qmd
+    - 03_Modeling_Data/10-MLLibBasics_Landing.qmd
+    - 03_Modeling_Data/11-MLPipelines_Landing.qmd
+    - 03_Modeling_Data/12-MLflow_Landing.qmd
+    - 03_Modeling_Data/13-MLOps_Landing.qmd
+    - 03_Modeling_Data/MLLib_MLflow.ipynb
+    - 03_Modeling_Data/02-Modeling_Example.ipynb
 
 website:
   title: "ST 554 Analysis of Big Data (with Python)"
@@ -110,6 +125,21 @@ website:
           - 02_Big_Data_Management/10-pyspark_RDD_Landing.qmd
           - 02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.qmd
           - 02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.qmd
+      - section: "Topic 5: Modeling Data"
+        contents:
+          - 03_Modeling_Data/01-Modeling_Data_Recap_Landing.qmd
+          - 03_Modeling_Data/02-Modeling_Example_Landing.qmd
+          - 03_Modeling_Data/03-Logistic_Regression_Basics_Landing.qmd
+          - 03_Modeling_Data/04-Logistic_Regression_Extensions_Landing.qmd
+          - 03_Modeling_Data/05-Regularized_Regression_Landing.qmd
+          - 03_Modeling_Data/06-Loss_Functions_and_Model_Metrics_Landing.qmd
+          - 03_Modeling_Data/07-Classification_And_Regression_Trees_Landing.qmd
+          - 03_Modeling_Data/08-Bagging_And_Random_Forests_Landing.qmd
+          - 03_Modeling_Data/09-kNN_Landing.qmd
+          - 03_Modeling_Data/10-MLLibBasics_Landing.qmd
+          - 03_Modeling_Data/11-MLPipelines_Landing.qmd
+          - 03_Modeling_Data/12-MLflow_Landing.qmd
+          - 03_Modeling_Data/13-MLOps_Landing.qmd
   page-navigation: true
   reader-mode: true
 

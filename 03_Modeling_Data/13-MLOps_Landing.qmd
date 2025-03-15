@@ -1,0 +1,22 @@
+---
+title: "MLOps"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below gives a rough overview of the entire MLOps framework. This video and material are optional!
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=36050800-f8b6-4296-973f-b2a001803358&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="13-MLOps" ></iframe>
+```
+
+## Notes
+
+- <a href = "13-MLOps.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/13-MLOps.pdf" target = "_blank">PDF version</a>
+
+This wraps up week 13! Head to the <a href = "https://wolfware.ncsu.edu/courses/my-wolfware/" target = "_blank">Moodle site</a> to get started on your next homework assignment or use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

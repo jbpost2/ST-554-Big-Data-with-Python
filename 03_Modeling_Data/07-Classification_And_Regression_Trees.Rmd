@@ -1,0 +1,576 @@
+---
+title: "Classification & Regression Trees"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = FALSE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+#use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\python\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Classification & Regression Trees
+Justin Post 
+
+---
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+
+
+---
+
+# Recap 
+
+- Determine if we are doing a prediction or classification problem
+- Given a model, we **fit** the model using data via a loss function
+- Must determine how well the model predicts on **new** data (or using CV) via a metric
+
+Multiple Linear Regression 
+- Commonly used model with a numeric response
+
+Logistic Regression
+- Commonly used model with a binary response
+
+
+---
+
+# Regression/Classification Trees  
+
+Tree based method:  
+
+- **Split up predictor space into regions**, different predictions for each region    
+
+- *Classification* tree if goal is to classify (predict) group membership  
+
+    + Usually use **most prevalent class** in region as prediction  
+
+---
+
+# Regression/Classification Trees  
+
+Tree based method:  
+
+- **Split up predictor space into regions**, different predictions for each region    
+
+- *Classification* tree if goal is to classify (predict) group membership  
+
+    + Usually use **most prevalent class** in region as prediction  
+
+- *Regression* tree if goal is to predict a continuous response
+
+    + Usually use **mean of observations** in region as prediction  
+
+    
+---
+
+# Easy Interpretation
+
+```{r, echo = FALSE, fig.align='center', out.width='500px'}
+library(tree) #rpart is also often used
+fitTree <- tree(dist ~ speed, data = cars) #default splitting is deviance
+plot(fitTree)
+text(fitTree)
+```
+
+
+---
+
+# Predictor Space Split vs Linear Function
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE, fig.align='center', out.width='500px'}
+library(ggplot2)
+ggplot(cars, aes(x = speed, y = dist)) + geom_point() +
+	geom_smooth(method = "lm", se = FALSE, size = 2) + 
+	geom_segment(x = 0, xend = 9.5, y = 10.67, yend = 10.67, col = "Orange", size = 2) +
+	geom_segment(x = 9.5, xend = 12.5, y = 23.22, yend = 23.22, col = "Orange", size = 2) +
+		geom_segment(x = 12.5, xend = 17.5, y = 39.75, yend = 39.75, col = "Orange", size = 2) +
+		geom_segment(x = 17.5, xend = 23.5, y = 55.71, yend = 55.71, col = "Orange", size = 2) +
+		geom_segment(x = 23.5, xend = max(cars$speed), y = 92, yend = 92, col = "Orange", size = 2)
+```
+
+
+---
+
+# Fit Regression Tree
+
+- Recall the Bike data and `log_selling_price` as our response
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+bike_data = pd.read_csv("data/bikeDetails.csv")
+#create response and new predictor
+bike_data['log_selling_price'] = np.log(bike_data['selling_price'])
+bike_data['log_km_driven'] = np.log(bike_data['km_driven'])
+```
+
+
+---
+
+
+# Fit Regression Tree
+
+- Code modified [from the docs](https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html)
+
+- Depth represents how many levels of splits to do
+
+```{python, eval = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+regr1 = DecisionTreeRegressor(max_depth=2)
+regr2 = DecisionTreeRegressor(max_depth=5)
+regr1.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+regr2.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+```
+
+```{python, include = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+regr1 = DecisionTreeRegressor(max_depth=2)
+regr2 = DecisionTreeRegressor(max_depth=5)
+regr1.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+regr2.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+```
+
+---
+# Fit Regression Tree
+
+- Code modified [from the docs](https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html)
+
+- Depth represents how many levels of splits to do
+
+```{python, eval = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+regr1 = DecisionTreeRegressor(max_depth=2)
+regr2 = DecisionTreeRegressor(max_depth=5)
+regr1.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+regr2.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+```
+
+- Can still predict with `.predict()` method
+
+```{python}
+X_test = np.arange(5.8, 13.8, 0.01)[:, np.newaxis]
+pred1 = regr1.predict(X_test)
+pred2 = regr2.predict(X_test)
+```
+
+---
+
+# Fit Regression Tree
+
+```{python, eval= FALSE}
+plt.scatter(bike_data['log_km_driven'], bike_data['log_selling_price'], 
+            s=20, edgecolor="black", c="darkorange", label="data")
+plt.plot(X_test, pred1, color="cornflowerblue", label="max_depth=2", linewidth=3)
+plt.plot(X_test, pred2, color="yellowgreen", label="max_depth=5", linewidth=3)
+plt.xlabel("log_km_driven")
+plt.ylabel("log_selling_price")
+plt.title("Decision Tree Regression")
+plt.legend()
+plt.show()
+```
+
+
+---
+
+# Fit Regression Tree
+
+```{python, eval= TRUE, echo = FALSE, fig.align='center', out.width='500px'}
+plt.scatter(bike_data['log_km_driven'], bike_data['log_selling_price'], s=20, edgecolor="black", c="darkorange", label="data")
+plt.plot(X_test, pred1, color="cornflowerblue", label="max_depth=2", linewidth=3)
+plt.plot(X_test, pred2, color="yellowgreen", label="max_depth=5", linewidth=3)
+plt.xlabel("log_km_driven")
+plt.ylabel("log_selling_price")
+plt.title("Decision Tree Regression")
+plt.legend()
+plt.show()
+```
+
+
+---
+
+# Regression Trees  
+
+- Extension to more than one predictor is exactly the same idea   
+
+- Instead of fitting a plane or saddle in MLR, fit a series of flat planes (mean for a given region)
+
+
+---
+
+# Regression Trees  
+
+- Extension to more than one predictor is exactly the same idea   
+
+- Instead of fitting a plane or saddle in MLR, fit a series of flat planes (mean for a given region)
+
+```{python, eval = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+regr3 = DecisionTreeRegressor(max_depth=2)
+regr3.fit(bike_data[['log_km_driven', 'year']].values, bike_data['log_selling_price'].values)
+```
+
+```{python, include = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+regr3 = DecisionTreeRegressor(max_depth=2)
+regr3.fit(bike_data[['log_km_driven', 'year']].values, bike_data['log_selling_price'].values)
+```
+
+---
+
+# Regression Trees  
+
+- Extension to more than one predictor is exactly the same idea   
+
+- Instead of fitting a plane or saddle in MLR, fit a series of flat planes (mean for a given region)
+
+```{python, eval = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+regr3 = DecisionTreeRegressor(max_depth=2)
+regr3.fit(bike_data[['log_km_driven', 'year']].values, bike_data['log_selling_price'].values)
+```
+
+- `plot_tree()` function useful for visualization
+
+```{python, eval= FALSE, fig.align='center', out.width='500px'}
+from sklearn.tree import plot_tree
+plot_tree(regr3)
+```
+
+
+---
+
+```{python, eval= TRUE, fig.align='center', out.width='600px', echo = FALSE}
+from sklearn.tree import plot_tree
+plot_tree(regr3)
+plt.show()
+```
+
+---
+
+# No Need for Interaction Terms
+
+- Trees automatically account for interactions  
+
+- An interaction implies that the **effect** of one variable differs depending on the value of another
+
+    + Splitting on more than one variable implies this is the case!
+
+
+
+---
+
+# Categorical Predictors 
+
+- Easy to include as well
+
+- Must convert to dummy variables though
+
+```{python, eval = FALSE}
+regr4 = DecisionTreeRegressor(max_depth=3)
+pd.get_dummies(bike_data.owner).head()
+bike_data["owners"] = pd.get_dummies(bike_data.owner)['1st owner']
+regr4.fit(bike_data[['log_km_driven', 'owners']].values, bike_data['log_selling_price'].values)
+```
+
+```{python, include = FALSE}
+regr4 = DecisionTreeRegressor(max_depth=3)
+pd.get_dummies(bike_data.owner).head()
+bike_data["owners"] = pd.get_dummies(bike_data.owner)['1st owner']
+regr4.fit(bike_data[['log_km_driven', 'owners']].values, bike_data['log_selling_price'].values)
+```
+
+---
+
+```{python, eval= TRUE, fig.align='center', out.width='650px', echo = FALSE}
+plot_tree(regr4, fontsize=6)
+plt.show()
+```
+
+---
+
+# Regression/Classification Trees  
+
+Tree based method:  
+
+- **Split up predictor space into regions**, different predictions for each region    
+
+- *Classification* tree if goal is to classify (predict) group membership  
+
+    + Usually use **most prevalent class** in region as prediction  
+
+- *Regression* tree if goal is to predict a continuous response
+
+    + Usually use **mean of observations** in region as prediction  
+    
+    
+---
+
+# Classification Tree
+    
+
+- Recall the water potability data and `Potability` as our response
+
+```{python}
+water = pd.read_csv("data/water_potability.csv")
+water.head()
+```
+
+
+---
+
+# Classification Tree
+    
+
+- Recall the water potability data and `Potability` as our response
+
+```{python}
+water = pd.read_csv("data/water_potability.csv")
+water.head()
+```
+- Use a similar function to fit classification trees
+
+```{python, eval = FALSE}
+from sklearn.tree import DecisionTreeClassifier
+cltree1 = DecisionTreeClassifier(max_depth=3)
+cltree1.fit(water[['Hardness', 'Solids']].values, water['Potability'].values)
+```
+
+```{python, include = FALSE}
+from sklearn.tree import DecisionTreeClassifier
+cltree1 = DecisionTreeClassifier(max_depth=3)
+cltree1.fit(water[['Hardness', 'Solids']].values, water['Potability'].values)
+```
+
+---
+
+
+```{python, eval= TRUE, fig.align='center', out.width='650px', echo = FALSE}
+plot_tree(cltree1, fontsize = 6)
+plt.show()
+```
+
+---
+
+# Predictions
+
+- Model fit can be used for the same types of predictions as logistic regression
+
+```{python}
+cltree1.predict(np.array([[175, 15666],
+                          [217, 15666], 
+                          [196, 22014],
+                          [217, 22014]]))
+cltree1.predict_proba(np.array([[175, 15666],
+                          [217, 15666], 
+                          [196, 22014],
+                          [217, 22014]]))                          
+```
+
+
+---
+
+# Pruning the Tree
+
+- Tree fit can depend on max depth and how many splits on each branch
+
+- Often a large tree is fit and **pruned** back
+    + We can also control the minimum number of samples a leaf can have via `min_samples_leaf`
+    + Many other things we could consider, but let's focus on those two!
+
+---
+
+# Pruning the Tree
+
+- Tree fit can depend on max depth and how many splits on each branch
+
+- Often a large tree is fit and **pruned** back
+    + We can also control the minimum number of samples a leaf can have via `min_samples_leaf`
+    + Many other things we could consider, but let's focus on those two!
+
+- Best combination of these two can be determined using cross-validation!
+    + Set up values to consider
+    + Use `GridSearchCV()` to return the best values
+
+
+
+---
+
+# Pruning the Tree
+
+- Set up our values to consider as a dictionary
+```{python}
+parameters = {'max_depth': range(2,15),
+              'min_samples_leaf':[3, 5, 10, 50, 100]}
+```
+
+
+---
+
+# Pruning the Tree
+
+- Set up our values to consider as a dictionary
+```{python}
+parameters = {'max_depth': range(2,15),
+              'min_samples_leaf':[3, 5, 10, 50, 100]}
+```
+
+- Import the grid search function
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+tuning_model = GridSearchCV(DecisionTreeClassifier(),
+                            parameters, 
+                            cv = 5, 
+                            scoring='accuracy')
+```
+
+
+---
+
+# Pruning the Tree
+
+- Now we fit the model
+
+```{python, eval = FALSE}
+tuning_model.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon']].values,
+                 water['Potability'].values)
+```
+```{python, include = FALSE}
+tuning_model.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon']].values,
+                 water['Potability'].values)
+```
+
+---
+
+# Pruning the Tree
+
+- Now we fit the model
+
+```{python, eval = FALSE}
+tuning_model.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon']].values,
+                 water['Potability'].values)
+```
+
+- Inspect the best tuning parameters
+
+```{python}
+print(tuning_model.best_estimator_)
+print(tuning_model.best_score_, tuning_model.best_params_) 
+```
+
+---
+
+
+```{python, eval= TRUE, fig.align='center', out.width='900px', echo = FALSE, strip.white = TRUE}
+plt.figure(figsize=(16,12))  # set plot size (denoted in inches)
+plot_tree(tuning_model.best_estimator_, fontsize=6)
+plt.show()
+```
+
+
+---
+
+# Different Metric
+
+- Instead of misclassification, consider `neg_log_loss`
+
+```{python, eval = FALSE}
+tuning_model2 = GridSearchCV(DecisionTreeClassifier(),
+                            parameters, 
+                            cv = 5, 
+                            scoring='neg_log_loss')
+tuning_model2.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon', 'Turbidity']].values,
+                  water['Potability'].values)                            
+```
+
+```{python, include = FALSE}
+tuning_model2 = GridSearchCV(DecisionTreeClassifier(),
+                            parameters, 
+                            cv = 5, 
+                            scoring='neg_log_loss')
+tuning_model2.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon', 'Turbidity']].values,
+                  water['Potability'].values)                            
+```
+```{python}
+print(tuning_model2.best_estimator_)
+print(tuning_model2.best_score_, tuning_model2.best_params_) 
+```
+
+---
+
+```{python}
+tuning_model2.predict_proba(np.array([[150, 0, 8.5, 0, 0]]))
+```
+
+
+```{python, eval= TRUE, fig.align='center', out.width='700px', echo = FALSE, strip.white = TRUE}
+plt.figure(figsize=(16,12))  # set plot size (denoted in inches)
+plot_tree(tuning_model2.best_estimator_, fontsize=11)
+plt.show()
+```
+
+
+
+---
+
+# Recap
+
+- Trees are a nonlinear model
+
+Pros:  
+
+- Simple to understand and easy to interpret output  
+- Predictors don't need to be scaled  
+- No statistical assumptions necessary  
+- Built in variable selection  
+
+Cons:  
+
+- Small changes in data can vastly change tree  
+- No optimal algorithm for choosing splits  
+- Need to prune 
+
+Bagging Trees, Random Forests, and Boosted Trees are three methods that average across trees.  Lose interpretability but gain in prediction!  
+

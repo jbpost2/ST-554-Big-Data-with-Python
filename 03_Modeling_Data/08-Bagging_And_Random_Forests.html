@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Loss Functions &amp; Model Performance</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Bagging Trees &amp; Random Forests
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+---
+
+# Recap 
+
+- MLR, Penalized MLR, &amp; Regression Trees
+    - Commonly used model with a numeric response
+
+- Logistic Regression, Penalized Logistic Regression, &amp; Classification Trees
+    - Commonly used model with a binary response
+
+- MLR &amp; Logistic regression are more structured (linear)
+- Trees easier to read but more variable (non-linear)
+
+
+---
+
+# Prediction with Tree Based Methods
+
+If we care mostly about prediction not interpretation  
+
+- Often use **bootstrapping** to get multiple samples to fit on  
+- Can average across many fitted trees  
+- Decreases variance over an individual tree fit  
+
+  
+ 
+---
+
+# Prediction with Tree Based Methods
+
+If we care mostly about prediction not interpretation  
+
+- Often use **bootstrapping** to get multiple samples to fit on  
+- Can average across many fitted trees  
+- Decreases variance over an individual tree fit  
+  
+Major ensemble tree methods  
+
+1. Bagging (boostrap aggregation)  
+2. Random Forests (extends idea of bagging - includes bagging as a special case)  
+3. Boosting (*slow* training of trees)  
+
+
+---
+
+# Bagging  
+
+Bagging = Bootstrap Aggregation - a general method  
+
+Bootstrapping  
+
+- resample from the data (non-parametric) or a fitted model (parameteric)  
+
+- for non-parameteric  
+
+    + treats sample as population  
+    + resampling done with replacement  
+    + can get same observation multiple times  
+    
+    
+---
+
+# Bagging  
+
+Bagging = Bootstrap Aggregation - a general method  
+
+Bootstrapping  
+
+- resample from the data (non-parametric) or a fitted model (parameteric)  
+
+- for non-parameteric  
+
+    + treats sample as population  
+    + resampling done with replacement  
+    + can get same observation multiple times  
+    
+- method or estimation applied to each resample  
+
+- traditionally used to obtain standard errors (measures of variability) or construct confidence intervals  
+
+
+---
+
+# Non-Parametric Bootstrapping  
+
+&lt;img src="img/bootstrap-sample.png" width="800px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Bagging  
+
+Process for Regression Trees:  
+
+1. Create a bootstrap sample (same size as actual sample)  
+
+    + `sample(data, size = n, replace = TRUE)`  
+
+
+---
+
+# Bagging  
+
+Process for Regression Trees:  
+
+1. Create a bootstrap sample (same size as actual sample)  
+
+    + `sample(data, size = n, replace = TRUE)`  
+    
+2. Train tree on this sample (no pruning necessary)  
+    + Call prediction for a given set of `\(x\)` values `\(\hat{y}^{*1}(x)\)`
+
+
+---
+
+# Bagging  
+
+Process for Regression Trees:  
+
+1. Create a bootstrap sample (same size as actual sample)  
+
+    + `sample(data, size = n, replace = TRUE)`  
+    
+2. Train tree on this sample (no pruning necessary)  
+    + Call prediction for a given set of `\(x\)` values `\(\hat{y}^{*1}(x)\)`
+
+3. Repeat B = 1000 times (books often say 100, no set mark)  
+    + Obtain `\(\hat{y}^{*j}(x)\)`, `\(j = 1, ..., B\)`  
+    
+    
+---
+
+# Bagging  
+
+Process for Regression Trees:  
+
+1. Create a bootstrap sample (same size as actual sample)  
+    + `sample(data, size = n, replace = TRUE)`  
+    
+2. Train tree on this sample (no pruning necessary)  
+    + Call prediction for a given set of `\(x\)` values `\(\hat{y}^{*1}(x)\)`
+
+3. Repeat B = 1000 times (books often say 100, no set mark)  
+    + Obtain `\(\hat{y}^{*j}(x)\)`, `\(j = 1, ..., B\)`  
+    
+4. Final prediction is average of these predictions  
+    + `\(\hat{y}(x) = \frac{1}{B}\sum_{j=1}^{B} \hat{y}^{*j}(x)\)`  
+    
+    
+---
+
+# Bagging  
+
+For Classification Trees:  
+
+1. Create a bootstrap sample (same size as actual sample)  
+    + `sample(data, size = n, replace = TRUE)`  
+    
+2. Train tree on this sample (no pruning necessary)  
+    + Call class prediction for a given set of `\(x\)` values `\(\hat{y}^{*1}(x)\)`
+
+3. Repeat B = 1000 times (books often say 100, no set mark)  
+    + Obtain `\(\hat{y}^{*j}(x)\)`, `\(j = 1, ..., B\)`  
+
+
+---
+
+# Bagging  
+
+For Classification Trees:  
+
+1. Create a bootstrap sample (same size as actual sample)  
+    + `sample(data, size = n, replace = TRUE)`  
+    
+2. Train tree on this sample (no pruning necessary)  
+    + Call class prediction for a given set of `\(x\)` values `\(\hat{y}^{*1}(x)\)`
+
+3. Repeat B = 1000 times (books often say 100, no set mark)  
+    + Obtain `\(\hat{y}^{*j}(x)\)`, `\(j = 1, ..., B\)`  
+
+4. (One option) Use **majority vote** as final classification prediction (i.e. use most common prediction made by all bootstrap trees)  
+
+
+
+---
+
+layout: false
+
+# Bagging Example  
+
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+bike_data = pd.read_csv("data/bikeDetails.csv")
+#create response and new predictor
+bike_data['log_selling_price'] = np.log(bike_data['selling_price'])
+bike_data['log_km_driven'] = np.log(bike_data['km_driven'])
+#Add a Categorical Predictor via a Dummy Variable
+bike_data["one_owner"] = pd.get_dummies(bike_data["owner"]).iloc[:,0]
+pd.get_dummies(bike_data["owner"])
+```
+
+```
+##       1st owner  2nd owner  3rd owner  4th owner
+## 0             1          0          0          0
+## 1             1          0          0          0
+## 2             1          0          0          0
+## 3             1          0          0          0
+## 4             0          1          0          0
+## ...         ...        ...        ...        ...
+## 1056          1          0          0          0
+## 1057          1          0          0          0
+## 1058          0          1          0          0
+## 1059          1          0          0          0
+## 1060          1          0          0          0
+## 
+## [1061 rows x 4 columns]
+```
+
+
+---
+
+# Bagging Example  
+
+- We can use the `RandomForestRegressor` function with `max_features` set to `None`
+- No tuning parameters really needed. Can set `max_depth` or `min_samples_leaf` as before 
+- Default says to train on 100 trees (bootstrap samples)
+
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+bag_tree = RandomForestRegressor(max_features = None, n_estimators = 500)
+```
+
+---
+
+# Bagging Example  
+
+- We can use the `RandomForestRegressor` function with `max_features` set to `None`
+- No tuning parameters really needed. Can set `max_depth` or `min_samples_leaf` as before 
+- Default says to train on 100 trees (bootstrap samples)
+
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+bag_tree = RandomForestRegressor(max_features = None, n_estimators = 500)
+bag_tree.fit(bike_data[['log_km_driven', 'year']], 
+             bike_data['log_selling_price'])
+```
+             
+
+
+
+---
+
+# Bagging Example  
+
+- We can use the `RandomForestRegressor` function with `max_features` set to `None`
+- No tuning parameters really needed. Can set `max_depth` or `min_samples_leaf` as before 
+- Default says to train on 100 trees (bootstrap samples)
+
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+bag_tree = RandomForestRegressor(max_features = None, n_estimators = 500)
+bag_tree.fit(bike_data[['log_km_driven', 'year']], 
+             bike_data['log_selling_price'])
+```
+
+- Still predict with `.predict()`
+
+
+```python
+print(bag_tree.predict(np.array([[9.5, 1990], [9.5, 2015], [10.6, 1990], [10.6, 2015]])))
+```
+
+```
+## [10.66683736 10.72082196  9.83704814 10.43755419]
+## 
+## C:\python\lib\site-packages\sklearn\base.py:450: UserWarning: X does not have valid feature names, but RandomForestRegressor was fitted with feature names
+##   warnings.warn(
+```
+
+```python
+print(np.exp(bag_tree.predict(np.array([[9.5, 1990], [9.5, 2015], [10.6, 1990], [10.6, 2015]]))))
+```
+
+```
+## [42909.02083593 45289.11340346 18714.392078   34117.10646687]
+## 
+## C:\python\lib\site-packages\sklearn\base.py:450: UserWarning: X does not have valid feature names, but RandomForestRegressor was fitted with feature names
+##   warnings.warn(
+```
+
+
+
+---
+
+# Bagging Example  
+
+- Can look at variable importance measure 
+
+
+```python
+bag_tree.feature_importances_
+```
+
+```
+## array([0.42263568, 0.57736432])
+```
+
+```python
+plt.barh(bike_data.columns[[8,2]], bag_tree.feature_importances_); plt.xlabel("Importance");plt.show()
+```
+
+&lt;img src="08-Bagging_And_Random_Forests_files/figure-html/unnamed-chunk-9-1.svg" width="350px" style="display: block; margin: auto;" /&gt;&lt;img src="08-Bagging_And_Random_Forests_files/figure-html/unnamed-chunk-9-2.svg" width="350px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Bagging Example  
+
+- Fit the bagged tree model
+
+
+```python
+bag_tree2 = RandomForestRegressor(max_features = None, n_estimators = 500)
+bag_tree2.fit(bike_data[['log_km_driven', 'year', 'one_owner']], 
+             bike_data['log_selling_price'])
+```
+
+
+
+- Compare predictions between models
+
+
+```python
+to_predict = np.array([[9.5, 1990, 1], [9.5, 1990, 0], [9.5, 2000, 1], [9.5, 2000, 0]])
+pred_compare = pd.DataFrame(zip(bag_tree.predict(to_predict[:,0:2]), bag_tree2.predict(to_predict)), 
+                            columns = ["No Cat", "Cat"])
+```
+
+```
+## C:\python\lib\site-packages\sklearn\base.py:450: UserWarning: X does not have valid feature names, but RandomForestRegressor was fitted with feature names
+##   warnings.warn(
+## C:\python\lib\site-packages\sklearn\base.py:450: UserWarning: X does not have valid feature names, but RandomForestRegressor was fitted with feature names
+##   warnings.warn(
+```
+
+```python
+pd.concat([pred_compare, np.exp(pred_compare)], axis = 1)
+```
+
+```
+##       No Cat        Cat        No Cat           Cat
+## 0  10.666837  10.237249  42909.020836  27924.202678
+## 1  10.666837  11.073989  42909.020836  64472.198220
+## 2   9.799262   9.692003  18020.449379  16187.641486
+## 3   9.799262  10.063713  18020.449379  23475.503579
+```
+
+
+---
+
+# Variable Importance
+
+
+```python
+plt.barh(bike_data.columns[[8,2, 9]], bag_tree2.feature_importances_); plt.xlabel("Importance");plt.show()
+```
+
+&lt;img src="08-Bagging_And_Random_Forests_files/figure-html/unnamed-chunk-13-5.svg" width="400px" style="display: block; margin: auto;" /&gt;&lt;img src="08-Bagging_And_Random_Forests_files/figure-html/unnamed-chunk-13-6.svg" width="400px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Compare CV Error of Bagged Tree to Other Models
+
+
+```python
+from sklearn.model_selection import GridSearchCV, cross_validate
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+bag_cv = cross_validate(RandomForestRegressor(n_estimators = 500, max_depth = 4, min_samples_leaf = 10),
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+---
+
+# Compare CV Error of Bagged Tree to Other Models
+
+
+
+```python
+from sklearn.model_selection import GridSearchCV, cross_validate
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+bag_cv = cross_validate(RandomForestRegressor(n_estimators = 500, max_depth = 4, min_samples_leaf = 10),
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+```python
+rtree_tune = GridSearchCV(DecisionTreeRegressor(),
+                            {'max_depth': range(2,15),'min_samples_leaf':[3, 10, 50, 100]}, cv = 5,
+                            scoring = "neg_mean_squared_error") \
+                            .fit(bike_data[['log_km_driven', 'year', 'one_owner']], 
+                                        bike_data['log_selling_price'])
+rtree_cv = cross_validate(rtree_tune.best_estimator_,
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+---
+
+# Compare CV Error of Bagged Tree to Other Models
+
+
+
+```python
+from sklearn.model_selection import GridSearchCV, cross_validate
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+bag_cv = cross_validate(RandomForestRegressor(n_estimators = 500, max_depth = 4, min_samples_leaf = 10),
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+```python
+rtree_tune = GridSearchCV(DecisionTreeRegressor(),
+                            {'max_depth': range(2,15),'min_samples_leaf':[3, 10, 50, 100]}, cv = 5,
+                            scoring = "neg_mean_squared_error") \
+                            .fit(bike_data[['log_km_driven', 'year', 'one_owner']], 
+                                        bike_data['log_selling_price'])
+rtree_cv = cross_validate(rtree_tune.best_estimator_,
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+```python
+mlr_cv = cross_validate(LinearRegression(),
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+---
+
+# Compare CV Error of Bagged Tree to Other Models
+
+
+
+```python
+from sklearn.model_selection import GridSearchCV, cross_validate
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+bag_cv = cross_validate(RandomForestRegressor(n_estimators = 500, max_depth = 4, min_samples_leaf = 10),
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+```python
+rtree_tune = GridSearchCV(DecisionTreeRegressor(),
+                            {'max_depth': range(2,15),'min_samples_leaf':[3, 10, 50, 100]}, cv = 5,
+                            scoring = "neg_mean_squared_error") \
+                            .fit(bike_data[['log_km_driven', 'year', 'one_owner']], 
+                                        bike_data['log_selling_price'])
+rtree_cv = cross_validate(rtree_tune.best_estimator_,
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+```python
+mlr_cv = cross_validate(LinearRegression(),
+                        bike_data[['log_km_driven', 'year', 'one_owner']], 
+                        bike_data['log_selling_price'], cv = 5, scoring = "neg_mean_squared_error")
+```
+
+
+```python
+print(np.sqrt([-sum(bag_cv['test_score'])/5, -sum(rtree_cv['test_score'])/5, -sum(mlr_cv['test_score'])/5]))
+```
+
+```
+## [0.50498379 0.51469632 0.51735197]
+```
+
+
+
+
+---
+
+# Prediction with Tree Based Methods
+
+If we care mostly about prediction not interpretation  
+
+- Often use **bootstrapping** to get multiple samples to fit on  
+- Can average across many fitted trees  
+- Decreases variance over an individual tree fit  
+  
+ 
+Major ensemble tree methods  
+
+1. Bagging (boostrap aggregation)  
+2. Random Forests (extends idea of bagging - includes bagging as a special case)  
+3. Boosting (*slow* training of trees)  
+
+
+
+---
+
+# Random Forests  
+
+- Uses same idea as bagging  
+- Create multiple trees from bootstrap samples
+- Average results  
+
+---
+
+# Random Forests  
+
+- Uses same idea as bagging  
+- Create multiple trees from bootstrap samples
+- Average results
+
+Difference:  
+
+- Don't use all predictors!
+- Consider splits using a random subset of predictors each time
+
+
+---
+
+# Random Forests  
+
+- Uses same idea as bagging  
+- Create multiple trees from bootstrap samples
+- Average results  
+
+Difference:  
+
+- Don't use all predictors!
+- Consider splits using a random subset of predictors each time
+
+But why?  
+
+- If a really strong predictor exists, every bootstrap tree will probably use it for the first split (2nd split, etc.)
+- Makes bagged trees predictions more correlated
+- Correlation --&gt; smaller reduction in variance from aggregation
+
+
+---
+
+# Random Forests  
+
+By randomly selecting a subset of predictors, a good predictor or two won't dominate the tree fits  
+
+- Rules of thumb say use `num_features` = `\(\sqrt{\mbox{# predictors}}\)` (classification) or `num_features` = `\(\mbox{# predictors}/3\)` (regression) (randomly selected) predictors  
+
+- If `num_features` = number of predictors then you have bagging!
+    + Default for `RandomForestRegressor()`
+
+- Better to determine `num_features` via CV (or other measure) 
+
+
+---
+
+# Random Forests  
+
+- Select best random forest model using `GridSearchCV()`
+
+
+```python
+parameters = {"max_features": range(1,4), "max_depth": [3, 4, 5, 10, 15],'min_samples_leaf':[3, 10, 50, 100]}
+rf_tune = GridSearchCV(RandomForestRegressor(n_estimators = 500), 
+                       parameters, cv = 5, scoring = "neg_mean_squared_error")
+rf_tune.fit(bike_data[['log_km_driven', 'year', 'one_owner']],
+            bike_data['log_selling_price'])
+```
+
+
+
+
+```python
+print(rf_tune.best_estimator_)
+```
+
+```
+## RandomForestRegressor(max_depth=5, max_features=2, min_samples_leaf=3,
+##                       n_estimators=500)
+```
+
+---
+
+# Random Forests  
+
+Compare all model CV errors
+
+
+```python
+rf_cv = cross_validate(rf_tune.best_estimator_, 
+                         bike_data[['log_km_driven', 'year', 'one_owner']], 
+                         bike_data['log_selling_price'], cv = 5, 
+                         scoring = "neg_mean_squared_error")
+
+print(np.sqrt([-sum(bag_cv['test_score'])/5, -sum(rtree_cv['test_score'])/5, 
+               -sum(mlr_cv['test_score'])/5, -sum(rf_cv['test_score'])/5]))
+```
+
+```
+## [0.50498379 0.51469632 0.51735197 0.50249596]
+```
+
+---
+
+# Recap
+
+Averaging many trees can greatly improve prediction
+
+- Comes at a loss of interpretability
+- Variable importance measures can be used
+
+Bagging 
+- Fit many trees on bootstrap samples and combine predictions in some way
+
+Random Forest
+- Do bagging but randomly select the predictors to use for each split
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

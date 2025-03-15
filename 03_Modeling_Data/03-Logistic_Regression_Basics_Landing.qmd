@@ -1,0 +1,27 @@
+---
+title: "Logistic Regression Basics"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below describes the basics of the logistic regression model and why we prefer it over linear regression for classification problems.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+**Note: Depending on which computer I was on (and hence which version of `sklearn` I had) the notation for two things differed:**
+
+- Specifying no penalty for a logistic regression model: Either `None` or `"none"`
+- Specifying the newton type solver: Either `"newton-cholesky"` or `"newton-cg"`
+    
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=854bdba7-f23a-4404-b635-b2a0017df34d&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="03-Logistic Regression Basics" ></iframe>
+```
+
+## Notes
+
+- <a href = "03-Logistic_Regression_Basics.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/03-Logistic_Regression_Basics.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

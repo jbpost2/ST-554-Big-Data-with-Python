@@ -1,0 +1,31 @@
+---
+title: "Loss Functions & Model Metrics"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below gets further into the differences between loss functions and model metrics.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=299241f6-4af2-4eda-8b5b-b2a0017eb106&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="06-Loss Functions &amp; Model Performance" ></iframe>
+```
+
+## Notes
+
+- <a href = "06-Loss_Functions_and_Model_Metrics.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/06-Loss_Functions_and_Model_Metrics.pdf" target = "_blank">PDF version</a>
+
+## Additional Readings
+
+### Modeling Readings
+
+- <a href = "https://www.statlearning.com/" target = "_blank">Introuction to Statistical Learning with Python</a>
+
+    + Chapter 2: section 2
+    + Chapter 8: sections 1 and 2
+    
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

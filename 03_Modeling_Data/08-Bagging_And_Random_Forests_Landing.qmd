@@ -1,0 +1,22 @@
+---
+title: "Bagging & Random Forests"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below looks at two ensemble tree methods called bagging (although bagging is more general) and random forests. We see that bagging is a special case of a random forest. 
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=918ef64e-d0ca-46d1-95b4-b2a0017f5692&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="08-Bagging Trees &amp; Random Forests" ></iframe>
+```
+
+## Notes
+
+- <a href = "08-Bagging_And_Random_Forests.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/08-Bagging_And_Random_Forests.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

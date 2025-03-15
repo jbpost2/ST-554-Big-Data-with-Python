@@ -1,0 +1,36 @@
+---
+title: "Modeling Data Recap"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below recaps the big ideas involved in predictive modeling.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=f7dd79ae-5d68-471f-8302-b2a0017dbd47&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="01-Modeling Recap" ></iframe>
+```
+
+## Notes
+
+- <a href = "01-Modeling_Data_Recap.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/01-Modeling_Data_Recap.pdf" target = "_blank">PDF version</a>
+
+
+## Additional Readings for Week 11
+
+### Scikit-Learn Documentation
+
+- <a href = "https://scikit-learn.org/stable/api/index.html" target = "_blank">API documentation</a>
+
+### Modeling Readings
+
+- <a href = "https://www.statlearning.com/" target = "_blank">Introuction to Statistical Learning with Python</a>
+
+    + Chapter 3: sections 1, 2, and 3
+    + Chapter 4: sections 1, 2, and 3
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

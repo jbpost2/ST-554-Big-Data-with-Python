@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>MLOps</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# MLOps
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+---
+
+# Implementation Concerns
+
+- Big picture of dealing with big data: it's complicated!
+
+&lt;div style = "float: left"&gt;
+&lt;img src="img/complicated.jpg" width="450px" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;
+
+---
+
+# Implementation Concerns
+
+- Big picture of dealing with big data: it's complicated!
+
+&lt;div style = "float: left"&gt;
+&lt;img src="img/complicated.jpg" width="450px" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;
+&lt;div style = "float: right"&gt;
+&lt;ul&gt;
+  &lt;li&gt;Data pipeline&lt;/li&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Is the data valid?&lt;/li&gt;
+    &lt;li&gt;Garbage in garbage out!&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;li&gt;ML pipeline&lt;/li&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Model performing well?&lt;/li&gt;
+    &lt;li&gt; Still valid with new data or refit needed?&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;li&gt;How do others use our model???&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!--We need to validate the data as it comes in. If you feed bad data into a model you get bad results!
+But of course, more data is coming so we need to valid and test that data to make sure it makes sense before we use it
+How about our model? We need to make sure the paradigm hasn't shifted and our model is at least meeting basic thresholds for quality.
+Main challenges people face when developing ML capabilities are scale, version control, model reproducibility, and aligning stakeholders (2020 state of enterprise machine learning)--&gt;
+
+
+---
+
+# Implementation Concerns
+
+- Good software is hard to build quickly
+
+- [DevOps](https://about.gitlab.com/topics/devops/) is a framework for software development and deployment
+
+    + Automation of the software development lifecycle
+    + Collaboration and communication
+    + Continuous improvement and minimization of waste
+    + Hyperfocus on user needs with short feedback loops
+
+&lt;img src="img/devops.png" width="450px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+layout: false
+
+# Implementation Concerns
+
+- Similar ideas have arisen when implementing ML models (especially on big data)
+- [ML-Ops](https://ml-ops.org/) is a framework for the entire ML development/deployment process 
+    + These notes are almost entirely distilled from their material!
+
+&lt;img src="img/ml-engineering.jpg" width="500px" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- MLops, like devops, emerges from the understanding that separating the ML model developmment from the process that delivers it - ml operations - lowers quality, transparency, and agility of the whole intelligent software--&gt;
+
+
+---
+
+# `MLOps` to Solve a Problem
+
+Good read from ["Value Proposition" on](https://ml-ops.org/content/phase-zero)!
+&lt;img src="img/machine-learning-canvas-v1.jpg" width="600px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# `MLOps` Concepts
+
+- Models really useful when they make reasonable predictions and are available to the 'core software system'
+- Models should be 'first-class citizens'
+- Must continually monitor and update models (three levels of change)
+- Testing of models should be automated
+
+&lt;img src="img/mlops.png" width="550px" style="display: block; margin: auto;" /&gt;
+&lt;!--https://cloudxlab.com/blog/mlops-machine-learning-operations-a-complete-hands-on-guide-with-case-study/--&gt;
+
+---
+
+# MLOps Evolution
+
+&lt;img src="img/mlops-evolution.jpg" width="650px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Three Main Processes of ML Deployment
+
+Build model on data you collect to make predictions, classifications, recommendations, etc.
+
+- Three main phases, each must be monitored (again taken from ml-ops.org!)
+    1. Data Engineering: data acquisition &amp; data preparation
+    2. ML Model Engineering: ML model training &amp; serving
+    3. Code Engineering :integrating ML model into the final product
+
+&lt;img src="img/ThreeLevelsOfChange.jpg" width="550px" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- Any of these may trigger a need to rebuild things!--&gt;
+
+
+---
+
+# Data Engineering
+
+Usually create a *Data Engineering Pipeline*: 
+- Must integrate data from many source
+- Data cleaning, imputation, and validation must be done
+- Data splitting
+
+**Generally takes the longest time and most resources to do this part!**
+
+&lt;!--Data preparation is a critical activity in the data science workflow because it is important to avoid the propagation of data errors to the next phase, data analysis, as this would result in the derivation of wrong insights from the data.
+
+The final goal of these operations is to create training and testing datasets for the ML algorithms. --&gt;
+
+
+---
+
+# ML Model Engineering
+
+**Model Engineering Pipeline** generally has a few steps:
+
+- Model Training 
+    + Including feature engineering and the hyperparameter tuning
+- Model Evaluation 
+    + Ensure it meets predetermined standards 
+- Model Testing 
+    + On the holdout dataset
+- Model Packaging 
+    + Exporting the final ML model to be used by a business application
+    + See the ["Model serialization formats"](https://ml-ops.org/content/three-levels-of-ml-software) section
+
+---
+
+# Code Engineering
+
+**Deployment pipeline** involves things like:
+
+- Model Serving 
+    + Using the model in some software
+- Model Performance Monitoring
+    + Making sure the model is still performing ok on new data
+- Model Performance Logging
+    + Every time the model is used you log it
+
+
+---
+
+# Models Built on Batch Data
+
+&lt;img src="img/model-serving-microservices.jpg" width="650px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Models Based on Streaming Data
+
+&lt;img src="img/Online learning.jpg" width="750px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Deployment Strategies
+
+Two common ways for deploying models:
+- As Docker Containers to Cloud Instances 
+- As Serverless Functions
+
+&lt;img src="img/infra-cloud.jpg" width="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Deployment Strategies
+
+Two common ways for deploying models:
+- As Docker Containers to Cloud Instances 
+- As Serverless Functions
+
+&lt;img src="img/infra-lambda.jpg" width="550px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Big Picture Workflow
+
+&lt;img src="img/ml-engineering.jpg" width="700px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Iterative Process That Must Be Monitored
+
+&lt;img src="img/mlops-loop-en.jpg" width="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Automated MLOps Pipeline
+
+&lt;img src="img/mlops-phasen.jpg" width="550px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Important Components to Consider
+
+[Entire Section Worth Reading](https://ml-ops.org/content/mlops-principles)
+
+- Source Control: Versioning the Code, Data, and ML Model artifacts
+
+- Test &amp; Build Services: Unit tests and building of model to be deployed
+
+- Model Registry: Registry for storing already trained ML models
+
+- Feature Store: Preprocessing input data as features to be consumed in the model training pipeline and during the model serving
+
+- ML Metadata Store: Tracking metadata of model training, for example model name, parameters, training data, test data, and metric results.
+- Reproducibility
+
+---
+
+# Recap
+
+`MLOps` provides a framework to efficiently include ML models within a business application
+
+- Three main phases, each must be monitored (again taken from ml-ops.org!)
+    1. Data Engineering: data acquisition &amp; data preparation
+    2. ML Model Engineering: ML model training &amp; serving
+    3. Code Engineering :integrating ML model into the final product
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

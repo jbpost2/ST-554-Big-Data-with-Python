@@ -1,0 +1,22 @@
+---
+title: "Classification & Regression Trees"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below introduces tree based models.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=dce782f5-25fc-4c33-935d-b2a0017f2098&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="07-CART" ></iframe>
+```
+
+## Notes
+
+- <a href = "07-Classification_And_Regression_Trees.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/07-Classification_And_Regression_Trees.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

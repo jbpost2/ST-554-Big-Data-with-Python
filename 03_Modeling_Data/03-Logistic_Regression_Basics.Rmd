@@ -1,0 +1,404 @@
+---
+title: "Logistic Regression Basics"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = FALSE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+#use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\python\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Logistic Regression Basics
+Justin Post 
+
+---
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+
+
+---
+
+# Logistic Regression Model
+
+Used when you have a **binary** response variable
+
+- Consider just a binary response
+
+    + What is the mean of the response?
+
+<!-- Here write out some 0 and 1's as the population values. Look at probability as the mean-->    
+
+    
+---
+
+# Logistic Regression Model
+
+Suppose you have a predictor variable as well, call it $x$
+    
+- Given two values of $x$ we could model separate proportions
+
+$$E(Y|x=x_1) = P(Y=1|x = x_1)$$
+$$E(Y|x=x_2) = P(Y=1|x = x_2)$$
+
+
+---
+
+# Logistic Regression Model
+
+Suppose you have a predictor variable as well, call it $x$
+    
+- Given two values of $x$ we could model separate proportions
+
+$$E(Y|x=x_1) = P(Y=1|x = x_1)$$
+$$E(Y|x=x_2) = P(Y=1|x = x_2)$$
+
+- For a continuous $x$, we could consider a SLR model
+
+$$E(Y|x) = P(Y=1|x) = \beta_0+\beta_1x$$
+
+---
+
+# Linear Regression Isn't Appropriate
+
+- Consider data about [water potability](https://www.kaggle.com/code/leabenzvi/water-potability-classification)
+
+```{python}
+import pandas as pd
+water = pd.read_csv("data/water_potability.csv")
+water.head()
+```
+
+
+---
+
+# Potability Summary
+
+- Summarize water potability
+
+```{python}
+water.Potability.value_counts()
+```
+
+```{python}
+water.groupby("Potability")[["Hardness", "Chloramines"]].describe()
+```
+
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+- Plot SLR model fit
+
+```{python, out.width = "400px", fig.align = 'center'}
+import seaborn as sns
+sns.regplot(x = water["Hardness"], y = water["Potability"])
+```
+
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+- Plot SLR model fit with jittered points
+
+```{python, out.width = "400px", fig.align = 'center'}
+import seaborn as sns
+sns.regplot(x = water["Hardness"], y = water["Potability"], y_jitter = 0.1)
+```
+
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+
+```{python, out.width = '320px', fig.align = 'center', echo = TRUE, eval = FALSE}
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+water["Hardnessgroups"] = pd.cut(water['Hardness'], range(45, 335, 10))
+props = water[["Hardnessgroups", "Potability"]] \
+    .groupby("Hardnessgroups") \
+    .agg(prop = ('Potability', 'mean'), counts = ('Potability', 'count'))
+    
+sc = plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+plt.xlabel("Hardness")
+plt.ylabel("Proportion of Potable Water")
+plt.ylim([-0.1, 1.1])
+plt.legend(*sc.legend_elements("sizes", num=5, color = "blue"))
+plt.show()
+```
+
+
+---
+
+# Linear Regression Isn't Appropriate
+
+
+```{python, out.width = '450px', fig.align = 'center', echo = FALSE, eval = TRUE}
+import matplotlib.pyplot as plt; import matplotlib.patches as mpatches
+water["Hardnessgroups"] = pd.cut(water['Hardness'], range(45, 335, 10))
+props = water[["Hardnessgroups", "Potability"]].groupby("Hardnessgroups").agg(prop = ('Potability', 'mean'), counts = ('Potability', 'count'))
+sc = plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+plt.xlabel("Hardness"); plt.ylabel("Proportion of Potable Water"); plt.ylim([-0.1, 1.1])
+plt.legend(*sc.legend_elements("sizes", num=5, color = "blue"))
+plt.show()
+```
+
+---
+
+# Logistic Regression
+
+- Response = success/failure, then modeling average number of successes for a given $x$ is a probability!
+
+    + predictions should never go below 0  
+    + predictions should never go above 1  
+
+- Basic Logistic Regression models success probability using the *logistic function*
+ 
+$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$
+ 
+
+---
+
+# Logistic Regression
+
+```{r, echo = FALSE, out.width = '500px', fig.align = 'center'}
+x <- seq(0, 2, 0.01)
+b0 <- -5
+b1 <- 11
+exp_fun <- function(x, b0, b1){exp(b0+b1*x)}
+plot(x, exp_fun(x, b0, b1)/(1+exp_fun(x, b0, b1)), ylim = c(0,1), xlim = c(0,2), xlab = "x", ylab= "P(Success|x)", col = "red", type = "l")
+b0 <- -10
+b1 <- 11
+lines(x, exp_fun(x, b0, b1)/(1+exp_fun(x, b0, b1)), col = "blue")
+b0 <- -5
+b1 <- 6
+lines(x, exp_fun(x, b0, b1)/(1+exp_fun(x, b0, b1)), col = "green")
+b0 <- 10
+b1 <- -11
+lines(x, exp_fun(x, b0, b1)/(1+exp_fun(x, b0, b1)), col = "purple")
+legend(x = 1.25, y = 0.75, legend = c("b0 = -5, b1 = 11", "b0 = -10, b1 = 11", "b0 = -5, b1 = 6", "b0 = 10, b1 = -11"),
+       col = c("red", "blue", "green", "purple"), lty = "solid", cex = 1)
+```
+
+
+
+---
+
+# Logistic Regression
+
+$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$  
+
+- The logistic regression model doesn't have a closed form solution (maximum likelihood often used to fit parameters)  
+
+
+    
+---
+
+# Logistic Regression
+
+$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$  
+
+- The logistic regression model doesn't have a closed form solution (maximum likelihood often used to fit parameters)  
+
+- Back-solving shows the *logit* or *log-odds* of success is linear in the parameters  
+
+$$log\left(\frac{P(success|x)}{1-P(success|x)}\right) = \beta_0+\beta_1 x$$
+
+
+ 
+---
+
+# Logistic Regression
+
+$$P(Y =1|x) = P(success|x) = \frac{e^{\beta_0+\beta_1x}}{1+e^{\beta_0+\beta_1x}}$$  
+
+- The logistic regression model doesn't have a closed form solution (maximum likelihood often used to fit parameters)  
+
+- Back-solving shows the *logit* or *log-odds* of success is linear in the parameters  
+
+$$log\left(\frac{P(success|x)}{1-P(success|x)}\right) = \beta_0+\beta_1 x$$
+
+- Coefficient interpretation changes greatly from linear regression model!  
+
+- $\beta_1$ represents a change in the log-odds of success  
+
+
+---
+
+# Hypotheses of Interest
+
+For inference, what do you think would indicate that $x$ is related to the probability of success here?
+
+
+---
+
+# Fitting a Logistic Regression Model in Python
+
+- Use `sklearn` to fit model
+
+```{python}
+from sklearn.linear_model import LogisticRegression
+```
+
+- Similar to fitting an MLR model, we create an instance and then use the `.fit()` method
+
+
+---
+
+# Fitting a Logistic Regression Model in Python
+
+- Use `sklearn` to fit model
+
+```{python}
+from sklearn.linear_model import LogisticRegression
+```
+
+- Similar to fitting an MLR model, we create an instance and then use the `.fit()` method
+
+```{python, include = FALSE}
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water["Hardness"].values.reshape(-1,1), y = water["Potability"].values)
+```
+
+```{python, eval = FALSE}
+log_reg = LogisticRegression(penalty = 'none')
+log_reg.fit(X = water["Hardness"].values.reshape(-1,1), y = water["Potability"].values)
+```
+
+```{python}
+print(log_reg.intercept_, log_reg.coef_)
+```
+
+
+---
+
+# Prediction with a Logistic Regression Model
+
+- Still use the `.predict()` method to predict success or failure
+
+
+```{python}
+import numpy as np
+log_reg.predict(np.array([[50], [150], [200], [250], [300]]))
+```
+
+
+---
+
+# Prediction with a Logistic Regression Model
+
+- Still use the `.predict()` method to predict success or failure
+
+
+```{python}
+import numpy as np
+log_reg.predict(np.array([[50], [150], [200], [250], [300]]))
+```
+
+- Also have `.predict_log_proba()` and `.predict_proba()` to obtain log probabilities and probabilities, respectively
+
+```{python}
+log_reg.predict_proba(np.array([[50], [150], [200], [250], [300]])) 
+#returns P(Y=0), P(Y=1) estimates for each value
+```
+
+
+---
+
+# Plotting the Fit
+
+```{python, out.width = '400px', fig.align = 'center'}
+sc = plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+preds = log_reg.predict_proba(np.array(range(50,330)).reshape(-1,1))
+plt.scatter(x = np.array(range(50,330)), y = preds[:,1])
+plt.ylim([-0.1,1.1]); plt.xlabel("Hardness"); plt.ylabel("Proportion of Potable Water"); plt.show()
+```
+
+
+---
+
+# Truly is a sigmoid type function!
+
+```{python, out.width = '400px', fig.align = 'center'}
+preds = log_reg.predict_proba(np.array(range(-2500,2500)).reshape(-1,1))
+plt.scatter(pd.Series(range(50,330,10)), props.prop, s = props.counts)
+plt.scatter(x = np.array(range(-2500,2500)), y = preds[:,1])
+plt.ylim([-0.1,1.1]); plt.xlabel("Hardness"); plt.ylabel("Proportion of Potable Water"); plt.show()
+```
+
+
+
+---
+
+# Inference with a Logistic Regression Model
+
+- Not implemented in `sklearn`... can use `statsmodels` package!
+
+```{python}
+import statsmodels.api as sm
+log_reg = sm.GLM(water["Potability"], water["Hardness"], family=sm.families.Binomial())
+res = log_reg.fit()
+print(res.summary())
+```
+
+
+---
+
+# Recap
+
+- Logistic regression often a reasonable model for a binary response
+
+- Uses a sigmoid function to ensure valid predictions
+
+- Can predict success or failure using estimated probabilities
+
+    + Usually predict success if probability $>$ 0.5
+    
+

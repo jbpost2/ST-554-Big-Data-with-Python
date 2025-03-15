@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Classification &amp; Regression Trees</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Classification &amp; Regression Trees
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+---
+
+# Recap 
+
+- Determine if we are doing a prediction or classification problem
+- Given a model, we **fit** the model using data via a loss function
+- Must determine how well the model predicts on **new** data (or using CV) via a metric
+
+Multiple Linear Regression 
+- Commonly used model with a numeric response
+
+Logistic Regression
+- Commonly used model with a binary response
+
+
+---
+
+# Regression/Classification Trees  
+
+Tree based method:  
+
+- **Split up predictor space into regions**, different predictions for each region    
+
+- *Classification* tree if goal is to classify (predict) group membership  
+
+    + Usually use **most prevalent class** in region as prediction  
+
+---
+
+# Regression/Classification Trees  
+
+Tree based method:  
+
+- **Split up predictor space into regions**, different predictions for each region    
+
+- *Classification* tree if goal is to classify (predict) group membership  
+
+    + Usually use **most prevalent class** in region as prediction  
+
+- *Regression* tree if goal is to predict a continuous response
+
+    + Usually use **mean of observations** in region as prediction  
+
+    
+---
+
+# Easy Interpretation
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-2-1.svg" width="500px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Predictor Space Split vs Linear Function
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-3-1.svg" width="500px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Fit Regression Tree
+
+- Recall the Bike data and `log_selling_price` as our response
+
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+bike_data = pd.read_csv("data/bikeDetails.csv")
+#create response and new predictor
+bike_data['log_selling_price'] = np.log(bike_data['selling_price'])
+bike_data['log_km_driven'] = np.log(bike_data['km_driven'])
+```
+
+
+---
+
+
+# Fit Regression Tree
+
+- Code modified [from the docs](https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html)
+
+- Depth represents how many levels of splits to do
+
+
+```python
+from sklearn.tree import DecisionTreeRegressor
+regr1 = DecisionTreeRegressor(max_depth=2)
+regr2 = DecisionTreeRegressor(max_depth=5)
+regr1.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+regr2.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+```
+
+
+
+---
+# Fit Regression Tree
+
+- Code modified [from the docs](https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html)
+
+- Depth represents how many levels of splits to do
+
+
+```python
+from sklearn.tree import DecisionTreeRegressor
+regr1 = DecisionTreeRegressor(max_depth=2)
+regr2 = DecisionTreeRegressor(max_depth=5)
+regr1.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+regr2.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price'].values)
+```
+
+- Can still predict with `.predict()` method
+
+
+```python
+X_test = np.arange(5.8, 13.8, 0.01)[:, np.newaxis]
+pred1 = regr1.predict(X_test)
+pred2 = regr2.predict(X_test)
+```
+
+---
+
+# Fit Regression Tree
+
+
+```python
+plt.scatter(bike_data['log_km_driven'], bike_data['log_selling_price'], 
+            s=20, edgecolor="black", c="darkorange", label="data")
+plt.plot(X_test, pred1, color="cornflowerblue", label="max_depth=2", linewidth=3)
+plt.plot(X_test, pred2, color="yellowgreen", label="max_depth=5", linewidth=3)
+plt.xlabel("log_km_driven")
+plt.ylabel("log_selling_price")
+plt.title("Decision Tree Regression")
+plt.legend()
+plt.show()
+```
+
+
+---
+
+# Fit Regression Tree
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-10-1.svg" width="500px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Regression Trees  
+
+- Extension to more than one predictor is exactly the same idea   
+
+- Instead of fitting a plane or saddle in MLR, fit a series of flat planes (mean for a given region)
+
+
+---
+
+# Regression Trees  
+
+- Extension to more than one predictor is exactly the same idea   
+
+- Instead of fitting a plane or saddle in MLR, fit a series of flat planes (mean for a given region)
+
+
+```python
+from sklearn.tree import DecisionTreeRegressor
+regr3 = DecisionTreeRegressor(max_depth=2)
+regr3.fit(bike_data[['log_km_driven', 'year']].values, bike_data['log_selling_price'].values)
+```
+
+
+
+---
+
+# Regression Trees  
+
+- Extension to more than one predictor is exactly the same idea   
+
+- Instead of fitting a plane or saddle in MLR, fit a series of flat planes (mean for a given region)
+
+
+```python
+from sklearn.tree import DecisionTreeRegressor
+regr3 = DecisionTreeRegressor(max_depth=2)
+regr3.fit(bike_data[['log_km_driven', 'year']].values, bike_data['log_selling_price'].values)
+```
+
+- `plot_tree()` function useful for visualization
+
+
+```python
+from sklearn.tree import plot_tree
+plot_tree(regr3)
+```
+
+
+---
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-15-3.svg" width="600px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# No Need for Interaction Terms
+
+- Trees automatically account for interactions  
+
+- An interaction implies that the **effect** of one variable differs depending on the value of another
+
+    + Splitting on more than one variable implies this is the case!
+
+
+
+---
+
+# Categorical Predictors 
+
+- Easy to include as well
+
+- Must convert to dummy variables though
+
+
+```python
+regr4 = DecisionTreeRegressor(max_depth=3)
+pd.get_dummies(bike_data.owner).head()
+bike_data["owners"] = pd.get_dummies(bike_data.owner)['1st owner']
+regr4.fit(bike_data[['log_km_driven', 'owners']].values, bike_data['log_selling_price'].values)
+```
+
+
+
+---
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-18-5.svg" width="650px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Regression/Classification Trees  
+
+Tree based method:  
+
+- **Split up predictor space into regions**, different predictions for each region    
+
+- *Classification* tree if goal is to classify (predict) group membership  
+
+    + Usually use **most prevalent class** in region as prediction  
+
+- *Regression* tree if goal is to predict a continuous response
+
+    + Usually use **mean of observations** in region as prediction  
+    
+    
+---
+
+# Classification Tree
+    
+
+- Recall the water potability data and `Potability` as our response
+
+
+```python
+water = pd.read_csv("data/water_potability.csv")
+water.head()
+```
+
+```
+##          ph    Hardness        Solids  ...  Trihalomethanes  Turbidity  Potability
+## 0       NaN  204.890455  20791.318981  ...        86.990970   2.963135           0
+## 1  3.716080  129.422921  18630.057858  ...        56.329076   4.500656           0
+## 2  8.099124  224.236259  19909.541732  ...        66.420093   3.055934           0
+## 3  8.316766  214.373394  22018.417441  ...       100.341674   4.628771           0
+## 4  9.092223  181.101509  17978.986339  ...        31.997993   4.075075           0
+## 
+## [5 rows x 10 columns]
+```
+
+
+---
+
+# Classification Tree
+    
+
+- Recall the water potability data and `Potability` as our response
+
+
+```python
+water = pd.read_csv("data/water_potability.csv")
+water.head()
+```
+
+```
+##          ph    Hardness        Solids  ...  Trihalomethanes  Turbidity  Potability
+## 0       NaN  204.890455  20791.318981  ...        86.990970   2.963135           0
+## 1  3.716080  129.422921  18630.057858  ...        56.329076   4.500656           0
+## 2  8.099124  224.236259  19909.541732  ...        66.420093   3.055934           0
+## 3  8.316766  214.373394  22018.417441  ...       100.341674   4.628771           0
+## 4  9.092223  181.101509  17978.986339  ...        31.997993   4.075075           0
+## 
+## [5 rows x 10 columns]
+```
+- Use a similar function to fit classification trees
+
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+cltree1 = DecisionTreeClassifier(max_depth=3)
+cltree1.fit(water[['Hardness', 'Solids']].values, water['Potability'].values)
+```
+
+
+
+---
+
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-23-7.svg" width="650px" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Predictions
+
+- Model fit can be used for the same types of predictions as logistic regression
+
+
+```python
+cltree1.predict(np.array([[175, 15666],
+                          [217, 15666], 
+                          [196, 22014],
+                          [217, 22014]]))
+```
+
+```
+## array([0, 0, 0, 0], dtype=int64)
+```
+
+```python
+cltree1.predict_proba(np.array([[175, 15666],
+                          [217, 15666], 
+                          [196, 22014],
+                          [217, 22014]]))                          
+```
+
+```
+## array([[0.66782007, 0.33217993],
+##        [0.53281853, 0.46718147],
+##        [0.66782007, 0.33217993],
+##        [0.63375224, 0.36624776]])
+```
+
+
+---
+
+# Pruning the Tree
+
+- Tree fit can depend on max depth and how many splits on each branch
+
+- Often a large tree is fit and **pruned** back
+    + We can also control the minimum number of samples a leaf can have via `min_samples_leaf`
+    + Many other things we could consider, but let's focus on those two!
+
+---
+
+# Pruning the Tree
+
+- Tree fit can depend on max depth and how many splits on each branch
+
+- Often a large tree is fit and **pruned** back
+    + We can also control the minimum number of samples a leaf can have via `min_samples_leaf`
+    + Many other things we could consider, but let's focus on those two!
+
+- Best combination of these two can be determined using cross-validation!
+    + Set up values to consider
+    + Use `GridSearchCV()` to return the best values
+
+
+
+---
+
+# Pruning the Tree
+
+- Set up our values to consider as a dictionary
+
+```python
+parameters = {'max_depth': range(2,15),
+              'min_samples_leaf':[3, 5, 10, 50, 100]}
+```
+
+
+---
+
+# Pruning the Tree
+
+- Set up our values to consider as a dictionary
+
+```python
+parameters = {'max_depth': range(2,15),
+              'min_samples_leaf':[3, 5, 10, 50, 100]}
+```
+
+- Import the grid search function
+
+
+```python
+from sklearn.model_selection import GridSearchCV
+tuning_model = GridSearchCV(DecisionTreeClassifier(),
+                            parameters, 
+                            cv = 5, 
+                            scoring='accuracy')
+```
+
+
+---
+
+# Pruning the Tree
+
+- Now we fit the model
+
+
+```python
+tuning_model.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon']].values,
+                 water['Potability'].values)
+```
+
+
+---
+
+# Pruning the Tree
+
+- Now we fit the model
+
+
+```python
+tuning_model.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon']].values,
+                 water['Potability'].values)
+```
+
+- Inspect the best tuning parameters
+
+
+```python
+print(tuning_model.best_estimator_)
+```
+
+```
+## DecisionTreeClassifier(max_depth=3, min_samples_leaf=3)
+```
+
+```python
+print(tuning_model.best_score_, tuning_model.best_params_) 
+```
+
+```
+## 0.6098896853472352 {'max_depth': 3, 'min_samples_leaf': 3}
+```
+
+---
+
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-32-9.svg" width="900px" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Different Metric
+
+- Instead of misclassification, consider `neg_log_loss`
+
+
+```python
+tuning_model2 = GridSearchCV(DecisionTreeClassifier(),
+                            parameters, 
+                            cv = 5, 
+                            scoring='neg_log_loss')
+tuning_model2.fit(water[['Hardness', 'Solids', 'Chloramines', 'Organic_carbon', 'Turbidity']].values,
+                  water['Potability'].values)                            
+```
+
+
+
+```python
+print(tuning_model2.best_estimator_)
+```
+
+```
+## DecisionTreeClassifier(max_depth=2, min_samples_leaf=100)
+```
+
+```python
+print(tuning_model2.best_score_, tuning_model2.best_params_) 
+```
+
+```
+## -0.6743150518917174 {'max_depth': 2, 'min_samples_leaf': 100}
+```
+
+---
+
+
+```python
+tuning_model2.predict_proba(np.array([[150, 0, 8.5, 0, 0]]))
+```
+
+```
+## array([[0.41538462, 0.58461538]])
+```
+
+
+&lt;img src="07-Classification_And_Regression_Trees_files/figure-html/unnamed-chunk-37-11.svg" width="700px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Recap
+
+- Trees are a nonlinear model
+
+Pros:  
+
+- Simple to understand and easy to interpret output  
+- Predictors don't need to be scaled  
+- No statistical assumptions necessary  
+- Built in variable selection  
+
+Cons:  
+
+- Small changes in data can vastly change tree  
+- No optimal algorithm for choosing splits  
+- Need to prune 
+
+Bagging Trees, Random Forests, and Boosted Trees are three methods that average across trees.  Lose interpretability but gain in prediction!  
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
