@@ -28,7 +28,7 @@
     "href": "03_Modeling_Data/11-MLPipelines_Landing.html",
     "title": "MLPipelines",
     "section": "",
-    "text": "The video below discusses the use of pipelines in modeling.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes is available in this notebook. You’ll need to download this .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.",
+    "text": "The video below discusses the use of pipelines in modeling.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes is available in this notebook and the data set is also available online. You’ll need to download the .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.",
     "crumbs": [
       "Home",
       "Topic 5: Modeling Data",
@@ -2303,7 +2303,7 @@
     "href": "03_Modeling_Data/10-MLLibBasics_Landing.html",
     "title": "Spark MLlib Basics",
     "section": "",
-    "text": "The video below discusses how to use Spark MLlib through pyspark.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes is available in this notebook. You’ll need to download this .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.",
+    "text": "The video below discusses how to use Spark MLlib through pyspark.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes is available in this notebook and the data set is also available online. You’ll need to download the .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.",
     "crumbs": [
       "Home",
       "Topic 5: Modeling Data",
@@ -2339,7 +2339,7 @@
     "href": "03_Modeling_Data/12-MLflow_Landing.html",
     "title": "MLflow",
     "section": "",
-    "text": "The video below describes the use of MLflow to improve the model fitting process.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes is available in this notebook. You’ll need to download this .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.",
+    "text": "The video below describes the use of MLflow to improve the model fitting process.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes is available in this notebook and the data set is also available online. You’ll need to download the .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.",
     "crumbs": [
       "Home",
       "Topic 5: Modeling Data",

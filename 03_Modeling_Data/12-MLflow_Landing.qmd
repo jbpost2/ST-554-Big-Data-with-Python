@@ -10,7 +10,7 @@ The video below describes the use of MLflow to improve the model fitting process
 
 I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
-The `pyspark` code used in the notes is <a href = "MLlib_MLflow.ipynb" target = "_blank">available in this notebook</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
+The `pyspark` code used in the notes is <a href = "MLlib_MLflow.ipynb" target = "_blank">available in this notebook</a> and the data set is <a href = "https://www4.stat.ncsu.edu/~online/datasets/bikeDetails.csv" target = "_blank">also available online</a>. You'll need to download the `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
 
 Remember, if you are off campus you should log in to the VPN and then you can [access our `JupyterHub`](https://jhub.cos.ncsu.edu/).
 

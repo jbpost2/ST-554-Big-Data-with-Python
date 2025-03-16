@@ -3,7 +3,6 @@ title: "Model Pipelines in `MLlib`"
 author: "Justin Post"
 output:
   xaringan::moon_reader:
-    seal: false
     lib_dir: libs
     css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
     nature:
@@ -14,6 +13,7 @@ output:
       ratio: "16:9"
     includes:
       in_header: "partials/header.html"
+    self_contained: yes
 editor_options: 
   chunk_output_type: console
 ---

@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-The video below gives a rough overview of the entire MLOps framework. This video and material are optional!
+The video below gives a rough overview of the entire MLOps framework. **This video and material are optional!**
 
 I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
