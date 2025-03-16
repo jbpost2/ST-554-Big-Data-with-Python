@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-03-15">
 
-<title>Putting it all together – ST 554 Analysis of Big Data (with Python)</title>
+<title>modeling_example – ST 554 Analysis of Big Data (with Python)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -186,7 +186,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Putting it all together</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -589,7 +589,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#read-in-the-fat-data-set" id="toc-read-in-the-fat-data-set" class="nav-link active" data-scroll-target="#read-in-the-fat-data-set">1. Read in the <code>fat</code> data set</a>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link active" data-scroll-target="#putting-it-all-together">Putting it all together</a>
+  <ul class="collapse">
+  <li><a href="#read-in-the-fat-data-set" id="toc-read-in-the-fat-data-set" class="nav-link" data-scroll-target="#read-in-the-fat-data-set">1. Read in the <code>fat</code> data set</a>
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   </ul></li>
@@ -600,6 +602,7 @@ window.Quarto = {
   <li><a href="#lasso-model" id="toc-lasso-model" class="nav-link" data-scroll-target="#lasso-model">LASSO model</a></li>
   </ul></li>
   <li><a href="#compare-on-the-test-set" id="toc-compare-on-the-test-set" class="nav-link" data-scroll-target="#compare-on-the-test-set">4. Compare on the Test Set</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -608,7 +611,6 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Putting it all together</h1>
 </div>
 
 
@@ -631,6 +633,9 @@ window.Quarto = {
 </header>
 
 
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/03_Modeling_Data/02-Modeling_Example.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<section id="putting-it-all-together" class="level1">
+<h1>Putting it all together</h1>
 <p>In this section we’ll look at an example of fitting a few different models (MLR models and LASSO models) and choosing the overall best one via test error.</p>
 <p>Process: 1. Read the data in (would then want to explore data, clearn it, etc. We’ll skip this part) 2. Split the data into a training and test set 3. For each model type, select a <strong>best</strong> model using the training set (we’ll use cross-validation but you could split the training set into a training and validation set instead) 4. Compare the best models on the test set. Select the model with the lowest error (with considerations for simplicity)</p>
 <section id="read-in-the-fat-data-set" class="level2">
@@ -660,21 +665,21 @@ window.Quarto = {
 </ul>
 <p>Source Johnson R. Journal of Statistics Education v.4, n.1 (1996)</p>
 <p>We’ll attempt to model the percent body fat (Brozek masure used as the gold standard) using easily obtainable measurements.</p>
-<div id="6583915f-6b38-4a1a-9ce4-b0b9dd4c2abd" class="cell" data-execution_count="6">
+<div id="6583915f-6b38-4a1a-9ce4-b0b9dd4c2abd" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fat_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/fat.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="18edf55a-07f0-4c85-b78c-c580afecd3dc" class="cell" data-execution_count="7">
+<div id="18edf55a-07f0-4c85-b78c-c580afecd3dc" class="cell" data-outputid="c2f5f05d-d61c-49cf-80e0-cf0351bfe38c">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fat_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>Index(['Unnamed: 0', 'brozek', 'siri', 'density', 'age', 'weight', 'height',
        'adipos', 'free', 'neck', 'chest', 'abdom', 'hip', 'thigh', 'knee',
        'ankle', 'biceps', 'forearm', 'wrist'],
       dtype='object')</code></pre>
 </div>
 </div>
-<div id="f36730c8-020c-4332-898f-5257895bb779" class="cell" data-execution_count="3">
+<div id="f36730c8-020c-4332-898f-5257895bb779" class="cell" data-outputid="9ebf9314-3f67-489b-a365-bf07ebea0695">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fat_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -705,10 +710,12 @@ dtypes: float64(17), int64(2)
 memory usage: 37.5 KB</code></pre>
 </div>
 </div>
-<div id="c487b468-c7d0-46a5-9dda-3c319d639b96" class="cell" data-execution_count="18">
+<div id="c487b468-c7d0-46a5-9dda-3c319d639b96" class="cell" data-outputid="fecb4746-40ee-4324-aa72-09872ab46b9b">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fat_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+
+  <div id="df-4a43364f-8012-4ef1-aa8b-f5a4ffeaff68" class="colab-df-container">
+    <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -851,14 +858,220 @@ memory usage: 37.5 KB</code></pre>
 </table>
 
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4a43364f-8012-4ef1-aa8b-f5a4ffeaff68')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-4a43364f-8012-4ef1-aa8b-f5a4ffeaff68 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4a43364f-8012-4ef1-aa8b-f5a4ffeaff68');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d4625da1-cc2c-4e6a-a704-76363b2a3542">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d4625da1-cc2c-4e6a-a704-76363b2a3542')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d4625da1-cc2c-4e6a-a704-76363b2a3542 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
 </div>
 </div>
 <p>Drop the observations where we have missing values for simplicity (and only select the columns we are going to use).</p>
-<div id="a6e585ef-7d14-4529-9168-a491e0994077" class="cell" data-execution_count="8">
+<div id="a6e585ef-7d14-4529-9168-a491e0994077" class="cell" data-outputid="e611db28-ce7d-4839-e050-b2168000a2c7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod_fat_data <span class="op">=</span> fat_data.drop([<span class="st">"Unnamed: 0"</span>, <span class="st">"siri"</span>, <span class="st">"density"</span>], axis <span class="op">=</span> <span class="dv">1</span>).dropna()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mod_fat_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+
+  <div id="df-e81d7e94-bb93-451f-96aa-45435540fb6a" class="colab-df-container">
+    <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -983,12 +1196,216 @@ memory usage: 37.5 KB</code></pre>
 </table>
 
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-e81d7e94-bb93-451f-96aa-45435540fb6a')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-e81d7e94-bb93-451f-96aa-45435540fb6a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-e81d7e94-bb93-451f-96aa-45435540fb6a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d53eee11-259f-44e7-90b7-c9cd237e45c3">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d53eee11-259f-44e7-90b7-c9cd237e45c3')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d53eee11-259f-44e7-90b7-c9cd237e45c3 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
 </div>
 </div>
 <p>There aren’t any categorical predictors so we don’t need to create any dummy variables.</p>
 <p>We do however want to standardize our predictors when using the LASSO generally. If we have predictors on vastly different scales (say one takes on values from 0 to 1 and the other from 0 to 10000), this can affect our fitting and penalization. Instead we usually standardize our numerical predictors. We do so by subtracting off the mean and dividing by the standard deviation.</p>
 <p>For example, if we had <span class="math inline">\(x\)</span> with values 0, 3, 6, 10, 11, we would create a new column, say <span class="math inline">\(x_{std}\)</span> that takes each observation and subtracts off the mean (<span class="math inline">\(\frac{0+3+6+10+11}{5} = 6\)</span>) and divides each observation by the standard deviation (<span class="math inline">\(\sqrt{\frac{1}{5-1}\left((0-6)^2+(3-6)^2+(6-6)^2+(10-6)^2+(11-6)^2\right)} = 4.64\)</span>). This would yield a new set of values given by -1.447, -0.7234, 0, 0.964, 1.206.</p>
-<div id="2dfef1e8-b14a-4d02-adb5-0bb7e1c613a1" class="cell" data-execution_count="5">
+<div id="2dfef1e8-b14a-4d02-adb5-0bb7e1c613a1" class="cell" data-outputid="400e93db-93d7-46c2-8477-32bf6a168af8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="dv">11</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(temp.mean(), temp.std(ddof <span class="op">=</span> <span class="dv">1</span>))</span>
@@ -996,7 +1413,7 @@ memory usage: 37.5 KB</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>6.0 4.636809247747852</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>array([-1.29399328, -0.64699664,  0.        ,  0.86266219,  1.07832773])</code></pre>
 </div>
 </div>
@@ -1006,71 +1423,191 @@ memory usage: 37.5 KB</code></pre>
 <section id="training-and-test-split" class="level2">
 <h2 class="anchored" data-anchor-id="training-and-test-split">2. Training and Test Split</h2>
 <p>First, let’s just read in all the functions we’ll need from <code>sklearn</code></p>
-<div id="b015ed62-8290-4c6a-a6d2-e6e3d4c6a6f5" class="cell" data-execution_count="9">
+<div id="b015ed62-8290-4c6a-a6d2-e6e3d4c6a6f5" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, cross_validate</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression, LassoCV, Lasso</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3c9ef5d9-396e-43ed-8df8-9d801754846c" class="cell" data-execution_count="10">
+<div id="3c9ef5d9-396e-43ed-8df8-9d801754846c" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  mod_fat_data.drop(<span class="st">"brozek"</span>, axis <span class="op">=</span> <span class="dv">1</span>),</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  mod_fat_data[<span class="st">"brozek"</span>], </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  test_size<span class="op">=</span><span class="fl">0.20</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  mod_fat_data[<span class="st">"brozek"</span>],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  test_size<span class="op">=</span><span class="fl">0.20</span>,</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  random_state<span class="op">=</span><span class="dv">41</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fit-and-select-models-on-training-data" class="level2">
 <h2 class="anchored" data-anchor-id="fit-and-select-models-on-training-data">3. Fit and Select Models on Training Data</h2>
 <p>First, we can standardize our variables. We’ll save the values used for standardization so we can standardize the test set with those as well.</p>
-<div id="827c8355-6abc-4c6a-85ca-41fdb3394097" class="cell" data-execution_count="11">
+<div id="827c8355-6abc-4c6a-85ca-41fdb3394097" class="cell" data-outputid="81376ed0-528d-4dbe-a3ab-511a6def975b">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> X_train.<span class="bu">apply</span>(np.mean, axis <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>means</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>age         45.079602
-weight     178.316667
-height      70.036070
-adipos      25.403483
-free       143.059204
-neck        37.876617
-chest      100.808458
-abdom       92.559701
-hip         99.855224
-thigh       59.358706
-knee        38.607960
-ankle       23.018408
-biceps      32.155721
-forearm     28.671642
-wrist       18.196517
-dtype: float64</code></pre>
-</div>
-</div>
-<div id="b5d4a172-902a-4041-8ffe-7ce2294cb0e0" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> X_train.<span class="bu">apply</span>(np.std, axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>stds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>age        12.807167
-weight     27.765423
-height      3.868759
-adipos      3.421550
-free       17.150096
-neck        2.274781
-chest       8.342636
-abdom      10.502178
-hip         6.760037
-thigh       5.063393
-knee        2.403715
-ankle       1.560810
-biceps      2.856846
-forearm     2.046680
-wrist       0.938050
-dtype: float64</code></pre>
-</div>
-</div>
-<div id="8ac25b78-e8c1-4be7-aadf-338b5d5af833" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train.<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x<span class="op">-</span>np.mean(x))<span class="op">/</span>np.std(x), axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">age</td>
+<td>45.079602</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">weight</td>
+<td>178.316667</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">height</td>
+<td>70.036070</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">adipos</td>
+<td>25.403483</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">free</td>
+<td>143.059204</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">neck</td>
+<td>37.876617</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">chest</td>
+<td>100.808458</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">abdom</td>
+<td>92.559701</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">hip</td>
+<td>99.855224</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">thigh</td>
+<td>59.358706</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">knee</td>
+<td>38.607960</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ankle</td>
+<td>23.018408</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">biceps</td>
+<td>32.155721</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">forearm</td>
+<td>28.671642</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">wrist</td>
+<td>18.196517</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> float64</label>
+</div>
+</div>
+<div id="b5d4a172-902a-4041-8ffe-7ce2294cb0e0" class="cell" data-outputid="51951756-f760-475c-ebd4-254b7a1b7625">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>stds <span class="op">=</span> X_train.<span class="bu">apply</span>(np.std, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>stds</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">age</td>
+<td>12.807167</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">weight</td>
+<td>27.765423</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">height</td>
+<td>3.868759</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">adipos</td>
+<td>3.421550</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">free</td>
+<td>17.150096</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">neck</td>
+<td>2.274781</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">chest</td>
+<td>8.342636</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">abdom</td>
+<td>10.502178</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">hip</td>
+<td>6.760037</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">thigh</td>
+<td>5.063393</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">knee</td>
+<td>2.403715</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ankle</td>
+<td>1.560810</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">biceps</td>
+<td>2.856846</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">forearm</td>
+<td>2.046680</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">wrist</td>
+<td>0.938050</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> float64</label>
+</div>
+</div>
+<div id="8ac25b78-e8c1-4be7-aadf-338b5d5af833" class="cell" data-outputid="fd625401-3e2f-4ef6-c187-b8d1f41d7624">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> X_train.<span class="bu">apply</span>(<span class="kw">lambda</span> x: (x<span class="op">-</span>np.mean(x))<span class="op">/</span>np.std(x), axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+
+  <div id="df-15890fd1-a85a-4703-9fd2-fec27f2bd774" class="colab-df-container">
+    <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -1298,101 +1835,416 @@ dtype: float64</code></pre>
 
 <p>201 rows × 15 columns</p>
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-15890fd1-a85a-4703-9fd2-fec27f2bd774')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-15890fd1-a85a-4703-9fd2-fec27f2bd774 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-15890fd1-a85a-4703-9fd2-fec27f2bd774');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-88a47d81-b07a-4b2b-9c50-94c1d016bf22">
+  <button class="colab-df-quickchart" onclick="quickchart('df-88a47d81-b07a-4b2b-9c50-94c1d016bf22')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-88a47d81-b07a-4b2b-9c50-94c1d016bf22 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_7f4921b3-a45d-4c9f-9ffe-9c3a6324606f">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('X_train')" title="Generate code using this dataframe." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"></path>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_7f4921b3-a45d-4c9f-9ffe-9c3a6324606f button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('X_train');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
 </div>
 </div>
-<div id="3e1db842-a746-4b4e-b9bf-d6f764fc1227" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now each column has mean 0 and sd 1</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>X_train.<span class="bu">apply</span>(np.mean, axis <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>X_train.<span class="bu">apply</span>(np.std, axis <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>age        1.0
-weight     1.0
-height     1.0
-adipos     1.0
-free       1.0
-neck       1.0
-chest      1.0
-abdom      1.0
-hip        1.0
-thigh      1.0
-knee       1.0
-ankle      1.0
-biceps     1.0
-forearm    1.0
-wrist      1.0
-dtype: float64</code></pre>
+<div id="3e1db842-a746-4b4e-b9bf-d6f764fc1227" class="cell" data-outputid="429cc163-6e88-43a8-cc89-ac752512fa81">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#now each column has mean 0 and sd 1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>X_train.<span class="bu">apply</span>(np.mean, axis <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>X_train.<span class="bu">apply</span>(np.std, axis <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">age</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">weight</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">height</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">adipos</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">free</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">neck</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">chest</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">abdom</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">hip</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">thigh</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">knee</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ankle</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">biceps</td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">forearm</td>
+<td>1.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">wrist</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
 <section id="mlr-models" class="level3">
 <h3 class="anchored" data-anchor-id="mlr-models">MLR Models</h3>
 <p>Below I’ll consider some basic MLR models to compare. Even though we don’t need to use CV on those to determine a tuning parameter, we can use CV on those to determine the best MLR model (using the training set alone). Similarly, we’ll then find a ‘best’ LASSO model with tuning parameter selected by CV. Then we’ll compare the two ‘best’ models on the test set to see the overall winner!</p>
-<div id="c525f32c-66f6-4e8b-8315-08abbf08bbef" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full model</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cv_full_model <span class="op">=</span> cross_validate(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    LinearRegression(), </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    X_train, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    y_train, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="dv">5</span>, </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">"neg_mean_squared_error"</span>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>cv_mlr1<span class="op">=</span> cross_validate(</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    LinearRegression(), </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    X_train[[<span class="st">"weight"</span>, <span class="st">"wrist"</span>, <span class="st">"abdom"</span>]], </span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    y_train, </span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="dv">5</span>,</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">"neg_mean_squared_error"</span>)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>cv_mlr2 <span class="op">=</span> cross_validate(</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    LinearRegression(), </span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    X_train[[<span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"neck"</span>, <span class="st">"chest"</span>, <span class="st">"abdom"</span>, <span class="st">"biceps"</span>, <span class="st">"forearm"</span>, <span class="st">"wrist"</span>]], </span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    y_train, </span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="dv">5</span>,</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">"neg_mean_squared_error"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c525f32c-66f6-4e8b-8315-08abbf08bbef" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full model</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cv_full_model <span class="op">=</span> cross_validate(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    X_train,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    y_train,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">"neg_mean_squared_error"</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>cv_mlr1<span class="op">=</span> cross_validate(</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    X_train[[<span class="st">"weight"</span>, <span class="st">"wrist"</span>, <span class="st">"abdom"</span>]],</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    y_train,</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">"neg_mean_squared_error"</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>cv_mlr2 <span class="op">=</span> cross_validate(</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    LinearRegression(),</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    X_train[[<span class="st">"weight"</span>, <span class="st">"height"</span>, <span class="st">"neck"</span>, <span class="st">"chest"</span>, <span class="st">"abdom"</span>, <span class="st">"biceps"</span>, <span class="st">"forearm"</span>, <span class="st">"wrist"</span>]],</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    y_train,</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    cv <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    scoring <span class="op">=</span> <span class="st">"neg_mean_squared_error"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0eaf320f-3ce0-465d-85d7-84845a0e6413" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.sqrt(<span class="op">-</span><span class="bu">sum</span>(cv_full_model[<span class="st">'test_score'</span>])), </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>      np.sqrt(<span class="op">-</span><span class="bu">sum</span>(cv_mlr1[<span class="st">'test_score'</span>])), </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>      np.sqrt(<span class="op">-</span><span class="bu">sum</span>(cv_mlr2[<span class="st">'test_score'</span>]))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0eaf320f-3ce0-465d-85d7-84845a0e6413" class="cell" data-outputid="f07f40b6-20c2-44e0-a6f7-139bee2b7075">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.sqrt(<span class="op">-</span><span class="bu">sum</span>(cv_full_model[<span class="st">'test_score'</span>])),</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>      np.sqrt(<span class="op">-</span><span class="bu">sum</span>(cv_mlr1[<span class="st">'test_score'</span>])),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>      np.sqrt(<span class="op">-</span><span class="bu">sum</span>(cv_mlr2[<span class="st">'test_score'</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>6.101775440661628 9.04474023407529 9.680673752851908</code></pre>
+<pre><code>6.101775440661614 9.044740234075288 9.680673752851906</code></pre>
 </div>
 </div>
 <p>Looks like the full model is the best here!</p>
-<div id="febda456-7e0b-46cf-be66-92b3780fced6" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mlr_best <span class="op">=</span> LinearRegression().fit(X_train, y_train)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mlr_best.intercept_)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array(<span class="bu">list</span>(<span class="bu">zip</span>(X_train.columns, mlr_best.coef_))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="febda456-7e0b-46cf-be66-92b3780fced6" class="cell" data-outputid="3629492e-430d-4cf3-d241-850dd4fb2757">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mlr_best <span class="op">=</span> LinearRegression().fit(X_train, y_train)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mlr_best.intercept_)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array(<span class="bu">list</span>(<span class="bu">zip</span>(X_train.columns, mlr_best.coef_))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>19.045273631840807
-[['age' '0.1338989120135632']
- ['weight' '9.348420580781333']
- ['height' '0.19894030597107748']
- ['adipos' '-0.9776707934156567']
- ['free' '-8.827474152930115']
- ['neck' '0.11485215326542049']
- ['chest' '0.5751829606181699']
- ['abdom' '1.2206574175508396']
- ['hip' '0.18340049047064477']
- ['thigh' '0.8379939074493249']
- ['knee' '0.16205656779585054']
- ['ankle' '0.2436973560143513']
- ['biceps' '0.17243823308972156']
- ['forearm' '0.3030194205189306']
- ['wrist' '-0.01394903781479375']]</code></pre>
+[['age' '0.1338989120135575']
+ ['weight' '9.34842058078133']
+ ['height' '0.19894030597107948']
+ ['adipos' '-0.9776707934156488']
+ ['free' '-8.827474152930117']
+ ['neck' '0.11485215326542098']
+ ['chest' '0.5751829606181673']
+ ['abdom' '1.2206574175508305']
+ ['hip' '0.18340049047065232']
+ ['thigh' '0.8379939074493237']
+ ['knee' '0.16205656779585353']
+ ['ankle' '0.2436973560143484']
+ ['biceps' '0.17243823308972106']
+ ['forearm' '0.30301942051892716']
+ ['wrist' '-0.013949037814783072']]</code></pre>
 </div>
 </div>
 </section>
 <section id="lasso-model" class="level3">
 <h3 class="anchored" data-anchor-id="lasso-model">LASSO model</h3>
-<div id="cbf913e8-6ad7-419a-93a0-cafbaad47ed0" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lasso_mod <span class="op">=</span> LassoCV(cv<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">0</span>) <span class="op">\</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    .fit(X_train,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>         y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cbf913e8-6ad7-419a-93a0-cafbaad47ed0" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lasso_mod <span class="op">=</span> LassoCV(cv<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">0</span>) <span class="op">\</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    .fit(X_train,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>         y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Just to look at the tuning parameters and CV errors:</p>
-<div id="c2939b0b-b7f7-4c77-8e38-f69be1d7ac66" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(suppress <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>fit_info <span class="op">=</span> np.array(<span class="bu">list</span>(<span class="bu">zip</span>(lasso_mod.alphas_, np.mean(lasso_mod.mse_path_, axis <span class="op">=</span> <span class="dv">1</span>))))</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>fit_info[fit_info[:,<span class="dv">1</span>].argsort()][<span class="dv">0</span>:<span class="dv">10</span>,].<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div id="c2939b0b-b7f7-4c77-8e38-f69be1d7ac66" class="cell" data-outputid="99ee8825-d2aa-45b4-e0a7-f5d2b3217532">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.set_printoptions(suppress <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>fit_info <span class="op">=</span> np.array(<span class="bu">list</span>(<span class="bu">zip</span>(lasso_mod.alphas_, np.mean(lasso_mod.mse_path_, axis <span class="op">=</span> <span class="dv">1</span>))))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>fit_info[fit_info[:,<span class="dv">1</span>].argsort()][<span class="dv">0</span>:<span class="dv">10</span>,].<span class="bu">round</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([[0.0683, 2.1017],
        [0.0732, 2.106 ],
        [0.0785, 2.1139],
@@ -1405,33 +2257,33 @@ dtype: float64</code></pre>
        [0.0594, 2.233 ]])</code></pre>
 </div>
 </div>
-<div id="293ee2f8-8baa-4d44-9f5f-c53408528928" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lasso_mod.alpha_)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lasso_mod.intercept_)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array(<span class="bu">list</span>(<span class="bu">zip</span>(X_train.columns, lasso_mod.coef_))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="293ee2f8-8baa-4d44-9f5f-c53408528928" class="cell" data-outputid="ca92afa7-93d1-4e0c-96b1-f7c5f4723dfd">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lasso_mod.alpha_)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lasso_mod.intercept_)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array(<span class="bu">list</span>(<span class="bu">zip</span>(X_train.columns, lasso_mod.coef_))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.06827844720988437
 19.045273631840807
-[['age' '0.03520622302650923']
- ['weight' '8.676685171578887']
- ['height' '0.18524483241596762']
+[['age' '0.03520622302650939']
+ ['weight' '8.676685171578885']
+ ['height' '0.18524483241596834']
  ['adipos' '0.0']
- ['free' '-8.098358879411062']
+ ['free' '-8.098358879411064']
  ['neck' '0.0']
- ['chest' '0.10123124957260464']
+ ['chest' '0.1012312495726051']
  ['abdom' '1.5227501560784638']
  ['hip' '0.0']
- ['thigh' '0.5368436925906894']
- ['knee' '0.241029096509708']
- ['ankle' '0.09972823212694094']
- ['biceps' '0.12439075979914253']
- ['forearm' '0.20197553831501064']
+ ['thigh' '0.536843692590691']
+ ['knee' '0.2410290965097099']
+ ['ankle' '0.0997282321269406']
+ ['biceps' '0.12439075979914176']
+ ['forearm' '0.20197553831501108']
  ['wrist' '0.0']]</code></pre>
 </div>
 </div>
 <p>Fit that best model for comparison on the test set.</p>
-<div id="e98ffb0b-d13f-4e21-aac6-5409e355099e" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lasso_best <span class="op">=</span> Lasso(lasso_mod.alpha_).fit(X_train,y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e98ffb0b-d13f-4e21-aac6-5409e355099e" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>lasso_best <span class="op">=</span> Lasso(lasso_mod.alpha_).fit(X_train,y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1439,16 +2291,18 @@ dtype: float64</code></pre>
 <h2 class="anchored" data-anchor-id="compare-on-the-test-set">4. Compare on the Test Set</h2>
 <p>We need to standardize the test set using our training values. Then we can find the test set predictions and RMSE!</p>
 <p>We’ll see how to have python do this for us later. For now, let’s do it manually!</p>
-<div id="a056876d-9a98-435c-ac14-08981d7d999a" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#quick function to standardize based off of a supplied mean and std</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_std_fun(x, means, stds):</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(x<span class="op">-</span>means)<span class="op">/</span>stds</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#loop through the columns and use the function on each</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> X_test.columns:</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    X_test[x] <span class="op">=</span> my_std_fun(X_test[x], means[x], stds[x])</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>X_test.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<div>
+<div id="a056876d-9a98-435c-ac14-08981d7d999a" class="cell" data-outputid="03c72134-0a57-434f-f62e-6425904c33c9">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#quick function to standardize based off of a supplied mean and std</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_std_fun(x, means, stds):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(x<span class="op">-</span>means)<span class="op">/</span>stds</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#loop through the columns and use the function on each</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> X_test.columns:</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    X_test[x] <span class="op">=</span> my_std_fun(X_test[x], means[x], stds[x])</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>X_test.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+
+  <div id="df-7ef9ce42-1e72-4d75-9bc2-7561c5f14b17" class="colab-df-container">
+    <div>
 
 
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -1567,20 +2421,225 @@ dtype: float64</code></pre>
 </table>
 
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7ef9ce42-1e72-4d75-9bc2-7561c5f14b17')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-7ef9ce42-1e72-4d75-9bc2-7561c5f14b17 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-7ef9ce42-1e72-4d75-9bc2-7561c5f14b17');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-0224d798-83f2-4940-8915-c22c36d16822">
+  <button class="colab-df-quickchart" onclick="quickchart('df-0224d798-83f2-4940-8915-c22c36d16822')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-0224d798-83f2-4940-8915-c22c36d16822 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
 </div>
 </div>
 <p>Now find our predictions and test set RMSE.</p>
-<div id="06fd73f6-e166-43ff-8c62-f08d9c3573c6" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mlr_pred <span class="op">=</span> mlr_best.predict(X_test)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>lasso_pred <span class="op">=</span> lasso_best.predict(X_test)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.sqrt(mean_squared_error(y_test, mlr_pred)), np.sqrt(mean_squared_error(y_test, lasso_pred)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="06fd73f6-e166-43ff-8c62-f08d9c3573c6" class="cell" data-outputid="294de743-0437-4a03-ab80-2396545d36a9">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mlr_pred <span class="op">=</span> mlr_best.predict(X_test)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>lasso_pred <span class="op">=</span> lasso_best.predict(X_test)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.sqrt(mean_squared_error(y_test, mlr_pred)), np.sqrt(mean_squared_error(y_test, lasso_pred)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1.7547240606525352 1.9916053642246052</code></pre>
+<pre><code>1.7547240606525405 1.9916053642246054</code></pre>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
