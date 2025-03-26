@@ -104,20 +104,21 @@ To obtain course help there are a number of options:
 | Week 10\          | No new material - spring break                                  |                                           |
 | 3/10-3/14         |                                                                 |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 11\          | 39 - Modeling Recap\                                            | HW 7 due W, 3/26                          |
-| 3/17-3/21         | 40 - Modeling Example\                                          |                                           |
-|                   | 41 - Logistic Regression Basics\                                |                                           |
-|                   | 42 - Logistic Regression Extensions\                            |                                           |
-|                   | 43 - Regularized Regression                                     |                                           |
+| Week 11\          | 01 - Modeling Recap\                                            | HW 7 due W, 3/26                          |
+| 3/17-3/21         | 02 - Modeling Example\                                          |                                           |
+|                   | 03 - Logistic Regression Basics\                                |                                           |
+|                   | 04 - Logistic Regression Extensions\                            |                                           |
+|                   | 05 - Regularized Regression                                     |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 12\          | 44 - Loss Functions & Model Performance\                        | HW 8 due W, 4/2                           |
-| 3/24-3/28         | 45 - Classification & Regression Trees\                         |                                           |
-|                   | 46 - Bagging Trees & Random Forests                             |                                           |
+| Week 12\          | 06 - Loss Functions & Model Performance\                        | HW 8 due W, 4/2                           |
+| 3/24-3/28         | 07 - Classification & Regression Trees\                         |                                           |
+|                   | 08 - Bagging Trees & Random Forests\                            |                                           |
+|                   | 09 - kNN                                                        |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 13\          | 47 - Spark MLlib Basics\                                        | HW 9 due W, 4/9                           |
-| 3/31-4/4          | 48 - Model Pipelines in MLlib\                                  |                                           |
-|                   | 49 - MLflow\                                                    |                                           |
-|                   | 50 - MLOps                                                      |                                           |
+| Week 13\          | 10 - Spark MLlib Basics\                                        | HW 9 due W, 4/9                           |
+| 3/31-4/4          | 11 - Model Pipelines in MLlib\                                  |                                           |
+|                   | 12 - MLflow\                                                    |                                           |
+|                   | 13 - MLOps                                                      |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
 | Week 14\          | 51 - Streaming Data Concepts\                                   | Exam 2 Th/F 4/10-4/11 - covers weeks 1-13 |
 | 4/7-4/11          | 52 - Basic Summaries on Streaming Data\                         |                                           |
