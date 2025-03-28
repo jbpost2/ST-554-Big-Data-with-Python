@@ -1,0 +1,42 @@
+---
+title: "Streaming Data Concepts"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below discusses the broad ideas around handling streaming data. That is, data that comes in over time!
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=62b64983-a89d-4efc-9e21-b2ae00ecc9b5&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="01-Streaming Data Concepts" ></iframe>
+```
+
+## Notes
+
+- <a href = "01-Streaming_Data_Concepts.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/01-Streaming_Data_Concepts.pdf" target = "_blank">PDF version</a>
+
+
+## Additional Readings for Weeks 14 & 15
+
+### Streaming Data Ideas
+
+- <a href="https://kafka.apache.org/intro" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">Nice&nbsp;intro from kafka</a>
+        <span style="font-size: 0.9375rem;">&nbsp;about streaming data.</span>
+- <a href="https://streamsets.com/learn/stream-processing-streaming-data/" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">Streaming data intro with some detail.</a>
+- <a href="https://www.upsolver.com/blog/streaming-data-architecture-key-components" target="_blank">Decent intro to streaming data ideas.</a>&nbsp; Stop reading at (Examples of modern streaming architectures on AWS).
+- <a href="https://aws.amazon.com/streaming-data/" target="_blank">Basic overview of streaming data ideas.</a>
+
+### Streaming Data Tasks
+
+- An older article that discusses a <a href="https://iwringer.wordpress.com/2015/08/03/patterns-for-streaming-realtime-analytics/" target="_blank">list of common tasks</a> with streaming data with examples.
+
+### Streaming Data & Spark
+
+- <a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" target="_blank">Spark Structured Streaming Overview</a>
+- <a href="https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html" target="_blank">More on spark and kafka integration</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

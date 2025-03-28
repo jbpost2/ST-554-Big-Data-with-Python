@@ -1,0 +1,88 @@
+#from kafka folder
+bin\windows\zookeeper-server-start.bat ./config/zookeeper.properties
+#from kafka folder
+bin\windows\kafka-server-start.bat config\server.properties
+#from kafka folder
+bin\windows\kafka-topics.bat --create -topic this --bootstrap-server localhost:9092
+bin\windows\kafka-console-producer.bat --topic this --bootstrap-server localhost:9092
+> enter some data now ready to go
+
+
+
+
+s
+
+#from cmd not bash
+pyspark --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.3
+
+
+df = spark.readStream.format("kafka").option("kafka.bootstrap.servers", "localhost:9092").option("subscribe", "this").load()
+df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
+
+
+from pyspark.sql.functions import explode
+from pyspark.sql.functions import split
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.config("org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.1").getOrCreate()
+lines = spark.readStream.format("kafka").option("kafka.bootstrap.servers", "localhost:9092").option("subscribe", "this").load()
+words = lines.select(explode(split(lines.value, " ")).alias("word"))
+wordCounts = words.groupBy("word").count()
+wordCounts
+query = wordCounts.writeStream.outputMode("complete").format("console").start()
+
+
+
+
+from pyspark.sql.functions import explode
+from pyspark.sql.functions import split
+lines = spark.readStream.format("kafka").option("subscribe", "gofordata").option("kafka.bootstrap.servers", "localhost:9092").load()
+words = lines.select(explode(split(lines.value, " ")).alias("word"))
+wordCounts = words.groupBy("word").count()
+query = wordCounts.writeStream.outputMode("complete").format("console").start()
+
+
+
+Copy first example from here as our mapreduce redo streamed
+https://spark.apache.org/docs/latest/streaming-programming-guide.html
+
+Should be able to use textFileStream to read in files from a directory.  Can keep adding files to the directory and they will be read in
+
+
+
+Monitoring Applications
+
+Beyond Spark’s monitoring capabilities, there are additional capabilities specific to Spark Streaming. When a StreamingContext is used, the Spark web UI shows an additional Streaming tab which shows statistics about running receivers (whether receivers are active, number of records received, receiver error, etc.) and completed batches (batch processing times, queueing delays, etc.). This can be used to monitor the progress of the streaming application.
+
+The following two metrics in web UI are particularly important:
+
+    Processing Time - The time to process each batch of data.
+    Scheduling Delay - the time a batch waits in a queue for the processing of previous batches to finish.
+
+If the batch processing time is consistently more than the batch interval and/or the queueing delay keeps increasing, then it indicates that the system is not able to process the batches as fast they are being generated and is falling behind. In that case, consider reducing the batch processing time.
+
+The progress of a Spark Streaming program can also be monitored using the StreamingListener interface, which allows you to get receiver status and processing times. Note that this is a developer API and it is likely to be improved upon (i.e., more information reported) in the future.
+
+
+
+
+
+
+
+
+
+from kafka import KafkaConsumer
+consumer = KafkaConsumer("quickstart-events")
+for message in consumer:
+    print(message)
+
+
+
+from kafka import KafkaProducer
+producer = KafkaProducer(bootstrap_servers = 'localhost:9092')
+producer.send('quickstart-events', b'Hello, World!')
+producer.send('quickstart-events', key=b'message-two', value=b'This is Kafka-Pyton')
+
+
+
+

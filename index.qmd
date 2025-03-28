@@ -120,14 +120,14 @@ To obtain course help there are a number of options:
 |                   | 12 - MLflow\                                                    |                                           |
 |                   | 13 - MLOps                                                      |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 14\          | 51 - Streaming Data Concepts\                                   | Exam 2 Th/F 4/10-4/11 - covers weeks 1-13 |
-| 4/7-4/11          | 52 - Basic Summaries on Streaming Data\                         |                                           |
-|                   | 53 - Preprocessing, Sending Alerts, & Combining Streams         | (emphasis on 5-13)                        |
+| Week 14\          | 01 - Streaming Data Concepts\                                   | Exam 2 Th/F 4/10-4/11 - covers weeks 1-13 |
+| 4/7-4/11          | 02 - Basic Summaries on Streaming Data\                         |                                           |
+|                   | 03 - Preprocessing, Sending Alerts, & Combining Streams         | (emphasis on 5-13)                        |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
-| Week 15\          | 54 - Spark Structured Streaming\                                | Final Project due M, 4/28                 |
-| 4/14-4/18         | 55 - Reading & Writing Streams with Spark Structured Streaming\ |                                           |
-|                   | 56 - Transformations, Windowing, & Aggregations\                |                                           |
-|                   | 57 - Streaming Joins                                            |                                           |
+| Week 15\          | 04 - Spark Structured Streaming\                                | Final Project due M, 4/28                 |
+| 4/14-4/18         | 05 - Reading & Writing Streams with Spark Structured Streaming\ |                                           |
+|                   | 06 - Transformations, Windowing, & Aggregations\                |                                           |
+|                   | 07 - Streaming Joins                                            |                                           |
 +-------------------+-----------------------------------------------------------------+-------------------------------------------+
 | Week 16\          | No new material.                                                |                                           |
 | 4/21-4/22         |                                                                 |                                           |
