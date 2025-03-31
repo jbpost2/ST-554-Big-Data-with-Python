@@ -10,7 +10,7 @@ The video below discusses how we can take streaming sources and transform them, 
 
 I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
-The notebook used in the video is available <a href = "https://jbpost2.github.io/ST-554-Big-Data-with-Python/04_Streaming_Data/Streaming_Data_Notebook.ipynb" target = "_blank">here</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
+The notebook used in the video is available <a href = "04_Streaming_Data/Streaming_Data_Notebook.ipynb" target = "_blank">here</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
 
 Remember, if you are off campus you should log in to the VPN and then you can [access our `JupyterHub`](https://jhub.cos.ncsu.edu/).
 
