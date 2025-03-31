@@ -16,7 +16,7 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 
 ## Notes
 
-- <a href = "04_Reading_Writing_Streams_With_Spark_Structured_Streaming.html" target = "_blank">HTML version</a>
-- <a href = "PDFs/04_Reading_Writing_Streams_With_Spark_Structured_Streaming.pdf" target = "_blank">PDF version</a>
+- <a href = "04-Reading_Writing_Streams_With_Spark_Structured_Streaming.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/04-Reading_Writing_Streams_With_Spark_Structured_Streaming.pdf" target = "_blank">PDF version</a>
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
