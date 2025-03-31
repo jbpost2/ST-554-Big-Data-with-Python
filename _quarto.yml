@@ -64,6 +64,8 @@ project:
     - 04_Streaming_Data/02-Common_Streaming_Tasks.ipynb
     - 04_Streaming_Data/03-Spark_Structured_Streaming_Landing.qmd
     - 04_Streaming_Data/04-Reading_Writing_Streams_With_Spark_Structured_Streaming_Landing.qmd
+    - 04_Streaming_Data/05-Transformations_Windowing_Aggregations_Landing.qmd
+    - 04_Streaming_Data/06-Streaming_Joins_Landing.qmd
 website:
   title: "ST 554 Analysis of Big Data (with Python)"
   navbar:
@@ -149,6 +151,8 @@ website:
           - 04_Streaming_Data/02-Common_Streaming_Tasks.ipynb
           - 04_Streaming_Data/03-Spark_Structured_Streaming_Landing.qmd
           - 04_Streaming_Data/04-Reading_Writing_Streams_With_Spark_Structured_Streaming_Landing.qmd
+          - 04_Streaming_Data/05-Transformations_Windowing_Aggregations_Landing.qmd
+          - 04_Streaming_Data/06-Streaming_Joins_Landing.qmd
   page-navigation: true
   reader-mode: true
 

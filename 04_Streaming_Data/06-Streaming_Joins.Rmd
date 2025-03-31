@@ -3,7 +3,6 @@ title: "Streaming Joins"
 author: "Justin Post"
 output:
   xaringan::moon_reader:
-    seal: false
     lib_dir: libs
     css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
     nature:
@@ -14,6 +13,7 @@ output:
       ratio: "16:9"
     includes:
       in_header: "partials/header.html"
+    self_contained: yes
 editor_options: 
   chunk_output_type: console
 ---
@@ -37,8 +37,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\python\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```

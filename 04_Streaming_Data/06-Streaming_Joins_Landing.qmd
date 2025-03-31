@@ -1,0 +1,30 @@
+---
+title: "Streaming Joins"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below discusses how we can join two streams, join a stream with a static data frame, and the requirements to do so!
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+The notebook used in the video is available <a href = "https://jbpost2.github.io/ST-554-Big-Data-with-Python/04_Streaming_Data/Streaming_Data_Notebook.ipynb" target = "_blank">here</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
+
+Remember, if you are off campus you should log in to the VPN and then you can [access our `JupyterHub`](https://jhub.cos.ncsu.edu/).
+
+The impressions and clicks data sets are available at <a href = "https://www4.stat.ncsu.edu/online/datasets/" target = "_blank">https://www4.stat.ncsu.edu/online/datasets/</a>.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=4513f039-a9e3-46d0-bb89-b2b1004a3847&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="06-Streaming Joins" ></iframe>
+```
+
+## Notes
+
+- <a href = "06-Streaming_Joins.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/06-Streaming_Joins.pdf" target = "_blank">PDF version</a>
+
+This ends the course! I hope you enjoyed it :)
+
+Head back to the <a href = "https://wolfware.ncsu.edu/" target = "_blank">Moodle site</a> to work on your final project.
