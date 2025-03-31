@@ -37,8 +37,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-#use_python("C:\\python\\python.exe")
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+use_python("C:\\python\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -347,7 +347,7 @@ Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api
 
 - Stop the query with `query.stop()` (where `query` is the name of the query)
 
-- Spark has a GUI to help monitor! Doesn't work easily within a Docker container though...
+- Spark has a GUI to help monitor! Doesn't work easily within our jupyterhub though
     + http://localhost:4040/
 
 ---

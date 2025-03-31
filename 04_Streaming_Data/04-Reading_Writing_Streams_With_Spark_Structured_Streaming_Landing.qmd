@@ -1,0 +1,22 @@
+---
+title: "Reading & Writing Streams with `Spark` Structured Streaming"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below goes into the syntax of reading and writing streams with `Spark` Structured Streaming. 
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=67fa1657-e3b4-4074-ad18-b2b10049f197&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="04-Reading &amp; Writing Streams with Spark Structured Streaming" ></iframe>
+```
+
+## Notes
+
+- <a href = "04_Reading_Writing_Streams_With_Spark_Structured_Streaming.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/04_Reading_Writing_Streams_With_Spark_Structured_Streaming.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
