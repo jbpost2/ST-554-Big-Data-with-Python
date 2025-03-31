@@ -143,7 +143,6 @@ website:
           - 03_Modeling_Data/11-MLPipelines_Landing.qmd
           - 03_Modeling_Data/12-MLflow_Landing.qmd
           - 03_Modeling_Data/13-MLOps_Landing.qmd
-          - 04_Streaming_Data/01-Streaming_Data_Concepts_Landing.qmd
       - section: "Topic 6: Streaming Data"
         contents:
           - 04_Streaming_Data/01-Streaming_Data_Concepts_Landing.qmd
