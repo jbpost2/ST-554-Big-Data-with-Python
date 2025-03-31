@@ -1,5 +1,5 @@
 ---
-title: "Reading & Writing Streams with `Spark` Structured Streaming"
+title: "Reading & Writing Streams with Spark Structured Streaming"
 format: html
 toc: TRUE
 editor_options: 
