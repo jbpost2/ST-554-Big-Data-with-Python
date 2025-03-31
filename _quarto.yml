@@ -61,10 +61,9 @@ project:
     - 03_Modeling_Data/MLLib_MLflow.ipynb
     - 03_Modeling_Data/02-Modeling_Example.ipynb
     - 04_Streaming_Data/01-Streaming_Data_Concepts_Landing.qmd
-    - 04_Streaming_Data/02-Common_Streaming_Tasks.ipynb
+    - 04_Streaming_Data/02_Common_Streaming_Tasks.ipynb
     - 04_Streaming_Data/03-Spark_Structured_Streaming_Landing.qmd
     - 04_Streaming_Data/04-Reading_Writing_Streams_With_Spark_Structured_Streaming_Landing.qmd
-    
 website:
   title: "ST 554 Analysis of Big Data (with Python)"
   navbar:
@@ -144,10 +143,11 @@ website:
           - 03_Modeling_Data/11-MLPipelines_Landing.qmd
           - 03_Modeling_Data/12-MLflow_Landing.qmd
           - 03_Modeling_Data/13-MLOps_Landing.qmd
+          - 04_Streaming_Data/01-Streaming_Data_Concepts_Landing.qmd
       - section: "Topic 6: Streaming Data"
         contents:
           - 04_Streaming_Data/01-Streaming_Data_Concepts_Landing.qmd
-          - 04_Streaming_Data/02-Common_Streaming_Tasks.ipynb
+          - 04_Streaming_Data/02_Common_Streaming_Tasks.ipynb
           - 04_Streaming_Data/03-Spark_Structured_Streaming_Landing.qmd
           - 04_Streaming_Data/04-Reading_Writing_Streams_With_Spark_Structured_Streaming_Landing.qmd
   page-navigation: true

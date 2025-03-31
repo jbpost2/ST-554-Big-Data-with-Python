@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Reading and Writing Streams with Spark Structured Streaming</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Reading and Writing Streams with Spark Structured Streaming
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+---
+
+# Recap 
+
+We'll use Spark Structured Streaming to handle our streaming data ([Guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html))
+
+- Create a spark session
+1. **Read in a stream**
+    + Stream from a file, terminal, or use something like kafka
+2. Set up transformations/aggregations to do (mostly using SQL type functions)
+    + Perhaps over windows
+3. Set up **writing of the query** to an output source
+    + Console (for debugging)
+    + File (say .csv)
+    + Database
+4. `query.start()` the query!  
+    + Continues listening until terminated (`query.stop()`)
+
+
+---
+
+# Streaming DataFrames
+
+Stream is read into a Spark SQL data frame
+
+- Data frames can be used to represent both static data and streaming data 
+
+Differences:
+
+- Streaming data frames are unbounded and schema is only checked at runtime
+- Rows added incrementally
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/structured-streaming-stream-as-a-table.png" alt="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" width="500px" /&gt;
+&lt;p class="caption"&gt;https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html&lt;/p&gt;
+&lt;/div&gt;
+
+
+
+---
+
+# Streaming DataFrames
+
+&lt;img src="img/structured-streaming-model.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+ - When the query starts, Spark will check for new data (at a specified interval of time)
+ - If there is new data, Spark will run an “incremental” query that combines the previous running counts with the new data to compute updated counts
+ 
+ 
+---
+
+# Streaming DataFrames
+
+&lt;img src="img/structured-streaming-model.png" width="500px" style="display: block; margin: auto;" /&gt;
+
+&gt; Note that Structured Streaming does not materialize the entire table. It reads the latest available data from the streaming data source, processes it incrementally to update the result, and then discards the source data. It only keeps the minimal intermediate state data as required to update the result (e.g. intermediate counts).
+
+
+
+---
+
+# Reading a Stream
+
+Stream read in using the [`DataStreamReader` interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`SparkSession.readStream`)
+
+- `readStream` has different methods to customize/set-up how to read the stream
+
+
+
+---
+
+# Reading a Stream
+
+Stream read in using the [`DataStreamReader` interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`SparkSession.readStream`)
+
+- `readStream` has different methods to customize/set-up how to read the stream
+
+    + `.format()` - (generic) specifies the input source
+    + `.schema()` - setup what Spark should expect
+    + `.option(key, value)` - allows an input option on a file source
+    + `.load()` - loads a data stream and returns a DataFrame
+  
+
+---
+
+# Reading Data from a Kafka Stream
+
+- Common syntax for reading in data
+
+
+```python
+df = spark \
+    .readStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("subscribe", "topic_name") \
+    .load()
+```
+
+
+---
+
+# Reading in Testing Data
+
+- `rate` format generates timestamp data at a specified interval of time
+
+
+```python
+df = spark \
+    .readStream \
+    .format("rate") \
+    .option("rowsPerSecond", 1) \
+    .load()
+```
+
+
+---
+
+# Reading Data From a CSV
+
+- Common syntax for reading in data
+
+
+```python
+myschema = StructType().add("value", "string")
+df = spark \
+       .readStream \
+       .schema(myschema) \
+       .csv("csv_files") #automatically 'loads'
+```
+
+
+---
+
+# Quick Example
+
+Let's jump into `pyspark` and use the "rate" format 
+
+- Will need to write the stream to see it (covered in more detail shortly)
+
+
+---
+
+# Starting Streaming Queries
+
+Notice that the process doesn't evaluate things until we use `.start()`
+
+&lt;img src="img/structured-streaming-model.png" width="600px" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Starting Streaming Queries
+
+
+Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`df_with_transforms_etc.writeStream`)
+
+- `writeStream` has different methods to customize output type and location
+
+
+---
+
+# Starting Streaming Queries
+
+
+Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`df_with_transforms_etc.writeStream`)
+
+- `writeStream` has different methods to customize output type and location
+
+- Output type:
+
+    + Complete - print entire table at each update
+        - Only supported for aggregation queries
+    + Append (default) - only new rows added to the Results table are outputted
+        - Only applicable if rows added can never change (say from late data)
+    + Update - similar to append but allows flexibility if data may change 
+    
+    
+---
+
+# Starting Streaming Queries
+
+
+Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`df_with_transforms_etc.writeStream`)
+
+- `writeStream` has different methods to customize output type and location
+
+- Output type:
+
+    + Complete - print entire table at each update
+        - Only supported for aggregation queries
+    + Append (default) - only new rows added to the Results table are outputted
+        - Only applicable if rows added can never change (say from late data)
+    + Update - similar to append but allows flexibility if data may change 
+
+- Nice table in the [guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#creating-streaming-dataframes-and-streaming-datasets) to help out!
+
+
+
+---
+
+# Starting Streaming Queries
+
+
+Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`df_with_transforms_etc.writeStream`)
+
+- `writeStream` has different methods to customize output type and location
+
+- Output sinks (location):
+
+    + console sink for debugging
+        - `query.writeStream.outputMode("append").format("console")`
+
+
+        
+---
+
+# Starting Streaming Queries
+
+
+Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`df_with_transforms_etc.writeStream`)
+
+- `writeStream` has different methods to customize output type and location
+
+- Output sinks (location):
+
+    + console sink for debugging
+        - `query.writeStream.outputMode("append").format("console")`
+    + memory - stores output in an in-memory table that you can investigate
+        - `query.writeStream.format("memory").queryName("tableName")`
+    + File sink (csv, json, parquet, etc)
+        - `query.writeStream.outputMode("append").format("csv").option("path", "path_to_file")`
+
+        
+---
+
+# Starting Streaming Queries
+
+
+Uses the `DataStreamWriter` [interface](https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/index.html) (`df_with_transforms_etc.writeStream`)
+
+- `writeStream` has different methods to customize output type and location
+
+- Output sinks (location):
+
+    + console sink for debugging
+        - `query.writeStream.outputMode("append").format("console")`
+    + memory - stores output in an in-memory table that you can investigate
+        - `query.writeStream.format("memory").queryName("tableName")`
+    + File sink (csv, json, parquet, etc)
+        - `query.writeStream.outputMode("append").format("csv").option("path", "path_to_file")`
+    + Kafka sink
+
+- Nice table in the [guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#creating-streaming-dataframes-and-streaming-datasets) to help out!
+
+
+---
+
+# Starting Streaming Queries
+
+- Updates based on **trigger** settings
+
+    + Default uses micro-batches which are generated as soon as the previous micro-batch has completed processing
+
+
+---
+
+# Starting Streaming Queries
+
+- Updates based on **trigger** settings
+
+    + Default uses micro-batches which are generated as soon as the previous micro-batch has completed processing
+    + Fixed interval micro-batches (see guide for more info)
+        - `writeStream....trigger(processingTime = "2 seconds")....`
+    + One-time micro-batch - executes once and shuts itself down (essentially a quick update since you last ran the query)
+        - `writeStream....trigger(once = True)....`
+    + Continuous - experimental
+    
+
+---
+
+# Multiple Queries and Stopping Queries
+
+- Can do multiple queries at once and they share resources
+    + `spark.streams.active` gives a list of all active streaming queries
+
+- Stop the query with `query.stop()` (where `query` is the name of the query)
+
+- Spark has a GUI to help monitor! Doesn't work easily within our jupyterhub though
+    + http://localhost:4040/
+
+---
+
+# Quick Example
+
+Let's write to a table in memory!
+
+
+---
+
+# Recap
+
+- Read in streams with `readStream`
+
+- Write queries with `writeStream`
+
+- Must `.start()` the query
+
+- Can run multiple queries at once
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-03-31">
 
-<title>MLflow – ST 554 Analysis of Big Data (with Python)</title>
+<title>Streaming Data Concepts – ST 554 Analysis of Big Data (with Python)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../03_Modeling_Data/13-MLOps_Landing.html" rel="next">
-<link href="../03_Modeling_Data/11-MLPipelines_Landing.html" rel="prev">
+<link href="../04_Streaming_Data/02_Common_Streaming_Tasks.html" rel="next">
+<link href="../03_Modeling_Data/13-MLOps_Landing.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../03_Modeling_Data/01-Modeling_Data_Recap_Landing.html">Topic 5: Modeling Data</a></li><li class="breadcrumb-item"><a href="../03_Modeling_Data/12-MLflow_Landing.html">MLflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../03_Modeling_Data/01-Modeling_Data_Recap_Landing.html">Topic 5: Modeling Data</a></li><li class="breadcrumb-item"><a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html">Streaming Data Concepts</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -503,7 +503,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03_Modeling_Data/12-MLflow_Landing.html" class="sidebar-item-text sidebar-link active">
+  <a href="../03_Modeling_Data/12-MLflow_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MLflow</span></a>
   </div>
 </li>
@@ -515,7 +515,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Streaming Data Concepts</span></a>
   </div>
 </li>
@@ -567,15 +567,21 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#additional-readings-for-weeks-14-15" id="toc-additional-readings-for-weeks-14-15" class="nav-link" data-scroll-target="#additional-readings-for-weeks-14-15">Additional Readings for Weeks 14 &amp; 15</a>
+  <ul class="collapse">
+  <li><a href="#streaming-data-ideas" id="toc-streaming-data-ideas" class="nav-link" data-scroll-target="#streaming-data-ideas">Streaming Data Ideas</a></li>
+  <li><a href="#streaming-data-tasks" id="toc-streaming-data-tasks" class="nav-link" data-scroll-target="#streaming-data-tasks">Streaming Data Tasks</a></li>
+  <li><a href="#streaming-data-spark" id="toc-streaming-data-spark" class="nav-link" data-scroll-target="#streaming-data-spark">Streaming Data &amp; Spark</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../03_Modeling_Data/01-Modeling_Data_Recap_Landing.html">Topic 5: Modeling Data</a></li><li class="breadcrumb-item"><a href="../03_Modeling_Data/12-MLflow_Landing.html">MLflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../03_Modeling_Data/01-Modeling_Data_Recap_Landing.html">Topic 5: Modeling Data</a></li><li class="breadcrumb-item"><a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html">Streaming Data Concepts</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">MLflow</h1>
+<h1 class="title">Streaming Data Concepts</h1>
 </div>
 
 
@@ -598,20 +604,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The video below describes the use of MLflow to improve the model fitting process.</p>
+<p>The video below discusses the broad ideas around handling streaming data. That is, data that comes in over time!</p>
 <p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
-<p>The <code>pyspark</code> code used in the notes is <a href="MLlib_MLflow.ipynb" target="_blank">available in this notebook</a> and the data set is <a href="https://www4.stat.ncsu.edu/~online/datasets/bikeDetails.csv" target="_blank">also available online</a>. You’ll need to download the <code>.ipynb</code> file and upload it to your <code>JupyterHub</code> environment. Make sure that the kernel used to run the notebook is a <code>pyspark</code> kernel!</p>
-<p>Remember, if you are off campus you should log in to the VPN and then you can <a href="https://jhub.cos.ncsu.edu/">access our <code>JupyterHub</code></a>.</p>
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=5a833068-5673-49c6-9592-b2a001800d9b&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="12-MLflow"></iframe>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=62b64983-a89d-4efc-9e21-b2ae00ecc9b5&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="01-Streaming Data Concepts"></iframe>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><a href="12-MLflow.html" target="_blank">HTML version</a></li>
-<li><a href="PDFs/12-MLflow.pdf" target="_blank">PDF version</a></li>
+<li><a href="01-Streaming_Data_Concepts.html" target="_blank">HTML version</a></li>
+<li><a href="PDFs/01-Streaming_Data_Concepts.pdf" target="_blank">PDF version</a></li>
+</ul>
+</section>
+<section id="additional-readings-for-weeks-14-15" class="level2">
+<h2 class="anchored" data-anchor-id="additional-readings-for-weeks-14-15">Additional Readings for Weeks 14 &amp; 15</h2>
+<section id="streaming-data-ideas" class="level3">
+<h3 class="anchored" data-anchor-id="streaming-data-ideas">Streaming Data Ideas</h3>
+<ul>
+<li><a href="https://kafka.apache.org/intro" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">Nice&nbsp;intro from kafka</a> <span style="font-size: 0.9375rem;">&nbsp;about streaming data.</span></li>
+<li><a href="https://streamsets.com/learn/stream-processing-streaming-data/" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">Streaming data intro with some detail.</a></li>
+<li><a href="https://www.upsolver.com/blog/streaming-data-architecture-key-components" target="_blank">Decent intro to streaming data ideas.</a>&nbsp; Stop reading at (Examples of modern streaming architectures on AWS).</li>
+<li><a href="https://aws.amazon.com/streaming-data/" target="_blank">Basic overview of streaming data ideas.</a></li>
+</ul>
+</section>
+<section id="streaming-data-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="streaming-data-tasks">Streaming Data Tasks</h3>
+<ul>
+<li>An older article that discusses a <a href="https://iwringer.wordpress.com/2015/08/03/patterns-for-streaming-realtime-analytics/" target="_blank">list of common tasks</a> with streaming data with examples.</li>
+</ul>
+</section>
+<section id="streaming-data-spark" class="level3">
+<h3 class="anchored" data-anchor-id="streaming-data-spark">Streaming Data &amp; Spark</h3>
+<ul>
+<li><a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" target="_blank">Spark Structured Streaming Overview</a></li>
+<li><a href="https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html" target="_blank">More on spark and kafka integration</a></li>
 </ul>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1037,13 +1066,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../03_Modeling_Data/11-MLPipelines_Landing.html" class="pagination-link" aria-label="MLPipelines">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">MLPipelines</span>
+      <a href="../03_Modeling_Data/13-MLOps_Landing.html" class="pagination-link" aria-label="MLOps">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">MLOps</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../03_Modeling_Data/13-MLOps_Landing.html" class="pagination-link" aria-label="MLOps">
-        <span class="nav-page-text">MLOps</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../04_Streaming_Data/02_Common_Streaming_Tasks.html" class="pagination-link" aria-label="Common Streaming Tasks">
+        <span class="nav-page-text">Common Streaming Tasks</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
