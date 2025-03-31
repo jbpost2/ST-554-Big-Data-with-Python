@@ -1,0 +1,22 @@
+---
+title: "Spark Structured Streaming"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below gives our first example of working with `Spark` Structured Streaming. We go through an example where we read in text data coming into a folder and count the number of occurrences of each word. 
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=8e2b1295-a485-4ab9-8512-b2b1003f1282&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="03-Spark Structured Streaming" ></iframe>
+```
+
+## Notes
+
+- <a href = "03-Spark_Structured_Streaming.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/03-Spark_Structured_Streaming.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

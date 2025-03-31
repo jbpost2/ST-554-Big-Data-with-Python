@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Spark Structured Streaming</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Justin Post" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/5235085b15.js"></script>
+    <link rel="stylesheet" href="css/ncsu.css" type="text/css" />
+    <link rel="stylesheet" href="css/ncsu-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/mycss.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Spark Structured Streaming
+Justin Post 
+
+---
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;img src="img/logo.png" style="height: 60px;"/&gt;&lt;/div&gt; 
+
+
+---
+
+# Recap 
+
+Streaming Data  
+
+- Data that is generated over time (usually continuously)
+- Often small amounts of data with high velocity
+
+Common Tasks 
+- Preprocessing/Sending alerts
+- Combining data streams and dealing with time intervals
+- Detecting trends, counting, and averages (over certain windows or buckets of time)
+- Updating or using predictive models
+
+Big issues
+- Need to handle it as it comes in record by record
+- Generally, don't want to store all the data from the stream
+
+
+---
+
+# Spark for Streaming Data
+
+Spark has two systems for streaming data: 
+
+- Spark Streaming 
+
+	  + Uses discretized streams or DStreams
+	  + Internally is a sequence of RDDs
+
+	
+- Spark Structured Streaming 
+
+	  + Can use Spark DataFrames with SQL type functions
+
+
+---
+
+# Spark SQL Recap
+
+Use `pyspark.sql.SparkSession` to create a spark instance
+
+- Spark SQL DataFrames are created and implemented on top of RDDs
+
+    + `df.printSchema()`
+
+- DataFrames are stored across the cluster
+
+    + When transformations are done, lazy evaluation is used
+    + When actions are done, computation starts and results returned
+
+---
+
+# Spark SQL Recap
+
+Often do transformations 
+
+- `.select()` method can be used to subset columns
+- `.withColumn()` method is useful to create a new column from another
+- `.filter()` method allows you to subset via a condition
+
+---
+
+# Spark SQL Recap
+
+Often do transformations 
+
+- `.select()` method can be used to subset columns
+- `.withColumn()` method is useful to create a new column from another
+- `.filter()` method allows you to subset via a condition
+
+Summarizations (often with grouping via `.groupBy()`)
+
+-  `.avg()`, `.sum()`, `.count()`, etc
+
+---
+
+# Spark SQL Recap
+
+Often do transformations 
+
+- `.select()` method can be used to subset columns
+- `.withColumn()` method is useful to create a new column from another
+- `.filter()` method allows you to subset via a condition
+
+Summarizations (often with grouping via `.groupBy()`)
+
+-  `.avg()`, `.sum()`, `.count()`, etc
+
+DataFrame isn't printed out when we do the default call of the object due to lazy eval
+
+- `show(n)`, `take(n)`, `collect()`
+- **Won't be able to use these with streaming data**
+
+
+---
+
+# Spark SQL Recap
+
+And don't forget!
+
+- Can use more 'standard' SQL style code:
+
+    + `df.createOrReplaceTempView("df")`
+    + `spark.sql("SELECT sex, age FROM df LIMIT 4")`
+
+
+---
+
+# Spark Structured Streaming 
+
+&gt; Structured Streaming provides fast, scalable, fault-tolerant, end-to-end exactly-once stream processing without the user having to reason about streaming
+
+---
+
+# Spark Structured Streaming 
+
+&gt; Structured Streaming provides fast, scalable, fault-tolerant, end-to-end exactly-once stream processing without the user having to reason about streaming
+
+&lt;div style="float: left; width: 45%;"&gt;
+- Still set up sequence of transformations
+- Lazy execution until you execute the query that will return data
+&lt;/div&gt;
+&lt;div style="float: left; width: 45%;"&gt;
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/Structured-Streaming.png" alt="https://databricks.com/glossary/what-is-structured-streaming" width="600px" /&gt;
+&lt;p class="caption"&gt;https://databricks.com/glossary/what-is-structured-streaming&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+
+
+
+---
+
+# Spark Structured Streaming 
+
+
+&lt;div style="float: left; width: 40%;"&gt;
+- Spark Uses micro-batching at time intervals you set (100 milliseconds minimum) 
+- Continuous version (1 millisecond) exists but is still experimental
+- Easy to do windowing operations!
+&lt;/div&gt;
+&lt;div style="float: left; width: 60%;"&gt;
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/structured-streaming-window.png" alt="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" width="600px" /&gt;
+&lt;p class="caption"&gt;https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--comment--&gt;
+
+
+
+
+---
+
+# Spark Structured Streaming Process
+
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+    + Stream from a file, terminal, or use something like kafka
+2. Set up transformations/aggregations to do (mostly using SQL type functions)
+    + Perhaps over windows
+    
+    
+---
+
+# Spark Structured Streaming Process
+
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+    + Stream from a file, terminal, or use something like kafka
+2. Set up transformations/aggregations to do (mostly using SQL type functions)
+    + Perhaps over windows
+3. Set up writing of the query to an output source
+    + Console (for debugging)
+    + File (say .csv)
+    + Database
+4. `query.start()` the query!  
+    + Continues listening until terminated (`query.stop()`)
+
+   
+---
+
+# First: To JupyterLab to do Spark without Streaming!
+
+Basic word count operation
+
+Using Spark SQL we can use [functions listed here](https://spark.apache.org/docs/latest/api/sql/index.html).  Process:
+- Read data into a spark SQL dataframe
+- Use `split(str, regex)`
+- Use `explode(expr)` (separates the elements of the array `expr` into multiple rows, or the elements of map `expr` into multiple rows and columns)
+
+                  
+---
+
+# First: To JupyterLab to do Spark without Streaming!
+
+Basic word count operation
+
+Using Spark SQL we can use [functions listed here](https://spark.apache.org/docs/latest/api/sql/index.html).  Process:
+- Read data into a spark SQL dataframe
+- Use `split(str, regex)`
+- Use `explode(expr)` (separates the elements of the array `expr` into multiple rows, or the elements of map `expr` into multiple rows and columns)
+- Use `.groupBy()` with `.count()`
+
+Syntax similar to what we've done already
+
+```python
+df.select(["Duration", "Age", "Treatment"]).groupBy("Treatment").avg().show()
+```
+
+
+---
+
+# Second: To pyspark to do Word Counts on Streaming Data!
+
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+    + Listen for `.csv` files in a folder
+
+
+---
+
+# Second: To pyspark to do Word Counts on Streaming Data!
+
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+    + Listen for `.csv` files in a folder
+2. Set up transformations/aggregations to do 
+    + Similar to what we just did!
+
+---
+
+# Second: To pyspark to do Word Counts on Streaming Data!
+
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+    + Listen for `.csv` files in a folder
+2. Set up transformations/aggregations to do 
+    + Similar to what we just did!
+3. Set up writing of the query to an output source
+    + Console (just for illustration!)
+
+---
+
+# Second: To pyspark to do Word Counts on Streaming Data!
+
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+    + Listen for `.csv` files in a folder
+2. Set up transformations/aggregations to do 
+    + Similar to what we just did!
+3. Set up writing of the query to an output source
+    + Console (just for illustration!)
+4. `query.start()` the query!  
+
+---
+
+# Recap
+
+We'll use Spark Structured Streaming to handle our streaming data!
+
+General process:
+
+- Create a spark session
+1. Read in a stream
+2. Set up transformations/aggregations to do 
+3. Set up writing of the query to an output source
+4. `query.start()` the query!  
+
+- We'll look at things like windowing and joining streams as well!
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/ncsu-scale.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

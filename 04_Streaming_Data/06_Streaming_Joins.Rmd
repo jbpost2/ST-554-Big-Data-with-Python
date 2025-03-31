@@ -1,0 +1,274 @@
+---
+title: "Streaming Joins"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = TRUE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+#use_python("C:\\python\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+layout: false
+class: title-slide-section-red, middle
+
+# Streaming: Joins
+Justin Post 
+
+---
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+
+
+
+---
+
+# Recap 
+
+- Create a spark session
+1. Read in a stream
+    + Stream from a file, terminal, or use something like kafka
+2. Set up transformations/aggregations to do (mostly using SQL type functions)
+    + Perhaps over windows
+    + Use a watermark to allow for late data
+3. Set up writing of the query to an output source
+    + Console (for debugging)
+    + File (say .csv)
+    + Database
+4. `query.start()` the query!  
+    + Continues listening until terminated (`query.stop()`)
+
+
+**Can combine two streams or a stream and a static data source**
+
+
+---
+
+# Recall Our Common Joins
+
+Combining two (or more) tables in SQL is called doing a **join**
+
+- Inner Join: Returns records with matching keys in both tables
+
+```{r, echo = FALSE, fig.align='center', out.width="350px"}
+knitr::include_graphics("img/inner_join.png")
+```
+
+
+---
+
+# Recall Our Common Joins
+
+- Left (Outer) Join: Returns all records from the 'left' table and any matching records from the 'right' table
+
+```{r, echo = FALSE, fig.align='center', out.width="350px"}
+knitr::include_graphics("img/left_join.png")
+```
+
+---
+
+# Recall Our Common Joins
+
+- (Full) Outer Join: Returns all records when there is a match from the 'left' or 'right' table
+
+```{r, echo = FALSE, fig.align='center', out.width="350px"}
+knitr::include_graphics("img/outer_join.png")
+```
+
+
+---
+
+# Common Joins
+
+- Can do the following **stream to stream** joins in Spark Structured Streaming:
+
+    + Inner
+    + Left (must specify watermark on right and time constraints)
+        - Right works similarly
+    + Full Outer (must specify watermark and time constraints on at least one side)
+    + Left Semi (return any rows from the left dataset that were matched with the right table)
+
+
+---
+
+# Common Joins
+
+- Can do the following **stream to stream** joins in Spark Structured Streaming:
+
+    + Inner
+    + Left (must specify watermark on right and time constraints)
+        - Right works similarly
+    + Full Outer (must specify watermark and time constraints on at least one side)
+    + Left Semi (return any rows from the left dataset that were matched with the right table)
+
+
+- Must use **append** output mode
+
+- Cannot do aggregations before joins
+
+
+---
+
+# Example Inner Join Syntax
+
+- Suppose you have `streamDF1` and `streamDF2`
+
+```{python, eval = FALSE}
+streamDF1.join(streamDF2, "col_id")   # inner join on common column col_id
+```
+
+
+---
+
+# Example Left (Outer) Join Syntax
+
+- Suppose you have `streamDF1` and `streamDF2`
+- Each has some watermarks ([code modified from here](https://databricks.com/blog/2018/03/13/introducing-stream-stream-joins-in-apache-spark-2-3.html))
+
+
+```{python, eval = FALSE}
+# Define watermarks
+impressionsWithWatermark = impressions \
+  .selectExpr("adId AS impressionAdId", "impressionTime") \
+  .withWatermark("impressionTime", "10 seconds ")   # max 10 seconds late
+
+clicksWithWatermark = clicks \
+  .selectExpr("adId AS clickAdId", "clickTime") \
+  .withWatermark("clickTime", "20 seconds")        # max 20 seconds late
+```
+
+
+
+
+---
+
+# Example Left (Outer) Join Syntax
+
+- Suppose you have `streamDF1` and `streamDF2`
+- Each has some watermarks ([code modified from here](https://databricks.com/blog/2018/03/13/introducing-stream-stream-joins-in-apache-spark-2-3.html))
+
+
+```{python, eval = FALSE}
+from pyspark.sql.functions import expr
+
+# Left outer join with time range conditions
+impressionsWithWatermark.join(
+  clicksWithWatermark,
+  expr("""
+    clickAdId = impressionAdId AND 
+    clickTime >= impressionTime AND 
+    clickTime <= impressionTime + interval 1 hour    
+    """), 
+  "leftOuter"
+)
+```
+
+
+---
+
+# Stream-static Joins
+
+We can also do joins of a stream with a static spark Data Frame
+
+- Suppose streaming DF is on the left and static on the right
+    
+    + Inner, left outer, and left semi are supported
+
+---
+
+# Stream-static Joins
+
+We can also do joins of a stream with a static spark Data Frame
+
+- Suppose streaming DF is on the left and static on the right
+    
+    + Inner, left outer, and left semi are supported
+
+Example syntax:
+
+```{python, eval = FALSE}
+streamingDF.join(staticDF, "column", "inner")
+```
+
+- For all of these, we then need to write the query!
+
+
+---
+
+# Example
+
+- Let's jump into pyspark and do a few joins!
+
+
+---
+
+# Recap
+
+- Can do some stream-to-stream joins and stream-to-static joins
+
+- For stream to stream joins
+
+    + Must use **append** output mode
+
+    + Cannot do aggregations before joins
+
+
+---
+
+layout: false
+
+# Course Recap
+
+- 5 V's of Big Data
+    + Volume
+    + Variety
+    + Velocity
+    + Veracity (Variability)
+    + Value
+
+- Understanding of the Big Data pipeline and basics of handling Big Data
+    + Databases/Data Lakes/Data Warehouses/etc.
+    + Hadoop
+    + Spark
+    
+- Modeling data
+    + Machine learning algorithms
+    + Tuning and testing models
+
+- Common issues seen on data with velocity and Spark Structured Streaming
