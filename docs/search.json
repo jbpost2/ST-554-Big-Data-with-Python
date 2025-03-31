@@ -31,7 +31,7 @@
     "text": "The video below discusses the broad ideas around handling streaming data. That is, data that comes in over time!\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.",
     "crumbs": [
       "Home",
-      "Topic 5: Modeling Data",
+      "Topic 6: Streaming Data",
       "Streaming Data Concepts"
     ]
   },
@@ -43,7 +43,7 @@
     "text": "Notes\n\nHTML version\nPDF version",
     "crumbs": [
       "Home",
-      "Topic 5: Modeling Data",
+      "Topic 6: Streaming Data",
       "Streaming Data Concepts"
     ]
   },
@@ -55,7 +55,7 @@
     "text": "Additional Readings for Weeks 14 & 15\n\nStreaming Data Ideas\n\nNice intro from kafka  about streaming data.\nStreaming data intro with some detail.\nDecent intro to streaming data ideas.  Stop reading at (Examples of modern streaming architectures on AWS).\nBasic overview of streaming data ideas.\n\n\n\nStreaming Data Tasks\n\nAn older article that discusses a list of common tasks with streaming data with examples.\n\n\n\nStreaming Data & Spark\n\nSpark Structured Streaming Overview\nMore on spark and kafka integration\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
     "crumbs": [
       "Home",
-      "Topic 5: Modeling Data",
+      "Topic 6: Streaming Data",
       "Streaming Data Concepts"
     ]
   },
