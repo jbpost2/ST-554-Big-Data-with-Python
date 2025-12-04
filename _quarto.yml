@@ -71,12 +71,14 @@ website:
   navbar:
     background: '#1b1c1c'
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        href: index.qmd
+      - text: "About"
+        href: about.qmd
     right:
       - icon: github
         href: https://github.com/jbpost2/ST-554-Big-Data-With-Python
+        text: "Github Repository"
   sidebar:
     style: "docked"
     search: true
@@ -155,10 +157,13 @@ website:
           - 04_Streaming_Data/06-Streaming_Joins_Landing.qmd
   page-navigation: true
   reader-mode: true
+  search: false
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      - cosmo
+      - custom.scss
     css: styles.css
     toc: true
     grid:

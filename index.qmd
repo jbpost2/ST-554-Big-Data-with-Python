@@ -2,7 +2,7 @@
 title: "Analysis of Big Data"
 ---
 
-Welcome to ST 554 - Analysis of Big Data (with `python`)
+Welcome to ST 554 - Analysis of Big Data (with `python`)!
 
 In this course we'll look at common issues, analysis, and software used with big data. We'll discuss the major aspects with the commonly cited '5 V's of Big Data':
 
