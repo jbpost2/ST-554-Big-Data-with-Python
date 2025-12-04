@@ -1,5 +1,15 @@
 /* css styles */
 .figure-caption {
   color: #333333;
-  fone-weight: bold;
+  font-weight: bold;
+}
+
+[class^="ansi-"][class$="-fg"] {
+	font-weight: bold;
+	font-size: 130%;
+}
+
+.ansi-cyan-fg {
+	font-size: 175%;
+	color: #008B8B
 }

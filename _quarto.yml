@@ -169,6 +169,7 @@ format:
     toc: true
     grid:
       sidebar-width: 300px
+    highlight-style: ally
       
 callout-appearance: simple
 
