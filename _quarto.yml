@@ -79,6 +79,7 @@ website:
       - icon: github
         href: https://github.com/jbpost2/ST-554-Big-Data-With-Python
         text: "Github Repository"
+    collapse: false
   sidebar:
     style: "docked"
     search: true
