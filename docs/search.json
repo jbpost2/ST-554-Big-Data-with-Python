@@ -304,7 +304,12 @@
     "href": "02_Big_Data_Management/08-Connecting_to_JupyterHub.html",
     "title": "Connecting to our JupyterHub",
     "section": "",
-    "text": "We have a dedicated JupyterHub here in the college of sciences! The JupyterHub has pyspark enabled in it so we don’t have to set things up ourselves!\nTo connect:\n\nConnect to the NC State VPN.\n\nYou want to download Cisco AnyConnect VPN software.\nOnce installed, you need to login. See this site for info. Basically, you connect to vpn.ncsu.edu and login with your username and password. You also need to do a duo login (I usually use a push notification - type ‘push’ in as the second password)\nOnce connect, you log into the JupyterHub here.\nThen you can select a pyspark kernel!\n\n\nThe video below shows a quick walkthrough of this process.\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "We have a dedicated JupyterHub here in the college of sciences! The JupyterHub has pyspark enabled in it so we don’t have to set things up ourselves!\nTo connect:\n\nConnect to the NC State VPN.\n\nYou want to download Cisco AnyConnect VPN software.\nOnce installed, you need to login. See this site for info. Basically, you connect to vpn.ncsu.edu and login with your username and password. You also need to do a duo login (I usually use a push notification - type ‘push’ in as the second password)\nOnce connect, you log into the JupyterHub here.\nThen you can select a pyspark kernel!\n\n\nThe video below shows a quick walkthrough of this process.\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "crumbs": [
+      "Home",
+      "Topic 4: Big Data Management",
+      "Connecting to our JupyterHub"
+    ]
   },
   {
     "objectID": "02_Big_Data_Management/06-Data_Pipelines_Storage_Landing.html",
@@ -1398,7 +1403,7 @@
     "href": "01_Programming_in_python/02-Basic_Use_Of_Python.html#copying-vs-referencing",
     "title": "Basic Use of Python",
     "section": "Copying vs Referencing",
-    "text": "Copying vs Referencing\nCareful when modifying elements of a compound object: ‘assignment statements do not copy objects, they create bindings between a target (a spot in computer memory) and an object’!\nIf you come from R, this is a very different behavior!\n\n#Changing the original compound object (list) modifies both variables\n#First, create a 'list' of four values\nx = [1, 2, 3, \"Cats Rule!\"]\n#Make y an alias for x (reference the same memory - this differs from how R works)\ny = x\n#note that they are the same when printing\nprint(x, y)\n\n[1, 2, 3, 'Cats Rule!'] [1, 2, 3, 'Cats Rule!']\n\n\nWe can modify a list element by using [] after the object name. Note that python starts counting at 0. - Here we access and overwrite the 3 element (fourth element in the list)\n\n#Modifying x here actually modifies y too!\nx[3] = \"Dogs rule!\"\nprint(x, y)\n\n[1, 2, 10, 'Dogs rule!'] [1, 2, 3, 'Dogs rule!']\n\n\n\nIf you want to avoid this behavior, you can create a copy of the object instead of a reference\nTo do so, we use the .copy() method. Methods are like functions but we append them to the rear of the object after a .\n\n\n#Can create a (shallow) copy of the object rather than point to the same object in memory\ny = x.copy()\nx[2] = 10\nx[3]= \"No cats rule!\"\n#Note that y doesn't change its value\nprint(x, y)\n\n[1, 2, 10, 'No cats rule!'] [1, 2, 10, 'Dogs rule!']",
+    "text": "Copying vs Referencing\nCareful when modifying elements of a compound object: ‘assignment statements do not copy objects, they create bindings between a target (a spot in computer memory) and an object’!\nIf you come from R, this is a very different behavior!\n\n#Changing the original compound object (list) modifies both variables\n#First, create a 'list' of four values\nx = [1, 2, 3, \"Cats Rule!\"]\n#Make y an alias for x (reference the same memory - this differs from how R works)\ny = x\n#note that they are the same when printing\nprint(x, y)\n\n[1, 2, 3, 'Cats Rule!'] [1, 2, 3, 'Cats Rule!']\n\n\nWe can modify a list element by using [] after the object name. Note that python starts counting at 0.\n\nHere we access and overwrite the 3 element (fourth element in the list)\n\n\n#Modifying x here actually modifies y too!\nx[3] = \"Dogs rule!\"\nprint(x, y)\n\n[1, 2, 3, 'Dogs rule!'] [1, 2, 3, 'Dogs rule!']\n\n\n\nIf you want to avoid this behavior, you can create a copy of the object instead of a reference\nTo do so, we use the .copy() method. Methods are like functions but we append them to the rear of the object after a .\n\n\n#Can create a (shallow) copy of the object rather than point to the same object in memory\ny = x.copy()\nx[2] = 10\nx[3]= \"No cats rule!\"\n#Note that y doesn't change its value\nprint(x, y)\n\n[1, 2, 10, 'No cats rule!'] [1, 2, 3, 'Dogs rule!']",
     "crumbs": [
       "Home",
       "Topic 1: Learning `python`",
@@ -2020,35 +2025,55 @@
     "href": "index.html",
     "title": "Analysis of Big Data",
     "section": "",
-    "text": "Welcome to ST 554 - Analysis of Big Data (with python)\nIn this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:\nVolume, Variety, Velocity, Veracity (Variability), and Value\nThe course covers\nUsing python as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use pyspark as our interface to the Spark software, which is a matrue software and commonly used to handle big data."
+    "text": "Welcome to ST 554 - Analysis of Big Data (with python)\nIn this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:\nVolume, Variety, Velocity, Veracity (Variability), and Value\nThe course covers\nUsing python as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use pyspark as our interface to the Spark software, which is a matrue software and commonly used to handle big data.",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
   },
   {
     "objectID": "index.html#course-learning-outcomes",
     "href": "index.html#course-learning-outcomes",
     "title": "Analysis of Big Data",
     "section": "Course Learning Outcomes",
-    "text": "Course Learning Outcomes\nAt the end of this course students will be able to\n\nexplain the steps and purpose of python programs (CO 1)\nefficiently read in, combine, and manipulate data in python (CO 2)\nutilize help and other resources to customize programs (CO 3)\nwrite programs using good programming practices (CO 4)\nexplore, manage, and solve common problems with big data (CO 5)"
+    "text": "Course Learning Outcomes\nAt the end of this course students will be able to\n\nexplain the steps and purpose of python programs (CO 1)\nefficiently read in, combine, and manipulate data in python (CO 2)\nutilize help and other resources to customize programs (CO 3)\nwrite programs using good programming practices (CO 4)\nexplore, manage, and solve common problems with big data (CO 5)",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
   },
   {
     "objectID": "index.html#weekly-to-do-list",
     "href": "index.html#weekly-to-do-list",
     "title": "Analysis of Big Data",
     "section": "Weekly To-do List",
-    "text": "Weekly To-do List\nGenerally speaking, each week will have a few videos to watch and readings to do. There are then corresponding homework assignments to complete (see the syllabus on Moodle for homework policies).\n\nThere will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.\nThere will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment."
+    "text": "Weekly To-do List\nGenerally speaking, each week will have a few videos to watch and readings to do. There are then corresponding homework assignments to complete (see the syllabus on Moodle for homework policies).\n\nThere will be two exams and the exam windows (days when you can take the exams) are available on the syllabus and course schedule.\nThere will be three projects, the third of which will count as the final for the course. These will require a reasonably substantial time commitment.",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
   },
   {
     "objectID": "index.html#getting-help",
     "href": "index.html#getting-help",
     "title": "Analysis of Big Data",
     "section": "Getting Help!",
-    "text": "Getting Help!\nTo obtain course help there are a number of options:\n\nDiscussion Forum on Moodle - This should be used for any question you feel comfortable asking and having others view. The TA, other students, and I will answer questions on this board. This will be the fastest way to receive a response!\nE-mail - If there is a question that you don’t feel comfortable asking the whole class you can use e-mail. The TA and I will be checking daily (during the regular work week).\nZoom Office Hour Sessions - These sessions can be used to share screens and have multiple users. You can do text chat, voice, and video. They are great for a class like this!"
+    "text": "Getting Help!\nTo obtain course help there are a number of options:\n\nDiscussion Forum on Moodle - This should be used for any question you feel comfortable asking and having others view. The TA, other students, and I will answer questions on this board. This will be the fastest way to receive a response!\nE-mail - If there is a question that you don’t feel comfortable asking the whole class you can use e-mail. The TA and I will be checking daily (during the regular work week).\nZoom Office Hour Sessions - These sessions can be used to share screens and have multiple users. You can do text chat, voice, and video. They are great for a class like this!",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
   },
   {
-    "objectID": "index.html#spring-2025-course-schedule",
-    "href": "index.html#spring-2025-course-schedule",
+    "objectID": "index.html#spring-2026-course-schedule",
+    "href": "index.html#spring-2026-course-schedule",
     "title": "Analysis of Big Data",
-    "section": "Spring 2025 Course Schedule",
-    "text": "Spring 2025 Course Schedule\n\nSchedule\n\n\n\n\n\n\n\nTopic/Week\nLearning Materials\nAssignments\n\n\n\n\nWeek 1\n1/6-1/10\n01 - Course Goals & Other Resources\n02 - Basic Use of Python\n03 - Modules\n04 - JupyterLab Notebooks & Markdown\n05 - List Basics and Strings\n06 - Numeric Types and Booleans\n07 - Common Uses for Data\nHW 1 due W, 1/15\n\n\nWeek 2\n1/13-1/17\n08 - User Defined Functions\n09 - Control Flow\n10 - Lists and Tuples\n11 - Dictionaries\n12 - Numpy\nHW 2 due W, 1/22\n\n\nWeek 3\n1/21-1/24 (Off M)\n13 - Exploratory Data Analysis Concepts\n14 - Pandas Series\n15 - Pandas DataFrames\n16 - Pandas for Reading Data\n17 - Numeric Summaries\nHW 3 due W, 1/29\n\n\nWeek 4\n1/27-1/31\n18 - More Function Writing\n19 - Plotting with Matplotlib\n20 - Plotting with pandas\n21 - Error Handling\nHW 4 due W, 2/5\n\n\nWeek 5\n2/3-2/7\n22 - Big Recap!\n23 - Fitting and Evaluating SLR Models\n24 - Prediction and Training/Test Set Ideas\n25 - Cross-Validation\n26 - Multiple Linear Regression\n27 - LASSO\nExam 1 Th/F 2/6-2/7 - covers weeks 1-4\nProject 1 due W, 2/19\n\n\nWeek 6\n2/10-2/14 (Off T)\nNo new material. Project work time!\n\n\n\nWeek 7\n2/17-2/21\n01 - Big Data Basics\n02 - The Role of Statistics in Big Data\n03 - Databases & SQL\n04 - SQL Joins\n05 - SQL Resources\n06 - Data Pipelines & Storage\nHW 5 due W, 2/26\n\n\nWeek 8\n2/24-2/28\n07 - Legacy Software: HDFS\n08 - Connecting to our JupyterHub Environment\n09 - Spark for Big Data\nHW 6 due W, 3/5\n\n\nWeek 9\n3/3-3/7\n10 - pyspark: RDDs\n11 - pyspark: pandas-on-Spark\n12 - pyspark: Spark SQL\nProject 2 due W, 3/19\n\n\nWeek 10\n3/10-3/14\nNo new material - spring break\n\n\n\nWeek 11\n3/17-3/21\n01 - Modeling Recap\n02 - Modeling Example\n03 - Logistic Regression Basics\n04 - Logistic Regression Extensions\n05 - Regularized Regression\nHW 7 due W, 3/26\n\n\nWeek 12\n3/24-3/28\n06 - Loss Functions & Model Performance\n07 - Classification & Regression Trees\n08 - Bagging Trees & Random Forests\n09 - kNN\nHW 8 due W, 4/2\n\n\nWeek 13\n3/31-4/4\n10 - Spark MLlib Basics\n11 - Model Pipelines in MLlib\n12 - MLflow\n13 - MLOps\nHW 9 due W, 4/9\n\n\nWeek 14\n4/7-4/11\n01 - Streaming Data Concepts\n02 - Common Streaming Tasks\n03 - Spark Structured Streaming\n04 - Reading & Writing Streams with Spark Structured Streaming\nExam 2 Th/F 4/10-4/11 - covers weeks 1-13\n(emphasis on 5-13)\n\n\nWeek 15\n4/14-4/18\n05 - Transformations, Windowing, & Aggregations\n06 - Streaming Joins\nFinal Project due M, 4/28\n\n\nWeek 16\n4/21-4/22\nNo new material."
+    "section": "Spring 2026 Course Schedule",
+    "text": "Spring 2026 Course Schedule\n\n\n\n\n\n\n\n\nTopic/Week\nLearning Materials\nAssignments\n\n\n\n\nWeek 1\n1/12-1/17\n01 - Course Goals & Other Resources\n02 - Basic Use of Python\n03 - Modules\n04 - JupyterLab Notebooks & Markdown\n05 - List Basics and Strings\n06 - Numeric Types and Booleans\n07 - Common Uses for Data\nHW 1 due W, 1/15\n\n\nWeek 2\n1/20-1/23 (Off M)\n08 - User Defined Functions\n09 - Control Flow\n10 - Lists and Tuples\n11 - Dictionaries\n12 - Numpy\nHW 2 due W, 1/22\n\n\nWeek 3\n1/26-1/30\n13 - Exploratory Data Analysis Concepts\n14 - Pandas Series\n15 - Pandas DataFrames\n16 - Pandas for Reading Data\n17 - Numeric Summaries\nHW 3 due W, 1/29\n\n\nWeek 4\n2/2-2/6\n18 - More Function Writing\n19 - Plotting with Matplotlib\n20 - Plotting with pandas\n21 - Error Handling\nHW 4 due W, 2/5\n\n\nWeek 5\n2/9-2/13\n22 - Big Recap!\n23 - Fitting and Evaluating SLR Models\n24 - Prediction and Training/Test Set Ideas\n25 - Cross-Validation\n26 - Multiple Linear Regression\n27 - LASSO\nExam 1 Th/F 2/6-2/7 - covers weeks 1-4\nProject 1 due W, 2/19\n\n\nWeek 6\n2/16-2/20 (Off T)\nNo new material. Project work time!\n\n\n\nWeek 7\n2/23-2/27\n01 - Big Data Basics\n02 - The Role of Statistics in Big Data\n03 - Databases & SQL\n04 - SQL Joins\n05 - SQL Resources\n06 - Data Pipelines & Storage\nHW 5 due W, 2/26\n\n\nWeek 8\n3/2-3/6\n07 - Legacy Software: HDFS\n08 - Connecting to our JupyterHub Environment\n09 - Spark for Big Data\nHW 6 due W, 3/5\n\n\nWeek 9\n3/9-3/13\n10 - pyspark: RDDs\n11 - pyspark: pandas-on-Spark\n12 - pyspark: Spark SQL\nProject 2 due W, 3/19\n\n\nWeek 10\n3/16-3/20\nNo new material - spring break\n\n\n\nWeek 11\n3/23-3/27\n01 - Modeling Recap\n02 - Modeling Example\n03 - Logistic Regression Basics\n04 - Logistic Regression Extensions\n05 - Regularized Regression\nHW 7 due W, 3/26\n\n\nWeek 12\n3/30-4/3\n06 - Loss Functions & Model Performance\n07 - Classification & Regression Trees\n08 - Bagging Trees & Random Forests\n09 - kNN\nHW 8 due W, 4/2\n\n\nWeek 13\n4/6-4/10\n10 - Spark MLlib Basics\n11 - Model Pipelines in MLlib\n12 - MLflow\n13 - MLOps\nHW 9 due W, 4/9\n\n\nWeek 14\n4/13-4/17\n01 - Streaming Data Concepts\n02 - Common Streaming Tasks\n03 - Spark Structured Streaming\n04 - Reading & Writing Streams with Spark Structured Streaming\nExam 2 Th/F 4/10-4/11 - covers weeks 1-13\n(emphasis on 5-13)\n\n\nWeek 15\n4/20-4/24\n05 - Transformations, Windowing, & Aggregations\n06 - Streaming Joins\nFinal Project due M, 4/28\n\n\nWeek 16\n4/27-4/28\nNo new material.",
+    "crumbs": [
+      "Home",
+      "Analysis of Big Data"
+    ]
   },
   {
     "objectID": "01_Programming_in_python/07-Common_Uses_For_Data_Landing.html",
@@ -2163,21 +2188,36 @@
     "href": "02_Big_Data_Management/01-Big_Data_Basics_Landing.html",
     "title": "Big Data Basics",
     "section": "",
-    "text": "The video below gives a definition of big data and discusses common issues that arise when dealing with big data.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer."
+    "text": "The video below gives a definition of big data and discusses common issues that arise when dealing with big data.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.",
+    "crumbs": [
+      "Home",
+      "Topic 4: Big Data Management",
+      "Big Data Basics"
+    ]
   },
   {
     "objectID": "02_Big_Data_Management/01-Big_Data_Basics_Landing.html#notes",
     "href": "02_Big_Data_Management/01-Big_Data_Basics_Landing.html#notes",
     "title": "Big Data Basics",
     "section": "Notes",
-    "text": "Notes\n\nHTML version\nPDF version"
+    "text": "Notes\n\nHTML version\nPDF version",
+    "crumbs": [
+      "Home",
+      "Topic 4: Big Data Management",
+      "Big Data Basics"
+    ]
   },
   {
     "objectID": "02_Big_Data_Management/01-Big_Data_Basics_Landing.html#additional-readings-for-week-7",
     "href": "02_Big_Data_Management/01-Big_Data_Basics_Landing.html#additional-readings-for-week-7",
     "title": "Big Data Basics",
     "section": "Additional Readings for Week 7",
-    "text": "Additional Readings for Week 7\n\nThe Big Data Paradigm\n\nAcademic overview\nOverview 2 (Suse)\nOverview 3 (Oracle)\n\n\n\nDatabases\n\nBasics of Databases(SQL and NoSQL)\nWhat is a database?, what is a relational database? (Oracle)\nPython SQL Libraries (realpython - a nice site but some stuff goes out of date!)\nSQLite in python (tutorial from pynative.com)\nSQLite schema table (sqlite.org documentation - a lot of other useful stuff there)\nThree plus table joins (learnsql.com)\n\n\n\nData Storage\n\nThe first answer here is useful to read\nData Warehouses: Article 1 (Oracle), Article 2 (Amazon)\nDatabases and Data Warehouses: Article 1, Article 2\nData Marts (IBM)\nMDM (SAS)\nDatabases, Data Warehouses, and Data Lake: Article 1, Article 2, Article 3\nData Lakes: Article 1, Article 2\nLake House (databricks - they actually have a lot of useful training resources as well!)\n\n\n\nBig Data Storage\n\nData pipelines: Article 1, Article 2\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "Additional Readings for Week 7\n\nThe Big Data Paradigm\n\nAcademic overview\nOverview 2 (Suse)\nOverview 3 (Oracle)\n\n\n\nDatabases\n\nBasics of Databases(SQL and NoSQL)\nWhat is a database?, what is a relational database? (Oracle)\nPython SQL Libraries (realpython - a nice site but some stuff goes out of date!)\nSQLite in python (tutorial from pynative.com)\nSQLite schema table (sqlite.org documentation - a lot of other useful stuff there)\nThree plus table joins (learnsql.com)\n\n\n\nData Storage\n\nThe first answer here is useful to read\nData Warehouses: Article 1 (Oracle), Article 2 (Amazon)\nDatabases and Data Warehouses: Article 1, Article 2\nData Marts (IBM)\nMDM (SAS)\nDatabases, Data Warehouses, and Data Lake: Article 1, Article 2, Article 3\nData Lakes: Article 1, Article 2\nLake House (databricks - they actually have a lot of useful training resources as well!)\n\n\n\nBig Data Storage\n\nData pipelines: Article 1, Article 2\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!",
+    "crumbs": [
+      "Home",
+      "Topic 4: Big Data Management",
+      "Big Data Basics"
+    ]
   },
   {
     "objectID": "02_Big_Data_Management/04-SQL_Joins_Landing.html",
@@ -2514,12 +2554,5 @@
       "Topic 6: Streaming Data",
       "Streaming Transformations, Windowing, & Aggregations"
     ]
-  },
-  {
-    "objectID": "index.html#spring-2026-course-schedule",
-    "href": "index.html#spring-2026-course-schedule",
-    "title": "Analysis of Big Data",
-    "section": "Spring 2026 Course Schedule",
-    "text": "Spring 2026 Course Schedule\n\n\n\n\n\n\n\n\n\nTopic/Week\nLearning Materials\nAssignments\n\n\n\n\nWeek 1\n1/12-1/17\n01 - Course Goals & Other Resources\n02 - Basic Use of Python\n03 - Modules\n04 - JupyterLab Notebooks & Markdown\n05 - List Basics and Strings\n06 - Numeric Types and Booleans\n07 - Common Uses for Data\nHW 1 due W, 1/15\n\n\nWeek 2\n1/20-1/23 (Off M)\n08 - User Defined Functions\n09 - Control Flow\n10 - Lists and Tuples\n11 - Dictionaries\n12 - Numpy\nHW 2 due W, 1/22\n\n\nWeek 3\n1/26-1/30\n13 - Exploratory Data Analysis Concepts\n14 - Pandas Series\n15 - Pandas DataFrames\n16 - Pandas for Reading Data\n17 - Numeric Summaries\nHW 3 due W, 1/29\n\n\nWeek 4\n2/2-2/6\n18 - More Function Writing\n19 - Plotting with Matplotlib\n20 - Plotting with pandas\n21 - Error Handling\nHW 4 due W, 2/5\n\n\nWeek 5\n2/9-2/13\n22 - Big Recap!\n23 - Fitting and Evaluating SLR Models\n24 - Prediction and Training/Test Set Ideas\n25 - Cross-Validation\n26 - Multiple Linear Regression\n27 - LASSO\nExam 1 Th/F 2/6-2/7 - covers weeks 1-4\nProject 1 due W, 2/19\n\n\nWeek 6\n2/16-2/20 (Off T)\nNo new material. Project work time!\n\n\n\nWeek 7\n2/23-2/27\n01 - Big Data Basics\n02 - The Role of Statistics in Big Data\n03 - Databases & SQL\n04 - SQL Joins\n05 - SQL Resources\n06 - Data Pipelines & Storage\nHW 5 due W, 2/26\n\n\nWeek 8\n3/2-3/6\n07 - Legacy Software: HDFS\n08 - Connecting to our JupyterHub Environment\n09 - Spark for Big Data\nHW 6 due W, 3/5\n\n\nWeek 9\n3/9-3/13\n10 - pyspark: RDDs\n11 - pyspark: pandas-on-Spark\n12 - pyspark: Spark SQL\nProject 2 due W, 3/19\n\n\nWeek 10\n3/16-3/20\nNo new material - spring break\n\n\n\nWeek 11\n3/23-3/27\n01 - Modeling Recap\n02 - Modeling Example\n03 - Logistic Regression Basics\n04 - Logistic Regression Extensions\n05 - Regularized Regression\nHW 7 due W, 3/26\n\n\nWeek 12\n3/30-4/3\n06 - Loss Functions & Model Performance\n07 - Classification & Regression Trees\n08 - Bagging Trees & Random Forests\n09 - kNN\nHW 8 due W, 4/2\n\n\nWeek 13\n4/6-4/10\n10 - Spark MLlib Basics\n11 - Model Pipelines in MLlib\n12 - MLflow\n13 - MLOps\nHW 9 due W, 4/9\n\n\nWeek 14\n4/13-4/17\n01 - Streaming Data Concepts\n02 - Common Streaming Tasks\n03 - Spark Structured Streaming\n04 - Reading & Writing Streams with Spark Structured Streaming\nExam 2 Th/F 4/10-4/11 - covers weeks 1-13\n(emphasis on 5-13)\n\n\nWeek 15\n4/20-4/24\n05 - Transformations, Windowing, & Aggregations\n06 - Streaming Joins\nFinal Project due M, 4/28\n\n\nWeek 16\n4/27-4/28\nNo new material."
   }
 ]
