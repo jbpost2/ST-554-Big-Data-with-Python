@@ -13,3 +13,8 @@
 	font-size: 175%;
 	color: #008B8B
 }
+
+.ansi-bold {
+	font-weight: bold;
+	font-size: 130%;
+}	
