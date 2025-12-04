@@ -74,6 +74,7 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+    left-alt: "Link to Home Page"
     right:
       - icon: github
         href: https://github.com/jbpost2/ST-554-Big-Data-With-Python

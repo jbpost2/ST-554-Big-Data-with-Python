@@ -737,18 +737,322 @@ window.Quarto = {
 <ul>
 <li>For built-in modules or modules we’ve downloaded ourselves, we can load the <strong>entire module</strong> into our session with <code>import module_name</code></li>
 </ul>
-<div id="70d234ae" class="cell" data-outputid="fdcfd5ce-9d64-4321-dfbb-6712fb986ebf" data-execution_count="3">
+<div id="70d234ae" class="cell" data-outputid="0c3da947-c3b5-4355-8660-fb3d96216b99" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>module</code></pre>
 </div>
 </div>
 <ul>
 <li>We can see the functionality using <code>help()</code> on the module but it is usually better to find the documentation on the web!</li>
 </ul>
-<div id="88922d31" class="cell">
+<div id="88922d31" class="cell" data-outputid="8c60ba55-6690-4efc-e77d-ccfbfdd1c380" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(math)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Help on built-in module math:
+
+NAME
+    math
+
+DESCRIPTION
+    This module provides access to the mathematical functions
+    defined by the C standard.
+
+FUNCTIONS
+    acos(x, /)
+        Return the arc cosine (measured in radians) of x.
+
+        The result is between 0 and pi.
+
+    acosh(x, /)
+        Return the inverse hyperbolic cosine of x.
+
+    asin(x, /)
+        Return the arc sine (measured in radians) of x.
+
+        The result is between -pi/2 and pi/2.
+
+    asinh(x, /)
+        Return the inverse hyperbolic sine of x.
+
+    atan(x, /)
+        Return the arc tangent (measured in radians) of x.
+
+        The result is between -pi/2 and pi/2.
+
+    atan2(y, x, /)
+        Return the arc tangent (measured in radians) of y/x.
+
+        Unlike atan(y/x), the signs of both x and y are considered.
+
+    atanh(x, /)
+        Return the inverse hyperbolic tangent of x.
+
+    cbrt(x, /)
+        Return the cube root of x.
+
+    ceil(x, /)
+        Return the ceiling of x as an Integral.
+
+        This is the smallest integer &gt;= x.
+
+    comb(n, k, /)
+        Number of ways to choose k items from n items without repetition and without order.
+
+        Evaluates to n! / (k! * (n - k)!) when k &lt;= n and evaluates
+        to zero when k &gt; n.
+
+        Also called the binomial coefficient because it is equivalent
+        to the coefficient of k-th term in polynomial expansion of the
+        expression (1 + x)**n.
+
+        Raises TypeError if either of the arguments are not integers.
+        Raises ValueError if either of the arguments are negative.
+
+    copysign(x, y, /)
+        Return a float with the magnitude (absolute value) of x but the sign of y.
+
+        On platforms that support signed zeros, copysign(1.0, -0.0)
+        returns -1.0.
+
+    cos(x, /)
+        Return the cosine of x (measured in radians).
+
+    cosh(x, /)
+        Return the hyperbolic cosine of x.
+
+    degrees(x, /)
+        Convert angle x from radians to degrees.
+
+    dist(p, q, /)
+        Return the Euclidean distance between two points p and q.
+
+        The points should be specified as sequences (or iterables) of
+        coordinates.  Both inputs must have the same dimension.
+
+        Roughly equivalent to:
+            sqrt(sum((px - qx) ** 2.0 for px, qx in zip(p, q)))
+
+    erf(x, /)
+        Error function at x.
+
+    erfc(x, /)
+        Complementary error function at x.
+
+    exp(x, /)
+        Return e raised to the power of x.
+
+    exp2(x, /)
+        Return 2 raised to the power of x.
+
+    expm1(x, /)
+        Return exp(x)-1.
+
+        This function avoids the loss of precision involved in the direct evaluation of exp(x)-1 for small x.
+
+    fabs(x, /)
+        Return the absolute value of the float x.
+
+    factorial(n, /)
+        Find n!.
+
+        Raise a ValueError if x is negative or non-integral.
+
+    floor(x, /)
+        Return the floor of x as an Integral.
+
+        This is the largest integer &lt;= x.
+
+    fmod(x, y, /)
+        Return fmod(x, y), according to platform C.
+
+        x % y may differ.
+
+    frexp(x, /)
+        Return the mantissa and exponent of x, as pair (m, e).
+
+        m is a float and e is an int, such that x = m * 2.**e.
+        If x is 0, m and e are both 0.  Else 0.5 &lt;= abs(m) &lt; 1.0.
+
+    fsum(seq, /)
+        Return an accurate floating-point sum of values in the iterable seq.
+
+        Assumes IEEE-754 floating-point arithmetic.
+
+    gamma(x, /)
+        Gamma function at x.
+
+    gcd(*integers)
+        Greatest Common Divisor.
+
+    hypot(...)
+        hypot(*coordinates) -&gt; value
+
+        Multidimensional Euclidean distance from the origin to a point.
+
+        Roughly equivalent to:
+            sqrt(sum(x**2 for x in coordinates))
+
+        For a two dimensional point (x, y), gives the hypotenuse
+        using the Pythagorean theorem:  sqrt(x*x + y*y).
+
+        For example, the hypotenuse of a 3/4/5 right triangle is:
+
+            &gt;&gt;&gt; hypot(3.0, 4.0)
+            5.0
+
+    isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+        Determine whether two floating-point numbers are close in value.
+
+          rel_tol
+            maximum difference for being considered "close", relative to the
+            magnitude of the input values
+          abs_tol
+            maximum difference for being considered "close", regardless of the
+            magnitude of the input values
+
+        Return True if a is close in value to b, and False otherwise.
+
+        For the values to be considered close, the difference between them
+        must be smaller than at least one of the tolerances.
+
+        -inf, inf and NaN behave similarly to the IEEE 754 Standard.  That
+        is, NaN is not close to anything, even itself.  inf and -inf are
+        only close to themselves.
+
+    isfinite(x, /)
+        Return True if x is neither an infinity nor a NaN, and False otherwise.
+
+    isinf(x, /)
+        Return True if x is a positive or negative infinity, and False otherwise.
+
+    isnan(x, /)
+        Return True if x is a NaN (not a number), and False otherwise.
+
+    isqrt(n, /)
+        Return the integer part of the square root of the input.
+
+    lcm(*integers)
+        Least Common Multiple.
+
+    ldexp(x, i, /)
+        Return x * (2**i).
+
+        This is essentially the inverse of frexp().
+
+    lgamma(x, /)
+        Natural logarithm of absolute value of Gamma function at x.
+
+    log(...)
+        log(x, [base=math.e])
+        Return the logarithm of x to the given base.
+
+        If the base is not specified, returns the natural logarithm (base e) of x.
+
+    log10(x, /)
+        Return the base 10 logarithm of x.
+
+    log1p(x, /)
+        Return the natural logarithm of 1+x (base e).
+
+        The result is computed in a way which is accurate for x near zero.
+
+    log2(x, /)
+        Return the base 2 logarithm of x.
+
+    modf(x, /)
+        Return the fractional and integer parts of x.
+
+        Both results carry the sign of x and are floats.
+
+    nextafter(x, y, /, *, steps=None)
+        Return the floating-point value the given number of steps after x towards y.
+
+        If steps is not specified or is None, it defaults to 1.
+
+        Raises a TypeError, if x or y is not a double, or if steps is not an integer.
+        Raises ValueError if steps is negative.
+
+    perm(n, k=None, /)
+        Number of ways to choose k items from n items without repetition and with order.
+
+        Evaluates to n! / (n - k)! when k &lt;= n and evaluates
+        to zero when k &gt; n.
+
+        If k is not specified or is None, then k defaults to n
+        and the function returns n!.
+
+        Raises TypeError if either of the arguments are not integers.
+        Raises ValueError if either of the arguments are negative.
+
+    pow(x, y, /)
+        Return x**y (x to the power of y).
+
+    prod(iterable, /, *, start=1)
+        Calculate the product of all the elements in the input iterable.
+
+        The default start value for the product is 1.
+
+        When the iterable is empty, return the start value.  This function is
+        intended specifically for use with numeric values and may reject
+        non-numeric types.
+
+    radians(x, /)
+        Convert angle x from degrees to radians.
+
+    remainder(x, y, /)
+        Difference between x and the closest integer multiple of y.
+
+        Return x - n*y where n*y is the closest integer multiple of y.
+        In the case where x is exactly halfway between two multiples of
+        y, the nearest even value of n is used. The result is always exact.
+
+    sin(x, /)
+        Return the sine of x (measured in radians).
+
+    sinh(x, /)
+        Return the hyperbolic sine of x.
+
+    sqrt(x, /)
+        Return the square root of x.
+
+    sumprod(p, q, /)
+        Return the sum of products of values from two iterables p and q.
+
+        Roughly equivalent to:
+
+            sum(itertools.starmap(operator.mul, zip(p, q, strict=True)))
+
+        For float and mixed int/float inputs, the intermediate products
+        and sums are computed with extended precision.
+
+    tan(x, /)
+        Return the tangent of x (measured in radians).
+
+    tanh(x, /)
+        Return the hyperbolic tangent of x.
+
+    trunc(x, /)
+        Truncates the Real x to the nearest Integral toward 0.
+
+        Uses the __trunc__ magic method.
+
+    ulp(x, /)
+        Return the value of the least significant bit of the float x.
+
+DATA
+    e = 2.718281828459045
+    inf = inf
+    nan = nan
+    pi = 3.141592653589793
+    tau = 6.283185307179586
+
+FILE
+    (built-in)
+
+</code></pre>
+</div>
 </div>
 <hr>
 <section id="using-a-modules-functionobjects" class="level3">
@@ -757,13 +1061,13 @@ window.Quarto = {
 <li>Functions contained in our module cannot be called as a built-in function when using <code>import module_name</code>:</li>
 <li>For instance, the <code>math</code> module contains the <code>sqrt()</code> function</li>
 </ul>
-<div id="24692cba" class="cell" data-outputid="7bdf9670-7f49-484e-87f4-75e18e1e1ada" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sqrt(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="24692cba" class="cell" data-outputid="a7d421d4-886e-4ac8-b3ca-afaa82dfcf9c" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sqrt(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-5-840f67a85afc&gt;</span> in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">/tmp/ipython-input-3918740153.py</span> in <span class="ansi-cyan-fg">&lt;cell line: 0&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>sqrt<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">9</span><span class="ansi-blue-fg">)</span>
 
 <span class="ansi-red-fg">NameError</span>: name 'sqrt' is not defined</pre>
@@ -774,13 +1078,13 @@ window.Quarto = {
 <li>An error!</li>
 <li>We <strong>must use the module prefix</strong> when calling the function:</li>
 </ul>
-<div id="738a4ecc" class="cell" data-outputid="dde03d5b-75a6-4d21-baf4-18ef9addd404" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">9</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="738a4ecc" class="cell" data-outputid="76cd749f-4dd0-43b5-ec17-9fdfeccf8d2f" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">9</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.0</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>120</code></pre>
 </div>
 </div>
@@ -793,9 +1097,9 @@ f(1;\mu = 3, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 3)^2}
 <ul>
 <li>This Normal distribution PDF expression can be evaluated using:</li>
 </ul>
-<div id="5773ee54" class="cell" data-outputid="e52373fe-1ffa-4ecb-8254-4bb7498bf67a" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">/</span>math.sqrt(<span class="dv">2</span><span class="op">*</span>math.pi))<span class="op">*</span>math.exp(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span> <span class="fl">3.0</span>)<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="5773ee54" class="cell" data-outputid="b5309d31-e901-451d-c8c0-e6f832b59057" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.0</span><span class="op">/</span>math.sqrt(<span class="dv">2</span><span class="op">*</span>math.pi))<span class="op">*</span>math.exp(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>(<span class="dv">1</span> <span class="op">-</span> <span class="fl">3.0</span>)<span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0.05399096651318806</code></pre>
 </div>
 </div>
@@ -808,11 +1112,11 @@ f(1;\mu = 3, \sigma = 1) = \frac{1}{\sqrt{2\pi}}\exp^{-\frac{1}{2}(1 - 3)^2}
 <ul>
 <li>The <code>math</code> module also defines variables like <code>e</code> and <code>pi</code></li>
 </ul>
-<div id="5853849a" class="cell" data-outputid="62d0970f-35c7-4135-eed0-36ee4ceb873d" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.e)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The area is'</span>, math.pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5853849a" class="cell" data-outputid="7aaaf44a-f385-4f07-bb62-9b296a86b2a9" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.e)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.pi)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The area is'</span>, math.pi <span class="op">*</span> radius <span class="op">**</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2.718281828459045
 3.141592653589793
@@ -830,9 +1134,779 @@ The area is 78.53981633974483</code></pre>
 </li>
 <li>The <code>random</code> module gives functionality to do so (although we’ll use other modules when we do this later)</li>
 </ul>
-<div id="12133bf5" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(random)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="12133bf5" class="cell" data-outputid="9fa530c9-7995-4375-fb5e-8720b12955e7" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">help</span>(random)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Help on module random:
+
+NAME
+    random - Random variable generators.
+
+MODULE REFERENCE
+    https://docs.python.org/3.12/library/random.html
+
+    The following documentation is automatically generated from the Python
+    source files.  It may be incomplete, incorrect or include features that
+    are considered implementation detail and may vary between Python
+    implementations.  When in doubt, consult the module reference at the
+    location listed above.
+
+DESCRIPTION
+        bytes
+        -----
+               uniform bytes (values between 0 and 255)
+
+        integers
+        --------
+               uniform within range
+
+        sequences
+        ---------
+               pick random element
+               pick random sample
+               pick weighted random sample
+               generate random permutation
+
+        distributions on the real line:
+        ------------------------------
+               uniform
+               triangular
+               normal (Gaussian)
+               lognormal
+               negative exponential
+               gamma
+               beta
+               pareto
+               Weibull
+
+        distributions on the circle (angles 0 to 2pi)
+        ---------------------------------------------
+               circular uniform
+               von Mises
+
+        discrete distributions
+        ----------------------
+               binomial
+
+
+    General notes on the underlying Mersenne Twister core generator:
+
+    * The period is 2**19937-1.
+    * It is one of the most extensively tested generators in existence.
+    * The random() method is implemented in C, executes in a single Python step,
+      and is, therefore, threadsafe.
+
+CLASSES
+    _random.Random(builtins.object)
+        Random
+            SystemRandom
+
+    class Random(_random.Random)
+     |  Random(x=None)
+     |
+     |  Random number generator base class used by bound module functions.
+     |
+     |  Used to instantiate instances of Random to get generators that don't
+     |  share state.
+     |
+     |  Class Random can also be subclassed if you want to use a different basic
+     |  generator of your own devising: in that case, override the following
+     |  methods:  random(), seed(), getstate(), and setstate().
+     |  Optionally, implement a getrandbits() method so that randrange()
+     |  can cover arbitrarily large ranges.
+     |
+     |  Method resolution order:
+     |      Random
+     |      _random.Random
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  __getstate__(self)
+     |      Helper for pickle.
+     |
+     |  __init__(self, x=None)
+     |      Initialize an instance.
+     |
+     |      Optional argument x controls seeding, as for Random.seed().
+     |
+     |  __reduce__(self)
+     |      Helper for pickle.
+     |
+     |  __setstate__(self, state)
+     |
+     |  betavariate(self, alpha, beta)
+     |      Beta distribution.
+     |
+     |      Conditions on the parameters are alpha &gt; 0 and beta &gt; 0.
+     |      Returned values range between 0 and 1.
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = alpha / (alpha + beta)
+     |          Var[X] = alpha * beta / ((alpha + beta)**2 * (alpha + beta + 1))
+     |
+     |  binomialvariate(self, n=1, p=0.5)
+     |      Binomial random variable.
+     |
+     |      Gives the number of successes for *n* independent trials
+     |      with the probability of success in each trial being *p*:
+     |
+     |          sum(random() &lt; p for i in range(n))
+     |
+     |      Returns an integer in the range:   0 &lt;= X &lt;= n
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = n * p
+     |          Var[x] = n * p * (1 - p)
+     |
+     |  choice(self, seq)
+     |      Choose a random element from a non-empty sequence.
+     |
+     |  choices(self, population, weights=None, *, cum_weights=None, k=1)
+     |      Return a k sized list of population elements chosen with replacement.
+     |
+     |      If the relative weights or cumulative weights are not specified,
+     |      the selections are made with equal probability.
+     |
+     |  expovariate(self, lambd=1.0)
+     |      Exponential distribution.
+     |
+     |      lambd is 1.0 divided by the desired mean.  It should be
+     |      nonzero.  (The parameter would be called "lambda", but that is
+     |      a reserved word in Python.)  Returned values range from 0 to
+     |      positive infinity if lambd is positive, and from negative
+     |      infinity to 0 if lambd is negative.
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = 1 / lambd
+     |          Var[X] = 1 / lambd ** 2
+     |
+     |  gammavariate(self, alpha, beta)
+     |      Gamma distribution.  Not the gamma function!
+     |
+     |      Conditions on the parameters are alpha &gt; 0 and beta &gt; 0.
+     |
+     |      The probability distribution function is:
+     |
+     |                  x ** (alpha - 1) * math.exp(-x / beta)
+     |        pdf(x) =  --------------------------------------
+     |                    math.gamma(alpha) * beta ** alpha
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = alpha * beta
+     |          Var[X] = alpha * beta ** 2
+     |
+     |  gauss(self, mu=0.0, sigma=1.0)
+     |      Gaussian distribution.
+     |
+     |      mu is the mean, and sigma is the standard deviation.  This is
+     |      slightly faster than the normalvariate() function.
+     |
+     |      Not thread-safe without a lock around calls.
+     |
+     |  getstate(self)
+     |      Return internal state; can be passed to setstate() later.
+     |
+     |  lognormvariate(self, mu, sigma)
+     |      Log normal distribution.
+     |
+     |      If you take the natural logarithm of this distribution, you'll get a
+     |      normal distribution with mean mu and standard deviation sigma.
+     |      mu can have any value, and sigma must be greater than zero.
+     |
+     |  normalvariate(self, mu=0.0, sigma=1.0)
+     |      Normal distribution.
+     |
+     |      mu is the mean, and sigma is the standard deviation.
+     |
+     |  paretovariate(self, alpha)
+     |      Pareto distribution.  alpha is the shape parameter.
+     |
+     |  randbytes(self, n)
+     |      Generate n random bytes.
+     |
+     |  randint(self, a, b)
+     |      Return random integer in range [a, b], including both end points.
+     |
+     |  randrange(self, start, stop=None, step=1)
+     |      Choose a random item from range(stop) or range(start, stop[, step]).
+     |
+     |      Roughly equivalent to ``choice(range(start, stop, step))`` but
+     |      supports arbitrarily large ranges and is optimized for common cases.
+     |
+     |  sample(self, population, k, *, counts=None)
+     |      Chooses k unique random elements from a population sequence.
+     |
+     |      Returns a new list containing elements from the population while
+     |      leaving the original population unchanged.  The resulting list is
+     |      in selection order so that all sub-slices will also be valid random
+     |      samples.  This allows raffle winners (the sample) to be partitioned
+     |      into grand prize and second place winners (the subslices).
+     |
+     |      Members of the population need not be hashable or unique.  If the
+     |      population contains repeats, then each occurrence is a possible
+     |      selection in the sample.
+     |
+     |      Repeated elements can be specified one at a time or with the optional
+     |      counts parameter.  For example:
+     |
+     |          sample(['red', 'blue'], counts=[4, 2], k=5)
+     |
+     |      is equivalent to:
+     |
+     |          sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=5)
+     |
+     |      To choose a sample from a range of integers, use range() for the
+     |      population argument.  This is especially fast and space efficient
+     |      for sampling from a large population:
+     |
+     |          sample(range(10000000), 60)
+     |
+     |  seed(self, a=None, version=2)
+     |      Initialize internal state from a seed.
+     |
+     |      The only supported seed types are None, int, float,
+     |      str, bytes, and bytearray.
+     |
+     |      None or no argument seeds from current time or from an operating
+     |      system specific randomness source if available.
+     |
+     |      If *a* is an int, all bits are used.
+     |
+     |      For version 2 (the default), all of the bits are used if *a* is a str,
+     |      bytes, or bytearray.  For version 1 (provided for reproducing random
+     |      sequences from older versions of Python), the algorithm for str and
+     |      bytes generates a narrower range of seeds.
+     |
+     |  setstate(self, state)
+     |      Restore internal state from object returned by getstate().
+     |
+     |  shuffle(self, x)
+     |      Shuffle list x in place, and return None.
+     |
+     |  triangular(self, low=0.0, high=1.0, mode=None)
+     |      Triangular distribution.
+     |
+     |      Continuous distribution bounded by given lower and upper limits,
+     |      and having a given mode value in-between.
+     |
+     |      http://en.wikipedia.org/wiki/Triangular_distribution
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = (low + high + mode) / 3
+     |          Var[X] = (low**2 + high**2 + mode**2 - low*high - low*mode - high*mode) / 18
+     |
+     |  uniform(self, a, b)
+     |      Get a random number in the range [a, b) or [a, b] depending on rounding.
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = (a + b) / 2
+     |          Var[X] = (b - a) ** 2 / 12
+     |
+     |  vonmisesvariate(self, mu, kappa)
+     |      Circular data distribution.
+     |
+     |      mu is the mean angle, expressed in radians between 0 and 2*pi, and
+     |      kappa is the concentration parameter, which must be greater than or
+     |      equal to zero.  If kappa is equal to zero, this distribution reduces
+     |      to a uniform random angle over the range 0 to 2*pi.
+     |
+     |  weibullvariate(self, alpha, beta)
+     |      Weibull distribution.
+     |
+     |      alpha is the scale parameter and beta is the shape parameter.
+     |
+     |  ----------------------------------------------------------------------
+     |  Class methods defined here:
+     |
+     |  __init_subclass__(**kwargs)
+     |      Control how subclasses generate random integers.
+     |
+     |      The algorithm a subclass can use depends on the random() and/or
+     |      getrandbits() implementation available to it and determines
+     |      whether it can generate random integers from arbitrarily large
+     |      ranges.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |
+     |  VERSION = 3
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from _random.Random:
+     |
+     |  getrandbits(self, k, /)
+     |      getrandbits(k) -&gt; x.  Generates an int with k random bits.
+     |
+     |  random(self, /)
+     |      random() -&gt; x in the interval [0, 1).
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from _random.Random:
+     |
+     |  __new__(*args, **kwargs) class method of _random.Random
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+    class SystemRandom(Random)
+     |  SystemRandom(x=None)
+     |
+     |  Alternate random number generator using sources provided
+     |  by the operating system (such as /dev/urandom on Unix or
+     |  CryptGenRandom on Windows).
+     |
+     |   Not available on all systems (see os.urandom() for details).
+     |
+     |  Method resolution order:
+     |      SystemRandom
+     |      Random
+     |      _random.Random
+     |      builtins.object
+     |
+     |  Methods defined here:
+     |
+     |  getrandbits(self, k)
+     |      getrandbits(k) -&gt; x.  Generates an int with k random bits.
+     |
+     |  getstate = _notimplemented(self, *args, **kwds)
+     |
+     |  randbytes(self, n)
+     |      Generate n random bytes.
+     |
+     |  random(self)
+     |      Get the next random number in the range 0.0 &lt;= X &lt; 1.0.
+     |
+     |  seed(self, *args, **kwds)
+     |      Stub method.  Not used for a system random number generator.
+     |
+     |  setstate = _notimplemented(self, *args, **kwds)
+     |
+     |  ----------------------------------------------------------------------
+     |  Methods inherited from Random:
+     |
+     |  __getstate__(self)
+     |      Helper for pickle.
+     |
+     |  __init__(self, x=None)
+     |      Initialize an instance.
+     |
+     |      Optional argument x controls seeding, as for Random.seed().
+     |
+     |  __reduce__(self)
+     |      Helper for pickle.
+     |
+     |  __setstate__(self, state)
+     |
+     |  betavariate(self, alpha, beta)
+     |      Beta distribution.
+     |
+     |      Conditions on the parameters are alpha &gt; 0 and beta &gt; 0.
+     |      Returned values range between 0 and 1.
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = alpha / (alpha + beta)
+     |          Var[X] = alpha * beta / ((alpha + beta)**2 * (alpha + beta + 1))
+     |
+     |  binomialvariate(self, n=1, p=0.5)
+     |      Binomial random variable.
+     |
+     |      Gives the number of successes for *n* independent trials
+     |      with the probability of success in each trial being *p*:
+     |
+     |          sum(random() &lt; p for i in range(n))
+     |
+     |      Returns an integer in the range:   0 &lt;= X &lt;= n
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = n * p
+     |          Var[x] = n * p * (1 - p)
+     |
+     |  choice(self, seq)
+     |      Choose a random element from a non-empty sequence.
+     |
+     |  choices(self, population, weights=None, *, cum_weights=None, k=1)
+     |      Return a k sized list of population elements chosen with replacement.
+     |
+     |      If the relative weights or cumulative weights are not specified,
+     |      the selections are made with equal probability.
+     |
+     |  expovariate(self, lambd=1.0)
+     |      Exponential distribution.
+     |
+     |      lambd is 1.0 divided by the desired mean.  It should be
+     |      nonzero.  (The parameter would be called "lambda", but that is
+     |      a reserved word in Python.)  Returned values range from 0 to
+     |      positive infinity if lambd is positive, and from negative
+     |      infinity to 0 if lambd is negative.
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = 1 / lambd
+     |          Var[X] = 1 / lambd ** 2
+     |
+     |  gammavariate(self, alpha, beta)
+     |      Gamma distribution.  Not the gamma function!
+     |
+     |      Conditions on the parameters are alpha &gt; 0 and beta &gt; 0.
+     |
+     |      The probability distribution function is:
+     |
+     |                  x ** (alpha - 1) * math.exp(-x / beta)
+     |        pdf(x) =  --------------------------------------
+     |                    math.gamma(alpha) * beta ** alpha
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = alpha * beta
+     |          Var[X] = alpha * beta ** 2
+     |
+     |  gauss(self, mu=0.0, sigma=1.0)
+     |      Gaussian distribution.
+     |
+     |      mu is the mean, and sigma is the standard deviation.  This is
+     |      slightly faster than the normalvariate() function.
+     |
+     |      Not thread-safe without a lock around calls.
+     |
+     |  lognormvariate(self, mu, sigma)
+     |      Log normal distribution.
+     |
+     |      If you take the natural logarithm of this distribution, you'll get a
+     |      normal distribution with mean mu and standard deviation sigma.
+     |      mu can have any value, and sigma must be greater than zero.
+     |
+     |  normalvariate(self, mu=0.0, sigma=1.0)
+     |      Normal distribution.
+     |
+     |      mu is the mean, and sigma is the standard deviation.
+     |
+     |  paretovariate(self, alpha)
+     |      Pareto distribution.  alpha is the shape parameter.
+     |
+     |  randint(self, a, b)
+     |      Return random integer in range [a, b], including both end points.
+     |
+     |  randrange(self, start, stop=None, step=1)
+     |      Choose a random item from range(stop) or range(start, stop[, step]).
+     |
+     |      Roughly equivalent to ``choice(range(start, stop, step))`` but
+     |      supports arbitrarily large ranges and is optimized for common cases.
+     |
+     |  sample(self, population, k, *, counts=None)
+     |      Chooses k unique random elements from a population sequence.
+     |
+     |      Returns a new list containing elements from the population while
+     |      leaving the original population unchanged.  The resulting list is
+     |      in selection order so that all sub-slices will also be valid random
+     |      samples.  This allows raffle winners (the sample) to be partitioned
+     |      into grand prize and second place winners (the subslices).
+     |
+     |      Members of the population need not be hashable or unique.  If the
+     |      population contains repeats, then each occurrence is a possible
+     |      selection in the sample.
+     |
+     |      Repeated elements can be specified one at a time or with the optional
+     |      counts parameter.  For example:
+     |
+     |          sample(['red', 'blue'], counts=[4, 2], k=5)
+     |
+     |      is equivalent to:
+     |
+     |          sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=5)
+     |
+     |      To choose a sample from a range of integers, use range() for the
+     |      population argument.  This is especially fast and space efficient
+     |      for sampling from a large population:
+     |
+     |          sample(range(10000000), 60)
+     |
+     |  shuffle(self, x)
+     |      Shuffle list x in place, and return None.
+     |
+     |  triangular(self, low=0.0, high=1.0, mode=None)
+     |      Triangular distribution.
+     |
+     |      Continuous distribution bounded by given lower and upper limits,
+     |      and having a given mode value in-between.
+     |
+     |      http://en.wikipedia.org/wiki/Triangular_distribution
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = (low + high + mode) / 3
+     |          Var[X] = (low**2 + high**2 + mode**2 - low*high - low*mode - high*mode) / 18
+     |
+     |  uniform(self, a, b)
+     |      Get a random number in the range [a, b) or [a, b] depending on rounding.
+     |
+     |      The mean (expected value) and variance of the random variable are:
+     |
+     |          E[X] = (a + b) / 2
+     |          Var[X] = (b - a) ** 2 / 12
+     |
+     |  vonmisesvariate(self, mu, kappa)
+     |      Circular data distribution.
+     |
+     |      mu is the mean angle, expressed in radians between 0 and 2*pi, and
+     |      kappa is the concentration parameter, which must be greater than or
+     |      equal to zero.  If kappa is equal to zero, this distribution reduces
+     |      to a uniform random angle over the range 0 to 2*pi.
+     |
+     |  weibullvariate(self, alpha, beta)
+     |      Weibull distribution.
+     |
+     |      alpha is the scale parameter and beta is the shape parameter.
+     |
+     |  ----------------------------------------------------------------------
+     |  Class methods inherited from Random:
+     |
+     |  __init_subclass__(**kwargs)
+     |      Control how subclasses generate random integers.
+     |
+     |      The algorithm a subclass can use depends on the random() and/or
+     |      getrandbits() implementation available to it and determines
+     |      whether it can generate random integers from arbitrarily large
+     |      ranges.
+     |
+     |  ----------------------------------------------------------------------
+     |  Data descriptors inherited from Random:
+     |
+     |  __dict__
+     |      dictionary for instance variables
+     |
+     |  __weakref__
+     |      list of weak references to the object
+     |
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes inherited from Random:
+     |
+     |  VERSION = 3
+     |
+     |  ----------------------------------------------------------------------
+     |  Static methods inherited from _random.Random:
+     |
+     |  __new__(*args, **kwargs) class method of _random.Random
+     |      Create and return a new object.  See help(type) for accurate signature.
+
+FUNCTIONS
+    betavariate(alpha, beta) method of Random instance
+        Beta distribution.
+
+        Conditions on the parameters are alpha &gt; 0 and beta &gt; 0.
+        Returned values range between 0 and 1.
+
+        The mean (expected value) and variance of the random variable are:
+
+            E[X] = alpha / (alpha + beta)
+            Var[X] = alpha * beta / ((alpha + beta)**2 * (alpha + beta + 1))
+
+    binomialvariate(n=1, p=0.5) method of Random instance
+        Binomial random variable.
+
+        Gives the number of successes for *n* independent trials
+        with the probability of success in each trial being *p*:
+
+            sum(random() &lt; p for i in range(n))
+
+        Returns an integer in the range:   0 &lt;= X &lt;= n
+
+        The mean (expected value) and variance of the random variable are:
+
+            E[X] = n * p
+            Var[x] = n * p * (1 - p)
+
+    choice(seq) method of Random instance
+        Choose a random element from a non-empty sequence.
+
+    choices(population, weights=None, *, cum_weights=None, k=1) method of Random instance
+        Return a k sized list of population elements chosen with replacement.
+
+        If the relative weights or cumulative weights are not specified,
+        the selections are made with equal probability.
+
+    expovariate(lambd=1.0) method of Random instance
+        Exponential distribution.
+
+        lambd is 1.0 divided by the desired mean.  It should be
+        nonzero.  (The parameter would be called "lambda", but that is
+        a reserved word in Python.)  Returned values range from 0 to
+        positive infinity if lambd is positive, and from negative
+        infinity to 0 if lambd is negative.
+
+        The mean (expected value) and variance of the random variable are:
+
+            E[X] = 1 / lambd
+            Var[X] = 1 / lambd ** 2
+
+    gammavariate(alpha, beta) method of Random instance
+        Gamma distribution.  Not the gamma function!
+
+        Conditions on the parameters are alpha &gt; 0 and beta &gt; 0.
+
+        The probability distribution function is:
+
+                    x ** (alpha - 1) * math.exp(-x / beta)
+          pdf(x) =  --------------------------------------
+                      math.gamma(alpha) * beta ** alpha
+
+        The mean (expected value) and variance of the random variable are:
+
+            E[X] = alpha * beta
+            Var[X] = alpha * beta ** 2
+
+    gauss(mu=0.0, sigma=1.0) method of Random instance
+        Gaussian distribution.
+
+        mu is the mean, and sigma is the standard deviation.  This is
+        slightly faster than the normalvariate() function.
+
+        Not thread-safe without a lock around calls.
+
+    getrandbits(k, /) method of Random instance
+        getrandbits(k) -&gt; x.  Generates an int with k random bits.
+
+    getstate() method of Random instance
+        Return internal state; can be passed to setstate() later.
+
+    lognormvariate(mu, sigma) method of Random instance
+        Log normal distribution.
+
+        If you take the natural logarithm of this distribution, you'll get a
+        normal distribution with mean mu and standard deviation sigma.
+        mu can have any value, and sigma must be greater than zero.
+
+    normalvariate(mu=0.0, sigma=1.0) method of Random instance
+        Normal distribution.
+
+        mu is the mean, and sigma is the standard deviation.
+
+    paretovariate(alpha) method of Random instance
+        Pareto distribution.  alpha is the shape parameter.
+
+    randbytes(n) method of Random instance
+        Generate n random bytes.
+
+    randint(a, b) method of Random instance
+        Return random integer in range [a, b], including both end points.
+
+    random() method of Random instance
+        random() -&gt; x in the interval [0, 1).
+
+    randrange(start, stop=None, step=1) method of Random instance
+        Choose a random item from range(stop) or range(start, stop[, step]).
+
+        Roughly equivalent to ``choice(range(start, stop, step))`` but
+        supports arbitrarily large ranges and is optimized for common cases.
+
+    sample(population, k, *, counts=None) method of Random instance
+        Chooses k unique random elements from a population sequence.
+
+        Returns a new list containing elements from the population while
+        leaving the original population unchanged.  The resulting list is
+        in selection order so that all sub-slices will also be valid random
+        samples.  This allows raffle winners (the sample) to be partitioned
+        into grand prize and second place winners (the subslices).
+
+        Members of the population need not be hashable or unique.  If the
+        population contains repeats, then each occurrence is a possible
+        selection in the sample.
+
+        Repeated elements can be specified one at a time or with the optional
+        counts parameter.  For example:
+
+            sample(['red', 'blue'], counts=[4, 2], k=5)
+
+        is equivalent to:
+
+            sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=5)
+
+        To choose a sample from a range of integers, use range() for the
+        population argument.  This is especially fast and space efficient
+        for sampling from a large population:
+
+            sample(range(10000000), 60)
+
+    seed(a=None, version=2) method of Random instance
+        Initialize internal state from a seed.
+
+        The only supported seed types are None, int, float,
+        str, bytes, and bytearray.
+
+        None or no argument seeds from current time or from an operating
+        system specific randomness source if available.
+
+        If *a* is an int, all bits are used.
+
+        For version 2 (the default), all of the bits are used if *a* is a str,
+        bytes, or bytearray.  For version 1 (provided for reproducing random
+        sequences from older versions of Python), the algorithm for str and
+        bytes generates a narrower range of seeds.
+
+    setstate(state) method of Random instance
+        Restore internal state from object returned by getstate().
+
+    shuffle(x) method of Random instance
+        Shuffle list x in place, and return None.
+
+    triangular(low=0.0, high=1.0, mode=None) method of Random instance
+        Triangular distribution.
+
+        Continuous distribution bounded by given lower and upper limits,
+        and having a given mode value in-between.
+
+        http://en.wikipedia.org/wiki/Triangular_distribution
+
+        The mean (expected value) and variance of the random variable are:
+
+            E[X] = (low + high + mode) / 3
+            Var[X] = (low**2 + high**2 + mode**2 - low*high - low*mode - high*mode) / 18
+
+    uniform(a, b) method of Random instance
+        Get a random number in the range [a, b) or [a, b] depending on rounding.
+
+        The mean (expected value) and variance of the random variable are:
+
+            E[X] = (a + b) / 2
+            Var[X] = (b - a) ** 2 / 12
+
+    vonmisesvariate(mu, kappa) method of Random instance
+        Circular data distribution.
+
+        mu is the mean angle, expressed in radians between 0 and 2*pi, and
+        kappa is the concentration parameter, which must be greater than or
+        equal to zero.  If kappa is equal to zero, this distribution reduces
+        to a uniform random angle over the range 0 to 2*pi.
+
+    weibullvariate(alpha, beta) method of Random instance
+        Weibull distribution.
+
+        alpha is the scale parameter and beta is the shape parameter.
+
+DATA
+    __all__ = ['Random', 'SystemRandom', 'betavariate', 'binomialvariate',...
+
+FILE
+    /usr/lib/python3.12/random.py
+
+</code></pre>
+</div>
 </div>
 <ul>
 <li>When we do <em>random</em> number generation, we are really getting pseudo random values</li>
@@ -843,21 +1917,21 @@ The area is 78.53981633974483</code></pre>
 <li>Important: A seed sets a starting point for the ‘random’ number generator. This allows you to get the same ‘random’ numbers the next time you run the code.</li>
 </ul></li>
 </ul>
-<div id="9050f2a1" class="cell" data-outputid="a30d1c0c-d414-42c7-dc1c-3344ff4e8daf" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9050f2a1" class="cell" data-outputid="a1b630a4-b407-4d22-a56a-1450f6d852df" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.5811521325045647
 0.1947544955341367
 0.9652511070611112</code></pre>
 </div>
 </div>
-<div id="R5qQMljCp2Rm" class="cell" data-outputid="59be04ee-0756-43d1-ab85-c6d6f458a13f" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#notice we can get the same 'random value if we set the seed back to the same starting point</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="R5qQMljCp2Rm" class="cell" data-outputid="62c37596-da6e-4498-c404-14471cf1fe56" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#notice we can get the same 'random value if we set the seed back to the same starting point</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">101</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.5811521325045647</code></pre>
 </div>
@@ -867,9 +1941,9 @@ The area is 78.53981633974483</code></pre>
 <li>We use the <code>range()</code> function to return an iterator that is able to produce values</li>
 <li>Here we obtain random integers between 10 and 25 and use <code>random.sample()</code> to obtain four values from that range</li>
 </ul>
-<div id="7cb30b2b" class="cell" data-outputid="23deef92-6cb6-42aa-8b36-60ae0b7c44fa" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>random.sample(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">25</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div id="7cb30b2b" class="cell" data-outputid="ca62243b-6c7b-4155-d71d-1c5491f0d74c" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>random.sample(<span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">25</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[13, 18, 15, 17]</code></pre>
 </div>
 </div>
@@ -882,12 +1956,12 @@ The area is 78.53981633974483</code></pre>
 <li>Often we want to use a shorter module name for brevity</li>
 <li>We can do so with <code>as</code> when we use <code>import</code></li>
 </ul>
-<div id="0a760885" class="cell" data-outputid="a457931f-f25a-4b43-a752-63253770aad8" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> ran</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ran.seed(<span class="dv">101</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0a760885" class="cell" data-outputid="828135d5-4561-49ce-ca54-ae45398b6df9" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random <span class="im">as</span> ran</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ran.seed(<span class="dv">101</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ran.random())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.5811521325045647
 0.1947544955341367
@@ -897,9 +1971,9 @@ The area is 78.53981633974483</code></pre>
 <ul>
 <li>Obtain random integers between 11 and 26</li>
 </ul>
-<div id="d189368e" class="cell" data-outputid="dbca26b4-26d0-44f1-bb48-95225f5b29ea" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ran.sample(<span class="bu">range</span>(<span class="dv">11</span>, <span class="dv">26</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="d189368e" class="cell" data-outputid="7f541df0-3828-44fa-ccc1-e6d95bc8f0c2" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ran.sample(<span class="bu">range</span>(<span class="dv">11</span>, <span class="dv">26</span>), <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>[25, 16, 18, 11]</code></pre>
 </div>
 </div>
@@ -913,32 +1987,32 @@ The area is 78.53981633974483</code></pre>
 <li>This allows us to call the functions without the module prefix</li>
 <li>Use <code>from module import object1, object2</code> to do this</li>
 </ul>
-<div id="2d87ec33" class="cell" data-outputid="be8de355-6cc0-4b71-89c3-854a4fa470ad" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(<span class="dv">9</span>))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2d87ec33" class="cell" data-outputid="69aec641-7941-4372-e771-b109ec8ab61f" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt, pi</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(<span class="dv">9</span>))</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.0</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>3.141592653589793</code></pre>
 </div>
 </div>
 <ul>
 <li>Alternatively, if you intend to use a function often you can assign it to a local name</li>
 </ul>
-<div id="0cfe1fae" class="cell" data-outputid="fd11aa5b-67b5-46e2-fd29-35558e95922e" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> random.random</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div id="0cfe1fae" class="cell" data-outputid="37b9abf2-4b43-477b-bd59-00e6aab25ce0" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> random.random</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>0.6634706445300605</code></pre>
 </div>
 </div>
 <ul>
 <li>Or import everything from a module into the current namespace. Be careful with this as you can overwrite things you rely on!</li>
 </ul>
-<div id="3ee4ba4f" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3ee4ba4f" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -958,8 +2032,718 @@ The area is 78.53981633974483</code></pre>
 <p><code>pip install scipy</code></p></li>
 </ul>
 <p>Colab has most everything we need for now but we’ll need to do some installing later in the course!</p>
-<div id="C0HJzY5r0DO1" class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="C0HJzY5r0DO1" class="cell" data-outputid="dd68aa77-c57f-4b3a-c2da-3ab851fb5ed8" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip <span class="bu">list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Package                                  Version
+---------------------------------------- --------------------
+absl-py                                  1.4.0
+accelerate                               1.12.0
+access                                   1.1.9
+affine                                   2.4.0
+aiofiles                                 24.1.0
+aiohappyeyeballs                         2.6.1
+aiohttp                                  3.13.2
+aiosignal                                1.4.0
+aiosqlite                                0.21.0
+alabaster                                1.0.0
+albucore                                 0.0.24
+albumentations                           2.0.8
+ale-py                                   0.11.2
+alembic                                  1.17.2
+altair                                   5.5.0
+annotated-types                          0.7.0
+antlr4-python3-runtime                   4.9.3
+anyio                                    4.11.0
+anywidget                                0.9.21
+argon2-cffi                              25.1.0
+argon2-cffi-bindings                     25.1.0
+array_record                             0.8.3
+arrow                                    1.4.0
+arviz                                    0.22.0
+astropy                                  7.1.1
+astropy-iers-data                        0.2025.11.24.0.39.11
+astunparse                               1.6.3
+atpublic                                 5.1
+attrs                                    25.4.0
+audioread                                3.1.0
+Authlib                                  1.6.5
+autograd                                 1.8.0
+babel                                    2.17.0
+backcall                                 0.2.0
+beartype                                 0.22.6
+beautifulsoup4                           4.13.5
+betterproto                              2.0.0b6
+bigframes                                2.29.1
+bigquery-magics                          0.10.3
+bleach                                   6.3.0
+blinker                                  1.9.0
+blis                                     1.3.3
+blobfile                                 3.1.0
+blosc2                                   3.11.1
+bokeh                                    3.7.3
+Bottleneck                               1.4.2
+bqplot                                   0.12.45
+branca                                   0.8.2
+brotli                                   1.2.0
+CacheControl                             0.14.4
+cachetools                               6.2.2
+catalogue                                2.0.10
+certifi                                  2025.11.12
+cffi                                     2.0.0
+chardet                                  5.2.0
+charset-normalizer                       3.4.4
+chex                                     0.1.90
+clarabel                                 0.11.1
+click                                    8.3.1
+click-plugins                            1.1.1.2
+cligj                                    0.7.2
+cloudpathlib                             0.23.0
+cloudpickle                              3.1.2
+cmake                                    3.31.10
+cmdstanpy                                1.3.0
+colorcet                                 3.1.0
+colorlover                               0.3.0
+colour                                   0.1.5
+community                                1.0.0b1
+confection                               0.1.5
+cons                                     0.4.7
+contourpy                                1.3.3
+cramjam                                  2.11.0
+cryptography                             43.0.3
+cuda-bindings                            12.9.4
+cuda-core                                0.3.2
+cuda-pathfinder                          1.3.2
+cuda-python                              12.9.4
+cuda-toolkit                             12.9.1
+cudf-cu12                                25.10.0
+cudf-polars-cu12                         25.10.0
+cufflinks                                0.17.3
+cuml-cu12                                25.10.0
+cupy-cuda12x                             13.6.0
+curl_cffi                                0.13.0
+cvxopt                                   1.3.2
+cvxpy                                    1.6.7
+cycler                                   0.12.1
+cyipopt                                  1.5.0
+cymem                                    2.0.13
+Cython                                   3.0.12
+dask                                     2025.9.1
+dask-cuda                                25.10.0
+dask-cudf-cu12                           25.10.0
+dataproc-spark-connect                   0.8.3
+datasets                                 4.0.0
+db-dtypes                                1.4.4
+dbus-python                              1.2.18
+debugpy                                  1.8.15
+decorator                                4.4.2
+defusedxml                               0.7.1
+deprecation                              2.1.0
+diffusers                                0.35.2
+dill                                     0.3.8
+distributed                              2025.9.1
+distributed-ucxx-cu12                    0.46.0
+distro                                   1.9.0
+dlib                                     19.24.6
+dm-tree                                  0.1.9
+docstring_parser                         0.17.0
+docutils                                 0.21.2
+dopamine_rl                              4.1.2
+duckdb                                   1.3.2
+earthengine-api                          1.5.24
+easydict                                 1.13
+editdistance                             0.8.1
+eerepr                                   0.1.2
+einops                                   0.8.1
+en_core_web_sm                           3.8.0
+entrypoints                              0.4
+esda                                     2.8.0
+et_xmlfile                               2.0.0
+etils                                    1.13.0
+etuples                                  0.3.10
+Farama-Notifications                     0.0.4
+fastai                                   2.8.5
+fastapi                                  0.118.3
+fastcore                                 1.8.16
+fastdownload                             0.0.7
+fastjsonschema                           2.21.2
+fastprogress                             1.0.3
+fastrlock                                0.8.3
+fasttransform                            0.0.2
+ffmpy                                    1.0.0
+filelock                                 3.20.0
+fiona                                    1.10.1
+firebase-admin                           6.9.0
+Flask                                    3.1.2
+flatbuffers                              25.9.23
+flax                                     0.10.7
+folium                                   0.20.0
+fonttools                                4.60.1
+fqdn                                     1.5.1
+frozendict                               2.4.7
+frozenlist                               1.8.0
+fsspec                                   2025.3.0
+future                                   1.0.0
+gast                                     0.6.0
+gcsfs                                    2025.3.0
+GDAL                                     3.8.4
+gdown                                    5.2.0
+geemap                                   0.35.3
+geocoder                                 1.38.1
+geographiclib                            2.1
+geopandas                                1.1.1
+geopy                                    2.4.1
+giddy                                    2.3.6
+gin-config                               0.5.0
+gitdb                                    4.0.12
+GitPython                                3.1.45
+glob2                                    0.7
+google                                   3.0.0
+google-adk                               1.19.0
+google-ai-generativelanguage             0.6.15
+google-api-core                          2.28.1
+google-api-python-client                 2.187.0
+google-auth                              2.43.0
+google-auth-httplib2                     0.2.1
+google-auth-oauthlib                     1.2.2
+google-cloud-aiplatform                  1.128.0
+google-cloud-appengine-logging           1.7.0
+google-cloud-audit-log                   0.4.0
+google-cloud-bigquery                    3.38.0
+google-cloud-bigquery-connection         1.19.0
+google-cloud-bigquery-storage            2.34.0
+google-cloud-bigtable                    2.34.0
+google-cloud-core                        2.5.0
+google-cloud-dataproc                    5.23.0
+google-cloud-datastore                   2.21.0
+google-cloud-discoveryengine             0.13.12
+google-cloud-firestore                   2.21.0
+google-cloud-functions                   1.21.0
+google-cloud-language                    2.18.0
+google-cloud-logging                     3.12.1
+google-cloud-monitoring                  2.28.0
+google-cloud-resource-manager            1.15.0
+google-cloud-secret-manager              2.25.0
+google-cloud-spanner                     3.59.0
+google-cloud-speech                      2.34.0
+google-cloud-storage                     3.6.0
+google-cloud-trace                       1.17.0
+google-cloud-translate                   3.23.0
+google-colab                             1.0.0
+google-crc32c                            1.7.1
+google-genai                             1.52.0
+google-generativeai                      0.8.5
+google-pasta                             0.2.0
+google-resumable-media                   2.8.0
+googleapis-common-protos                 1.72.0
+googledrivedownloader                    1.1.0
+gradio                                   5.50.0
+gradio_client                            1.14.0
+graphviz                                 0.21
+greenlet                                 3.2.4
+groovy                                   0.1.2
+grpc-google-iam-v1                       0.14.3
+grpc-interceptor                         0.15.4
+grpcio                                   1.76.0
+grpcio-status                            1.71.2
+grpclib                                  0.4.8
+gspread                                  6.2.1
+gspread-dataframe                        4.0.0
+gym                                      0.25.2
+gym-notices                              0.1.0
+gymnasium                                1.2.2
+h11                                      0.16.0
+h2                                       4.3.0
+h5netcdf                                 1.7.3
+h5py                                     3.15.1
+hdbscan                                  0.8.40
+hf_transfer                              0.1.9
+hf-xet                                   1.2.0
+highspy                                  1.12.0
+holidays                                 0.85
+holoviews                                1.22.0
+hpack                                    4.1.0
+html5lib                                 1.1
+httpcore                                 1.0.9
+httpimport                               1.4.1
+httplib2                                 0.31.0
+httpx                                    0.28.1
+httpx-sse                                0.4.3
+huggingface-hub                          0.36.0
+humanize                                 4.14.0
+hyperframe                               6.1.0
+hyperopt                                 0.2.7
+ibis-framework                           9.5.0
+idna                                     3.11
+ImageIO                                  2.37.2
+imageio-ffmpeg                           0.6.0
+imagesize                                1.4.1
+imbalanced-learn                         0.14.0
+immutabledict                            4.2.2
+importlib_metadata                       8.7.0
+importlib_resources                      6.5.2
+imutils                                  0.5.4
+inequality                               1.1.2
+inflect                                  7.5.0
+iniconfig                                2.3.0
+intel-cmplr-lib-ur                       2025.3.1
+intel-openmp                             2025.3.1
+ipyevents                                2.0.4
+ipyfilechooser                           0.6.0
+ipykernel                                6.17.1
+ipyleaflet                               0.20.0
+ipyparallel                              8.8.0
+ipython                                  7.34.0
+ipython-genutils                         0.2.0
+ipython-sql                              0.5.0
+ipytree                                  0.2.2
+ipywidgets                               7.7.1
+isoduration                              20.11.0
+itsdangerous                             2.2.0
+jaraco.classes                           3.4.0
+jaraco.context                           6.0.1
+jaraco.functools                         4.3.0
+jax                                      0.7.2
+jax-cuda12-pjrt                          0.7.2
+jax-cuda12-plugin                        0.7.2
+jaxlib                                   0.7.2
+jeepney                                  0.9.0
+jieba                                    0.42.1
+Jinja2                                   3.1.6
+jiter                                    0.12.0
+joblib                                   1.5.2
+jsonpatch                                1.33
+jsonpickle                               4.1.1
+jsonpointer                              3.0.0
+jsonschema                               4.25.1
+jsonschema-specifications                2025.9.1
+jupyter_client                           7.4.9
+jupyter-console                          6.6.3
+jupyter_core                             5.9.1
+jupyter-events                           0.12.0
+jupyter_kernel_gateway                   2.5.2
+jupyter-leaflet                          0.20.0
+jupyter_server                           2.14.0
+jupyter_server_terminals                 0.5.3
+jupyterlab_pygments                      0.3.0
+jupyterlab_widgets                       3.0.16
+jupytext                                 1.18.1
+kaggle                                   1.7.4.5
+kagglehub                                0.3.13
+keras                                    3.10.0
+keras-hub                                0.21.1
+keras-nlp                                0.21.1
+keyring                                  25.7.0
+keyrings.google-artifactregistry-auth    1.1.2
+kiwisolver                               1.4.9
+langchain                                1.1.0
+langchain-core                           1.1.0
+langgraph                                1.0.3
+langgraph-checkpoint                     3.0.1
+langgraph-prebuilt                       1.0.5
+langgraph-sdk                            0.2.10
+langsmith                                0.4.47
+lark                                     1.3.1
+launchpadlib                             1.10.16
+lazr.restfulclient                       0.14.4
+lazr.uri                                 1.0.6
+lazy_loader                              0.4
+libclang                                 18.1.1
+libcudf-cu12                             25.10.0
+libcugraph-cu12                          25.10.1
+libcuml-cu12                             25.10.0
+libkvikio-cu12                           25.10.0
+libpysal                                 4.13.0
+libraft-cu12                             25.10.0
+librmm-cu12                              25.10.0
+librosa                                  0.11.0
+libucx-cu12                              1.19.0
+libucxx-cu12                             0.46.0
+lightgbm                                 4.6.0
+linkify-it-py                            2.0.3
+llvmlite                                 0.43.0
+locket                                   1.0.0
+logical-unification                      0.4.7
+lxml                                     6.0.2
+Mako                                     1.3.10
+mapclassify                              2.10.0
+Markdown                                 3.10
+markdown-it-py                           4.0.0
+MarkupSafe                               3.0.3
+matplotlib                               3.10.0
+matplotlib-inline                        0.2.1
+matplotlib-venn                          1.1.2
+mcp                                      1.22.0
+mdit-py-plugins                          0.5.0
+mdurl                                    0.1.2
+mgwr                                     2.2.1
+miniKanren                               1.0.5
+missingno                                0.5.2
+mistune                                  3.1.4
+mizani                                   0.13.5
+mkl                                      2025.3.0
+ml_dtypes                                0.5.4
+mlxtend                                  0.23.4
+momepy                                   0.10.0
+more-itertools                           10.8.0
+moviepy                                  1.0.3
+mpmath                                   1.3.0
+msgpack                                  1.1.2
+multidict                                6.7.0
+multipledispatch                         1.0.0
+multiprocess                             0.70.16
+multitasking                             0.0.12
+murmurhash                               1.0.15
+music21                                  9.9.1
+namex                                    0.1.0
+narwhals                                 2.12.0
+natsort                                  8.4.0
+nbclassic                                1.3.3
+nbclient                                 0.10.2
+nbconvert                                7.16.6
+nbformat                                 5.10.4
+ndindex                                  1.10.1
+nest-asyncio                             1.6.0
+networkx                                 3.6
+nibabel                                  5.3.2
+nltk                                     3.9.1
+notebook                                 6.5.7
+notebook_shim                            0.2.4
+numba                                    0.60.0
+numba-cuda                               0.19.1
+numexpr                                  2.14.1
+numpy                                    2.0.2
+nvidia-cublas-cu12                       12.6.4.1
+nvidia-cuda-cccl-cu12                    12.9.27
+nvidia-cuda-cupti-cu12                   12.6.80
+nvidia-cuda-nvcc-cu12                    12.5.82
+nvidia-cuda-nvrtc-cu12                   12.6.77
+nvidia-cuda-runtime-cu12                 12.6.77
+nvidia-cudnn-cu12                        9.10.2.21
+nvidia-cufft-cu12                        11.3.0.4
+nvidia-cufile-cu12                       1.11.1.6
+nvidia-curand-cu12                       10.3.7.77
+nvidia-cusolver-cu12                     11.7.1.2
+nvidia-cusparse-cu12                     12.5.4.2
+nvidia-cusparselt-cu12                   0.7.1
+nvidia-ml-py                             13.580.82
+nvidia-nccl-cu12                         2.27.5
+nvidia-nvjitlink-cu12                    12.6.85
+nvidia-nvshmem-cu12                      3.3.20
+nvidia-nvtx-cu12                         12.6.77
+nvtx                                     0.2.13
+nx-cugraph-cu12                          25.10.0
+oauth2client                             4.1.3
+oauthlib                                 3.3.1
+omegaconf                                2.3.0
+onemkl-license                           2025.3.0
+openai                                   2.8.1
+opencv-contrib-python                    4.12.0.88
+opencv-python                            4.12.0.88
+opencv-python-headless                   4.12.0.88
+openpyxl                                 3.1.5
+opentelemetry-api                        1.37.0
+opentelemetry-exporter-gcp-logging       1.11.0a0
+opentelemetry-exporter-gcp-monitoring    1.11.0a0
+opentelemetry-exporter-gcp-trace         1.11.0
+opentelemetry-exporter-otlp-proto-common 1.37.0
+opentelemetry-exporter-otlp-proto-http   1.37.0
+opentelemetry-proto                      1.37.0
+opentelemetry-resourcedetector-gcp       1.11.0a0
+opentelemetry-sdk                        1.37.0
+opentelemetry-semantic-conventions       0.58b0
+opt_einsum                               3.4.0
+optax                                    0.2.6
+optree                                   0.18.0
+orbax-checkpoint                         0.11.28
+orjson                                   3.11.4
+ormsgpack                                1.12.0
+osqp                                     1.0.5
+overrides                                7.7.0
+packaging                                25.0
+pandas                                   2.2.2
+pandas-datareader                        0.10.0
+pandas-gbq                               0.30.0
+pandas-stubs                             2.2.2.240909
+pandocfilters                            1.5.1
+panel                                    1.8.3
+param                                    2.3.0
+parso                                    0.8.5
+parsy                                    2.2
+partd                                    1.4.2
+patsy                                    1.0.2
+peewee                                   3.18.3
+peft                                     0.18.0
+pexpect                                  4.9.0
+pickleshare                              0.7.5
+pillow                                   11.3.0
+pip                                      24.1.2
+platformdirs                             4.5.0
+plotly                                   5.24.1
+plotnine                                 0.14.5
+pluggy                                   1.6.0
+plum-dispatch                            2.6.0
+ply                                      3.11
+pointpats                                2.5.2
+polars                                   1.31.0
+pooch                                    1.8.2
+portpicker                               1.5.2
+preshed                                  3.0.12
+prettytable                              3.17.0
+proglog                                  0.1.12
+progressbar2                             4.5.0
+prometheus_client                        0.23.1
+promise                                  2.3
+prompt_toolkit                           3.0.52
+propcache                                0.4.1
+prophet                                  1.2.1
+proto-plus                               1.26.1
+protobuf                                 5.29.5
+psutil                                   5.9.5
+psycopg2                                 2.9.11
+psygnal                                  0.15.0
+ptyprocess                               0.7.0
+PuLP                                     3.3.0
+py-cpuinfo                               9.0.0
+py4j                                     0.10.9.7
+pyarrow                                  18.1.0
+pyasn1                                   0.6.1
+pyasn1_modules                           0.4.2
+pycairo                                  1.29.0
+pycocotools                              2.0.10
+pycparser                                2.23
+pycryptodomex                            3.23.0
+pydantic                                 2.12.3
+pydantic_core                            2.41.4
+pydantic-settings                        2.12.0
+pydata-google-auth                       1.9.1
+pydot                                    4.0.1
+pydotplus                                2.0.2
+PyDrive2                                 1.21.3
+pydub                                    0.25.1
+pyerfa                                   2.0.1.5
+pygame                                   2.6.1
+pygit2                                   1.19.0
+Pygments                                 2.19.2
+PyGObject                                3.48.2
+PyJWT                                    2.10.1
+pylibcudf-cu12                           25.10.0
+pylibcugraph-cu12                        25.10.1
+pylibraft-cu12                           25.10.0
+pymc                                     5.26.1
+pynndescent                              0.5.13
+pyogrio                                  0.11.1
+pyomo                                    6.9.5
+PyOpenGL                                 3.1.10
+pyOpenSSL                                24.2.1
+pyparsing                                3.2.5
+pyperclip                                1.11.0
+pyproj                                   3.7.2
+pysal                                    25.7
+pyshp                                    3.0.2.post1
+PySocks                                  1.7.1
+pyspark                                  3.5.1
+pytensor                                 2.35.1
+pytest                                   8.4.2
+python-apt                               0.0.0
+python-box                               7.3.2
+python-dateutil                          2.9.0.post0
+python-dotenv                            1.2.1
+python-json-logger                       4.0.0
+python-louvain                           0.16
+python-multipart                         0.0.20
+python-slugify                           8.0.4
+python-snappy                            0.7.3
+python-utils                             3.9.1
+pytz                                     2025.2
+pyviz_comms                              3.0.6
+PyWavelets                               1.9.0
+PyYAML                                   6.0.3
+pyzmq                                    26.2.1
+quantecon                                0.10.1
+raft-dask-cu12                           25.10.0
+rapids-dask-dependency                   25.10.0
+rapids-logger                            0.1.19
+rasterio                                 1.4.3
+rasterstats                              0.20.0
+ratelim                                  0.1.6
+referencing                              0.37.0
+regex                                    2025.11.3
+requests                                 2.32.4
+requests-oauthlib                        2.0.0
+requests-toolbelt                        1.0.0
+requirements-parser                      0.9.0
+rfc3339-validator                        0.1.4
+rfc3986-validator                        0.1.1
+rfc3987-syntax                           1.1.0
+rich                                     13.9.4
+rmm-cu12                                 25.10.0
+roman-numerals-py                        3.1.0
+rpds-py                                  0.29.0
+rpy2                                     3.5.17
+rsa                                      4.9.1
+rtree                                    1.4.1
+ruff                                     0.14.6
+safehttpx                                0.1.7
+safetensors                              0.7.0
+scikit-image                             0.25.2
+scikit-learn                             1.6.1
+scipy                                    1.16.3
+scooby                                   0.11.0
+scs                                      3.2.9
+seaborn                                  0.13.2
+SecretStorage                            3.5.0
+segregation                              2.5.3
+semantic-version                         2.10.0
+Send2Trash                               1.8.3
+sentence-transformers                    5.1.2
+sentencepiece                            0.2.1
+sentry-sdk                               2.46.0
+setuptools                               75.2.0
+shap                                     0.50.0
+shapely                                  2.1.2
+shellingham                              1.5.4
+simple-parsing                           0.1.7
+simplejson                               3.20.2
+simsimd                                  6.5.3
+six                                      1.17.0
+sklearn-pandas                           2.2.0
+slicer                                   0.0.8
+smart_open                               7.5.0
+smmap                                    5.0.2
+sniffio                                  1.3.1
+snowballstemmer                          3.0.1
+sortedcontainers                         2.4.0
+soundfile                                0.13.1
+soupsieve                                2.8
+soxr                                     1.0.0
+spacy                                    3.8.11
+spacy-legacy                             3.0.12
+spacy-loggers                            1.0.5
+spaghetti                                1.7.6
+spanner-graph-notebook                   1.1.8
+spglm                                    1.1.0
+Sphinx                                   8.2.3
+sphinxcontrib-applehelp                  2.0.0
+sphinxcontrib-devhelp                    2.0.0
+sphinxcontrib-htmlhelp                   2.1.0
+sphinxcontrib-jsmath                     1.0.1
+sphinxcontrib-qthelp                     2.0.0
+sphinxcontrib-serializinghtml            2.0.0
+spint                                    1.0.7
+splot                                    1.1.7
+spopt                                    0.7.0
+spreg                                    1.8.4
+SQLAlchemy                               2.0.44
+sqlalchemy-spanner                       1.17.1
+sqlglot                                  25.20.2
+sqlparse                                 0.5.3
+srsly                                    2.5.2
+sse-starlette                            3.0.3
+stanio                                   0.5.1
+starlette                                0.48.0
+statsmodels                              0.14.5
+stringzilla                              4.2.3
+stumpy                                   1.13.0
+sympy                                    1.14.0
+tables                                   3.10.2
+tabulate                                 0.9.0
+tbb                                      2022.3.0
+tblib                                    3.2.2
+tcmlib                                   1.4.1
+tenacity                                 9.1.2
+tensorboard                              2.19.0
+tensorboard-data-server                  0.7.2
+tensorflow                               2.19.0
+tensorflow-datasets                      4.9.9
+tensorflow_decision_forests              1.12.0
+tensorflow-hub                           0.16.1
+tensorflow-metadata                      1.17.2
+tensorflow-probability                   0.25.0
+tensorflow-text                          2.19.0
+tensorstore                              0.1.79
+termcolor                                3.2.0
+terminado                                0.18.1
+text-unidecode                           1.3
+textblob                                 0.19.0
+tf_keras                                 2.19.0
+tf-slim                                  1.1.0
+thinc                                    8.3.10
+threadpoolctl                            3.6.0
+tifffile                                 2025.10.16
+tiktoken                                 0.12.0
+timm                                     1.0.22
+tinycss2                                 1.4.0
+tobler                                   0.12.1
+tokenizers                               0.22.1
+toml                                     0.10.2
+tomlkit                                  0.13.3
+toolz                                    0.12.1
+torch                                    2.9.0+cu126
+torchao                                  0.10.0
+torchaudio                               2.9.0+cu126
+torchdata                                0.11.0
+torchsummary                             1.5.1
+torchtune                                0.6.1
+torchvision                              0.24.0+cu126
+tornado                                  6.5.1
+tqdm                                     4.67.1
+traitlets                                5.7.1
+traittypes                               0.2.3
+transformers                             4.57.2
+treelite                                 4.4.1
+treescope                                0.1.10
+triton                                   3.5.0
+tsfresh                                  0.21.1
+tweepy                                   4.16.0
+typeguard                                4.4.4
+typer                                    0.20.0
+typer-slim                               0.20.0
+types-pytz                               2025.2.0.20251108
+types-setuptools                         80.9.0.20250822
+typing_extensions                        4.15.0
+typing-inspection                        0.4.2
+tzdata                                   2025.2
+tzlocal                                  5.3.1
+uc-micro-py                              1.0.3
+ucxx-cu12                                0.46.0
+umap-learn                               0.5.9.post2
+umf                                      1.0.2
+uri-template                             1.3.0
+uritemplate                              4.2.0
+urllib3                                  2.5.0
+uvicorn                                  0.38.0
+vega-datasets                            0.9.0
+wadllib                                  1.3.6
+wandb                                    0.23.0
+wasabi                                   1.1.3
+watchdog                                 6.0.0
+wcwidth                                  0.2.14
+weasel                                   0.4.3
+webcolors                                25.10.0
+webencodings                             0.5.1
+websocket-client                         1.9.0
+websockets                               15.0.1
+Werkzeug                                 3.1.3
+wheel                                    0.45.1
+widgetsnbextension                       3.6.10
+wordcloud                                1.9.4
+wrapt                                    2.0.1
+wurlitzer                                3.1.1
+xarray                                   2025.11.0
+xarray-einstats                          0.9.1
+xgboost                                  3.1.2
+xlrd                                     2.0.2
+xxhash                                   3.6.0
+xyzservices                              2025.11.0
+yarl                                     1.22.0
+ydf                                      0.13.0
+yellowbrick                              1.5
+yfinance                                 0.2.66
+zict                                     3.0.0
+zipp                                     3.23.0
+zstandard                                0.25.0</code></pre>
+</div>
 </div>
 <hr>
 </section>

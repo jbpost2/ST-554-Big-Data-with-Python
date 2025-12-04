@@ -8,7 +8,7 @@ In this course we'll look at common issues, analysis, and software used with big
 
 Volume, Variety, Velocity, Veracity (Variability), and Value
 
-```{r, echo = FALSE, out.width = "500px"}
+```{r, echo = FALSE, out.width = "500px", caption = "Five V's of Big Data. Source: https://forum.guvi.in/posts/7148/applying-machine-learning-to-big-datachallenges-and-solutions", fig.alt = "Image displays the five V's of big data in a circle. These are Volume: Huge amount of data, Variety: Different formats of data from various sources, Value: Extract useful data, Velocity: High speed of accumulation of data, Veracity: Inconsistencies and uncertainty in data"}
 knitr::include_graphics("01_Programming_in_python/img/big-data-characteristics.png")
 ```
 
