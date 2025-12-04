@@ -2025,7 +2025,7 @@
     "href": "index.html",
     "title": "Analysis of Big Data",
     "section": "",
-    "text": "Welcome to ST 554 - Analysis of Big Data (with python)\nIn this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:\nVolume, Variety, Velocity, Veracity (Variability), and Value\nThe course covers\nUsing python as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use pyspark as our interface to the Spark software, which is a matrue software and commonly used to handle big data.",
+    "text": "Welcome to ST 554 - Analysis of Big Data (with python)\nIn this course we’ll look at common issues, analysis, and software used with big data. We’ll discuss the major aspects with the commonly cited ‘5 V’s of Big Data’:\nVolume, Variety, Velocity, Veracity (Variability), and Value\nFive V’s of Big Data. Source: https://forum.guvi.in/posts/7148/applying-machine-learning-to-big-datachallenges-and-solutions\nThe course covers\nUsing python as our programming language we’ll learn about using Jupyter notebooks to share and document our work. We’ll use pyspark as our interface to the Spark software, which is a matrue software and commonly used to handle big data.",
     "crumbs": [
       "Home",
       "Analysis of Big Data"
