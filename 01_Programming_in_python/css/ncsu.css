@@ -344,3 +344,19 @@ div.proof:after {
   content: "\25a2";
   float: right;
 }
+
+.remark-slide-number {
+  color: #000000;
+  font-weight: bold;
+  font-size: 125%;
+  opacity: 1;
+}
+
+.remark-code-line {
+  font-weight: bold;
+  font-size: 125%;
+}
+
+textarea.source{
+  aria-hidden="true"
+}

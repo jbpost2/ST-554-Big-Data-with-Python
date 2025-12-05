@@ -17,6 +17,7 @@ output:
     self_contained: yes
 editor_options: 
   chunk_output_type: console
+lang: en
 ---
 
 ```{r, include=FALSE,warning=FALSE,message=FALSE}
@@ -54,7 +55,7 @@ Justin Post
 ---
 layout: true
 
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="img/logo.png" alt = "" style="height: 60px;"/></div> 
 
 ---
 
@@ -62,7 +63,7 @@ layout: true
 
 What is Big Data?
 
-.left45[
+.left35[
 - 5 V's of Big Data
     + Volume
     + Variety
@@ -71,8 +72,8 @@ What is Big Data?
     + Value
 ]
 
-.right55[
-```{r, echo = FALSE, out.width = "500px"}
+.right65[
+```{r, echo = FALSE, out.width = "500px", fig.cap = "Source: https://bit.ly/five_vs", fig.alt = "Image displays the five V's of big data in a circle. These are Volume: Huge amount of data, Variety: Different formats of data from various sources, Value: Extract useful data, Velocity: High speed of accumulation of data, Veracity: Inconsistencies and uncertainty in data"}
 knitr::include_graphics("img/big-data-characteristics.png")
 ```
 ]

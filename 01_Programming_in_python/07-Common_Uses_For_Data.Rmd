@@ -17,6 +17,7 @@ output:
     self_contained: yes
 editor_options: 
   chunk_output_type: console
+lang: en
 ---
 
 ```{r, include=FALSE,warning=FALSE,message=FALSE}
@@ -54,7 +55,7 @@ Justin Post
 ---
 layout: true
 
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="img/logo.png" alt = "" style="height: 60px;"/></div> 
 
 ---
 
@@ -75,7 +76,7 @@ layout: true
 ]
 
 .right50[
-```{r, echo = FALSE, out.width = "370px"}
+```{r, echo = FALSE, out.width = "370px", fig.cap = "Source: https://bit.ly/five_vs", fig.alt = "Image displays the five V's of big data in a circle. These are Volume: Huge amount of data, Variety: Different formats of data from various sources, Value: Extract useful data, Velocity: High speed of accumulation of data, Veracity: Inconsistencies and uncertainty in data"}
 knitr::include_graphics("img/big-data-characteristics.png")
 ```
 ]
@@ -109,7 +110,7 @@ knitr::include_graphics("img/big-data-characteristics.png")
 
 # Standard Rectangular Data
 
-```{r, echo = FALSE, out.width = '850px', fig.align = 'center'}
+```{r, echo = FALSE, out.width = '850px', fig.align = 'center', fig.alt = "A rectangular data set is show as a grid of values. The rows represent observations and the columns represent variables."}
 knitr::include_graphics('img/rectangular_data.png')
 ```
 
@@ -125,12 +126,12 @@ Four major goals when using data:
 1. Description 
 
 <div style="float: left; width: 45%;">
-```{r, echo = FALSE, out.width='270px', fig.align='center'}
+```{r, echo = FALSE, out.width='270px', fig.align='center',fig.alt = "A table of summary statistics is shown. The rows represent different groups (seasons here) and the columns represent different summary statistics."}
 knitr::include_graphics('img/summary_stats.png')
 ```
 </div>
 <div style="float: right; width: 45%;">
-```{r, echo = FALSE, out.width='500px', fig.align='center'}
+```{r, echo = FALSE, out.width='500px', fig.align='center', fig.alt = "A graph with season on the x-axis and yardage on the y-axis is shown. Six lines are shown representing different summary statistics over time."}
 knitr::include_graphics('img/graph.png')
 ```
 </div>
@@ -147,12 +148,12 @@ Four major goals when using data:
 </ol>
 
 <div style="float: left; width: 45%;">
-```{r, echo = FALSE, out.width='600px', fig.align='center'}
+```{r, echo = FALSE, out.width='600px', fig.align='center', fig.alt = "A scatter plot with a simple linear regression line overlaid is shown."}
 knitr::include_graphics('img/slr.png')
 ```
 </div>
 <div style="float: left; width: 45%;">
-```{r, echo = FALSE, out.width='600px', fig.align='center'}
+```{r, echo = FALSE, out.width='600px', fig.align='center', fig.alt= "A tree diagram is shown."}
 knitr::include_graphics('img/tree.png')
 ```
 </div>
@@ -183,7 +184,7 @@ Four major goals when using data:
 <li> Pattern Finding</li>
 </ol>
 
-```{r, echo = FALSE, out.width='650px', fig.align='center'}
+```{r, echo = FALSE, out.width='650px', fig.align='center', fig.alt = "A scatter plot is shown with points colored by three separate groups."}
 knitr::include_graphics('img/clustering.png')
 ```
 
