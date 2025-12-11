@@ -353,8 +353,18 @@ div.proof:after {
 }
 
 .remark-code-line {
+  font-size: 100%;
+}
+
+.hljs-number{
   font-weight: bold;
+  opacity: 1;
   font-size: 125%;
+}
+
+span.hljs-comment{
+  opacity: 1;
+  color: rgb(31, 31, 29) !important;
 }
 
 textarea.source{

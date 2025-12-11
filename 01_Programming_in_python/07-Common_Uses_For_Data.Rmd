@@ -244,12 +244,12 @@ wine_data.describe()
 - Many standard graphs to summarize with as well
 
 .left45[
-```{python, fig.align = "center", out.width = "350px"}
+```{python, fig.align = "center", out.width = "350px", fig.alt = "A smoothed histogram is shown. The x-axis represents the alcohol content and the y-axis the fitted density. The graph goes up sharply at 8 and then steps back down towards 0 at 14."}
 wine_data.alcohol.plot.density()
 ```
 ]
 .right45[
-```{python, fig.align = "center", out.width = "350px"}
+```{python, fig.align = "center", out.width = "350px", fig.alt = "A scatter plot between alcohol (x) and residual sugar (y) is shown. A general, weak, negative trend exists."}
 wine_data.plot.scatter(x = "alcohol", y = "residual sugar")
 ```
 ]
@@ -279,10 +279,19 @@ $$Y_i = \beta_0+\beta_1x_i+E_i$$
 
 - We'll learn how to 'fit' this model later
 
-```{python}
+```{python, eval = FALSE}
 from sklearn import linear_model
 reg = linear_model.LinearRegression() #Create a reg object
-reg.fit(X = wine_data['alcohol'].values.reshape(-1,1), y = wine_data['residual sugar'].values) 
+reg.fit(X = wine_data['alcohol'].values.reshape(-1,1), y = wine_data['residual sugar'].values)
+```
+
+```{python, echo = FALSE, message = FALSE, warning = FALSE, include = FALSE}
+from sklearn import linear_model
+reg = linear_model.LinearRegression() #Create a reg object
+reg.fit(X = wine_data['alcohol'].values.reshape(-1,1), y = wine_data['residual sugar'].values)
+```
+
+```{python}
 print(round(reg.intercept_, 3), round(reg.coef_[0], 3))
 ```
 
@@ -291,7 +300,7 @@ print(round(reg.intercept_, 3), round(reg.coef_[0], 3))
 
 # Simple Linear Regression Model
 
-```{python, out.width='400px', fig.align='center'}
+```{python, out.width='400px', fig.align='center', fig.alt = "A scatter plot between alcohol (x) and residual sugar (y) is shown. A general, weak, negative trend exists. The simple linear regression line is overlayed and has a negative slope."}
 import seaborn as sns
 sns.regplot(x = wine_data["alcohol"], y = wine_data["residual sugar"], scatter_kws={'s':2})
 ```
@@ -308,12 +317,17 @@ sns.regplot(x = wine_data["alcohol"], y = wine_data["residual sugar"], scatter_k
 
 - This model can be used for prediction
 
-```{python}
+```{python, echo = FALSE, message = FALSE, warning = FALSE, include = FALSE}
 from sklearn.tree import DecisionTreeRegressor
 reg_tree = DecisionTreeRegressor(max_depth=2)
 reg_tree.fit(X = wine_data['alcohol'].values.reshape(-1,1), y = wine_data['residual sugar'].values)
 ```
 
+```{python, eval = FALSE}
+from sklearn.tree import DecisionTreeRegressor
+reg_tree = DecisionTreeRegressor(max_depth=2)
+reg_tree.fit(X = wine_data['alcohol'].values.reshape(-1,1), y = wine_data['residual sugar'].values)
+```
 
 ---
 
@@ -321,7 +335,7 @@ reg_tree.fit(X = wine_data['alcohol'].values.reshape(-1,1), y = wine_data['resid
 
 - This model can be used for prediction
 
-```{python, out.width='450px', fig.align='center'}
+```{python, out.width='450px', fig.align='center', fig.alt = "A tree diagram is shown. The first node splits into two branches and each of those nodes split into two more branches. Observations are predicting by following the flow of the tree to a terminal node."}
 from sklearn.tree import plot_tree
 plot_tree(reg_tree)
 ```
