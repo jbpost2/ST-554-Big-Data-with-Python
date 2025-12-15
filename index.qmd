@@ -75,14 +75,15 @@ To obtain course help there are a number of options:
 | 2/2-2/6           | 19 - Plotting with Matplotlib\                                 |                                           |
 |                   | 20 - Plotting with pandas\                                     |                                           |
 |                   | 21 - Error Handling\                                           |                                           |
-|                   | 22 - Function annotations and Decorators                       |                                           |
+|                   | 22 - Function annotations and Decorators\                      |                                           |
+|                   | 23 - Basics of Using `git` and `gitHub`                        |                                           |
 +-------------------+----------------------------------------------------------------+-------------------------------------------+
-| Week 5\           | 23 - Big Recap!\                                               | Exam 1 Th/F 2/12-2/13\                    |
-| 2/9-2/13          | 24 - Fitting and Evaluating SLR Models\                        | Covers weeks 1-4                          |
-|                   | 25 - Prediction and Training/Test Set Ideas\                   |                                           |
-|                   | 26 - Cross-Validation\                                         |                                           |
-|                   | 27 - Multiple Linear Regression\                               |                                           |
-|                   | 28 - LASSO                                                     |                                           |
+| Week 5\           | 24 - Big Recap!\                                               | Exam 1 Th/F 2/12-2/13\                    |
+| 2/9-2/13          | 25 - Fitting and Evaluating SLR Models\                        | Covers weeks 1-4                          |
+|                   | 26 - Prediction and Training/Test Set Ideas\                   |                                           |
+|                   | 27 - Cross-Validation\                                         |                                           |
+|                   | 28 - Multiple Linear Regression\                               |                                           |
+|                   | 29 - LASSO                                                     |                                           |
 +-------------------+----------------------------------------------------------------+-------------------------------------------+
 | Week 6\           | No new material. Project work time!                            | Project 1 due M, 2/23                     |
 | 2/16-2/20 (Off T) |                                                                |                                           |
