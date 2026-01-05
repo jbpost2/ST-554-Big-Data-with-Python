@@ -52,7 +52,7 @@ To obtain course help there are a number of options:
 | Week              | Learning Materials                                             | Assignments                               |
 +===================+================================================================+===========================================+
 | Week 1\           | 01 - Course Goals & Other Resources\                           | HW 1 due T, 1/20                          |
-| 1/12-1/17         | 02 - Basic Use of Python\                                      |                                           |
+| 1/12-1/16         | 02 - Basic Use of Python\                                      |                                           |
 |                   | 03 - Modules\                                                  |                                           |
 |                   | 04 - JupyterLab Notebooks & Markdown\                          |                                           |
 |                   | 05 - List Basics and Strings\                                  |                                           |
