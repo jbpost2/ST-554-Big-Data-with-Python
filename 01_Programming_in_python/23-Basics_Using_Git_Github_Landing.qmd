@@ -16,9 +16,9 @@ The video below attempts to help place us in our goals for the course. We discus
 
 ## Notes
 
-- <a href = "24-Big_Recap.html" target = "_blank">HTML version</a>
-- <a href = "PDFs/24-Big_Recap.pdf" target = "_blank">PDF version</a>
+- <a href = "23-Basics_Using_Git_Github.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/23-Basics_Using_Git_Github.pdf" target = "_blank">PDF version</a>
 
-That wraps up the material for week 4! Head to the Moodle site to work on your next homework assignment.
+That wraps up the material for week 4! Head to the <a href = "https://wolfware.ncsu.edu/" target = "_blank">Moodle site</a> to work on your next homework assignment.
 
 If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

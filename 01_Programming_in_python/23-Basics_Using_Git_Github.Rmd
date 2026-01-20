@@ -1,0 +1,286 @@
+---
+title: "Basics of Using `git` & `gitHub`"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+    self_contained: yes
+editor_options: 
+  chunk_output_type: console
+lang: en
+---
+
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = TRUE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+#use_python("C:\\python\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+
+layout: false
+class: title-slide-section-red, middle
+
+
+# Basics of Using `git` & `gitHub`
+
+Justin Post
+
+---
+
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" alt = "" style="height: 60px;"/></div> 
+
+---
+
+# Workflow
+
+Important considerations for data analysis workflow: 
+
+- **Reproducibility**  
+<br>
+<br>
+<br>
+  
+- **Version control**  
+<br>
+<br>
+<br>
+  
+  
+- **Collaboration**  
+  
+
+---
+
+# What are git and github?
+
+- **Git** is a version control software  
+  
+- **Github** is an online hosting service for Git-based projects
+
+
+---
+
+# What are git and github?
+
+- **Git** is a version control software  
+  
+- **Github** is an online hosting service for Git-based projects
+
+## Git Tracking
+
+- You associate git with a folder (repo)
+
+- Git keeps track of all files in the folder (repo)
+
+- If you want to keep changes you've made, you **commit** and **push** the changes to the folder (repo)
+
+
+---
+
+# Github
+
+- Github allows you to have a remote file repository (folder) tracked by git
+
+    + Let's create a repository on github.com 
+
+    + **Add** some files and **commit** to the changes
+    
+    + Modify some files on github
+    
+    + Investigate the version control!
+
+
+---
+
+# Local vs Remote Work
+
+Mostly we'll be working on Google Colab for now.  If we were working on our local machine, we'd need to install `git` on our computer!
+
+- When we get to working on our local `JupyterHub`, we'll just use the web-based interface with `gitHub`.
+
+- Next, let's talk about how we'd collaborate using `git` and `gitHub`
+
+---
+
+# Collaboration Idea
+
+- Everyone can work on the same `branch` and just take turns working
+
+```{r, echo = FALSE, fig.align='center', out.width = "500px"}
+knitr::include_graphics("img/git_diagram.png")
+```
+
+
+---
+
+# Working on Branches
+
+- Alternatively, you can have separate **branches** of the repo
+
+```{r, echo = FALSE, fig.align='center', out.width = "500px"}
+knitr::include_graphics("img/git_branch_diagram.png")
+```
+
+- Work on a branch is similar to working on the main branch
+
+- Can merge when happy!
+
+
+---
+
+# Forking
+
+- People often `fork` the repo 
+
+- This creates a copy of the repo on your account
+
+- You can then work as normal
+
+- If you do a commit on your branch, you may notice something like this
+
+```{r, fig.align='center', out.width="45%", echo = FALSE}
+knitr::include_graphics("img/forkcommit.png")
+```
+
+
+
+
+---
+
+layout: false
+
+# Merging Branches
+
+Suppose you like your commit and you think the original owner will too!  
+
+- You can do a `pull` request  
+
+```{r, fig.align='center', out.width="79%", echo = FALSE}
+knitr::include_graphics("img/pullrequest.png")
+```
+
+
+---
+
+# Merging Branches
+
+Suppose you like your commit and you think the original owner will too!  
+
+- You can do a `pull` request  
+
+```{r, fig.align='center', out.width="75%", echo = FALSE}
+knitr::include_graphics("img/pullinfo.png")
+```
+
+
+
+---
+
+# Merging Branches
+
+If you are lucky, there won't be any merge conflicts.  
+
+- Allows the owner of the original repo to accept the pull request without needing to modify things
+
+- The owner will get a notification that a pull request has been made
+
+```{r, fig.align='center', out.width="45%", echo = FALSE}
+knitr::include_graphics("img/pullrequestnoted.png")
+```
+
+
+---
+
+# Merging Branches
+
+Owner can then investigate the request and choose whether or not to accept it or they can ask for more details
+
+```{r, fig.align='center', out.width="70%", echo = FALSE}
+knitr::include_graphics("img/pullcheck2.png")
+```
+
+---
+
+# Dealing with conflicts 
+
+- Sometimes changes requested conflict with changes already made  
+
+```{r, fig.align='center', out.width="70%", echo = FALSE}
+knitr::include_graphics("img/mergeconflict.png")
+```
+
+
+---
+
+# Dealing with conflicts 
+
+Owner sees a notification about conflicts that must be resolved  
+
+```{r, fig.align='center', out.width="70%", echo = FALSE}
+knitr::include_graphics("img/resolve.png")
+```
+
+
+---
+
+# Dealing with conflicts 
+
+They can view the issues and pick which to include or to include both with a modification  
+
+`<<<<<<<` is a conflict marker  
+
+```{r, fig.align='center', out.width="70%", echo = FALSE}
+knitr::include_graphics("img/resolve2.png")
+```
+
+- Figure out what to do and delete the `<<< === >>>` lines  
+
+
+---
+
+# Recap
+
+- **Git** is a version control software  
+
+    + Associated with a folder (repo)
+    + Tracks changes to files
+
+- **Github** is an online hosting service for Git-based projects
+
+- Workflow:
+
+    + Create a repo on `gitHub`
+    + Open `.ipynb` files in Colab
+    + Save a copy on `gitHub`!
