@@ -25,12 +25,12 @@ project:
     - 01_Programming_in_python/19-Plotting_matplotlib.ipynb
     - 01_Programming_in_python/20-Plotting_pandas.ipynb
     - 01_Programming_in_python/21-Error_Handling.ipynb
-    - 01_Programming_in_python/22-Big_Recap_Landing.qmd
-    - 01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.qmd
-    - 01_Programming_in_python/24-Prediction_Testing_Training_Landing.qmd
-    - 01_Programming_in_python/25-Cross_Validation_Landing.qmd
-    - 01_Programming_in_python/26-Multiple_Linear_Regression_Landing.qmd
-    - 01_Programming_in_python/27-LASSO_Landing.qmd
+    - 01_Programming_in_python/24-Big_Recap_Landing.qmd
+    - 01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.qmd
+    - 01_Programming_in_python/26-Prediction_Testing_Training_Landing.qmd
+    - 01_Programming_in_python/27-Cross_Validation_Landing.qmd
+    - 01_Programming_in_python/28-Multiple_Linear_Regression_Landing.qmd
+    - 01_Programming_in_python/29-LASSO_Landing.qmd
     - 01_Programming_in_python/Learning_Python.ipynb
     - 02_Big_Data_Management/01-Big_Data_Basics_Landing.qmd
     - 02_Big_Data_Management/02-Role_of_Statistics_Landing.qmd
@@ -113,12 +113,12 @@ website:
           - 01_Programming_in_python/21-Error_Handling.ipynb
       - section: "Topic 3: Basics of Predictive Modeling"
         contents:
-          - 01_Programming_in_python/22-Big_Recap_Landing.qmd
-          - 01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.qmd
-          - 01_Programming_in_python/24-Prediction_Testing_Training_Landing.qmd
-          - 01_Programming_in_python/25-Cross_Validation_Landing.qmd
-          - 01_Programming_in_python/26-Multiple_Linear_Regression_Landing.qmd
-          - 01_Programming_in_python/27-LASSO_Landing.qmd
+          - 01_Programming_in_python/24-Big_Recap_Landing.qmd
+          - 01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.qmd
+          - 01_Programming_in_python/26-Prediction_Testing_Training_Landing.qmd
+          - 01_Programming_in_python/27-Cross_Validation_Landing.qmd
+          - 01_Programming_in_python/28-Multiple_Linear_Regression_Landing.qmd
+          - 01_Programming_in_python/29-LASSO_Landing.qmd
       - section: "Topic 4: Big Data Management"
         contents:
           - 02_Big_Data_Management/01-Big_Data_Basics_Landing.qmd

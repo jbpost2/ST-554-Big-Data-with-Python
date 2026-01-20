@@ -1,0 +1,22 @@
+---
+title: "Cross Validation"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below talks about the idea of cross validation (CV). This is a method of evaluating a predictive model while not necessarily needing to split the data into a training and test set (although sometimes we will still do this and just apply CV on the training set).
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d069a914-ab44-4d5c-8f2e-b10a012faff2&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="25-Cross Validation" ></iframe>
+```
+
+## Notes
+
+- <a href = "27-Cross_Validation.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/27-Cross_Validation.pdf" target = "_blank">PDF version</a>
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

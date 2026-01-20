@@ -17,6 +17,7 @@ output:
     self_contained: yes
 editor_options: 
   chunk_output_type: console
+lang: en
 ---
 
 ```{r, include=FALSE,warning=FALSE,message=FALSE}
@@ -37,8 +38,8 @@ lowtop = c(om[1],om[2],0.1,om[4])
 library(tidyverse)
 library(knitr)
 library(reticulate)
-#use_python("C:\\ProgramData\\Anaconda3\\python.exe")
-use_python("C:\\python\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+#use_python("C:\\python\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -54,7 +55,7 @@ Justin Post
 ---
 layout: true
 
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="img/logo.png" alt = "" style="height: 60px;"/></div> 
 
 ---
 
@@ -138,7 +139,7 @@ wine_data.info()
 ---
 layout: true
 
-<div class="my-footer"><img src="img/logo.png" style="height: 60px;"/></div> 
+<div class="my-footer"><img src="img/logo.png" alt = "" style="height: 60px;"/></div> 
 
 ---
 
@@ -178,7 +179,7 @@ May need to
 - remove some rows and/or columns
 - check your data against some gold standard?
 
-```{r, echo = FALSE, fig.align='center', out.width = '500px', fig.cap="https://devrant.com/rants/2161326/rant"}
+```{r, echo = FALSE, fig.align='center', out.width = '500px', fig.cap="https://devrant.com/rants/2161326/rant", fig.alt = 'The image is divided into two panels. The top panel is titled "I think big data analysis" and depicts a simple, linear progression. It features a stick figure on a bicycle followed by a racing car on a flat road. The stages are labeled from left to right as "Data Extraction," "Model establishment," and "Deep learning, Artificial intelligence" with a checkered flag at the end, suggesting a simplified view of big data analysis. The bottom panel, titled "True big data analysis," shows a more complex and detailed journey. It begins with a stick figure on a bicycle representing "Demand discussion." The route includes various terrains and obstacles: trees labeled "Extract data," a cable car labeled "Data cleaning," a mountain labeled "Data Integration," a rain cloud over an ocean labeled "Missing value processing," a hill labeled "Feature engineering," and finally a steep upward path labeled "Model evaluation" with a checkered flag at the end, illustrating the intricate processes involved in true big data analysis.'}
 knitr::include_graphics("img/devrant.jpg")
 ```
 
@@ -203,7 +204,7 @@ Goal: Understand types of data and their distributions
 
 - Numerical summaries  
 
-```{r, echo = FALSE,  out.width = "260px", fig.align='center'}
+```{r, echo = FALSE,  out.width = "260px", fig.align='center', fig.alt = "Two columns are shown on the left: 'group' consisting of A, B, and C values and 'variable', consisting of numeric integers. The variable column is summarized by two numbers: 'mean' and 'standard deviation'."}
 knitr::include_graphics("img/summarizeAllF.png")
 ```
 
@@ -216,7 +217,7 @@ Goal: Understand types of data and their distributions
 
 - Numerical summaries (across subgroups)  
 
-```{r, echo = FALSE,  out.width = "295px", fig.align='center'}
+```{r, echo = FALSE,  out.width = "295px", fig.align='center', fig.alt = "Two columns are shown on the left: 'group' consisting of A, B, and C values and 'variable', consisting of numeric integers. The variable column is summarized for each value of the group column. That is, for each group we now have two numbers: 'mean' and 'standard deviation'."}
 knitr::include_graphics("img/summarizeGroupsF.png")
 ```
 
@@ -230,7 +231,7 @@ knitr::include_graphics("img/summarizeGroupsF.png")
     + Numeric (Quantitative) variable - entries are a numerical value where math can be performed
 
 
-```{r, echo = FALSE, out.width="500px", fig.align='center'}
+```{r, echo = FALSE, out.width="500px", fig.align='center', fig.alt = "A tree diagram is show defining different types of variables. Variables are shown as either being 'Categorical (Qualitative)' or 'Numerical (Quantitative)'. Categorical is further separated into 'Nominal' and 'Ordinal' values. Numerical is further separated into 'Discrete' or 'Continuous'."}
 knitr::include_graphics("img/variableTypes.png")
 ```
 

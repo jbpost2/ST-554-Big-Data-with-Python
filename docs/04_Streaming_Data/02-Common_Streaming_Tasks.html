@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-11">
+<meta name="dcterms.date" content="2026-01-12">
 
-<title>common_streaming_tasks – ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Common Streaming Tasks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <link href="../04_Streaming_Data/03-Spark_Structured_Streaming_Landing.html" rel="next">
 <link href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html" rel="prev">
@@ -80,45 +80,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -127,28 +99,28 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand " data-bs-theme="dark">
+    <nav class="navbar navbar-expand navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
           <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text">Github Repository</span></a>
+ <span class="menu-text">Github Repository</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -162,13 +134,13 @@ window.Quarto = {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html">Topic 6: Streaming Data</a></li><li class="breadcrumb-item"><a href="../04_Streaming_Data/02-Common_Streaming_Tasks.html">Common Streaming Tasks</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html">Topic 6: Streaming Data</a></li><li class="breadcrumb-item"><a href="../04_Streaming_Data/02-Common_Streaming_Tasks.html">Common Streaming Tasks</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -177,7 +149,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -193,9 +165,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -276,9 +248,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -341,46 +313,46 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Big Recap!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prediction and Training/Test Set Ideas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/27-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cross Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/28-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/29-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LASSO Models</span></a>
   </div>
 </li>
@@ -388,9 +360,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Topic 4: Big Data Management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -471,9 +443,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Topic 5: Modeling Data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -560,9 +532,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">Topic 6: Streaming Data</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -608,16 +580,14 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#common-streaming-tasks" id="toc-common-streaming-tasks" class="nav-link active" data-scroll-target="#common-streaming-tasks">Common Streaming Tasks</a>
-  <ul class="collapse">
-  <li><a href="#common-issues-preprocessing-detecting-trends-counting-and-averages" id="toc-common-issues-preprocessing-detecting-trends-counting-and-averages" class="nav-link" data-scroll-target="#common-issues-preprocessing-detecting-trends-counting-and-averages">Common Issues: Preprocessing, Detecting Trends, Counting, and Averages</a></li>
+  <li><a href="#common-issues-preprocessing-detecting-trends-counting-and-averages" id="toc-common-issues-preprocessing-detecting-trends-counting-and-averages" class="nav-link active" data-scroll-target="#common-issues-preprocessing-detecting-trends-counting-and-averages">Common Issues: Preprocessing, Detecting Trends, Counting, and Averages</a></li>
   <li><a href="#air-quality-data" id="toc-air-quality-data" class="nav-link" data-scroll-target="#air-quality-data">Air Quality Data</a></li>
   <li><a href="#dates-and-times-in-python" id="toc-dates-and-times-in-python" class="nav-link" data-scroll-target="#dates-and-times-in-python">Dates and Times in Python</a>
   <ul class="collapse">
@@ -631,7 +601,6 @@ window.Quarto = {
   <li><a href="#updating-a-standard-deviations" id="toc-updating-a-standard-deviations" class="nav-link" data-scroll-target="#updating-a-standard-deviations">Updating a Standard Deviations</a></li>
   <li><a href="#finding-averages-standard-deviations-in-selected-windows" id="toc-finding-averages-standard-deviations-in-selected-windows" class="nav-link" data-scroll-target="#finding-averages-standard-deviations-in-selected-windows">Finding Averages &amp; Standard Deviations in Selected Windows</a></li>
   </ul></li>
-  </ul></li>
   <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
@@ -639,8 +608,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html">Topic 6: Streaming Data</a></li><li class="breadcrumb-item"><a href="../04_Streaming_Data/02-Common_Streaming_Tasks.html">Common Streaming Tasks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Common Streaming Tasks</h1>
 </div>
 
 
@@ -651,7 +621,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-12-11</p>
+      <p class="date">2026-01-12</p>
     </div>
   </div>
   
@@ -659,13 +629,9 @@ window.Quarto = {
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/04_Streaming_Data/02-Common_Streaming_Tasks.ipynb" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="common-streaming-tasks" class="level1">
-<h1>Common Streaming Tasks</h1>
 <blockquote class="blockquote">
 <p>Justin Post</p>
 </blockquote>
@@ -686,7 +652,7 @@ window.Quarto = {
 <p>…dataset contains 9358 instances of hourly averaged responses from an array of 5 metal oxide chemical sensors embedded in an Air Quality Chemical Multisensor Device</p>
 </blockquote>
 <p>We’ll read this data in. Note that the data has a <code>Date</code> and a <code>Time</code> column</p>
-<div id="cell-4" class="cell" data-outputid="2ce38fa9-8f3e-4282-cfb6-66daa51ab3ad">
+<div class="cell" data-outputid="2ce38fa9-8f3e-4282-cfb6-66daa51ab3ad">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>air_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/online/datasets/AirQualityUCI.csv"</span>, sep <span class="op">=</span> <span class="st">";"</span>, decimal <span class="op">=</span> <span class="st">","</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>air_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -696,7 +662,7 @@ window.Quarto = {
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -942,6 +908,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+
 
 <p>9471 rows × 17 columns</p>
 </div>
@@ -1204,24 +1171,10 @@ window.Quarto = {
 </div>
 </div>
 <p>The <code>Date</code> and <code>Time</code> columns can’t be handled easily. For instance, there is no way to determine the ‘day’ easily.</p>
-<div id="cell-6" class="cell" data-outputid="ab5b9971-b020-45cb-eae6-e8a8a0f6a80b">
+<div class="cell" data-outputid="ab5b9971-b020-45cb-eae6-e8a8a0f6a80b">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>air_data.Date.day <span class="co">#no attribute for day!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-4-76fe55ca24a5&gt;</span> in <span class="ansi-cyan-fg">&lt;cell line: 0&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>air_data<span class="ansi-blue-fg">.</span>Date<span class="ansi-blue-fg">.</span>day <span class="ansi-red-fg">#no attribute for day!</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/pandas/core/generic.py</span> in <span class="ansi-cyan-fg">__getattr__</span><span class="ansi-blue-fg">(self, name)</span>
-<span class="ansi-green-fg ansi-bold">   6297</span>         ):
-<span class="ansi-green-fg ansi-bold">   6298</span>             <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">[</span>name<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">-&gt; 6299</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> object<span class="ansi-blue-fg">.</span>__getattribute__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   6300</span> 
-<span class="ansi-green-fg ansi-bold">   6301</span>     <span class="ansi-blue-fg">@</span>final
-
-<span class="ansi-red-fg">AttributeError</span>: 'Series' object has no attribute 'day'</pre>
-</div>
+<pre><code>AttributeError: 'Series' object has no attribute 'day'</code></pre>
 </div>
 </div>
 </section>
@@ -1244,56 +1197,58 @@ window.Quarto = {
 <p>These have <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html">very similar functionality</a> for doing useful things with dates!</p>
 <p>We saw that our columns that were supposed to be dates were read in as strings. We can coerce a string to a date/time variable.</p>
 <p>Date time variables have information on both the date and the time of day such as <code>"04-01-2022 10:00"</code>. Of course we need to carefully specify whether this is April or January as different countries do this differently!</p>
-<div id="cell-9" class="cell" data-outputid="a26f6b1f-0963-4107-a5b9-57cfe69d3dc2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> pd.to_datetime([<span class="st">"04-01-2022 10:00"</span>], dayfirst<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a26f6b1f-0963-4107-a5b9-57cfe69d3dc2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> pd.to_datetime([<span class="st">"04-01-2022 10:00"</span>], dayfirst<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>DatetimeIndex(['2022-01-04 10:00:00'], dtype='datetime64[ns]', freq=None)</code></pre>
 </div>
 </div>
 <p>As mentioned, date-time type variables have useful attributes we can pull from them.</p>
-<div id="cell-11" class="cell" data-outputid="3f399680-08d9-4e00-9f81-eebf9c2d4ddf">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a.day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="3f399680-08d9-4e00-9f81-eebf9c2d4ddf">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a.day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Index([4], dtype='int32')</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-outputid="9dd6774c-8da6-4bae-c2e5-e9a899d64bbd">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a.hour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="9dd6774c-8da6-4bae-c2e5-e9a899d64bbd">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>a.hour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Index([10], dtype='int32')</code></pre>
 </div>
 </div>
 <p>There are also useful methods to get descriptive names.</p>
-<div id="cell-14" class="cell" data-outputid="39629e5d-2853-4218-cf05-2ee2b03057a5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a.day_name()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="39629e5d-2853-4218-cf05-2ee2b03057a5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>a.day_name()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Index(['Tuesday'], dtype='object')</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-outputid="264e6a20-0e29-4073-e142-f0060f109a2f">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a.month_name()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="264e6a20-0e29-4073-e142-f0060f109a2f">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>a.month_name()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Index(['January'], dtype='object')</code></pre>
 </div>
 </div>
 <p>As mentioned, now that we have a date we can actually subtract two dates to get useful information (while still seeing the date in a nice format).</p>
-<div id="cell-17" class="cell" data-outputid="6d6d5e81-5b9a-41e4-990f-6aef5ffaa39b">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> pd.to_datetime([<span class="st">"04-01-2022 11:00"</span>])</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a<span class="op">-</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="6d6d5e81-5b9a-41e4-990f-6aef5ffaa39b">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> pd.to_datetime([<span class="st">"04-01-2022 11:00"</span>])</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a<span class="op">-</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>TimedeltaIndex(['-88 days +23:00:00'], dtype='timedelta64[ns]', freq=None)</code></pre>
 </div>
 </div>
 <p>With our data, we can try to read in the columns appropriately with options on the <code>pd.read_csv()</code> function.</p>
-<div id="cell-19" class="cell" data-outputid="7ac60efb-ba85-42e1-9e56-5c7ba7a103f8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>air_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/online/datasets/AirQualityUCI.csv"</span>,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                       sep <span class="op">=</span> <span class="st">";"</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                       decimal <span class="op">=</span> <span class="st">","</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                       parse_dates <span class="op">=</span> [[<span class="st">"Date"</span>, <span class="st">"Time"</span>]])</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>air_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="7ac60efb-ba85-42e1-9e56-5c7ba7a103f8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>air_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/online/datasets/AirQualityUCI.csv"</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                       sep <span class="op">=</span> <span class="st">";"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                       decimal <span class="op">=</span> <span class="st">","</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                       parse_dates <span class="op">=</span> [[<span class="st">"Date"</span>, <span class="st">"Time"</span>]])</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>air_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: Support for nested sequences for 'parse_dates' in pd.read_csv is deprecated. Combine the desired columns with pd.to_datetime after parsing instead.
+  air_data = pd.read_csv("https://www4.stat.ncsu.edu/online/datasets/AirQualityUCI.csv",
+&lt;ipython-input-59-4ae5e19be4ba&gt;:1: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
   air_data = pd.read_csv("https://www4.stat.ncsu.edu/online/datasets/AirQualityUCI.csv",</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -1321,14 +1276,10 @@ Data columns (total 16 columns):
 dtypes: float64(15), object(1)
 memory usage: 1.2+ MB</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
-  air_data = pd.read_csv("https://www4.stat.ncsu.edu/online/datasets/AirQualityUCI.csv",</code></pre>
-</div>
 </div>
 <p>This read those two columns in as a single column of the appropriate type! We now have all the nice functionality to deal with dates.</p>
 <p>Lastly, let’s rename the <code>CO(GT)</code> column since we’ll use that one in the upcoming tasks and remove the bunch of missing rows at the end of the data frame.</p>
-<div id="cell-21" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>air_data <span class="op">=</span> air_data.rename(columns <span class="op">=</span> {<span class="st">'CO(GT)'</span>: <span class="st">'co_gt'</span>})</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>air_data.dropna(subset<span class="op">=</span>[<span class="st">'co_gt'</span>], inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1349,7 +1300,7 @@ memory usage: 1.2+ MB</code></pre>
 <li>‘Take data in over time’ (via a loop over the rows)</li>
 <li>If the data exceeds 8 we print a message</li>
 </ul>
-<div id="cell-23" class="cell" data-outputid="099d3b9d-a268-49ce-dbf7-bf2037eb7db6">
+<div class="cell" data-outputid="099d3b9d-a268-49ce-dbf7-bf2037eb7db6">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(air_data.shape[<span class="dv">0</span>]):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> air_data.iloc[i].co_gt <span class="op">&gt;</span> <span class="dv">8</span>:</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"High CO Concentration at "</span> <span class="op">+</span> <span class="bu">str</span>(air_data.Date_Time[i]) <span class="op">+</span> <span class="st">", loop"</span>, <span class="bu">str</span>(i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1393,7 +1344,7 @@ High CO Concentration at 10/02/2005 20.00.00, loop 8090</code></pre>
 <li>If the data is less than 0 we print a message (-200 represents missing here)</li>
 </ul>
 <p>Write either occurrence to a log file (or perhaps a database) rather than printing to the console. Using the menus on the left, create a directory called <code>logs</code> to run the code below.</p>
-<div id="cell-25" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(air_data.shape[<span class="dv">0</span>]):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    temp <span class="op">=</span> air_data.iloc[i]</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> temp.Date_Time</span>
@@ -1411,7 +1362,7 @@ High CO Concentration at 10/02/2005 20.00.00, loop 8090</code></pre>
 <li>I’ll follow <a href="https://www.mailersend.com/blog/send-email-with-python#sending-emails-with-smtplib">this article</a>!</li>
 </ul>
 <p>First we need to have the <code>dotenv</code> package. I’ll install this vai <code>pip</code>.</p>
-<div id="cell-27" class="cell" data-outputid="79a6aafe-ecab-489e-ed99-7adfad7d9616">
+<div class="cell" data-outputid="79a6aafe-ecab-489e-ed99-7adfad7d9616">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install dotenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting dotenv
@@ -1425,7 +1376,7 @@ Successfully installed dotenv-0.9.9 python-dotenv-1.1.0</code></pre>
 </div>
 </div>
 <p>Now let’s read in some module things.</p>
-<div id="cell-29" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> smtplib</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> email.mime.text <span class="im">import</span> MIMEText</span>
@@ -1435,7 +1386,7 @@ Successfully installed dotenv-0.9.9 python-dotenv-1.1.0</code></pre>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s set up things to send the email. I’ve deleted the password here so you’ll need to create your own account and what-not to run this code!</p>
-<div id="cell-31" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load environment variables from .env file</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1459,7 +1410,7 @@ Successfully installed dotenv-0.9.9 python-dotenv-1.1.0</code></pre>
 <li>If the value is not <code>-200</code> then we reset <code>missing</code> to 0</li>
 <li>If the value of <code>missing</code> becomes 6 then we send an email</li>
 </ul>
-<div id="cell-33" class="cell" data-outputid="2465e833-ef74-48fe-f599-75fb6a6f15c9">
+<div class="cell" data-outputid="2465e833-ef74-48fe-f599-75fb6a6f15c9">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#initate the value</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1534,7 +1485,7 @@ Email sent successfully</code></pre>
 <p>We may get data each time we get an impression and each time we get a click. There will be more impressions than clicks of course.</p>
 <p>Usually there is a userID of some kind that we would want to join this data on. But essentially, once we have a unique ‘key’ or at least criteria for combining the streams the ideas are the same as SQL type joins.</p>
 <p>Just as an example, let’s simulate some fake impressions and clicks data with unique userIDs (there would likely be other information in each data stream that would come along as well).</p>
-<div id="cell-36" class="cell" data-outputid="9d566faf-d81b-4e2c-cc77-80efba09619c">
+<div class="cell" data-outputid="9d566faf-d81b-4e2c-cc77-80efba09619c">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">10</span>)</span>
@@ -1549,7 +1500,7 @@ Email sent successfully</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1585,6 +1536,7 @@ Email sent successfully</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1793,7 +1745,7 @@ Email sent successfully</code></pre>
   </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-outputid="e3242f31-852a-4f6e-f0f7-21bcedebc292">
+<div class="cell" data-outputid="e3242f31-852a-4f6e-f0f7-21bcedebc292">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>clicks <span class="op">=</span> impressions.iloc[np.random.randint(size <span class="op">=</span> <span class="dv">30</span>, low <span class="op">=</span> <span class="dv">0</span>, high <span class="op">=</span> <span class="dv">499</span>)].sort_index()</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#add a slightly positive time delta to get the clicktime</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>clicks[<span class="st">'clickTime'</span>] <span class="op">=</span> clicks.impressionTime <span class="op">+</span> pd.to_timedelta(np.random.rand(<span class="dv">30</span>)<span class="op">/</span><span class="dv">100</span>, unit <span class="op">=</span> <span class="st">"D"</span>)</span>
@@ -1805,7 +1757,7 @@ Email sent successfully</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1841,6 +1793,7 @@ Email sent successfully</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2050,7 +2003,7 @@ Email sent successfully</code></pre>
 </div>
 </div>
 <p>We can “join” these too with the usual SQL join idea. Here we just use <code>pd.merge()</code>. We’ll use <code>clicks</code> as our right table and do a ‘right’ join to only return rows that match the <code>clicks</code> rows.</p>
-<div id="cell-39" class="cell" data-outputid="bad81a0e-10c2-4ff6-c30d-ae6ab281c553">
+<div class="cell" data-outputid="bad81a0e-10c2-4ff6-c30d-ae6ab281c553">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> pd.merge(left <span class="op">=</span> impressions, right <span class="op">=</span> clicks, on <span class="op">=</span> <span class="st">"userId"</span>, how <span class="op">=</span> <span class="st">'right'</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>combined.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
@@ -2059,7 +2012,7 @@ Email sent successfully</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2101,6 +2054,7 @@ Email sent successfully</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2310,13 +2264,13 @@ Email sent successfully</code></pre>
 </div>
 </div>
 <p>Now we could find the time it took someone to click (of those that clicked).</p>
-<div id="cell-41" class="cell" data-outputid="d4bd7c03-4548-4899-a4f2-7dfc61f5e32c">
+<div class="cell" data-outputid="d4bd7c03-4548-4899-a4f2-7dfc61f5e32c">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(combined.clickTime<span class="op">-</span>combined.impressionTime).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2370,7 +2324,7 @@ Email sent successfully</code></pre>
 <li>Here <span class="math inline">\(\bar{y}_{n-1}\)</span> is the sample mean we have with our first <span class="math inline">\(n-1\)</span> observations</li>
 </ul>
 <p>Let’s write a quick function to do this in python!</p>
-<div id="cell-45" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_mean(new_data, old_mean, count):</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> old_mean <span class="op">+</span> (<span class="dv">1</span><span class="op">/</span>count)<span class="op">*</span>(new_data<span class="op">-</span>old_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2380,7 +2334,7 @@ Email sent successfully</code></pre>
 <li>Then we’ll initiate a mean value of 0.</li>
 <li>Now we’ll loop through the rows, again acting as though they are streaming in.</li>
 </ul>
-<div id="cell-47" class="cell" data-outputid="8d6b166a-13c9-43e2-f706-4304b6eb007f">
+<div class="cell" data-outputid="8d6b166a-13c9-43e2-f706-4304b6eb007f">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>air_data <span class="op">=</span> air_data.loc[air_data.co_gt <span class="op">!=</span> <span class="op">-</span><span class="dv">200</span>].reset_index()</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#initialize the mean</span></span>
@@ -2399,7 +2353,7 @@ Email sent successfully</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2465,6 +2419,7 @@ Email sent successfully</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 <p>7674 rows × 2 columns</p>
 </div>
@@ -2684,12 +2639,12 @@ Email sent successfully</code></pre>
 <li><span class="math inline">\(s^2_{n-1}\)</span> represents the sample variance using just the first <span class="math inline">\(n-1\)</span> observations.</li>
 </ul>
 <p>Let’s create a function in python to update our sample variance.</p>
-<div id="cell-49" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> update_var(new_data, old_var, old_mean, count):</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((count<span class="op">-</span><span class="dv">2</span>)<span class="op">/</span>(count<span class="op">-</span><span class="dv">1</span>))<span class="op">*</span>old_var <span class="op">+</span> (new_data <span class="op">-</span> old_mean)<span class="op">**</span><span class="dv">2</span><span class="op">/</span>count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can’t start looping through the data at <span class="math inline">\(n=1\)</span> without some special cases. Here we’ll initialize some things and start the loop after a few observations.</p>
-<div id="cell-51" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set up things to start the loop</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#lists to capture the updated means and variances</span></span>
@@ -2708,7 +2663,7 @@ Email sent successfully</code></pre>
 <span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>    n <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we’ll find the standard deviation as well and <code>zip()</code> it together with the rolling summary stats!</p>
-<div id="cell-53" class="cell" data-outputid="18883289-6edf-4006-c455-7a229e8b9b59">
+<div class="cell" data-outputid="18883289-6edf-4006-c455-7a229e8b9b59">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(<span class="bu">zip</span>(air_data.co_gt, means, np.sqrt(np.array(variances)), np.array(variances)),</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"Data"</span>, <span class="st">"Means"</span>, <span class="st">"SDs"</span>, <span class="st">"Vars"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
@@ -2717,7 +2672,7 @@ Email sent successfully</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2807,6 +2762,7 @@ Email sent successfully</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 <p>7674 rows × 4 columns</p>
 </div>
@@ -3027,7 +2983,7 @@ Email sent successfully</code></pre>
 <li>When new data comes in, pop out the first value (oldest) and add the newest value</li>
 <li>Repeat!</li>
 </ul>
-<div id="cell-55" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_values <span class="op">=</span> []</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>rolling_means <span class="op">=</span> [np.nan, np.nan]</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">3</span></span>
@@ -3039,7 +2995,7 @@ Email sent successfully</code></pre>
 <span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    my_values <span class="op">=</span> my_values[<span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can compare what we calculated to the <code>pandas</code> functionality:</p>
-<div id="cell-57" class="cell" data-outputid="04866532-462b-47d6-cfae-95fc89333ae4">
+<div class="cell" data-outputid="04866532-462b-47d6-cfae-95fc89333ae4">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(<span class="bu">zip</span>(air_data.rolling(<span class="dv">3</span>).co_gt.mean(), rolling_means), columns <span class="op">=</span> [<span class="st">"pandas"</span>, <span class="st">"us"</span>]).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="79">
 
@@ -3047,7 +3003,7 @@ Email sent successfully</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3083,6 +3039,7 @@ Email sent successfully</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3292,13 +3249,13 @@ Email sent successfully</code></pre>
 </div>
 </div>
 <p>Similar functionality exists for rolling standard deviations.</p>
-<div id="cell-59" class="cell" data-outputid="ce2dc5df-f854-431c-e344-4e6ca5c91339">
+<div class="cell" data-outputid="ce2dc5df-f854-431c-e344-4e6ca5c91339">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>air_data.rolling(<span class="dv">3</span>).co_gt.std().head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3332,7 +3289,6 @@ Email sent successfully</code></pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-</section>
 </section>
 </section>
 <section id="recap" class="level1">
@@ -3392,7 +3348,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3424,50 +3391,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3477,17 +3405,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3499,130 +3418,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -3666,7 +3462,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3692,32 +3487,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3779,18 +3548,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html" class="pagination-link" aria-label="Streaming Data Concepts">
+      <a href="../04_Streaming_Data/01-Streaming_Data_Concepts_Landing.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Streaming Data Concepts</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../04_Streaming_Data/03-Spark_Structured_Streaming_Landing.html" class="pagination-link" aria-label="Spark Structured Streaming">
+      <a href="../04_Streaming_Data/03-Spark_Structured_Streaming_Landing.html" class="pagination-link">
         <span class="nav-page-text">Spark Structured Streaming</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

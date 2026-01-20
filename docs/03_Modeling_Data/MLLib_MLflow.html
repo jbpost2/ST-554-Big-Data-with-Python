@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-11">
+<meta name="dcterms.date" content="2026-01-12">
 
-<title>Using MLlib from pyspark to Fit Machine Learning Models – ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Using MLlib from pyspark to Fit Machine Learning Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -78,45 +78,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -125,28 +97,28 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand " data-bs-theme="dark">
+    <nav class="navbar navbar-expand navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
           <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text">Github Repository</span></a>
+ <span class="menu-text">Github Repository</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -160,13 +132,13 @@ window.Quarto = {
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Using <code>MLlib</code> from <code>pyspark</code> to Fit Machine Learning Models</li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Using <code>MLlib</code> from <code>pyspark</code> to Fit Machine Learning Models</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -175,7 +147,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -191,9 +163,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -274,9 +246,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -339,46 +311,46 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Big Recap!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prediction and Training/Test Set Ideas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/27-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cross Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/28-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/29-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LASSO Models</span></a>
   </div>
 </li>
@@ -386,9 +358,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Topic 4: Big Data Management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -469,9 +441,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Topic 5: Modeling Data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -558,9 +530,9 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Topic 6: Streaming Data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -606,7 +578,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -635,7 +607,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-12-11</p>
+      <p class="date">2026-01-12</p>
     </div>
   </div>
   
@@ -643,12 +615,10 @@ window.Quarto = {
   </div>
   
 
-
 </header>
 
-
 <p>Start our <code>spark</code> session.</p>
-<div id="2bdcc3f9-b2f8-45e5-ba9e-653b7b61fee7" class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.getOrCreate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -659,14 +629,14 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </div>
 <p>Now read in a data set using <code>pandas</code> and convert it to a <code>spark</code> SQL style data frame.</p>
-<div id="9d4e18e1-0cb5-41e1-a472-11089adc8f7a" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>bike_data <span class="op">=</span> pd.read_csv(<span class="st">"bikeDetails.csv"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bike_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -737,7 +707,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </div>
 <p>Convert to a spark SQL data frame.</p>
-<div id="bd795d76-463a-4260-b8de-f999d6592ed4" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bike <span class="op">=</span> spark.createDataFrame(bike_data)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bike.show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -759,12 +729,12 @@ only showing top 5 rows
 </div>
 <p>We’ll fit a linear regression model using log selling price as our response and log km driven, year, and a 1st owner indicator variable as our predictors. This means we need to create some new columns and drop a bunch of others. - We also <strong>need to rename the response</strong> as ‘label’.<br>
 - These first steps can easily be done using the <code>SQLTransformer()</code>, <code>StringIndexer()</code>, and <code>Binarizer()</code> <a href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html">functions from <code>pyspark.ml.feature</code></a> - Using the <code>MLlib</code> functions will allow us to place these transformations into a <code>pipeline</code> (which we’ll do shortly).</p>
-<div id="d1bc8d13-8a31-4ea3-a73f-8063b5eace96" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> SQLTransformer, StringIndexer, Binarizer, VectorAssembler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>First let’s try to create our dummy variable. This isn’t as easy as you’d like (nothing in here really is!). We can first take the string to a numeric index. Then we can binary-ize that!</p>
 <p>We’ll use <code>StringIndexer()</code> first. An <a href="https://spark.apache.org/docs/latest/ml-features.html#stringindexer">example is given here</a>. This is an estimator that we can use the <code>.fit()</code> method on. Then we can use the <code>.transform()</code> method on that.</p>
-<div id="d5cc9eab-7352-444f-b6b4-f8a7cc041dab" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>indexer <span class="op">=</span> StringIndexer(inputCols <span class="op">=</span> [<span class="st">"owner"</span>], outputCols <span class="op">=</span> [<span class="st">"owner_numeric"</span>])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>indexerTrans <span class="op">=</span> indexer.fit(bike) <span class="co">#now indexerTrans will have a .transform() method</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>indexerTrans.transform(bike).show(<span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -811,7 +781,7 @@ only showing top 30 rows
 </div>
 </div>
 <p>Alright, now let’s conver that to a 0/1 indicator with <code>Binarizer()</code>.</p>
-<div id="8dea17f3-5b2f-48d0-b29e-33748801c87c" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>binaryTrans <span class="op">=</span> Binarizer(threshold <span class="op">=</span> <span class="fl">0.5</span>, inputCol <span class="op">=</span> <span class="st">"owner_numeric"</span>, outputCol <span class="op">=</span> <span class="st">"owner_indicator"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>binaryTrans.transform(</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    indexerTrans.transform(bike)</span>
@@ -846,14 +816,14 @@ only showing top 20 rows
 </div>
 </div>
 <p>Great! Now the easy part. We just want to create some log variables and select only certain columns. The <code>SQLTransformer()</code> allows for (only) basic SQL commands. Note we want our response to be called <code>label</code> so we’ll rename it here.</p>
-<div id="5b17fcfb-c334-4bce-a31f-76495305ecb0" class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sqlTrans <span class="op">=</span> SQLTransformer(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    statement <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">                SELECT owner_indicator, year, log(km_driven) as log_km_driven, log(selling_price) as label FROM __THIS__</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">                """</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="eddd2f65-bb66-4854-996c-127f23ba1a79" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sqlTrans.transform(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    binaryTrans.transform(</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        indexerTrans.transform(bike)</span>
@@ -900,11 +870,11 @@ only showing top 30 rows
 </div>
 <p>We also <strong>need to put the predictors into a single column</strong> called ‘features’.<br>
 Placing multiple columns into one can be done via <code>VectorAssembler()</code> from <code>pyspark.ml.feature</code>.</p>
-<div id="cdcf2144-ca15-4c0b-8eaf-70cc823a8ca8" class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>assembler <span class="op">=</span> VectorAssembler(inputCols <span class="op">=</span> [<span class="st">"year"</span>, <span class="st">"log_km_driven"</span>, <span class="st">"owner_indicator"</span>], outputCol <span class="op">=</span> <span class="st">"features"</span>, handleInvalid <span class="op">=</span> <span class="st">'keep'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice that we are passing what would be the result columns from the previous SQL transform we did. The <code>VectorAssembler()</code> also has a <code>.transform()</code> method. Let’s see how these would be used together to produce a new data set.</p>
-<div id="c68a3a66-8303-4f92-8e41-e43b5cc47437" class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>assembler.transform(</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    sqlTrans.transform(</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        binaryTrans.transform(</span>
@@ -933,14 +903,14 @@ only showing top 10 rows
 </div>
 <p>Awesome! Our data is now transformed to have the new variables we want and the data is in the format needed to fit model using <code>MLlib</code>. Specifically: - A column named <code>label</code> that is the response variable - A column named <code>features</code> that is a column containing all the predictor values together</p>
 <p>Next step, we’ll fit a basic multiple linear regression model using the <code>LinearRegression()</code> function from <code>pyspark.ml.regression</code>. This function does regularized regression (Elastic net, which includes LASSO and Ridge Regression as special cases) so there are a few set up parameters we can modify to just get the usual MLR fit.</p>
-<div id="69aded9d-78ae-4b53-9b41-4810faac0ea1" class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.regression <span class="im">import</span> LinearRegression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e48e2a16-40cf-495d-9c59-fabb8e04fcb3" class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression(regParam <span class="op">=</span> <span class="dv">0</span>, elasticNetParam <span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can use the <code>.fit()</code> method on the transformed data we made above.</p>
-<div id="8ab09c66-b292-43cc-9db7-07fff2cf0e02" class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lr_data <span class="op">=</span> assembler.transform(</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                sqlTrans.transform(</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                    binaryTrans.transform(</span>
@@ -953,7 +923,7 @@ only showing top 10 rows
 <pre><code>DataFrame[owner_indicator: double, year: bigint, log_km_driven: double, label: double, features: vector]</code></pre>
 </div>
 </div>
-<div id="edf05787-5cb1-422d-9a46-a3e22433c346" class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lrModel <span class="op">=</span> lr.fit(lr_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>24/03/08 17:03:10 WARN Instrumentation: [1d9ded2d] regParam is zero, which might cause numerical instability and overfitting.
@@ -961,14 +931,14 @@ only showing top 10 rows
 </div>
 </div>
 <p>We can inspect the model fit using attributes of our <code>lrModel</code> object.</p>
-<div id="3fba9c91-ba10-488d-8e8f-795fa3f7df8b" class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Intercept: </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> <span class="bu">str</span>(lrModel.intercept), <span class="st">"Coefficients: </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> <span class="bu">str</span>(lrModel.coefficients))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Intercept: -151.65184885852284 Coefficients: [0.08175654813171404,-0.22825871252866586,0.10021253855848164]</code></pre>
 </div>
 </div>
 <p>Let’s inspect the training set RMSE and other model fit metrics.</p>
-<div id="8081aeaf-b29f-4596-8586-05ddc2c06f98" class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>trainingSummary <span class="op">=</span> lrModel.summary</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>trainingSummary.residuals.show(<span class="dv">5</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"RMSE: </span><span class="sc">%f</span><span class="st">"</span> <span class="op">%</span> trainingSummary.rootMeanSquaredError)</span>
@@ -990,10 +960,10 @@ r2: 0.485191</code></pre>
 </div>
 </div>
 <p>Of course we will often want to do predictions as well. This is easy to do! The model itself actually becomes a transformer once it is fit! We just use the <code>.transform()</code> method and pass it data similar in format to that on which the model was trained. Here we’ll just look at the prediction from the data used to fit the model.</p>
-<div id="1adaaba3-85eb-435a-ba23-8e4c9ea0101e" class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>preds <span class="op">=</span> lrModel.transform(lr_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fa5bcea2-110d-4581-9a88-7001b7009ef7" class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>preds.show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+---------------+----+------------------+------------------+--------------------+------------------+
@@ -1009,7 +979,7 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="85bfad84-e0e8-40d0-9d4d-fd5a261b2053" class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>preds.select(<span class="st">"label"</span>, <span class="st">"prediction"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+------------------+------------------+
@@ -1026,7 +996,7 @@ only showing top 5 rows
 </div>
 </div>
 <p>Just a sanity check to show we get the same RMSE if we do it with these values:</p>
-<div id="a4951eef-915f-4ad8-8ecc-7ffb4e346313" class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>my_preds <span class="op">=</span> preds.select(<span class="st">"label"</span>, <span class="st">"prediction"</span>).toPandas()</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>np.sqrt(np.mean((my_preds[<span class="st">"label"</span>]<span class="op">-</span>my_preds[<span class="st">"prediction"</span>])<span class="op">**</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1036,7 +1006,7 @@ only showing top 5 rows
 </div>
 <p>One more sanity check. Compare with <code>sklearn</code>.</p>
 <p>Note: I had an error with the <code>scipy</code> module not being recognized. I opened a new terminal window (file –&gt; New Launcher, choose Terminal at the bottom) and had to submit the code: <code>pip install scipy --force</code></p>
-<div id="238ffde7-c389-44e5-a9ac-3b586335a956" class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>bike_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/bikeDetails.csv"</span>)</span>
@@ -1062,12 +1032,12 @@ only showing top 5 rows
 <p>Of course we know that what we care about is the quality of the prediction our model makes on <strong>data it wasn’t trained on</strong>. Generally, this means we need to either - split our data into a training and test (sometimes called validation) set - use cross-validation</p>
 <p>And of course, we’ve talked about the need for both when selecting from many types of models.</p>
 <p>Let’s focus on doing k-fold CV using <code>pyspark</code>. We need to set up our grid of tuning parameters (if applicable) and then run our CV algorithm. This can be done using the <code>ParamGridBuilder()</code> and <code>CrossValidator()</code> functions from <code>pyspark.ml.tuning</code>, respectively.</p>
-<div id="67652b75-cc9a-4fe7-8fa0-49e3bd13fad2" class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.tuning <span class="im">import</span> CrossValidator, ParamGridBuilder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The only tuning parameter we’ll worry about is the <code>regParam</code>. which is <span class="math inline">\(\lambda\)</span> in the penalty part of the loss function: <span class="math display">\[\alpha(\lambda||w||_1)+(1-\alpha)(\lambda/2||w||_2^2)\]</span> If we set the <code>elasticNetParam</code> to 1 (<span class="math inline">\(\alpha\)</span> above) then we are doing LASSO regression.</p>
 <p>We can see some <a href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html#regression">details for each algorithm via the help files</a>. We can look at how well the model does when we use different amounts of LASSO regularization. We use <code>ParamGridBuilder()</code> and <code>.addGrid()</code> to specify the tuning parameter values. Then finally we use the <code>.build()</code> method to instruct it to build the grid.</p>
-<div id="749f9944-99b6-47b4-a98a-4b34f8b4a455" class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>paramGrid <span class="op">=</span> ParamGridBuilder() <span class="op">\</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    .addGrid(lr.regParam, [<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>]) <span class="op">\</span></span>
@@ -1076,17 +1046,17 @@ only showing top 5 rows
 </div>
 <p>Next up, we can use the <code>CrossValidator()</code> function to run k-fold CV over the grid of tuning parameters we just set up.</p>
 <p>We need to tell <code>pyspark</code> what loss function to use when evaluating. This is done via the <code>RegressionEvaluator()</code> function from <code>pyspark.ml.evaluation</code>. To override the default metric used we can specify it explicitly using the <code>metricName=</code> argument when calling the function. <code>rmse</code> is the default here.</p>
-<div id="5baecc00-3a23-4361-867e-06b25bdf1214" class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.evaluation <span class="im">import</span> RegressionEvaluator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f3e7849f-d98d-4715-ace8-05bc31e0dc0c" class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>crossval <span class="op">=</span> CrossValidator(estimator <span class="op">=</span> lr,</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>                          estimatorParamMaps <span class="op">=</span> paramGrid,</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>                          evaluator <span class="op">=</span> RegressionEvaluator(metricName<span class="op">=</span><span class="st">'rmse'</span>),</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>                          numFolds<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We’ve now set up the <code>crossval</code> object. Just like with <code>sklearn</code> we now use the <code>.fit()</code> method to actually fit the models.</p>
-<div id="0a508983-2880-44ae-b288-5bb2308ed1e9" class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>cvModel <span class="op">=</span> crossval.fit(lr_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>24/03/08 17:06:44 WARN Instrumentation: [e4f7ec65] regParam is zero, which might cause numerical instability and overfitting.
@@ -1099,7 +1069,7 @@ only showing top 5 rows
 </div>
 <p>By default, the only model returned is the <strong>best</strong> model as measured by our Loss function.</p>
 <p>To determine which model was returned we can look at the <code>.avgMetrics</code> attribute along with the <code>paramGrid</code> object we used to fit the models.</p>
-<div id="bdd219e7-b39d-4a2f-a679-1cc94adfe19a" class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">zip</span>([<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.15</span>], cvModel.avgMetrics))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>[(0, 0.5112406194486974),
@@ -1109,17 +1079,17 @@ only showing top 5 rows
 </div>
 </div>
 <p>We can see the best model’s parameter estimates as well.</p>
-<div id="b2f19cee-96e1-448b-99bc-14d0d8e89735" class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cvModel.bestModel._java_obj.intercept(), cvModel.bestModel._java_obj.coefficients())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>-151.6518488577565 [0.08175654813133452,-0.22825871252886246,0.10021253855757116]</code></pre>
 </div>
 </div>
 <p>As with the single linear model fit we did above, this new object, <code>cvModel</code>, is now a transformation as well. This allows us to get prediction using the best fit model. If we had a test set we could use it to get the test set prediction easily. As we didn’t split into a test set, let’s just see how to use it to predict on the training data (i.e.&nbsp;return the fitted values for the model).</p>
-<div id="e15c4b9a-3b9c-4733-85a6-ee2eed11d066" class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>predsCV <span class="op">=</span> cvModel.transform(lr_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e1e2f6d6-85fe-42df-b47c-1173bc0aa901" class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>predsCV.select(<span class="st">"label"</span>, <span class="st">"prediction"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+------------------+------------------+
@@ -1136,7 +1106,7 @@ only showing top 5 rows
 </div>
 </div>
 <p>As our model chosen was not regularized, we get the same predictions as previous!</p>
-<div id="0bf159e1-cd81-469f-860d-d9d623bbdc09" class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>preds.select(<span class="st">"label"</span>, <span class="st">"prediction"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+------------------+------------------+
@@ -1153,7 +1123,7 @@ only showing top 5 rows
 </div>
 </div>
 <p>We can find the training RMSE by passing these predictions to the <code>RegressionEvaluator().evaluate()</code> method.</p>
-<div id="ab922b95-c156-42ba-8ee5-47198257caf6" class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>RegressionEvaluator().evaluate(cvModel.transform(lr_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>0.509891557531623</code></pre>
@@ -1165,7 +1135,7 @@ only showing top 5 rows
 <p>Of course we often want to have a training and test set so we can do all of our model fitting and tuning on the training set and then see how different model types compare on the test set. We should always split our data into training and test sets first, before doing transformations. Reason being: - If we do transformations on the training set, we want to use the exact same transformations on the test set - For instance, if we center some predictors (subtract the mean) in our training set, we want to subtract the mean of the <strong>training</strong> set to standardize the test set values prior to doing test set predictions! - By splitting the data first, we can make sure we aren’t using any test data (and the knowledge that comes with it) when training our models</p>
 <p>By setting up a <strong>pipeline</strong> in <code>MLlib</code> we can easily (ha, that’s kind of a joke) create the sequence of transformations/model fits and apply those same transformations on our test set!</p>
 <p>Let’s start with the training/test split. This can be done using the <code>.randomSplit()</code> method on a spark SQL style data frame.</p>
-<div id="eea5f9d6-be15-4e2e-8f73-06cc555e9245" class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>train, test <span class="op">=</span> bike.randomSplit([<span class="fl">0.8</span>,<span class="fl">0.2</span>], seed <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(train.count(), test.count())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1174,7 +1144,7 @@ only showing top 5 rows
 </div>
 <p>Now that we’ve split our data we can <strong>set up</strong> the transformations to do. Just like with other spark stuff, things are set up as a DAG and done only at run time.<br>
 We created the transformation plans previously so we’ll just pull them down here for clarity.</p>
-<div id="3bd14b8c-f4d7-4a8b-832d-1506c81a6fab" class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Sequence of transformations</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co">#indexerTrans</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="co">#binaryTrans</span></span>
@@ -1183,10 +1153,10 @@ We created the transformation plans previously so we’ll just pull them down he
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="co">#(linear model or other model here!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We are then ready to create our pipeline that includes these transformations and the model that we want to fit. We use the <code>Pipeline()</code> function from the <code>pyspark.ml</code> module to set up our sequence of transformations/estimators.</p>
-<div id="aeb06165-54e7-4184-b9ce-d0efd5fe34ac" class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml <span class="im">import</span> Pipeline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="930fceb4-f177-4fa5-9a67-337e26819844" class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>paramGrid <span class="op">=</span> ParamGridBuilder() <span class="op">\</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    .addGrid(lr.regParam, [<span class="dv">0</span>, <span class="fl">0.01</span>, <span class="fl">0.04</span>, <span class="fl">0.06</span>, <span class="fl">0.1</span>]) <span class="op">\</span></span>
@@ -1196,14 +1166,14 @@ We created the transformation plans previously so we’ll just pull them down he
 </div>
 <p>Our DAG is now set up and we can use this pipeline within our CV calculation (or basic model fitting). What’s nice is that since it contains all the information about the transformations done, we can easily apply this to a test set and not have to worry about how to do the transformations/prepping of the data on that set.</p>
 <p>Instead of using the model type as the <code>estimator</code> we’ll pass the pipeline we’ve set up.</p>
-<div id="3cd29241-7948-4521-92ba-3e90655a1bca" class="cell" data-execution_count="39">
+<div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>crossval <span class="op">=</span> CrossValidator(estimator <span class="op">=</span> pipeline,</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>                          estimatorParamMaps <span class="op">=</span> paramGrid,</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>                          evaluator <span class="op">=</span> RegressionEvaluator(),</span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>                          numFolds<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With everything set up, we can now fit our models!</p>
-<div id="dbdf6b6d-8cb6-412e-b7bc-4f4f8e302827" class="cell" data-execution_count="40">
+<div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run cross-validation, and choose the best set of parameters.</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>cvModel <span class="op">=</span> crossval.fit(train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -1235,7 +1205,7 @@ We created the transformation plans previously so we’ll just pull them down he
 </div>
 </div>
 <p>Check which model is chosen as the best:</p>
-<div id="254ce767-18d7-47b2-ba79-7ddf3844f5f4" class="cell" data-execution_count="41">
+<div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> []</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(paramGrid)):</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    my_list.append([cvModel.avgMetrics[i], paramGrid[i].values()])</span>
@@ -1269,7 +1239,7 @@ We created the transformation plans previously so we’ll just pull them down he
 </div>
 </div>
 <p>Use that best model to get test error on the test set.</p>
-<div id="3e5818e2-3522-46a3-af5c-e001962df133" class="cell" data-execution_count="42">
+<div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>cvModel.transform(test).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+---------------+----+------------------+------------------+--------------------+------------------+
@@ -1285,7 +1255,7 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="8acc2249-0b6a-48dd-826b-461a380cd802" class="cell" data-execution_count="43">
+<div class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>test_error <span class="op">=</span> RegressionEvaluator().evaluate(cvModel.transform(test))</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(test_error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1303,7 +1273,7 @@ only showing top 5 rows
 <code>pip install entrypoints --force</code></p>
 <p>This section is modified from the <a href="https://github.com/mlflow/mlflow/blob/master/examples/sklearn_elasticnet_wine/train.ipynb">tutorial given here</a>. Although this uses <code>sklearn</code>, it can be modified to work with <code>MLlib</code>!</p>
 <p>First, they create a function to train an elastic net model specifically on the wine data we’ve used before. This function takes in the <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(L_1\)</span> ratio values from the <code>sklearn</code> <code>ElasticNet()</code> function. This function can then be passed different values of these and the given metrics will be found and logged.</p>
-<div id="19f91f92-e399-4361-ac2a-8c7cbc76059f" class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wine Quality Sample</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(in_alpha, in_l1_ratio):</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
@@ -1391,7 +1361,7 @@ only showing top 5 rows
 <span id="cb70-85"><a href="#cb70-85" aria-hidden="true" tabindex="-1"></a>        mlflow.sklearn.log_model(lr, <span class="st">"model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>With this function set up, we now just call it with different values and it creates logs for them.</p>
-<div id="d46d80f2-b850-4089-a729-23f22deb4417" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>train(<span class="fl">0.5</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>2024/03/29 13:51:46 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: No module named 'git'</code></pre>
@@ -1403,7 +1373,7 @@ only showing top 5 rows
   R2: 0.10862644997792614</code></pre>
 </div>
 </div>
-<div id="9a824103-5f1f-4440-9137-20969c0b33c7" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>train(<span class="fl">0.5</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elasticnet model (alpha=0.500000, l1_ratio=1.000000):
@@ -1412,7 +1382,7 @@ only showing top 5 rows
   R2: 0.017268050734704055</code></pre>
 </div>
 </div>
-<div id="d37a8c7e-328a-46ab-9cbd-733efb8f08d4" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>train(<span class="fl">0.1</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elasticnet model (alpha=0.100000, l1_ratio=0.500000):
@@ -1421,7 +1391,7 @@ only showing top 5 rows
   R2: 0.2430813606733676</code></pre>
 </div>
 </div>
-<div id="05ca843a-0b4e-4875-922b-123b170229d8" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>train(<span class="dv">1</span>, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Elasticnet model (alpha=1.000000, l1_ratio=0.000000):
@@ -1431,7 +1401,7 @@ only showing top 5 rows
 </div>
 </div>
 <p>If not in a docker container we would now be able to call the mlflow UI and look through things. I couldn’t get that to work and gave up! Instead, we can just read in the data it uses in the UI and look at it within python.</p>
-<div id="4b6a94ff-0b22-47a9-be4f-bc30e9e3a993" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlflow</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="co">#throws an issue but it returns the data appropriately</span></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>runs <span class="op">=</span> mlflow.search_runs(experiment_ids<span class="op">=</span>[<span class="st">"0"</span>])</span>
@@ -1440,7 +1410,7 @@ only showing top 5 rows
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1545,7 +1515,7 @@ only showing top 5 rows
 </div>
 </div>
 </div>
-<div id="202e8a7c-5907-493c-a9d7-7aca7871ca77" class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>runs.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Index(['run_id', 'experiment_id', 'status', 'artifact_uri', 'start_time',
@@ -1556,13 +1526,13 @@ only showing top 5 rows
       dtype='object')</code></pre>
 </div>
 </div>
-<div id="dfb34037-48a7-4584-a238-6cc424db46e6" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>runs[[<span class="st">"metrics.rmse"</span>, <span class="st">"metrics.r2"</span>, <span class="st">"metrics.mae"</span>, <span class="st">"params.l1_ratio"</span>, <span class="st">"params.alpha"</span>]].sort_values(<span class="st">"metrics.rmse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1652,7 +1622,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1684,50 +1665,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1737,17 +1679,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1759,130 +1692,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1926,7 +1736,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1952,32 +1761,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2038,7 +1821,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

@@ -1,0 +1,475 @@
+---
+title: "Fitting and Evaluating Simple Linear Regression Models"
+author: "Justin Post"
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css: [default, "css/ncsu.css", "css/ncsu-fonts.css", "css/mycss.css"]
+    nature:
+      beforeInit: ["js/ncsu-scale.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    includes:
+      in_header: "partials/header.html"
+    self_contained: yes
+editor_options: 
+  chunk_output_type: console
+lang: en
+---
+
+```{r, include=FALSE,warning=FALSE,message=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.align = "center",
+  #fig.width = 11,
+  #fig.height = 5
+  cache = FALSE
+)
+
+# define vars
+om = par("mar")
+lowtop = c(om[1],om[2],0.1,om[4])
+library(tidyverse)
+library(knitr)
+library(reticulate)
+#use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
+#use_python("C:\\python\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+options(dplyr.print_min = 5)
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+layout: false
+class: title-slide-section-red, middle
+
+
+# Fitting and Evaluating Simple Linear Regression Models
+Justin Post
+
+---
+layout: true
+
+<div class="my-footer"><img src="img/logo.png" alt = "" style="height: 60px;"/></div> 
+
+
+---
+
+# Modeling Ideas
+
+What is a (statistical) model?
+
+- A mathematical representation of some phenomenon on which you've observed data
+- Form of the model can vary greatly!
+
+---
+
+# Modeling Ideas
+
+What is a (statistical) model?
+
+- A mathematical representation of some phenomenon on which you've observed data
+- Form of the model can vary greatly!
+
+**Simple Linear Regression Model**
+
+- 
+
+$$\mbox{response = intercept + slope*predictor + Error}$$
+$$Y_i = \beta_0+\beta_1x_i+E_i$$
+- May make assumptions about how errors are observed
+
+
+---
+
+# Simple Linear Regression Model
+
+- First a visual
+
+```{python, out.width='400px', fig.align='center'}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+bike_data = pd.read_csv("https://www4.stat.ncsu.edu/~online/datasets/bikeDetails.csv")
+bike_data['log_selling_price'] = np.log(bike_data['selling_price'])
+bike_data['log_km_driven'] = np.log(bike_data['km_driven'])
+```
+
+
+---
+
+# Simple Linear Regression Model
+
+- First a visual
+
+```{python, out.width='400px', fig.align='center', fig.alt = "A scatterplot between year (x) and log selling price (y) is shown. The points show a roughly linear, positive relationship and a line is overlaid roughly going through the center of the points."}
+sns.regplot(x = bike_data["year"], y = bike_data["log_selling_price"])
+```
+
+
+
+---
+
+# Statistical Learning
+
+**Statistical learning** - Inference, prediction/classification, and pattern finding
+
+- Supervised learning - a variable (or variables) represents an **output** or **response** of interest
+
+--
+
+    + May model response and
+        - Make **inference** on the model parameters  
+        - **predict** a value or **classify** an observation
+
+Goal: Understand what it means to be a good predictive model
+
+---
+
+# Simple Linear Regression Model
+
+Basic model for relating a numeric predictor to a numeric response
+
+$$\mbox{response = intercept + slope*predictor + Error}$$
+$$Y_i = \beta_0+\beta_1x_i+E_i$$
+
+
+---
+
+layout: false
+
+# Simple Linear Regression Model
+
+Basic model for relating a numeric predictor to a numeric response
+
+$$\mbox{response = intercept + slope*predictor + Error}$$
+$$Y_i = \beta_0+\beta_1x_i+E_i$$
+
+Consider a data set on motorcycle sale prices
+
+```{python}
+import pandas as pd
+bike_data = pd.read_csv("https://www4.stat.ncsu.edu/~online/datasets/bikeDetails.csv")
+print(bike_data.columns)
+bike_data.head()
+```
+
+
+---
+
+# Find a 'Best' Fitting Line
+
+- We define some criteria to **fit** (or train) the model
+
+$$\mbox{Model 1: log_selling_price = intercept + slope*year + Error}$$
+$$\mbox{Model 2: log_selling_price = intercept + slope*log_km_driven + Error}$$
+
+.left45[
+```{python, echo = FALSE, out.width='350px', fig.align='center', message = FALSE, warning = FALSE, fig.alt = "A scatterplot between year (x) and log selling price (y) is shown. The points show a roughly linear, positive relationship and a line is overlaid roughly going through the center of the points."}
+import numpy as np; import seaborn as sns
+bike_data['log_selling_price'] = np.log(bike_data['selling_price'])
+bike_data['log_km_driven'] = np.log(bike_data['km_driven'])
+sns.regplot(x = bike_data["year"], y = bike_data["log_selling_price"])
+```
+]
+.right45[
+```{python, echo = FALSE, out.width='350', fig.align='center', message = FALSE, warning = FALSE, fig.alt = "A scatterplot between log km driven (x) and log selling price (y) is shown. The points show a roughly linear, negative relationship and a line is overlaid roughly going through the center of the points."}
+sns.regplot(x = bike_data["log_km_driven"], y = bike_data["log_selling_price"])
+```
+]
+
+
+---
+
+# Training a Model
+
+- We define some criteria to **fit** (or train) the model
+
+- **Loss function** - Criteria used to fit or train a model
+
+    - For a given **numeric** response value, $y_i$ and prediction, $\hat{y}_i$
+    
+    $$y_i - \hat{y}_i, (y_i-\hat{y}_i)^2, |y_i-\hat{y}_i|$$
+
+---
+
+# Training a Model
+
+- We define some criteria to **fit** (or train) the model
+
+- **Loss function** - Criteria used to fit or train a model
+
+    - For a given **numeric** response value, $y_i$ and prediction, $\hat{y}_i$
+    
+    $$y_i - \hat{y}_i, (y_i-\hat{y}_i)^2, |y_i-\hat{y}_i|$$
+    
+- We try to optimize the loss over all the observations used for training
+
+$$\sum_{i=1}^{n} (y_i-\hat{y}_i)^2~~~~~~~~~~~~~~~~~~~~ \sum_{i=1}^{n} |y_i-\hat{y}_i|$$
+
+
+---
+
+# Find a 'Best' Fitting Line
+
+- In SLR, we often use squared error loss (least squares regression)
+
+- Nice solutions for our estimates exist!
+
+$$\hat{\beta}_0 = \bar{y}-\bar{x}\hat{\beta}_1$$
+$$\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^{n}(x_i-\bar{x})^2}$$
+
+
+
+---
+
+# Find a 'Best' Fitting Line
+
+- In SLR, we often use squared error loss (least squares regression)
+
+- Nice solutions for our estimates exist!
+
+$$\hat{\beta}_0 = \bar{y}-\bar{x}\hat{\beta}_1$$
+$$\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^{n}(x_i-\bar{x})^2}$$
+
+
+```{python}
+y = bike_data['log_selling_price'] 
+x = bike_data['log_km_driven']
+b1hat = sum((x-x.mean())*(y-y.mean()))/sum((x-x.mean())**2)
+b0hat = y.mean()-x.mean()*b1hat
+print(round(b0hat, 4), round(b1hat, 4))
+```
+
+
+---
+
+# Find a 'Best' Fitting Line
+
+- In SLR, we often use squared error loss (least squares regression)
+
+- Nice solutions for our estimates exist!
+
+$$\hat{\beta}_0 = \bar{y}-\bar{x}\hat{\beta}_1$$
+$$\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^{n}(x_i-\bar{x})^2}$$
+
+
+```{python}
+y = bike_data['log_selling_price'] 
+x = bike_data['log_km_driven']
+b1hat = sum((x-x.mean())*(y-y.mean()))/sum((x-x.mean())**2)
+b0hat = y.mean()-x.mean()*b1hat
+print(round(b0hat, 4), round(b1hat, 4))
+```
+
+- These give us the values to use with $\hat{y}$!
+
+
+---
+
+# Simple Linear Regression Model in Python
+
+- Can use [`linear_model` from `sklearn` module](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) to fit the model
+
+- Note the requirements on the shape of `X` and the shape of `y` to pass to the `.fit()` method
+
+```{python}
+print(bike_data['log_km_driven'].shape)
+print(bike_data['log_km_driven'].values.reshape(-1,1).shape)
+```
+
+---
+
+# Simple Linear Regression Model in Python
+
+- Can use [`linear_model` from `sklearn` module](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) to fit the model
+
+```{python, include = FALSE, eval = TRUE, echo = FALSE}
+from sklearn import linear_model
+reg = linear_model.LinearRegression() #Create a reg object
+reg.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price']) 
+```
+
+```{python, eval = FALSE}
+from sklearn import linear_model
+reg = linear_model.LinearRegression() #Create a reg object
+reg.fit(bike_data['log_km_driven'].values.reshape(-1,1), bike_data['log_selling_price']) 
+```
+
+```{python}
+print(reg.intercept_, reg.coef_)
+```
+
+
+---
+
+# Simple Linear Regression Model
+
+- Can use the line for prediction with the `.predict()` method!
+
+```{python}
+print(reg.intercept_, reg.coef_)
+pred1 = reg.predict(np.array([[10], [12], [14]]))
+pred1 #each of these represents a 'y-hat' for the given value of x
+```
+```{python, echo = FALSE, out.width = '300px', fig.align = "center", fig.alt = "A scatterplot between log km driven (x) and log selling price (y) is shown. The points show a roughly linear, negative relationship and a line is overlaid roughly going through the center of the points."}
+sns.regplot(x = bike_data["log_km_driven"], y = bike_data["log_selling_price"], scatter_kws={'s':2})
+```
+
+
+
+---
+
+# Recenter
+
+Supervised Learning methods try to relate predictors to a response variable through a model
+
+- Lots of common models
+
+    - Regression models
+    - Tree based methods
+    - Naive Bayes
+    - k Nearest Neighbors
+
+- For a set of predictor values, each will produce some prediction we can call $\hat{y}$ 
+
+
+---
+
+# Recenter
+
+Supervised Learning methods try to relate predictors to a response variable through a model
+
+- Lots of common models
+
+    - Regression models
+    - Tree based methods
+    - Naive Bayes
+    - k Nearest Neighbors
+
+- For a set of predictor values, each will produce some prediction we can call $\hat{y}$ 
+
+Goal: Understand what it means to be a good predictive model. **How do we evaluate the model?**
+
+
+
+---
+
+# Quantifying How Well the Model Predicts
+
+We use a **loss** function to fit the model. We use a **metric** to evaluate the model!
+
+- Often use the same loss function for fitting and as the metric
+- For a given **numeric** response value, $y_i$ and prediction, $\hat{y}_i$
+$$(y_i-\hat{y}_i)^2, |y_i-\hat{y}_i|$$
+- Incorporate all points via
+$$\frac{1}{n}\sum_{i=1}^{n} (y_i-\hat{y}_i)^2, \frac{1}{n}\sum_{i=1}^{n} |y_i-\hat{y}_i|$$
+
+---
+
+# Metric Function
+
+- For a numeric response, we commonly use squared error loss as our metric to evaluate a prediction
+$$L(y_i,\hat{y}_i) = (y_i-\hat{y}_i)^2$$
+
+- Use Root Mean Square Error as a **metric** across all observations
+$$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n} L(y_i, \hat{y}_i)} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2}$$
+
+
+---
+
+# Commonly Used Metrics
+
+For prediction (numeric response)
+- Mean Squared Error (MSE) or Root Mean Squared Error (RMSE)
+- Mean Absolute Error (MAE or MAD - deviation)
+$$L(y_i,\hat{y}_i) = |y_i-\hat{y}_i|$$
+- [Huber Loss](https://en.wikipedia.org/wiki/Huber_loss)
+    + Doesn't penalize large mistakes as much as MSE
+
+
+
+---
+
+# Commonly Used Metrics
+
+For prediction (numeric response)
+- Mean Squared Error (MSE) or Root Mean Squared Error (RMSE)
+- Mean Absolute Error (MAE or MAD - deviation)
+$$L(y_i,\hat{y}_i) = |y_i-\hat{y}_i|$$
+- [Huber Loss](https://en.wikipedia.org/wiki/Huber_loss)
+    + Doesn't penalize large mistakes as much as MSE
+
+For classification (categorical response)
+- Accuracy
+- log-loss
+- AUC
+- F1 Score
+
+
+---
+
+# Evaluating our SLR Model
+
+- We could find our metric for our SLR model using the training data...
+- Import our [MSE metric](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html) from `sklearn.metrics`
+
+```{python}
+import sklearn.metrics as metrics
+pred = reg.predict(bike_data["log_km_driven"].values.reshape(-1,1))
+print(np.sqrt(metrics.mean_squared_error(bike_data["log_selling_price"], pred)))
+print(metrics.mean_absolute_error(bike_data["log_selling_price"], pred))
+```
+
+---
+
+# Useful for Comparison!
+
+- Fit a competing model with `year` as the predictor
+
+```{python}
+reg1 = linear_model.LinearRegression() #Create a reg object
+reg1.fit(bike_data['year'].values.reshape(-1,1), bike_data['log_selling_price']) 
+print(reg1.intercept_, reg1.coef_)
+```
+
+- Compare the performance on the training data...
+
+```{python}
+pred1 = reg1.predict(bike_data["year"].values.reshape(-1,1))
+print(np.sqrt(metrics.mean_squared_error(bike_data["log_selling_price"], pred)), 
+      np.sqrt(metrics.mean_squared_error(bike_data["log_selling_price"], pred1)))
+```
+
+
+---
+
+# Training vs Test Sets
+
+Ideally we want our model to predict well for observations **it has yet to see**!
+
+- For multiple linear regression models, our training MSE will always decrease as we add more variables to the model...
+
+- We'll need an independent **test** set to predict on (more on this shortly!)
+
+
+---
+
+# Recap
+
+- SLR is one type of model for a continuous type response
+
+- SLR Model is fit using some criteria (usually least squares, squared error loss)
+
+- Must determine a method to judge the model's effectiveness (a metric)
+    + Metric function measures *loss* for each prediction
+    + Combined overall all observations
+    
+- To obtain a better understanding of the predictive power of a model, we need to apply our metric to prediction made on a different set of data than that used for training!
+

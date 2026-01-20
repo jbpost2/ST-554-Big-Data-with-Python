@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-12-11">
+<meta name="dcterms.date" content="2026-01-12">
 
-<title>numeric_types_booleans – ST 554 Analysis of Big Data (with Python)</title>
+<title>ST 554 Analysis of Big Data (with Python) - Numeric Types (Int and Float) &amp; Booleans</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <link href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" rel="next">
 <link href="../01_Programming_in_python/05-List_Basics_Strings.html" rel="prev">
@@ -80,14 +80,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -98,28 +97,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand " data-bs-theme="dark">
+    <nav class="navbar navbar-expand navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ST 554 Analysis of Big Data (with Python)</span>
     </a>
   </div>
           <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="../index.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
           <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jbpost2/ST-554-Big-Data-With-Python" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text">Github Repository</span></a>
+ <span class="menu-text">Github Repository</span></a>
   </li>  
 </ul>
           <div class="quarto-navbar-tools">
@@ -133,13 +132,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/06-Numeric_Types_Booleans.html">Numeric Types (Int and Float) &amp; Booleans</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/06-Numeric_Types_Booleans.html">Numeric Types (Int and Float) &amp; Booleans</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -148,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -164,9 +163,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Topic 1: Learning <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -247,9 +246,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -312,46 +311,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/22-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Big Recap!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/23-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/24-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prediction and Training/Test Set Ideas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/25-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/27-Cross_Validation_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cross Validation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/26-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/28-Multiple_Linear_Regression_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Multiple Linear Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/27-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/29-LASSO_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LASSO Models</span></a>
   </div>
 </li>
@@ -359,9 +358,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
  <span class="menu-text">Topic 4: Big Data Management</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -442,9 +441,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Topic 5: Modeling Data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -531,9 +530,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Topic 6: Streaming Data</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -579,16 +578,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#numeric-types-int-and-float-booleans" id="toc-numeric-types-int-and-float-booleans" class="nav-link active" data-scroll-target="#numeric-types-int-and-float-booleans">Numeric Types (Int and Float) &amp; Booleans</a>
-  <ul class="collapse">
-  <li><a href="#ints-floats" id="toc-ints-floats" class="nav-link" data-scroll-target="#ints-floats">Ints &amp; Floats</a></li>
+  <li><a href="#ints-floats" id="toc-ints-floats" class="nav-link active" data-scroll-target="#ints-floats">Ints &amp; Floats</a></li>
   <li><a href="#functions-operators" id="toc-functions-operators" class="nav-link" data-scroll-target="#functions-operators">Functions &amp; Operators</a>
   <ul class="collapse">
   <li><a href="#math-module" id="toc-math-module" class="nav-link" data-scroll-target="#math-module"><code>math</code> module</a></li>
@@ -596,7 +593,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#things-to-be-aware-of" id="toc-things-to-be-aware-of" class="nav-link" data-scroll-target="#things-to-be-aware-of">Things To Be Aware Of</a></li>
   <li><a href="#things-to-noteremember" id="toc-things-to-noteremember" class="nav-link" data-scroll-target="#things-to-noteremember">Things to Note/Remember</a></li>
   <li><a href="#more-formatting-strings" id="toc-more-formatting-strings" class="nav-link" data-scroll-target="#more-formatting-strings">More Formatting Strings</a></li>
-  </ul></li>
   <li><a href="#booleans" id="toc-booleans" class="nav-link" data-scroll-target="#booleans">Booleans</a>
   <ul class="collapse">
   <li><a href="#booleaninteger-relationship" id="toc-booleaninteger-relationship" class="nav-link" data-scroll-target="#booleaninteger-relationship">Boolean/Integer Relationship</a></li>
@@ -609,8 +605,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/01-Course_Goals_Landing.html">Topic 1: Learning <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/06-Numeric_Types_Booleans.html">Numeric Types (Int and Float) &amp; Booleans</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">Numeric Types (Int and Float) &amp; Booleans</h1>
 </div>
 
 
@@ -621,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-12-11</p>
+      <p class="date">2026-01-12</p>
     </div>
   </div>
   
@@ -629,13 +626,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
 <p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/06-Numeric_Types_Booleans.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<section id="numeric-types-int-and-float-booleans" class="level1">
-<h1>Numeric Types (Int and Float) &amp; Booleans</h1>
 <ul>
 <li>Justin Post</li>
 </ul>
@@ -657,21 +650,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Python generally figures out which to use and changes to float when needed</li>
 </ul></li>
 </ul>
-<div id="2a356fb4" class="cell" data-outputid="4342220c-3c59-4542-d3b9-df1af60a417a">
+<div class="cell" data-outputid="4342220c-3c59-4542-d3b9-df1af60a417a">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>int</code></pre>
 </div>
 </div>
-<div id="hq6-HEEoKAB_" class="cell" data-outputid="9b1f73f2-a0a5-42f1-c99d-20db0d0a5717">
+<div class="cell" data-outputid="9b1f73f2-a0a5-42f1-c99d-20db0d0a5717">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">10.4</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>float</code></pre>
 </div>
 </div>
-<div id="1eCN0v8iKCZf" class="cell" data-outputid="8496d176-924b-429f-be9f-258fafe9b3f1">
+<div class="cell" data-outputid="8496d176-924b-429f-be9f-258fafe9b3f1">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> y <span class="op">-</span> <span class="fl">0.4</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -682,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>float</code></pre>
 </div>
 </div>
-<div id="ILBBijzc3eM2" class="cell" data-outputid="a41c05e0-29db-44da-9095-36844365684a">
+<div class="cell" data-outputid="a41c05e0-29db-44da-9095-36844365684a">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x <span class="op">+</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>float</code></pre>
@@ -691,7 +684,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>You can cast things (or explicitly coerce them) using <code>int()</code> and <code>float()</code></li>
 </ul>
-<div id="53ce0957" class="cell" data-outputid="0ee7e8a0-90bb-483e-b5f4-3a4a68ffc03f">
+<div class="cell" data-outputid="0ee7e8a0-90bb-483e-b5f4-3a4a68ffc03f">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -702,7 +695,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>10</code></pre>
 </div>
 </div>
-<div id="ECcwMCWPKPA_" class="cell" data-outputid="8be1816a-511d-461b-f9c3-33f80db34601">
+<div class="cell" data-outputid="8be1816a-511d-461b-f9c3-33f80db34601">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">float</span>(x)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -713,7 +706,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>10.0</code></pre>
 </div>
 </div>
-<div id="RHK8Zhj3KQWv" class="cell" data-outputid="3625dd66-ec4a-40b7-968c-9479b0c324d9">
+<div class="cell" data-outputid="3625dd66-ec4a-40b7-968c-9479b0c324d9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(<span class="fl">10.9</span>) <span class="co">#returns just the integer part (no rounding done)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>10</code></pre>
@@ -726,48 +719,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>We have all the numeric operators discussed previously and a few handy functions built in too</li>
 </ul>
-<div id="b4fca427" class="cell" data-outputid="b0bfb970-10d1-4cb5-b167-d8e77b2dd7ca">
+<div class="cell" data-outputid="b0bfb970-10d1-4cb5-b167-d8e77b2dd7ca">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#divide and discard remainder</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="op">//</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>33</code></pre>
 </div>
 </div>
-<div id="76ee966f" class="cell" data-outputid="ba0e5ff8-aae3-4ece-f478-459d288c8006">
+<div class="cell" data-outputid="ba0e5ff8-aae3-4ece-f478-459d288c8006">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#modulus or remainder</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="op">%</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>1</code></pre>
 </div>
 </div>
-<div id="f20b90cb" class="cell" data-outputid="5ba91731-3423-4ac6-db10-db2ce2c63605">
+<div class="cell" data-outputid="5ba91731-3423-4ac6-db10-db2ce2c63605">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#whole number division and modulus</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">divmod</span>(<span class="dv">100</span>, <span class="dv">3</span>) <span class="co">#returns a 'tuple' (a sort of immutable list)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(33, 1)</code></pre>
 </div>
 </div>
-<div id="e4463862" class="cell" data-outputid="50f4aa89-26a6-42e9-dd9d-46e19c90f0b2">
+<div class="cell" data-outputid="50f4aa89-26a6-42e9-dd9d-46e19c90f0b2">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#raise to a power 4^3</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">4</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>64</code></pre>
 </div>
 </div>
-<div id="cbbd4d5c" class="cell" data-outputid="c2f0e85e-f655-4ed0-d34d-67342c30f62a">
+<div class="cell" data-outputid="c2f0e85e-f655-4ed0-d34d-67342c30f62a">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#equivalent to</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="op">**</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>64</code></pre>
 </div>
 </div>
-<div id="f3u60SczKnP2" class="cell" data-outputid="7c1ddb18-94d2-48c2-e497-26ce6def377b">
+<div class="cell" data-outputid="7c1ddb18-94d2-48c2-e497-26ce6def377b">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">abs</span>(<span class="op">-</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>100</code></pre>
 </div>
 </div>
-<div id="wbJb0n14KobO" class="cell" data-outputid="f98876c0-e9b3-4bb5-ccbe-c21ec6cf88eb">
+<div class="cell" data-outputid="f98876c0-e9b3-4bb5-ccbe-c21ec6cf88eb">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(<span class="fl">10.4242</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>10.42</code></pre>
@@ -779,7 +772,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>As we saw, the <code>math</code> module has a number of useful functions</li>
 <li>Recall we can import the <code>math</code> module to gain access to its functions. We then preface functions/objects from the module with <code>math.</code></li>
 </ul>
-<div id="a86d2705" class="cell" data-outputid="76ed17f2-ed26-47ec-b030-6e4789c1f384">
+<div class="cell" data-outputid="76ed17f2-ed26-47ec-b030-6e4789c1f384">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">10.55</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#a boolean function (more on this shortly)</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>x.is_integer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -787,20 +780,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="E1JOt2HPK9oV" class="cell" data-outputid="ff07136e-29bb-4e39-9218-5c16fce69dc4">
+<div class="cell" data-outputid="ff07136e-29bb-4e39-9218-5c16fce69dc4">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>math.floor(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>10</code></pre>
 </div>
 </div>
-<div id="Rw7t8geTK-_k" class="cell" data-outputid="7827ac78-0dda-4d3e-98fb-b641cd3269f2">
+<div class="cell" data-outputid="7827ac78-0dda-4d3e-98fb-b641cd3269f2">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>math.ceil(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>11</code></pre>
 </div>
 </div>
-<div id="hR9S6UmQLAKV" class="cell" data-outputid="f8a80f0f-f4ca-4c5f-fde7-98def571a5a5">
+<div class="cell" data-outputid="f8a80f0f-f4ca-4c5f-fde7-98def571a5a5">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>math.factorial(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>3628800</code></pre>
@@ -812,7 +805,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="things-to-be-aware-of" class="level2">
 <h2 class="anchored" data-anchor-id="things-to-be-aware-of">Things To Be Aware Of</h2>
 <p>Floats are not stored precisely!</p>
-<div id="876c0a67" class="cell" data-outputid="13dec3e9-c93e-4e56-8c78-5adf5b676294">
+<div class="cell" data-outputid="13dec3e9-c93e-4e56-8c78-5adf5b676294">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.2</span><span class="op">-</span><span class="fl">1.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>0.19999999999999996</code></pre>
@@ -830,7 +823,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Augmented assignment operators are useful</li>
 </ul>
-<div id="5b6ab90c" class="cell" data-outputid="baf859ca-f0a9-493e-cbb5-cba2cb11fbfb">
+<div class="cell" data-outputid="baf859ca-f0a9-493e-cbb5-cba2cb11fbfb">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+=</span> <span class="dv">200</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -841,14 +834,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Multiple assignment can be done</li>
 </ul>
-<div id="6d854bd0" class="cell" data-outputid="a497f074-6aa2-4421-bd0a-ecc1ba2c637f">
+<div class="cell" data-outputid="a497f074-6aa2-4421-bd0a-ecc1ba2c637f">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> y <span class="op">=</span> z <span class="op">=</span> <span class="dv">40</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>40 40</code></pre>
 </div>
 </div>
-<div id="yz86aZnLLQyM" class="cell" data-outputid="d16a869d-6ab9-45b5-a322-31164c717933">
+<div class="cell" data-outputid="d16a869d-6ab9-45b5-a322-31164c717933">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x, y, z <span class="op">=</span> <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x, y)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -862,27 +855,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="more-formatting-strings" class="level2">
 <h2 class="anchored" data-anchor-id="more-formatting-strings">More Formatting Strings</h2>
 <p>We saw how to format strings earlier. Let’s revit that year!</p>
-<div id="4a3b709b" class="cell">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>Job <span class="op">=</span> <span class="st">"Professor"</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>Years <span class="op">=</span> <span class="fl">10.23</span></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>my_string <span class="op">=</span> <span class="st">"I am a </span><span class="sc">{job}</span><span class="st"> and I've been teaching for </span><span class="sc">{years:d}</span><span class="st"> years"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can use the <code>.format()</code> method on the string to place values in the placeholders. The <code>years:d</code> above specifies the type of formatting to use on the number, <code>d</code> stands for integer</p>
-<div id="hbaADeyL4ztf" class="cell" data-outputid="a56f658a-1759-4cd6-eda1-8f73ced1f005">
+<div class="cell" data-outputid="a56f658a-1759-4cd6-eda1-8f73ced1f005">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>my_string.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> Years) <span class="co">#throws an error as it expects an integer for years</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-green-fg">/tmp/ipython-input-2749422516.py</span> in <span class="ansi-cyan-fg">&lt;cell line: 0&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>my_string<span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>job <span class="ansi-blue-fg">=</span> Job<span class="ansi-blue-fg">,</span> years <span class="ansi-blue-fg">=</span> Years<span class="ansi-blue-fg">)</span> <span class="ansi-red-fg">#throws an error as it expects an integer for years</span>
-
-<span class="ansi-red-fg">ValueError</span>: Unknown format code 'd' for object of type 'float'</pre>
+<pre><code>ValueError: Unknown format code 'd' for object of type 'float'</code></pre>
 </div>
 </div>
-</div>
-<div id="FECD4CF145Sx" class="cell" data-outputid="090bd8ff-6bb3-425f-8629-c18a9287fb48">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my_string.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> <span class="bu">int</span>(Years)) <span class="co">#cast years as an integer via int()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="090bd8ff-6bb3-425f-8629-c18a9287fb48">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>my_string.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> <span class="bu">int</span>(Years)) <span class="co">#cast years as an integer via int()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>"I am a Professor and I've been teaching for 10 years"</code></pre>
 </div>
@@ -893,9 +879,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>f - Floating point numbers</li>
 <li>.<number of="" digits="">f - Floating point numbers with a fixed amount of digits to the right of the dot.</number></li>
 </ul>
-<div id="8fpmRZPj5UmA" class="cell" data-outputid="5d7db735-6e97-4591-b05a-31f45b15cf9a">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"I am a </span><span class="sc">{job}</span><span class="st"> and I've been teaching for </span><span class="sc">{years:f}</span><span class="st"> years"</span>.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> Years))</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"I am a </span><span class="sc">{job}</span><span class="st"> and I've been teaching for </span><span class="sc">{years:.1f}</span><span class="st"> years"</span>.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> Years))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="5d7db735-6e97-4591-b05a-31f45b15cf9a">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"I am a </span><span class="sc">{job}</span><span class="st"> and I've been teaching for </span><span class="sc">{years:f}</span><span class="st"> years"</span>.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> Years))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"I am a </span><span class="sc">{job}</span><span class="st"> and I've been teaching for </span><span class="sc">{years:.1f}</span><span class="st"> years"</span>.<span class="bu">format</span>(job <span class="op">=</span> Job, years <span class="op">=</span> Years))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>I am a Professor and I've been teaching for 10.230000 years
 I am a Professor and I've been teaching for 10.2 years</code></pre>
@@ -904,43 +890,42 @@ I am a Professor and I've been teaching for 10.2 years</code></pre>
 <p>Actually <a href="https://realpython.com/python-string-formatting/" target="_blank">four different ways</a> to substitute into a string (if you are interested!)</p>
 <hr>
 </section>
-</section>
 <section id="booleans" class="level1">
 <h1>Booleans</h1>
 <ul>
 <li>A <code>bool</code> is a <code>True</code> or <code>False</code> value (note the case of these two special terms)</li>
 </ul>
-<div id="d7622a17" class="cell" data-outputid="198e2f13-cfb6-4cc1-c760-f3655bdfb602">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="198e2f13-cfb6-4cc1-c760-f3655bdfb602">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>bool</code></pre>
 </div>
 </div>
 <p>Many functions and methods return a boolean. For instance, the <code>.is_integer()</code> method:</p>
-<div id="VpvfsyIfLYZs" class="cell" data-outputid="18cbaaef-76a5-42ba-ec55-0fa713f1e50e">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">10.1</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>y.is_integer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="18cbaaef-76a5-42ba-ec55-0fa713f1e50e">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">10.1</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>y.is_integer()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p>For strings (and other objects we’ll see) <code>in</code> and <code>not in</code> are useful operators that return a boolean</p>
-<div id="HxSaod4zLfKs" class="cell" data-outputid="208f503b-2852-468d-8e6b-c3bd45f80e5c">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">"an"</span> <span class="kw">in</span> <span class="st">"banana"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="208f503b-2852-468d-8e6b-c3bd45f80e5c">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">"an"</span> <span class="kw">in</span> <span class="st">"banana"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="f-iZsJODLo4j" class="cell" data-outputid="e559f473-2c1e-4271-ed1c-13daed809bf7">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">"pa"</span> <span class="kw">not</span> <span class="kw">in</span> <span class="st">"panama"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="e559f473-2c1e-4271-ed1c-13daed809bf7">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">"pa"</span> <span class="kw">not</span> <span class="kw">in</span> <span class="st">"panama"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>False</code></pre>
 </div>
 </div>
 <p><code>isInstance()</code> is a useful function to determine if an object is a certain type!</p>
-<div id="EQHIq5pyMVkC" class="cell" data-outputid="2838fd83-b37b-4bf6-8db2-e3af0b69e3cf">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(<span class="fl">10.4</span>, <span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="2838fd83-b37b-4bf6-8db2-e3af0b69e3cf">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(<span class="fl">10.4</span>, <span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>True</code></pre>
 </div>
@@ -952,46 +937,46 @@ I am a Professor and I've been teaching for 10.2 years</code></pre>
 <li>Any list, tuple, set, and dictionary are <code>True</code> except empty ones</li>
 </ul></li>
 </ul>
-<div id="149e44b9" class="cell" data-outputid="7ad7e6de-a559-4d00-8a3f-1ccabef209eb">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="st">"string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="7ad7e6de-a559-4d00-8a3f-1ccabef209eb">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="st">"string"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="JUjeYUqBLzpj" class="cell" data-outputid="ea035538-4e32-4735-c389-ac2b169bce6a">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="ea035538-4e32-4735-c389-ac2b169bce6a">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="gMf26MsdL0az" class="cell" data-outputid="27f16ff9-d949-4943-b7e7-479d0e7347cd">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="27f16ff9-d949-4943-b7e7-479d0e7347cd">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="YAT5nvIHL1Sz" class="cell" data-outputid="6266c277-3f3d-4bd3-e597-a3e65c8da04e">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="6266c277-3f3d-4bd3-e597-a3e65c8da04e">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="18e38120" class="cell" data-outputid="6190c67b-b51c-4171-ad79-b2f628dd6eed">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#None is keyword to define a null value in python</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="6190c67b-b51c-4171-ad79-b2f628dd6eed">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#None is keyword to define a null value in python</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>False</code></pre>
 </div>
 </div>
-<div id="-wRl0kdpL377" class="cell" data-outputid="280cae9a-7ef5-41e4-b467-1eb5bdf0e013">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#not can be used to negate something and make it True</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="kw">not</span> <span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="280cae9a-7ef5-41e4-b467-1eb5bdf0e013">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">#not can be used to negate something and make it True</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="kw">not</span> <span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div id="q9MkvrkVMH1S" class="cell" data-outputid="ee21bf57-e3ae-48e7-8826-ce4c278a13b3">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="kw">not</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="ee21bf57-e3ae-48e7-8826-ce4c278a13b3">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="bu">bool</span>(<span class="kw">not</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>False</code></pre>
 </div>
@@ -1006,15 +991,15 @@ I am a Professor and I've been teaching for 10.2 years</code></pre>
 <li><code>False</code> treated as 0</li>
 </ul></li>
 </ul>
-<div id="dd603a95" class="cell" data-outputid="06bb2d02-1b15-41b8-b54f-c376d387abe6">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="op">+</span> <span class="va">True</span>, <span class="dv">3</span> <span class="op">*</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="06bb2d02-1b15-41b8-b54f-c376d387abe6">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="op">+</span> <span class="va">True</span>, <span class="dv">3</span> <span class="op">*</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4 0</code></pre>
 </div>
 </div>
 <p>One thing of note is that when you do math on <code>True</code> or <code>False</code> it converts the result. Note the last computation result below.</p>
-<div id="76b8d38f" class="cell" data-outputid="2f6c8c07-bd51-46af-cd95-b165f20cc045">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">str</span>(<span class="va">True</span>), <span class="bu">str</span>(<span class="va">False</span>), <span class="bu">str</span>(<span class="va">True</span> <span class="op">+</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="2f6c8c07-bd51-46af-cd95-b165f20cc045">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">str</span>(<span class="va">True</span>), <span class="bu">str</span>(<span class="va">False</span>), <span class="bu">str</span>(<span class="va">True</span> <span class="op">+</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True False 1</code></pre>
 </div>
@@ -1025,9 +1010,9 @@ I am a Professor and I've been teaching for 10.2 years</code></pre>
 <h2 class="anchored" data-anchor-id="video-demo">Video Demo</h2>
 <p>This quick video shows some useful functions from the <code>.math</code> module for dealing with integers, floats, and booleans. Remember to pop the video out into the full player.</p>
 <p>The notebook written in the video is <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb" target="_blank">available here</a>.</p>
-<div id="BSz0SBQFaA0E" class="cell" data-outputid="249e7fa0-af97-4ed8-9a7b-6106e33d6d76">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d59f4288-1a98-446e-a82f-b0f0013e8445&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="249e7fa0-af97-4ed8-9a7b-6106e33d6d76">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d59f4288-1a98-446e-a82f-b0f0013e8445&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 
         <iframe width="720" height="405" src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=d59f4288-1a98-446e-a82f-b0f0013e8445&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" frameborder="0" allowfullscreen=""></iframe>
@@ -1093,7 +1078,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1125,50 +1121,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1178,17 +1135,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1200,130 +1148,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
+      return note.innerHTML;
     });
   }
       let selectedAnnoteEl;
@@ -1367,7 +1192,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1393,32 +1217,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1480,18 +1278,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/05-List_Basics_Strings.html" class="pagination-link" aria-label="List Basics &amp; Strings">
+      <a href="../01_Programming_in_python/05-List_Basics_Strings.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">List Basics &amp; Strings</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="pagination-link" aria-label="Common Uses for Data">
+      <a href="../01_Programming_in_python/07-Common_Uses_For_Data_Landing.html" class="pagination-link">
         <span class="nav-page-text">Common Uses for Data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
