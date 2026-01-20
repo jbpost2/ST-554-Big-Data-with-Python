@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2026-01-20">
 
 <title>ST 554 Analysis of Big Data (with Python) - Pandas Data Frames</title>
 <style>
@@ -305,6 +305,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Error Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Function Annotations &amp; Decorators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of Using <code>git</code> and <code>gitHub</code></span></a>
   </div>
 </li>
       </ul>
@@ -624,7 +636,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-12</p>
+      <p class="date">2026-01-20</p>
     </div>
   </div>
   
@@ -652,7 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Most of the time we’ll read data from a raw file directly into a <code>DataFrame</code></li>
 <li>However, you can create one with the <code>pd.DataFrame()</code> function</li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -663,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>specify columns via <code>columns =</code> list of appropriate length</li>
 <li>specify row names via <code>index =</code> list of appropriate length (if you want!)</li>
 </ul>
-<div class="cell" data-outputid="97c51437-711d-4c49-b355-3968f0305a80" data-execution_count="2">
+<div class="cell" data-outputid="97c51437-711d-4c49-b355-3968f0305a80">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#populate some lists, each of equal length</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>,<span class="st">'Charlie'</span>,<span class="st">'Dave'</span>,<span class="st">'Eve'</span>,<span class="st">'Francesca'</span>,<span class="st">'Greg'</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>age <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">22</span>]</span>
@@ -877,7 +889,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The <code>pd.DataFrame()</code> function can create <code>DataFrame</code>s from many objects</li>
 <li>For a dictionary (<code>dict</code> object), the keys become the column names (values <strong>must</strong> be of the same length)</li>
 </ul>
-<div class="cell" data-outputid="b3e5ea13-a799-4093-e487-f7d507afc116" data-execution_count="3">
+<div class="cell" data-outputid="b3e5ea13-a799-4093-e487-f7d507afc116">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>people <span class="op">=</span> {<span class="st">'Name'</span>: [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>,<span class="st">'Charlie'</span>,<span class="st">'Dave'</span>,<span class="st">'Eve'</span>,<span class="st">'Francesca'</span>,<span class="st">'Greg'</span>],</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">'Age'</span>: [<span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">23</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">22</span>],</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">'Major'</span>: [<span class="st">'Statistics'</span>, <span class="st">'History'</span>, <span class="st">'Chemistry'</span>, <span class="st">'English'</span>, <span class="st">'Math'</span>, <span class="st">'Civil Engineering'</span>,<span class="st">'Statistics'</span>],</span>
@@ -895,7 +907,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   'Statistics']}</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="78d02deb-8d9f-423b-b7a2-ec7443039a87" data-execution_count="4">
+<div class="cell" data-outputid="78d02deb-8d9f-423b-b7a2-ec7443039a87">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my_df <span class="op">=</span> pd.DataFrame(people)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -1103,7 +1115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If you have a 2D <code>numpy</code> array, the conversion to a <code>DataFrame</code> object is natural</li>
 <li>You can specify the column names with <code>columns =</code> and the indices with <code>index =</code></li>
 </ul>
-<div class="cell" data-outputid="102dcc36-2f24-440e-eb03-2341870e24d4" data-execution_count="5">
+<div class="cell" data-outputid="102dcc36-2f24-440e-eb03-2341870e24d4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_array <span class="op">=</span> np.random.random((<span class="dv">5</span>,<span class="dv">3</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_array.shape)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>my_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1118,7 +1130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        [0.22559969, 0.9329524 , 0.35925092]])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="a931adf3-57e4-4601-8550-c86b99380311" data-execution_count="6">
+<div class="cell" data-outputid="a931adf3-57e4-4601-8550-c86b99380311">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_df2 <span class="op">=</span> pd.DataFrame(my_array, columns<span class="op">=</span>[<span class="st">"1st"</span>, <span class="st">"2nd"</span>, <span class="st">"3rd"</span>], index<span class="op">=</span>[<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>])</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>my_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -1316,7 +1328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>DataFrames</code> have a <code>.columns</code> attribute</li>
 </ul>
-<div class="cell" data-outputid="630e6e97-3ea7-4fee-e3fa-dfa331f7dd03" data-execution_count="7">
+<div class="cell" data-outputid="630e6e97-3ea7-4fee-e3fa-dfa331f7dd03">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>my_df2.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Index(['1st', '2nd', '3rd'], dtype='object')</code></pre>
@@ -1325,7 +1337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>We can access the columns using a string of the column names and ‘selection brackets’</li>
 </ul>
-<div class="cell" data-outputid="0e5b6c29-fe1c-47b9-e473-d9a9af4c753a" data-execution_count="8">
+<div class="cell" data-outputid="0e5b6c29-fe1c-47b9-e473-d9a9af4c753a">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_df2[<span class="st">"1st"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
@@ -1368,7 +1380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Note that what gets returned is just a <code>Series</code>!</li>
 </ul>
-<div class="cell" data-outputid="801317c7-995d-47dc-f1d2-2a5425e72b43" data-execution_count="9">
+<div class="cell" data-outputid="801317c7-995d-47dc-f1d2-2a5425e72b43">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_df2[<span class="st">"1st"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
@@ -1504,7 +1516,7 @@ the data is changed as well.</pre>
 <ul>
 <li>We can also return a column using the attribute syntax with the column name (a period at the end of the object followed by the column name)</li>
 </ul>
-<div class="cell" data-outputid="0d73286e-360c-4485-9ca8-c8fb1882a354" data-execution_count="10">
+<div class="cell" data-outputid="0d73286e-360c-4485-9ca8-c8fb1882a354">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>my_df.Major</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div>
@@ -1552,7 +1564,7 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> object</label>
 </div>
 </div>
-<div class="cell" data-outputid="30901185-064d-4be0-ae4f-254ce9f78992" data-execution_count="11">
+<div class="cell" data-outputid="30901185-064d-4be0-ae4f-254ce9f78992">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_df.Major) <span class="co">#again a Series!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
@@ -1689,7 +1701,7 @@ the data is changed as well.</pre>
 <li>Returning more than one column is easy</li>
 <li>You can give a <code>list</code> of the column names you want to the selection brackets</li>
 </ul>
-<div class="cell" data-outputid="6be68a10-244b-41f5-9e38-7735d5427301" data-execution_count="12">
+<div class="cell" data-outputid="6be68a10-244b-41f5-9e38-7735d5427301">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>my_df[[<span class="st">'Name'</span>, <span class="st">'Age'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 
@@ -1830,7 +1842,7 @@ the data is changed as well.</pre>
 </div>
 <ul>
 <li>Note you can’t use slicing for columns using just <code>[]</code> (we’ll need to us <code>.iloc[]</code> or <code>.loc[]</code>, which we cover in a moment)</li>
-<li>If you try to index with slicing you get back appropriate rows (see below)</li>
+<li>If you try to index the rows with slicing you get back appropriate rows (see below)</li>
 </ul>
 </section>
 <section id="indexing-rows-by-slicing-with" class="level3">
@@ -1838,7 +1850,7 @@ the data is changed as well.</pre>
 <ul>
 <li>Similarly, you can index the rows using <code>[]</code> if you use a slice or a boolean array of appropriate length</li>
 </ul>
-<div class="cell" data-outputid="bf3ed55f-20a9-4822-9e6c-b54ecd1300e4" data-execution_count="13">
+<div class="cell" data-outputid="bf3ed55f-20a9-4822-9e6c-b54ecd1300e4">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 
@@ -2037,7 +2049,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="ef854b27-d271-4a6a-ecdb-ec89b7aa9189" data-execution_count="14">
+<div class="cell" data-outputid="ef854b27-d271-4a6a-ecdb-ec89b7aa9189">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="dv">3</span>:<span class="dv">5</span>] <span class="co">#get the 3rd and 4th rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 
@@ -2154,7 +2166,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="22a3274a-6358-4749-d632-a1ba78fd415e" data-execution_count="15">
+<div class="cell" data-outputid="22a3274a-6358-4749-d632-a1ba78fd415e">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>my_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 
@@ -2341,7 +2353,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="569c1e22-32e0-4d4a-8b21-015337b4eded" data-execution_count="16">
+<div class="cell" data-outputid="569c1e22-32e0-4d4a-8b21-015337b4eded">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>my_df2[<span class="dv">1</span>:<span class="dv">5</span>] <span class="co">#get the 2nd through 5th rows (counting starts at 0!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 
@@ -2474,13 +2486,13 @@ the data is changed as well.</pre>
 <li>Oddly, you can’t return a single row with just a number</li>
 <li>You can return it using slicing (recall <code>:</code> <em>usually</em> doesn’t return the last value)</li>
 </ul>
-<div class="cell" data-outputid="195a5fdb-e885-4cdf-8e84-1718d9eb6cd1" data-execution_count="17">
+<div class="cell" data-outputid="195a5fdb-e885-4cdf-8e84-1718d9eb6cd1">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>my_df2[<span class="dv">1</span>] <span class="co">#throws an error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>KeyError: 1</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="0bda0dcf-d22d-4b9d-cc10-624804d8dd54" data-execution_count="18">
+<div class="cell" data-outputid="0bda0dcf-d22d-4b9d-cc10-624804d8dd54">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>my_df2[<span class="dv">1</span>:<span class="dv">2</span>] <span class="co">#return just one row</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 
@@ -2598,7 +2610,7 @@ the data is changed as well.</pre>
 <li>Often we use a Boolean object to subset the rows (rows with a <code>True</code> get returned, <code>False</code> do not)</li>
 <li>This comes up when we use a condition found using a variable from our data frame to do the subsetting</li>
 </ul>
-<div class="cell" data-outputid="20ebdc93-bfa1-47c7-b832-923b4bdbbfeb" data-execution_count="19">
+<div class="cell" data-outputid="20ebdc93-bfa1-47c7-b832-923b4bdbbfeb">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Alice'</span> <span class="co">#create a boolean array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
@@ -2646,7 +2658,7 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> bool</label>
 </div>
 </div>
-<div class="cell" data-outputid="3a588fb1-5515-4f32-e6e9-7d547ec63656" data-execution_count="20">
+<div class="cell" data-outputid="3a588fb1-5515-4f32-e6e9-7d547ec63656">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_df[my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Alice'</span>] <span class="co">#return just the True rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 
@@ -2757,7 +2769,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="0915e84d-f704-4f3f-fd9e-063a1a7b5235" data-execution_count="21">
+<div class="cell" data-outputid="0915e84d-f704-4f3f-fd9e-063a1a7b5235">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_df[my_df[<span class="st">'Age'</span>] <span class="op">&gt;</span> <span class="dv">21</span>] <span class="co">#return only rows that match</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 
@@ -2891,10 +2903,10 @@ the data is changed as well.</pre>
 <h5 class="anchored" data-anchor-id="compound-logicals">Compound Logicals</h5>
 <ul>
 <li>All the standard compound logical operators exist</li>
-<li><code>&amp;</code> (and), <code>|</code> (or), <code>~</code> (not), <code>^</code> (xor - exclusive or)</li>
+<li><code>&amp;</code> (and) and <code>|</code> (or) being the most useful</li>
 </ul>
 <p>First, two boolean vectors:</p>
-<div class="cell" data-outputid="e1fd781b-2e79-42fd-ee02-11d6399d2932" data-execution_count="22">
+<div class="cell" data-outputid="e1fd781b-2e79-42fd-ee02-11d6399d2932">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Alice'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>
@@ -2942,7 +2954,7 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> bool</label>
 </div>
 </div>
-<div class="cell" data-outputid="984f3ac0-160c-4e2e-b09d-55589a28ca6c" data-execution_count="23">
+<div class="cell" data-outputid="984f3ac0-160c-4e2e-b09d-55589a28ca6c">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Greg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
@@ -2993,7 +3005,7 @@ the data is changed as well.</pre>
 <ul>
 <li>Get either/or for these two booleans</li>
 </ul>
-<div class="cell" data-outputid="f09d85c6-22d6-49e8-9e11-e0051d3a98e3" data-execution_count="24">
+<div class="cell" data-outputid="f09d85c6-22d6-49e8-9e11-e0051d3a98e3">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Alice'</span>) <span class="op">|</span> (my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Greg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
@@ -3044,7 +3056,7 @@ the data is changed as well.</pre>
 <ul>
 <li>Now we can subset the data based on this compound condition!</li>
 </ul>
-<div class="cell" data-outputid="744970dc-8511-468d-d251-1a01975e8f2f" data-execution_count="25">
+<div class="cell" data-outputid="744970dc-8511-468d-d251-1a01975e8f2f">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_df[(my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Alice'</span>) <span class="op">|</span> (my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Greg'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 
@@ -3164,7 +3176,7 @@ the data is changed as well.</pre>
 <ul>
 <li>When doing lots of logicals, you want to be careful and use <code>()</code> to keep things straight!</li>
 </ul>
-<div class="cell" data-outputid="b72c72ec-9df0-4adf-afbd-c6635fd46680" data-execution_count="26">
+<div class="cell" data-outputid="b72c72ec-9df0-4adf-afbd-c6635fd46680">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>my_df[((my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Alice'</span>) <span class="op">|</span> (my_df[<span class="st">'Name'</span>] <span class="op">==</span> <span class="st">'Greg'</span>)) <span class="op">&amp;</span> (my_df[<span class="st">'Age'</span>] <span class="op">&gt;</span> <span class="dv">21</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 
@@ -3290,7 +3302,7 @@ the data is changed as well.</pre>
 <ul>
 <li>Can access rows by their <strong>integer location</strong> using <code>.iloc[]</code></li>
 </ul>
-<div class="cell" data-outputid="e033d457-6bd6-40f4-9653-72a8acb90db2" data-execution_count="27">
+<div class="cell" data-outputid="e033d457-6bd6-40f4-9653-72a8acb90db2">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
@@ -3322,7 +3334,7 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> object</label>
 </div>
 </div>
-<div class="cell" data-outputid="caa8c745-a80f-4252-b24a-1398a3c60b66" data-execution_count="28">
+<div class="cell" data-outputid="caa8c745-a80f-4252-b24a-1398a3c60b66">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_df.iloc[<span class="dv">1</span>]) <span class="co">#Again a Series is returned</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
@@ -3456,9 +3468,9 @@ the data is changed as well.</pre>
 </div>
 </div>
 <ul>
-<li>The row is return as a <code>Series</code> with the data type being as broad as it needs to be. Here it is returned with a data type of <code>object</code> (used for storing mixed <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html">data types</a>)</li>
+<li>The row is returned as a <code>Series</code> with the data type being as broad as it needs to be. Here it is returned with a data type of <code>object</code> (used for storing mixed <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dtypes.html">data types</a>)</li>
 </ul>
-<div class="cell" data-outputid="3887b6b3-17b9-4b28-a173-f02446e9f53d" data-execution_count="29">
+<div class="cell" data-outputid="3887b6b3-17b9-4b28-a173-f02446e9f53d">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
@@ -3491,9 +3503,9 @@ the data is changed as well.</pre>
 </div>
 </div>
 <ul>
-<li>With our other data object, all elements in a row are floats so that is the data type of the series that is returned</li>
+<li>With our other data object,<code>my_df2</code>, all elements in a row are floats so that is the data type of the series that is returned</li>
 </ul>
-<div class="cell" data-outputid="f77ffa99-9101-4f78-db76-7d0d89a73043" data-execution_count="30">
+<div class="cell" data-outputid="f77ffa99-9101-4f78-db76-7d0d89a73043">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>my_df2.iloc[<span class="dv">1</span>].dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>dtype('float64')</code></pre>
@@ -3502,7 +3514,7 @@ the data is changed as well.</pre>
 <ul>
 <li>You can return more than one row by passing a list (or similar type object, such as a <code>range()</code> call) of the numeric indices you want</li>
 </ul>
-<div class="cell" data-outputid="34e11e43-f6de-4ce8-d70f-92b68314abe4" data-execution_count="31">
+<div class="cell" data-outputid="34e11e43-f6de-4ce8-d70f-92b68314abe4">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[[<span class="dv">0</span>,<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 
@@ -3619,7 +3631,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="96c8806d-839d-4d70-d5b4-3da23112e5cd" data-execution_count="32">
+<div class="cell" data-outputid="96c8806d-839d-4d70-d5b4-3da23112e5cd">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[<span class="dv">2</span>:<span class="dv">5</span>] <span class="co">#note this doesn't include the last value!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 
@@ -3742,7 +3754,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="3eab25e9-3d12-4393-df6b-46703515ea29" data-execution_count="33">
+<div class="cell" data-outputid="3eab25e9-3d12-4393-df6b-46703515ea29">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">3</span>)] <span class="co">#range doesn't include the last value either!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 
@@ -3872,7 +3884,7 @@ the data is changed as well.</pre>
 <li><code>.iloc[]</code> allows for subsetting of columns by location too!</li>
 <li>Simply add a <code>,</code> to get the 2nd dimension (similar to subsetting a <code>numpy</code> array)</li>
 </ul>
-<div class="cell" data-outputid="0913f7af-8180-45e0-ac09-e7d181d5c162" data-execution_count="34">
+<div class="cell" data-outputid="0913f7af-8180-45e0-ac09-e7d181d5c162">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[[<span class="dv">0</span>,<span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>]] <span class="co">#rows [0,1], columns [0,2]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 
@@ -3986,7 +3998,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="388254da-7958-4681-b761-e6c6c64b650a" data-execution_count="35">
+<div class="cell" data-outputid="388254da-7958-4681-b761-e6c6c64b650a">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>my_df.iloc[<span class="dv">3</span>:<span class="dv">6</span>, <span class="dv">0</span>:<span class="dv">2</span>] <span class="co">#slicing doesn't include either last value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 
@@ -4114,7 +4126,7 @@ the data is changed as well.</pre>
 <li><code>.loc[]</code> is similar to <code>.iloc[]</code> but it allows for subsetting based on <strong>labels</strong> or <strong>boolean arrays</strong></li>
 <li>Slicing has a slightly different behavior! The last value <strong>is</strong> included for <code>.loc[]</code>. How awesomely confusing and annoying!</li>
 </ul>
-<div class="cell" data-outputid="d887c139-e9f3-4a75-fd68-c918ad6667b0" data-execution_count="36">
+<div class="cell" data-outputid="d887c139-e9f3-4a75-fd68-c918ad6667b0">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>my_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 
@@ -4313,7 +4325,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="d36232b3-b945-401d-d89b-967faf7efa2a" data-execution_count="37">
+<div class="cell" data-outputid="d36232b3-b945-401d-d89b-967faf7efa2a">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[<span class="dv">0</span>] <span class="co">#0 is interpreted as a label, which exists for my_df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <div>
@@ -4345,7 +4357,7 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> object</label>
 </div>
 </div>
-<div class="cell" data-outputid="b315aff0-065f-4092-da31-9bd72bd0f946" data-execution_count="38">
+<div class="cell" data-outputid="b315aff0-065f-4092-da31-9bd72bd0f946">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 
@@ -4532,7 +4544,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="9ea65368-4d4c-4624-b5b0-dd65488cd5f4" data-execution_count="39">
+<div class="cell" data-outputid="9ea65368-4d4c-4624-b5b0-dd65488cd5f4">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>my_df2.loc[<span class="st">"b"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
@@ -4567,7 +4579,7 @@ the data is changed as well.</pre>
 <ul>
 <li>You can use slicing</li>
 </ul>
-<div class="cell" data-outputid="22994342-0897-460d-e0ce-89a2505f476a" data-execution_count="40">
+<div class="cell" data-outputid="22994342-0897-460d-e0ce-89a2505f476a">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[<span class="dv">2</span>:<span class="dv">5</span>] <span class="co">#note this includes the last value! (again interpreted as labels)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 
@@ -4696,7 +4708,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="87dd0b64-dee0-48cf-d87b-c6f22c81a70b" data-execution_count="41">
+<div class="cell" data-outputid="87dd0b64-dee0-48cf-d87b-c6f22c81a70b">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>my_df2.loc[<span class="st">"b"</span>:<span class="st">"e"</span>] <span class="co">#includes the last value!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 
@@ -4830,7 +4842,7 @@ the data is changed as well.</pre>
 <ul>
 <li>Just like with <code>.iloc[]</code> you can return both columns and rows if you put in a <code>,</code> for the dimensions (rows, columns)</li>
 </ul>
-<div class="cell" data-outputid="1b4bbf00-c94a-4ebe-ddae-f022e6215947" data-execution_count="42">
+<div class="cell" data-outputid="1b4bbf00-c94a-4ebe-ddae-f022e6215947">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[:<span class="dv">3</span>, [<span class="st">'Name'</span>, <span class="st">"Major"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 
@@ -4957,7 +4969,7 @@ the data is changed as well.</pre>
 <ul>
 <li>You can use slicing on the column names too!</li>
 </ul>
-<div class="cell" data-outputid="16e56008-764e-409b-8aad-6e762a169bed" data-execution_count="43">
+<div class="cell" data-outputid="16e56008-764e-409b-8aad-6e762a169bed">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[:<span class="dv">3</span>, <span class="st">'Name'</span>:<span class="st">"Major"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 
@@ -5094,7 +5106,7 @@ the data is changed as well.</pre>
 <li>As with <code>[]</code> we can use a boolean to return only certain rows (and/or columns)</li>
 <li>Must supply a boolean of the correct length!</li>
 </ul>
-<div class="cell" data-outputid="80ddd624-dde3-4529-b359-f9cdff26b49b" data-execution_count="44">
+<div class="cell" data-outputid="80ddd624-dde3-4529-b359-f9cdff26b49b">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="st">'Age'</span>] <span class="op">&gt;</span> <span class="dv">21</span> <span class="co">#create a boolean array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <div>
@@ -5142,7 +5154,7 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> bool</label>
 </div>
 </div>
-<div class="cell" data-outputid="36c717fe-66f0-458b-89a9-066616cde536" data-execution_count="45">
+<div class="cell" data-outputid="36c717fe-66f0-458b-89a9-066616cde536">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[my_df[<span class="st">'Age'</span>] <span class="op">&gt;</span> <span class="dv">21</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 
@@ -5274,7 +5286,7 @@ the data is changed as well.</pre>
 <ul>
 <li>Here we gain the advantage of being able to select columns of interest at the same time as subsetting the rows!</li>
 </ul>
-<div class="cell" data-outputid="d63a3dfe-e68e-4e18-dde6-0974b31033ed" data-execution_count="46">
+<div class="cell" data-outputid="d63a3dfe-e68e-4e18-dde6-0974b31033ed">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[my_df[<span class="st">'Age'</span>] <span class="op">&gt;</span> <span class="dv">21</span>, [<span class="st">"Name"</span>, <span class="st">"Age"</span>]] <span class="co">#still can return only selected columns too</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 
@@ -5402,13 +5414,13 @@ the data is changed as well.</pre>
 <li>You can use booleans for both rows and columns</li>
 <li>Also, <code>.isin()</code> is a very convenient operator!</li>
 </ul>
-<div class="cell" data-outputid="9e685493-2f90-43f7-c099-f151dcb7280a" data-execution_count="47">
+<div class="cell" data-outputid="9e685493-2f90-43f7-c099-f151dcb7280a">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>my_df.columns.isin([<span class="st">"Name"</span>, <span class="st">"Age"</span>]) <span class="co">#returns a boolean of the same length as our number of columns!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>array([ True,  True, False])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="322c47b2-f2f0-453d-c54d-1f4b0fc26f2f" data-execution_count="48">
+<div class="cell" data-outputid="322c47b2-f2f0-453d-c54d-1f4b0fc26f2f">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>my_df.loc[my_df[<span class="st">"Age"</span>] <span class="op">&gt;</span> <span class="dv">21</span>, my_df.columns.isin([<span class="st">"Name"</span>, <span class="st">"Age"</span>])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 
@@ -5540,7 +5552,7 @@ the data is changed as well.</pre>
 <ul>
 <li><code>.head()</code> and <code>.tail()</code> methods give the first few and last rows, respectively</li>
 </ul>
-<div class="cell" data-outputid="6d3b7ea5-1e28-4c74-e6ff-53225d08c852" data-execution_count="49">
+<div class="cell" data-outputid="6d3b7ea5-1e28-4c74-e6ff-53225d08c852">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>my_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 
@@ -5675,7 +5687,7 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="d291f015-a80f-4d48-8787-221c3719dd7a" data-execution_count="50">
+<div class="cell" data-outputid="d291f015-a80f-4d48-8787-221c3719dd7a">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>my_df.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 
@@ -5813,7 +5825,7 @@ the data is changed as well.</pre>
 <ul>
 <li><code>.shape</code> attribute contains the dimensions of the data frame</li>
 </ul>
-<div class="cell" data-outputid="ddfcde7b-5314-4b4b-8a5f-881099239f73" data-execution_count="51">
+<div class="cell" data-outputid="ddfcde7b-5314-4b4b-8a5f-881099239f73">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>my_df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>(7, 3)</code></pre>
@@ -5822,7 +5834,7 @@ the data is changed as well.</pre>
 <ul>
 <li><code>.info()</code> method gives information about the data frame</li>
 </ul>
-<div class="cell" data-outputid="e11e31f0-afc0-4ef9-c250-89ea7e997e14" data-execution_count="52">
+<div class="cell" data-outputid="e11e31f0-afc0-4ef9-c250-89ea7e997e14">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>my_df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -5837,7 +5849,7 @@ dtypes: int64(1), object(2)
 memory usage: 300.0+ bytes</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="fff2f4ef-46f2-44be-b7b9-c20bed0972f7" data-execution_count="53">
+<div class="cell" data-outputid="fff2f4ef-46f2-44be-b7b9-c20bed0972f7">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>my_df2.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -5855,7 +5867,7 @@ memory usage: 332.0+ bytes</code></pre>
 <ul>
 <li>Obtain a quick contingency table with the <code>.value_counts()</code> method on a column (so a <code>.Series</code> method really)</li>
 </ul>
-<div class="cell" data-outputid="d80fe319-5a83-4a4f-81b5-08c087df6631" data-execution_count="54">
+<div class="cell" data-outputid="d80fe319-5a83-4a4f-81b5-08c087df6631">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>my_df[<span class="st">"Major"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <div>
@@ -5917,7 +5929,7 @@ memory usage: 332.0+ bytes</code></pre>
 </ul>
 <p>Remember to pop the video out into the full player.</p>
 <p>The notebook written in the video is <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb">available here</a>.</p>
-<div class="cell" data-outputid="e62a4986-f90e-4eee-ee05-5076ac3a2597" data-execution_count="55">
+<div class="cell" data-outputid="e62a4986-f90e-4eee-ee05-5076ac3a2597">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=2dcc67df-5465-4570-83b7-b0ff0008e9a7&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">

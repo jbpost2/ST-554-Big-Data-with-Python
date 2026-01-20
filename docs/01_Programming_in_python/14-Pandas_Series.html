@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2026-01-20">
 
 <title>ST 554 Analysis of Big Data (with Python) - Pandas Series</title>
 <style>
@@ -305,6 +305,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Error Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Function Annotations &amp; Decorators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of Using <code>git</code> and <code>gitHub</code></span></a>
   </div>
 </li>
       </ul>
@@ -613,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-12</p>
+      <p class="date">2026-01-20</p>
     </div>
   </div>
   
@@ -646,7 +658,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Create a series using the <code>pd.Series()</code> function</li>
 </ul>
-<div class="cell" data-outputid="c9edbc13-d164-4956-d0a5-cf723b003f84" data-execution_count="1">
+<div class="cell" data-outputid="c9edbc13-d164-4956-d0a5-cf723b003f84">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">2</span>) <span class="co">#set a seed</span></span>
@@ -720,19 +732,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Unlike <code>numpy</code> arrays, <code>Series</code> can be indexed by an <code>index</code> attribute (not just the numeric index)</li>
 <li><code>.index</code> attribute returns just these indices</li>
 </ul>
-<div class="cell" data-outputid="1ce4215c-fe6d-442d-891a-492ec3220643" data-execution_count="2">
+<div class="cell" data-outputid="1ce4215c-fe6d-442d-891a-492ec3220643">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>s.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>RangeIndex(start=0, stop=10, step=1)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="fb847a76-f65f-454c-d542-a2242a2ea81c" data-execution_count="3">
+<div class="cell" data-outputid="fb847a76-f65f-454c-d542-a2242a2ea81c">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">0</span>] <span class="co">#is both the numeric index and the value of an index here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>np.float64(2.756213527174132)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="575f187c-0e7d-4b6a-9680-c36f2c9e2057" data-execution_count="4">
+<p>Let’s add an different index to our series when we create it. To do so, we add the <code>index</code> argument to the <code>pd.Series()</code> function.</p>
+<div class="cell" data-outputid="575f187c-0e7d-4b6a-9680-c36f2c9e2057">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> pd.Series(rng.normal(size <span class="op">=</span> <span class="dv">10</span>, loc <span class="op">=</span> <span class="dv">2</span>, scale <span class="op">=</span> <span class="dv">4</span>),</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>               index <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> <span class="st">"abcdefghij"</span>])</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>s2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -794,14 +807,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="78042d6a-b7c8-46a2-f360-56839cf92be7" data-execution_count="5">
+<div class="cell" data-outputid="78042d6a-b7c8-46a2-f360-56839cf92be7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>s2.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>Index(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'], dtype='object')</code></pre>
 </div>
 </div>
 <p>We can access elements with the numeric index or the index value itself but this behavior will go away soon and the <code>.iloc[]</code> method should be used instead (we discuss the similar <code>DataFrames</code> <code>.iloc[]</code> method shortly).</p>
-<div class="cell" data-outputid="622204eb-079f-4d99-bd08-80baf13dc078" data-execution_count="6">
+<div class="cell" data-outputid="622204eb-079f-4d99-bd08-80baf13dc078">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>s2[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/tmp/ipython-input-3318850340.py:1: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
@@ -811,7 +824,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>np.float64(0.6847043837681492)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="2523d3c5-5959-42a1-d672-c1f1df948f46" data-execution_count="7">
+<div class="cell" data-outputid="2523d3c5-5959-42a1-d672-c1f1df948f46">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>s2[<span class="st">"c"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>np.float64(0.6847043837681492)</code></pre>
@@ -820,14 +833,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>We can obtain just the values with of a <code>Series</code> using the <code>.values</code> attribute</li>
 </ul>
-<div class="cell" data-outputid="654e3bb5-24c8-413d-9a27-5057884ccd12" data-execution_count="8">
+<div class="cell" data-outputid="654e3bb5-24c8-413d-9a27-5057884ccd12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([ 2.75621353, -0.09099377,  0.34774583, -7.76586953,  9.19882953,
         6.57666349,  0.69830865,  5.09522635,  3.12484268, -0.21529135])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="6fcae509-64d8-45a3-d77b-60b151844b81" data-execution_count="9">
+<div class="cell" data-outputid="6fcae509-64d8-45a3-d77b-60b151844b81">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>s2.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([ 5.9102698 ,  0.75777381,  0.68470438, -1.16858702,  3.81983228,
@@ -837,7 +850,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Note that when you return the values you get back just a <code>numpy</code> array!</li>
 </ul>
-<div class="cell" data-outputid="cad986ee-de38-4325-cacf-de854bbcb391" data-execution_count="10">
+<div class="cell" data-outputid="cad986ee-de38-4325-cacf-de854bbcb391">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(s2.values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>numpy.ndarray</code></pre>
@@ -853,7 +866,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Recall a dictionary consists of key/value pairs</li>
 <li>When creating a <code>Series</code> from a dictionary, the keys of the dictionary become the indices</li>
 </ul>
-<div class="cell" data-outputid="70ed9551-cbc9-4df6-f075-bc1afe8083cf" data-execution_count="11">
+<div class="cell" data-outputid="70ed9551-cbc9-4df6-f075-bc1afe8083cf">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">'b'</span>: <span class="dv">1</span>,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     <span class="st">'a'</span>: <span class="dv">0</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">'c'</span>: <span class="dv">2</span>}</span>
@@ -889,7 +902,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Here’s an example with more complex values that show the values of a <code>Series</code> can be a list!</p>
-<div class="cell" data-outputid="a39b01ed-a00a-494c-fa83-20493efa488a" data-execution_count="12">
+<div class="cell" data-outputid="a39b01ed-a00a-494c-fa83-20493efa488a">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>AFCDivisions <span class="op">=</span> {</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCNorth"</span>: [<span class="st">"Steelers"</span>, <span class="st">"Browns"</span>, <span class="st">"Ravens"</span>, <span class="st">"Bengals"</span>],</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"AFCEast"</span> : [<span class="st">"Patriots"</span>, <span class="st">"Jets"</span>, <span class="st">"Dolphins"</span>, <span class="st">"Bills"</span>],</span>
@@ -939,13 +952,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>But <code>Series</code> have an ordering to them so, unlike a dictionary, we can use a numeric index (although again, <code>.iloc[]</code> is now the preferred way to do numeric index subsetting)</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="b1059036-670b-458c-a04a-6dd756d46123" data-execution_count="13">
+<div class="cell" data-outputid="b1059036-670b-458c-a04a-6dd756d46123">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>div_series[<span class="st">"AFCNorth"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="472ac327-52a0-46e4-be92-3e949016041d" data-execution_count="14">
+<div class="cell" data-outputid="472ac327-52a0-46e4-be92-3e949016041d">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>div_series[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/tmp/ipython-input-1027297572.py:1: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
@@ -955,7 +968,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="2ef1a449-c111-4693-9dec-9d91190c5cf6" data-execution_count="15">
+<div class="cell" data-outputid="2ef1a449-c111-4693-9dec-9d91190c5cf6">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>div_series.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>['Steelers', 'Browns', 'Ravens', 'Bengals']</code></pre>
@@ -964,7 +977,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>We can check if an index occurs similar to how we could check if a key occurred in a dictionary</li>
 </ul>
-<div class="cell" data-outputid="e5dfaa45-16cc-45d0-8423-179973036179" data-execution_count="16">
+<div class="cell" data-outputid="e5dfaa45-16cc-45d0-8423-179973036179">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AFCNorth"</span> <span class="kw">in</span> AFCDivisions)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AFCNorth"</span> <span class="kw">in</span> div_series)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -980,7 +993,7 @@ True</code></pre>
 <li>Series behave very similarly to <code>NumPy</code>’s 1D <code>ndarray</code></li>
 <li>In fact, <code>NumPy</code> functions can typically take series as input!</li>
 </ul>
-<div class="cell" data-outputid="964d009c-3419-4106-e50f-63adfa0b781b" data-execution_count="17">
+<div class="cell" data-outputid="964d009c-3419-4106-e50f-63adfa0b781b">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s <span class="co">#was created from a numpy array!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
@@ -1040,7 +1053,7 @@ True</code></pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="214b2a98-c4bf-4378-d377-26e299bda113" data-execution_count="18">
+<div class="cell" data-outputid="214b2a98-c4bf-4378-d377-26e299bda113">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>np.exp(s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
@@ -1103,7 +1116,7 @@ True</code></pre>
 <ul>
 <li>Numerical operations are done element-wise</li>
 </ul>
-<div class="cell" data-outputid="9c5e6a7c-a93b-4bf8-e86a-1a5fd1d7bbdf" data-execution_count="19">
+<div class="cell" data-outputid="9c5e6a7c-a93b-4bf8-e86a-1a5fd1d7bbdf">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
@@ -1174,7 +1187,7 @@ True</code></pre>
 <li>can using slicing with <code>:</code></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="a7d62daa-0704-4904-f7d8-3982f87f9322" data-execution_count="20">
+<div class="cell" data-outputid="a7d62daa-0704-4904-f7d8-3982f87f9322">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">4</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
@@ -1235,7 +1248,7 @@ True</code></pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="33ad956c-4e47-471d-f340-53972323c794" data-execution_count="21">
+<div class="cell" data-outputid="33ad956c-4e47-471d-f340-53972323c794">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>s[:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
@@ -1275,7 +1288,7 @@ True</code></pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="c8788e96-2244-4a56-ba61-efe10cad23af" data-execution_count="22">
+<div class="cell" data-outputid="c8788e96-2244-4a56-ba61-efe10cad23af">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>s[<span class="dv">3</span>:<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div>

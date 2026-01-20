@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2026-01-20">
 
 <title>ST 554 Analysis of Big Data (with Python) - Numerical Summaries</title>
 <style>
@@ -305,6 +305,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Error Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Function Annotations &amp; Decorators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of Using <code>git</code> and <code>gitHub</code></span></a>
   </div>
 </li>
       </ul>
@@ -616,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-12</p>
+      <p class="date">2026-01-20</p>
     </div>
   </div>
   
@@ -660,7 +672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The <code>.info()</code> method allows us to see how our variables are stored (among other things)</li>
 <li>Column data types should make sense for what you expect!</li>
 </ul>
-<div class="cell" data-outputid="7af3a72e-f8b7-4fd9-a170-a6a856ded9b3" data-execution_count="2">
+<div class="cell" data-outputid="548f071b-5e80-4bda-e592-bb5a39107cf1" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>titanic_data.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -689,11 +701,11 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li><code>.head()</code> and <code>.tail()</code> help to see what we have as well</li>
 </ul>
-<div class="cell" data-outputid="3f53f6cb-e2d9-4478-e592-18124f053fd0" data-execution_count="3">
+<div class="cell" data-outputid="0cf48694-d78b-439b-c0a4-7dbe5293986f" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>titanic_data.head() <span class="co">#clearly some missing values with NaNs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 
-  <div id="df-7b8fdb3a-21e6-4262-b275-23991c7c8593" class="colab-df-container">
+  <div id="df-44fdb38d-de12-4061-a93f-775c4f26befc" class="colab-df-container">
     <div>
 
 
@@ -811,7 +823,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-7b8fdb3a-21e6-4262-b275-23991c7c8593')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-44fdb38d-de12-4061-a93f-775c4f26befc')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -861,12 +873,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-7b8fdb3a-21e6-4262-b275-23991c7c8593 button.colab-df-convert');
+        document.querySelector('#df-44fdb38d-de12-4061-a93f-775c4f26befc button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7b8fdb3a-21e6-4262-b275-23991c7c8593');
+        const element = document.querySelector('#df-44fdb38d-de12-4061-a93f-775c4f26befc');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -886,139 +898,15 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-5022458a-8b94-42cb-8b1c-768f2d92c6a6">
-  <button class="colab-df-quickchart" onclick="quickchart('df-5022458a-8b94-42cb-8b1c-768f2d92c6a6')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-5022458a-8b94-42cb-8b1c-768f2d92c6a6 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="b92d936b-09b1-4267-90f9-0d2535e44783" data-execution_count="4">
+<div class="cell" data-outputid="8554a4b8-528d-4543-d3fb-eea710c78f03" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>titanic_data.tail() <span class="co">#note the last row of NaN (not a number)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 
-  <div id="df-35aeafc5-f564-4d66-82b0-1ce3ebb30b3e" class="colab-df-container">
+  <div id="df-0385aa74-95ac-40f8-970d-399daa1dc5c5" class="colab-df-container">
     <div>
 
 
@@ -1136,7 +1024,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-35aeafc5-f564-4d66-82b0-1ce3ebb30b3e')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0385aa74-95ac-40f8-970d-399daa1dc5c5')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -1186,12 +1074,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-35aeafc5-f564-4d66-82b0-1ce3ebb30b3e button.colab-df-convert');
+        document.querySelector('#df-0385aa74-95ac-40f8-970d-399daa1dc5c5 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-35aeafc5-f564-4d66-82b0-1ce3ebb30b3e');
+        const element = document.querySelector('#df-0385aa74-95ac-40f8-970d-399daa1dc5c5');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1211,130 +1099,6 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-a935178a-0ce7-4b93-8cde-e066839ae08e">
-  <button class="colab-df-quickchart" onclick="quickchart('df-a935178a-0ce7-4b93-8cde-e066839ae08e')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-a935178a-0ce7-4b93-8cde-e066839ae08e button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
@@ -1347,11 +1111,11 @@ memory usage: 143.4+ KB</code></pre>
 <li>Use the <code>describe()</code> method on a data frame</li>
 <li>Check that the min’s, max’s, etc. all make sense!</li>
 </ul>
-<div class="cell" data-outputid="0a0f5950-7a7d-4ba1-d3b0-96054c792b46" data-execution_count="5">
+<div class="cell" data-outputid="33748799-d200-426c-cbc6-a7e3d8404ea0" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>titanic_data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 
-  <div id="df-54f73445-dcf4-4480-86cd-9786b190d726" class="colab-df-container">
+  <div id="df-ce5c783e-faf0-425a-b2b4-df4e504bf961" class="colab-df-container">
     <div>
 
 
@@ -1457,7 +1221,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-54f73445-dcf4-4480-86cd-9786b190d726')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ce5c783e-faf0-425a-b2b4-df4e504bf961')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -1507,12 +1271,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-54f73445-dcf4-4480-86cd-9786b190d726 button.colab-df-convert');
+        document.querySelector('#df-ce5c783e-faf0-425a-b2b4-df4e504bf961 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-54f73445-dcf4-4480-86cd-9786b190d726');
+        const element = document.querySelector('#df-ce5c783e-faf0-425a-b2b4-df4e504bf961');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1532,130 +1296,6 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-ce2dca07-114a-4697-83a1-d3b7e1eb3a3a">
-  <button class="colab-df-quickchart" onclick="quickchart('df-ce2dca07-114a-4697-83a1-d3b7e1eb3a3a')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-ce2dca07-114a-4697-83a1-d3b7e1eb3a3a button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
@@ -1663,7 +1303,7 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Recall we can subset our columns with <code>[]</code></li>
 </ul>
-<div class="cell" data-outputid="3cbe651d-a6c7-4531-9875-abbe3d0b05ef" data-execution_count="6">
+<div class="cell" data-outputid="ed41522e-ee39-4a36-bc45-99f947642973" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>titanic_data.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Index(['pclass', 'survived', 'name', 'sex', 'age', 'sibsp', 'parch', 'ticket',
@@ -1674,11 +1314,11 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>We can determine which <code>percentiles</code> of selected columns to return by combining the column subsetting via selection brackets <code>[]</code> and the <code>.describe()</code> method</li>
 </ul>
-<div class="cell" data-outputid="2f2ab3a6-ab12-46da-9d8d-23aa6f9806ed" data-execution_count="8">
+<div class="cell" data-outputid="893167bc-0f87-4feb-91e7-cc1c1f2f20dd" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>titanic_data[[<span class="st">"age"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>, <span class="st">"fare"</span>]].describe(percentiles <span class="op">=</span> [<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.99</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="7">
 
-  <div id="df-3b527d7c-7865-4f00-be3f-9595828bf3db" class="colab-df-container">
+  <div id="df-5e17e9dd-7d28-47b1-98fd-042afabdbf9c" class="colab-df-container">
     <div>
 
 
@@ -1764,7 +1404,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-3b527d7c-7865-4f00-be3f-9595828bf3db')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5e17e9dd-7d28-47b1-98fd-042afabdbf9c')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -1814,12 +1454,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-3b527d7c-7865-4f00-be3f-9595828bf3db button.colab-df-convert');
+        document.querySelector('#df-5e17e9dd-7d28-47b1-98fd-042afabdbf9c button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3b527d7c-7865-4f00-be3f-9595828bf3db');
+        const element = document.querySelector('#df-5e17e9dd-7d28-47b1-98fd-042afabdbf9c');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1839,130 +1479,6 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-8887e2df-83a7-4272-8b37-8225556125d0">
-  <button class="colab-df-quickchart" onclick="quickchart('df-8887e2df-83a7-4272-8b37-8225556125d0')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-8887e2df-83a7-4272-8b37-8225556125d0 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
@@ -1974,11 +1490,11 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Use <code>is.null()</code> method to determine the missing values</li>
 </ul>
-<div class="cell" data-outputid="6a0a5ca5-668a-4387-9188-66a3dfdf6d6a" data-execution_count="9">
+<div class="cell" data-outputid="079d255a-8c8d-4e9a-ae18-8d970e2d6e6d" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>titanic_data.isnull()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="8">
 
-  <div id="df-fe292c19-0511-4654-b8e8-52d3066f2678" class="colab-df-container">
+  <div id="df-317f8615-3d21-4972-baf3-27fddbf76f55" class="colab-df-container">
     <div>
 
 
@@ -2199,7 +1715,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-fe292c19-0511-4654-b8e8-52d3066f2678')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-317f8615-3d21-4972-baf3-27fddbf76f55')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -2249,12 +1765,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-fe292c19-0511-4654-b8e8-52d3066f2678 button.colab-df-convert');
+        document.querySelector('#df-317f8615-3d21-4972-baf3-27fddbf76f55 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-fe292c19-0511-4654-b8e8-52d3066f2678');
+        const element = document.querySelector('#df-317f8615-3d21-4972-baf3-27fddbf76f55');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2274,130 +1790,6 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-4e73df41-0840-47c9-9a51-8d8699fcabc5">
-  <button class="colab-df-quickchart" onclick="quickchart('df-4e73df41-0840-47c9-9a51-8d8699fcabc5')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-4e73df41-0840-47c9-9a51-8d8699fcabc5 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
@@ -2407,9 +1799,9 @@ memory usage: 143.4+ KB</code></pre>
 <li>This is a <code>DataFrame</code> of booleans!</li>
 <li>Use the <code>.sum()</code> method to see how many <code>null</code> values we have for each column</li>
 </ul>
-<div class="cell" data-outputid="adf53de0-3556-45e6-81c9-50c3fabee573" data-execution_count="10">
+<div class="cell" data-outputid="0a29bec7-17e6-4235-c18d-c840e567f1e5" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>titanic_data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -2486,10 +1878,10 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>This type of multiple method use gives us a good chance to use our <code>\</code> operator to create more readable code by making it multi-line</li>
 </ul>
-<div class="cell" data-outputid="5c06e56a-75cb-41d5-ba10-e0f155e5df86" data-execution_count="16">
+<div class="cell" data-outputid="a0fd73f5-8e57-4a0d-e070-7464916af05b" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>titanic_data.isnull() <span class="op">\</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  .<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -2574,19 +1966,19 @@ memory usage: 143.4+ KB</code></pre>
 <li>If we want to just remove some columns, can use the <code>.drop()</code> method</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="400e1064-3db6-4bac-dce5-5aef7e83dc2c" data-execution_count="14">
+<div class="cell" data-outputid="98ed8e5e-0129-4023-cea6-d2434ea44c1f" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data <span class="op">=</span> titanic_data.drop(columns <span class="op">=</span> [<span class="st">"body"</span>, <span class="st">"cabin"</span>, <span class="st">"boat"</span>])</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>(1310, 11)</code></pre>
 </div>
 </div>
 <ul>
 <li>Check on the missingness now</li>
 </ul>
-<div class="cell" data-outputid="06f39dd5-d31e-4864-ac6b-0e46fb0802c2" data-execution_count="15">
+<div class="cell" data-outputid="d645fce3-8f81-4054-c843-6b8603bde631" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
@@ -2651,16 +2043,16 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Now we are ready to use the <code>.dropna()</code> method to remove any rows with missing data</li>
 </ul>
-<div class="cell" data-outputid="a2899162-bd46-4c8b-830b-a9039214a89a" data-execution_count="18">
+<div class="cell" data-outputid="71d0bdcc-0176-422d-b9d0-941f0b0b25d0" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> sub_titanic_data.dropna()</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>temp.shape <span class="co">#notice the reduction in rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>(684, 11)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="ec57c573-3167-4ff7-d9dd-c7906d07201f" data-execution_count="19">
+<div class="cell" data-outputid="3b55de00-b399-4581-dde4-f41b82abd581" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>temp.isnull().<span class="bu">sum</span>() <span class="co">#no more missing values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
@@ -2726,11 +2118,11 @@ memory usage: 143.4+ KB</code></pre>
 <li>Usually, you don’t want to drop all the rows with any missing data as you are throwing out useful info.</li>
 <li>One option is to impute the missing values… this can be dangerous but can be done with <code>.fillna()</code> method</li>
 </ul>
-<div class="cell" data-outputid="f5d415cd-c243-4df5-919b-dfbf9a20fcd6" data-execution_count="20">
+<div class="cell" data-outputid="0ac9daa1-e9ca-436e-9272-6c7ed65dfa22" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.fillna(value <span class="op">=</span> <span class="dv">0</span>) <span class="co">#note, for instance, some values of age are 0 now and the last row is all 0 values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="15">
 
-  <div id="df-725e975b-c21f-4690-9c48-173c2a0fb60f" class="colab-df-container">
+  <div id="df-6dd757b6-83c1-426e-9062-47bdfe397c43" class="colab-df-container">
     <div>
 
 
@@ -2915,7 +2307,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-725e975b-c21f-4690-9c48-173c2a0fb60f')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-6dd757b6-83c1-426e-9062-47bdfe397c43')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -2965,12 +2357,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-725e975b-c21f-4690-9c48-173c2a0fb60f button.colab-df-convert');
+        document.querySelector('#df-6dd757b6-83c1-426e-9062-47bdfe397c43 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-725e975b-c21f-4690-9c48-173c2a0fb60f');
+        const element = document.querySelector('#df-6dd757b6-83c1-426e-9062-47bdfe397c43');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2989,130 +2381,6 @@ memory usage: 143.4+ KB</code></pre>
     </script>
   </div>
 
-
-<div id="df-dec4b63f-38da-499d-9571-ab7186aaec98">
-  <button class="colab-df-quickchart" onclick="quickchart('df-dec4b63f-38da-499d-9571-ab7186aaec98')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-dec4b63f-38da-499d-9571-ab7186aaec98 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
 
     </div>
   </div>
@@ -3121,11 +2389,11 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Can set the value you want to impute by passing a dictionary of key/value pairs</li>
 </ul>
-<div class="cell" data-outputid="5209dfa0-dbbd-409d-8307-363cd273b039" data-execution_count="21">
+<div class="cell" data-outputid="c8070b97-e13d-40f5-a69c-4b423a4ac166" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.fillna(value <span class="op">=</span> {<span class="st">"home.dest"</span>: <span class="st">"Unknown"</span>, <span class="st">"age"</span>: <span class="dv">200</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell-output cell-output-display" data-execution_count="16">
 
-  <div id="df-4e0e3356-5b76-43c5-978e-506c186f2e5f" class="colab-df-container">
+  <div id="df-5fc7f6b3-4f7f-4668-b5ad-1fee1f2c249c" class="colab-df-container">
     <div>
 
 
@@ -3310,7 +2578,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-4e0e3356-5b76-43c5-978e-506c186f2e5f')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5fc7f6b3-4f7f-4668-b5ad-1fee1f2c249c')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -3360,12 +2628,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-4e0e3356-5b76-43c5-978e-506c186f2e5f button.colab-df-convert');
+        document.querySelector('#df-5fc7f6b3-4f7f-4668-b5ad-1fee1f2c249c button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-4e0e3356-5b76-43c5-978e-506c186f2e5f');
+        const element = document.querySelector('#df-5fc7f6b3-4f7f-4668-b5ad-1fee1f2c249c');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3384,130 +2652,6 @@ memory usage: 143.4+ KB</code></pre>
     </script>
   </div>
 
-
-<div id="df-5c521ba3-c28a-4809-8f6f-de55c45d61a4">
-  <button class="colab-df-quickchart" onclick="quickchart('df-5c521ba3-c28a-4809-8f6f-de55c45d61a4')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-5c521ba3-c28a-4809-8f6f-de55c45d61a4 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
 
     </div>
   </div>
@@ -3556,9 +2700,9 @@ memory usage: 143.4+ KB</code></pre>
 </ul></li>
 </ul>
 <p>Variables of interest for this section: + embarked (where journey started)</p>
-<div class="cell" data-outputid="e2f6e768-694c-4999-b7d9-37a10b77eb25" data-execution_count="22">
+<div class="cell" data-outputid="1b52ac99-8bef-48ac-e928-b602bff75c09" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarked[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
@@ -3584,13 +2728,13 @@ memory usage: 143.4+ KB</code></pre>
 </div><br><label><b>dtype:</b> object</label>
 </div>
 </div>
-<div class="cell" data-outputid="4af28116-30a6-434f-c8f9-3a606a2c9d56" data-execution_count="23">
+<div class="cell" data-outputid="e8e74408-c6ec-427c-dac4-8e75282e9cfe" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(sub_titanic_data.embarked[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>str</code></pre>
 </div>
 </div>
-<p>The <code>str</code> type isn’t ideal for summarizaitons. A different data type is better!</p>
+<p>The <code>str</code> type isn’t ideal for summarizations. A different data type is better!</p>
 <section id="category-type-variables" class="level4">
 <h4 class="anchored" data-anchor-id="category-type-variables">Category Type Variables</h4>
 <p>A category type variable is really useful for categorical variables.</p>
@@ -3599,42 +2743,20 @@ memory usage: 143.4+ KB</code></pre>
 <li>Can have more descriptive labels, ordering of categories, etc.</li>
 </ul>
 <p>Let’s give the <code>embarked</code> variable more descriptive values and by converting it to a <code>category</code> type and manipulating it that way.</p>
-<div class="cell" data-outputid="d3d00a23-e1f5-4245-bbee-bbcaeeb42492" data-execution_count="24">
+<div class="cell" data-outputid="5e71fd32-2dba-4686-e2c1-e1939db19fe9" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"embarkedC"</span>] <span class="op">=</span> sub_titanic_data.embarked.astype(<span class="st">"category"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">embarkedC</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>S</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>S</td>
-</tr>
-</tbody>
-</table>
-
-</div><br><label><b>dtype:</b> category</label>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC.cat.categories</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>Index(['C', 'Q', 'S'], dtype='object')</code></pre>
 </div>
 </div>
 <ul>
 <li>Now we can use the <code>.cat.rename_categories()</code> method on this <code>category</code> variable</li>
 </ul>
-<div class="cell" data-outputid="6000ddc5-a7a2-4a6a-cf32-82ef8755e0a7" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC <span class="op">=</span> sub_titanic_data.embarkedC.cat.rename_categories([<span class="st">"Cherbourg"</span>, <span class="st">"Queenstown"</span>, <span class="st">"Southampton"</span>])</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell" data-outputid="4f735ee8-2cbd-4655-b080-aa8d4639680f" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC <span class="op">=</span> sub_titanic_data.embarkedC.cat.rename_categories([<span class="st">"Cherbourg"</span>, <span class="st">"Queenstown"</span>, <span class="st">"Southampton"</span>])</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
 
@@ -3666,13 +2788,13 @@ memory usage: 143.4+ KB</code></pre>
 </li>
 <li>survived (survived or died)</li>
 </ul>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert sec variable</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"sexC"</span>] <span class="op">=</span> sub_titanic_data.sex.astype(<span class="st">"category"</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.sexC <span class="op">=</span> sub_titanic_data.sexC.cat.rename_categories([<span class="st">"Female"</span>, <span class="st">"Male"</span>])</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#convert survived variable</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"survivedC"</span>] <span class="op">=</span> sub_titanic_data.survived.astype(<span class="st">"category"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.survivedC <span class="op">=</span> sub_titanic_data.survivedC.cat.rename_categories([<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert sec variable</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"sexC"</span>] <span class="op">=</span> sub_titanic_data.sex.astype(<span class="st">"category"</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.sexC <span class="op">=</span> sub_titanic_data.sexC.cat.rename_categories([<span class="st">"Female"</span>, <span class="st">"Male"</span>])</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">#convert survived variable</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"survivedC"</span>] <span class="op">=</span> sub_titanic_data.survived.astype(<span class="st">"category"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.survivedC <span class="op">=</span> sub_titanic_data.survivedC.cat.rename_categories([<span class="st">"Died"</span>, <span class="st">"Survived"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -3682,9 +2804,9 @@ memory usage: 143.4+ KB</code></pre>
 <li>Tables of counts are the main numerical summary for categorical data</li>
 <li>Create <strong>one-way contingency tables</strong> (<code>.value_counts()</code> method) (one-way because we are looking at one variable at a time)</li>
 </ul>
-<div class="cell" data-outputid="326513aa-c6dd-403e-e766-92e1a70d888a" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC.value_counts(dropna <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell" data-outputid="9501d1e1-2b9b-45b8-c0c9-b23f42b1b7ed" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.embarkedC.value_counts(dropna <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -3722,9 +2844,9 @@ memory usage: 143.4+ KB</code></pre>
 </div><br><label><b>dtype:</b> int64</label>
 </div>
 </div>
-<div class="cell" data-outputid="8ab5cb0c-ae90-4da7-927b-4f0fdf96c320" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.survivedC.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell" data-outputid="c3ff03bd-2a9d-4372-91d4-a370894b6105" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.survivedC.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
@@ -3754,9 +2876,9 @@ memory usage: 143.4+ KB</code></pre>
 </div><br><label><b>dtype:</b> int64</label>
 </div>
 </div>
-<div class="cell" data-outputid="6948d8d5-4d08-43d5-c7cf-fa6ec69376b9" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.sexC.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell" data-outputid="5ef88b5c-ccce-47d1-dbe1-75fc40ab4ab7" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.sexC.value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -3794,12 +2916,12 @@ memory usage: 143.4+ KB</code></pre>
 <li><code>index</code> argument is the row variable and <code>columns</code> argument is the column variable</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="f5739446-0a51-4f09-8970-1ad3a056ac9d" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"dummy"</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> sub_titanic_data.embarkedC, columns <span class="op">=</span> sub_titanic_data.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div class="cell" data-outputid="3e558303-e154-4b78-f860-51b35d9d16e7" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">"dummy"</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> sub_titanic_data.embarkedC, columns <span class="op">=</span> sub_titanic_data.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 
-  <div id="df-4546acd0-f55a-4e72-b83b-5b475ab777bb" class="colab-df-container">
+  <div id="df-9c756c33-7943-48ed-90f2-f532c6eb5522" class="colab-df-container">
     <div>
 
 
@@ -3835,7 +2957,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-4546acd0-f55a-4e72-b83b-5b475ab777bb')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9c756c33-7943-48ed-90f2-f532c6eb5522')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -3885,12 +3007,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-4546acd0-f55a-4e72-b83b-5b475ab777bb button.colab-df-convert');
+        document.querySelector('#df-9c756c33-7943-48ed-90f2-f532c6eb5522 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-4546acd0-f55a-4e72-b83b-5b475ab777bb');
+        const element = document.querySelector('#df-9c756c33-7943-48ed-90f2-f532c6eb5522');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -3910,139 +3032,15 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-9fda75d6-1208-4264-86aa-3d3cf4fa4adf">
-  <button class="colab-df-quickchart" onclick="quickchart('df-9fda75d6-1208-4264-86aa-3d3cf4fa4adf')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-9fda75d6-1208-4264-86aa-3d3cf4fa4adf button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="9b39986f-26bd-4304-a07d-3fa2cca49ada" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> sub_titanic_data.sexC, columns <span class="op">=</span> sub_titanic_data.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell" data-outputid="cdc0c436-5df8-443c-ccdf-4c7a6d7bf298" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index <span class="op">=</span> sub_titanic_data.sexC, columns <span class="op">=</span> sub_titanic_data.dummy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 
-  <div id="df-6b141989-10df-4b16-99d2-46ae4feecd91" class="colab-df-container">
+  <div id="df-4c0a6574-4692-45fc-b895-9c40f9398dad" class="colab-df-container">
     <div>
 
 
@@ -4074,7 +3072,7 @@ memory usage: 143.4+ KB</code></pre>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-6b141989-10df-4b16-99d2-46ae4feecd91')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4c0a6574-4692-45fc-b895-9c40f9398dad')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -4124,12 +3122,12 @@ memory usage: 143.4+ KB</code></pre>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-6b141989-10df-4b16-99d2-46ae4feecd91 button.colab-df-convert');
+        document.querySelector('#df-4c0a6574-4692-45fc-b895-9c40f9398dad button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-6b141989-10df-4b16-99d2-46ae4feecd91');
+        const element = document.querySelector('#df-4c0a6574-4692-45fc-b895-9c40f9398dad');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -4149,130 +3147,6 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 
 
-<div id="df-c1e8df22-3b97-4d5f-9a7c-be8f0db56c65">
-  <button class="colab-df-quickchart" onclick="quickchart('df-c1e8df22-3b97-4d5f-9a7c-be8f0db56c65')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-c1e8df22-3b97-4d5f-9a7c-be8f0db56c65 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
     </div>
   </div>
 </div>
@@ -4281,10 +3155,10 @@ memory usage: 143.4+ KB</code></pre>
 <li>To summarize two categorical variables together, we use a two-way contingency table</li>
 <li>Now the <code>cross_tab()</code> function can be used more naturally</li>
 </ul>
-<div class="cell" data-outputid="dbc6caf8-f2b2-424b-ed62-7d6d9b2b98e5" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC, <span class="co">#index variable</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC) <span class="co">#column variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="dbc6caf8-f2b2-424b-ed62-7d6d9b2b98e5">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC, <span class="co">#index variable</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC) <span class="co">#column variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 
   <div id="df-bed21824-b233-4a53-92ea-639767e1e9db" class="colab-df-container">
@@ -4531,10 +3405,10 @@ memory usage: 143.4+ KB</code></pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="28cd20e5-bc53-425d-e961-8ac8eb64cf52" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="28cd20e5-bc53-425d-e961-8ac8eb64cf52">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 
   <div id="df-a4eaaa7d-cefb-412b-9ddb-c71293c78381" class="colab-df-container">
@@ -4779,11 +3653,11 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Add marginal totals with <code>margins = True</code> argument</li>
 </ul>
-<div class="cell" data-outputid="6a1cc7f7-d87f-48f9-f834-b3564ce142c3" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="6a1cc7f7-d87f-48f9-f834-b3564ce142c3">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 
   <div id="df-e60ac86f-a0e0-4d40-b27e-7e209e3cad57" class="colab-df-container">
@@ -5047,14 +3921,14 @@ memory usage: 143.4+ KB</code></pre>
 <li>Use <code>rownames</code> and <code>colnames</code> arguments</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="085b8778-3cbb-4604-f585-5d47938ca473" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  rownames <span class="op">=</span> [<span class="st">"Embarked Port"</span>],</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  colnames <span class="op">=</span> [<span class="st">"Survival Status"</span>]</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="085b8778-3cbb-4604-f585-5d47938ca473">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  rownames <span class="op">=</span> [<span class="st">"Embarked Port"</span>],</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  colnames <span class="op">=</span> [<span class="st">"Survival Status"</span>]</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 
   <div id="df-2b41b5fe-003f-49b2-892e-e6d5e96009a4" class="colab-df-container">
@@ -5314,11 +4188,11 @@ memory usage: 143.4+ KB</code></pre>
 </div>
 <p>That looks great!</p>
 <p>For more than two variables we can create tables but they get harder to read. For instance, we can look at a three-way contingency table:</p>
-<div class="cell" data-outputid="90f0e35d-7d99-416f-85c0-6a4dbe3252f8" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  [sub_titanic_data.embarkedC, sub_titanic_data.survivedC], <span class="co">#pass a list of columns for the rows</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="90f0e35d-7d99-416f-85c0-6a4dbe3252f8">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  [sub_titanic_data.embarkedC, sub_titanic_data.survivedC], <span class="co">#pass a list of columns for the rows</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 
   <div id="df-bb58eb92-bf5d-42cb-9651-19e5f40f585c" class="colab-df-container">
@@ -5603,14 +4477,14 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>We can add in names for more clarity</li>
 </ul>
-<div class="cell" data-outputid="fd049c20-5c45-477e-8210-dd88b980ee52" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>my_tab <span class="op">=</span> pd.crosstab(</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  [sub_titanic_data.embarkedC, sub_titanic_data.survivedC],</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>,</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  rownames <span class="op">=</span> [<span class="st">'Embarked Port'</span>, <span class="st">'Survival Status'</span>], <span class="co">#a list similar to how the rows were passed</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  colnames <span class="op">=</span> [<span class="st">'Sex'</span>])</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>my_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="fd049c20-5c45-477e-8210-dd88b980ee52">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_tab <span class="op">=</span> pd.crosstab(</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  [sub_titanic_data.embarkedC, sub_titanic_data.survivedC],</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.sexC,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  margins <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  rownames <span class="op">=</span> [<span class="st">'Embarked Port'</span>, <span class="st">'Survival Status'</span>], <span class="co">#a list similar to how the rows were passed</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  colnames <span class="op">=</span> [<span class="st">'Sex'</span>])</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>my_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 
   <div id="df-86b99edd-1250-4fca-8fbd-ca1dc385f1e7" class="colab-df-container">
@@ -5948,8 +4822,8 @@ memory usage: 143.4+ KB</code></pre>
 <ul>
 <li>Note that the <code>crosstab()</code> function returns a data frame!</li>
 </ul>
-<div class="cell" data-outputid="00cf265b-5b54-4c54-edc1-4d50d59c0086" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="00cf265b-5b54-4c54-edc1-4d50d59c0086">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(my_tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
@@ -6119,14 +4993,14 @@ c  3</pre>
       </div>
 </div>
 </div>
-<div class="cell" data-outputid="a9aad2b8-4860-4ccb-ceec-dc3e06afec4d" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>my_tab.columns <span class="co"># columns of the data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a9aad2b8-4860-4ccb-ceec-dc3e06afec4d">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>my_tab.columns <span class="co"># columns of the data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>Index(['Female', 'Male', 'All'], dtype='object', name='Sex')</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="c97cb6e4-5c07-4b09-8857-849929c0cc91" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>my_tab.index <span class="co">#rows of the data frame, these are tuples!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="c97cb6e4-5c07-4b09-8857-849929c0cc91">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>my_tab.index <span class="co">#rows of the data frame, these are tuples!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>MultiIndex([(  'Cherbourg',     'Died'),
             (  'Cherbourg', 'Survived'),
@@ -6143,8 +5017,8 @@ c  3</pre>
 <li><p>The <code>MultiIndex</code> can be tough but let’s look at some examples</p></li>
 <li><p>Below returns the embarked vs survived table for females</p></li>
 </ul>
-<div class="cell" data-outputid="4fa7a766-98df-42e5-a436-000d7909c7e7" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>my_tab[<span class="st">"Female"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="4fa7a766-98df-42e5-a436-000d7909c7e7">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_tab[<span class="st">"Female"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
@@ -6201,8 +5075,8 @@ c  3</pre>
 </div><br><label><b>dtype:</b> int64</label>
 </div>
 </div>
-<div class="cell" data-outputid="d6d83051-4e52-47b8-cb4f-8827edbc1623" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[:, <span class="st">"Female"</span>] <span class="co">#.loc way of doing this, : gives all of that index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="d6d83051-4e52-47b8-cb4f-8827edbc1623">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[:, <span class="st">"Female"</span>] <span class="co">#.loc way of doing this, : gives all of that index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <div>
 
@@ -6262,8 +5136,8 @@ c  3</pre>
 <ul>
 <li>Below returns the sex vs embarked table for those that died</li>
 </ul>
-<div class="cell" data-outputid="827fef80-6b29-4051-e692-e4b9d312df3c" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>my_tab.iloc[<span class="dv">0</span>:<span class="dv">5</span>:<span class="dv">2</span>, :] <span class="co">#0:5:2 gives a shorthand for a sequence with steps of 2s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="827fef80-6b29-4051-e692-e4b9d312df3c">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>my_tab.iloc[<span class="dv">0</span>:<span class="dv">5</span>:<span class="dv">2</span>, :] <span class="co">#0:5:2 gives a shorthand for a sequence with steps of 2s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 
   <div id="df-6df3e533-91c5-48f1-b99b-84fa593021d9" class="colab-df-container">
@@ -6524,8 +5398,8 @@ c  3</pre>
 <li>Using <code>.loc[]</code> is better</li>
 <li>Must understand our <code>MultiIndex</code></li>
 </ul>
-<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="375c1ee8-8d92-4289-ee22-6bb1201767db" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>my_tab.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[&quot;remove_input&quot;]" data-outputid="375c1ee8-8d92-4289-ee22-6bb1201767db">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>my_tab.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>MultiIndex([(  'Cherbourg',     'Died'),
             (  'Cherbourg', 'Survived'),
@@ -6540,8 +5414,8 @@ c  3</pre>
 <ul>
 <li>Below uses this index to return the sex vs embarked table for those that died</li>
 </ul>
-<div class="cell" data-outputid="7c52dea4-32cc-405d-a054-a8ca22410bfb" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[((<span class="st">"Cherbourg"</span>, <span class="st">"Queenstown"</span>, <span class="st">"Southampton"</span>), <span class="st">"Died"</span>), :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="7c52dea4-32cc-405d-a054-a8ca22410bfb">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[((<span class="st">"Cherbourg"</span>, <span class="st">"Queenstown"</span>, <span class="st">"Southampton"</span>), <span class="st">"Died"</span>), :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 
   <div id="df-8da13038-7eaa-4492-9715-3101b2f36c52" class="colab-df-container">
@@ -6801,8 +5675,8 @@ c  3</pre>
 <ul>
 <li>Below returns the sex vs survived table for embarked of Cherbourg</li>
 </ul>
-<div class="cell" data-outputid="e8096f3a-cba1-494d-f4ef-2ebef13d5006" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[(<span class="st">'Cherbourg'</span>, (<span class="st">"Died"</span>, <span class="st">"Survived"</span>)), :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="e8096f3a-cba1-494d-f4ef-2ebef13d5006">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[(<span class="st">'Cherbourg'</span>, (<span class="st">"Died"</span>, <span class="st">"Survived"</span>)), :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 
   <div id="df-da2de6c5-405c-48a2-acbf-0791ca736022" class="colab-df-container">
@@ -7057,8 +5931,8 @@ c  3</pre>
 <li>First with <code>.iloc[]</code> then with <code>.loc[]</code></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="c21873c8-de77-4edf-e3f7-eb38d734cb0d" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>my_tab.iloc[<span class="dv">0</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="c21873c8-de77-4edf-e3f7-eb38d734cb0d">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>my_tab.iloc[<span class="dv">0</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 
@@ -7097,8 +5971,8 @@ c  3</pre>
 </div><br><label><b>dtype:</b> int64</label>
 </div>
 </div>
-<div class="cell" data-outputid="4cad196b-c147-4d28-d6a5-84081f9ce28d" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[(<span class="st">'Cherbourg'</span>, <span class="st">'Died'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="4cad196b-c147-4d28-d6a5-84081f9ce28d">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>my_tab.loc[(<span class="st">'Cherbourg'</span>, <span class="st">'Died'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <div>
 
@@ -7165,8 +6039,8 @@ c  3</pre>
 <ul>
 <li>Find mean and median with methods on a <code>Series</code></li>
 </ul>
-<div class="cell" data-outputid="30b6d302-06ba-4894-9caa-914a7eeb64ed" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(sub_titanic_data[<span class="st">'fare'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="30b6d302-06ba-4894-9caa-914a7eeb64ed">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(sub_titanic_data[<span class="st">'fare'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
       pre.function-repr-contents {
@@ -7301,26 +6175,26 @@ the data is changed as well.</pre>
 <ul>
 <li>Corresponding methods exist for the common numerical summaries</li>
 </ul>
-<div class="cell" data-outputid="3846965e-0aa2-4071-f860-dc7644f9bc0b" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">'fare'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="3846965e-0aa2-4071-f860-dc7644f9bc0b">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">'fare'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>33.29547928134557</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="38c717a1-4c1a-451c-92ff-4c586cba0ce3" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">'fare'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="38c717a1-4c1a-451c-92ff-4c586cba0ce3">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[<span class="st">'fare'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>14.4542</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="dc47325c-294b-40c0-aa8e-1e493c31ffae" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.mean() <span class="co">#same thing with a different way to get a column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="dc47325c-294b-40c0-aa8e-1e493c31ffae">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.mean() <span class="co">#same thing with a different way to obtain a column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>29.8811345124283</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="fc7f3270-74f3-47bb-daae-004367b8a03e" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="fc7f3270-74f3-47bb-daae-004367b8a03e">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>28.0</code></pre>
 </div>
@@ -7332,14 +6206,14 @@ the data is changed as well.</pre>
 <ul>
 <li>Standard Deviation, Quartiles, &amp; IQR found with <code>Series</code> methods as well</li>
 </ul>
-<div class="cell" data-outputid="9af991ed-b083-49d2-e8b7-8be913d2e055" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="9af991ed-b083-49d2-e8b7-8be913d2e055">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>14.413499699923594</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="a9c066e2-2db8-4949-94a1-b6b80fbe788c" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.2</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a9c066e2-2db8-4949-94a1-b6b80fbe788c">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.2</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <div>
 
@@ -7374,9 +6248,9 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="7afaba07-b1c0-497f-e7b0-4fc41c8c9854" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.25</span>])</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>q1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="7afaba07-b1c0-497f-e7b0-4fc41c8c9854">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.25</span>])</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>q1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <div>
 
@@ -7399,9 +6273,9 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="c495414f-8362-4255-ebcb-4c230a00ed32" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.75</span>])</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>q3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="c495414f-8362-4255-ebcb-4c230a00ed32">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> sub_titanic_data.age.quantile(q <span class="op">=</span> [<span class="fl">0.75</span>])</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>q3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 
@@ -7424,8 +6298,8 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="6412de59-d0a6-49b7-96e6-75cf97d2567f" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(q1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="6412de59-d0a6-49b7-96e6-75cf97d2567f">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(q1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
       pre.function-repr-contents {
@@ -7559,10 +6433,10 @@ the data is changed as well.</pre>
 </div>
 <ul>
 <li>As both <code>q1</code> and <code>q3</code> are <code>Series</code>, they have indices</li>
-<li>This makes them a little more difficult than you might like to subtract (to find the IRQ)</li>
+<li>This makes them a little more difficult to subtract than you might like (to find the IRQ, for instance)</li>
 </ul>
-<div class="cell" data-outputid="824215ed-8593-4de5-82e7-80f6ca6bc185" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>q3<span class="op">-</span>q1 <span class="co">#doesn't work due to the differing index names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="824215ed-8593-4de5-82e7-80f6ca6bc185">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>q3<span class="op">-</span>q1 <span class="co">#doesn't work due to the differing index names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 
@@ -7589,8 +6463,8 @@ the data is changed as well.</pre>
 </div><br><label><b>dtype:</b> float64</label>
 </div>
 </div>
-<div class="cell" data-outputid="1b9c7c30-8d46-4a80-c3c6-790d19105753" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>q3[<span class="fl">0.75</span>] <span class="op">-</span> q1[<span class="fl">0.25</span>] <span class="co">#grab the values by index names and subtract those</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="1b9c7c30-8d46-4a80-c3c6-790d19105753">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>q3[<span class="fl">0.75</span>] <span class="op">-</span> q1[<span class="fl">0.25</span>] <span class="co">#grab the values by index names and subtract those</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>18.0</code></pre>
 </div>
@@ -7598,8 +6472,8 @@ the data is changed as well.</pre>
 <ul>
 <li>Alternatively, remember that returning the <code>.values</code> attribute returns a <code>numpy</code> array. We can subtract these.</li>
 </ul>
-<div class="cell" data-outputid="d7149b6e-3aa1-4973-82ed-b8fd2bbfe973" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>q3.values <span class="op">-</span> q1.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="d7149b6e-3aa1-4973-82ed-b8fd2bbfe973">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>q3.values <span class="op">-</span> q1.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>array([18.])</code></pre>
 </div>
@@ -7615,8 +6489,8 @@ the data is changed as well.</pre>
 <li>Just because it is stored numerically doesn’t mean we should treat it numerically!</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="b0f426d9-32ed-444e-8b40-ad5543b6991a" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="b0f426d9-32ed-444e-8b40-ad5543b6991a">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].corr()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 
   <div id="df-90a68ac0-4078-4cd4-8bc3-117af4fa1e97" class="colab-df-container">
@@ -7883,8 +6757,8 @@ the data is changed as well.</pre>
 <section id="groupby-examples" class="level4">
 <h4 class="anchored" data-anchor-id="groupby-examples"><code>.groupby()</code> Examples</h4>
 <p>Example: Get similar fare summaries for each <em>survival status</em></p>
-<div class="cell" data-outputid="aac044cf-92f7-42af-974b-699c0449f73d" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="aac044cf-92f7-42af-974b-699c0449f73d">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   sub_titanic_data.groupby("survivedC")[["age", "fare", "sibsp", "parch"]].mean()</code></pre>
@@ -8138,8 +7012,8 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="ab0fdb98-1329-4260-ffff-0b5633ec9b4f" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="ab0fdb98-1329-4260-ffff-0b5633ec9b4f">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   sub_titanic_data.groupby("survivedC")[["age", "fare", "sibsp", "parch"]].std()</code></pre>
@@ -8396,8 +7270,8 @@ the data is changed as well.</pre>
 <ul>
 <li><code>.unstack()</code> method on the result can sometimes make the output clearer</li>
 </ul>
-<div class="cell" data-outputid="8f3d933e-d478-40de-df17-a215e8861739" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean().unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="8f3d933e-d478-40de-df17-a215e8861739">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby(<span class="st">"survivedC"</span>)[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean().unstack()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   sub_titanic_data.groupby("survivedC")[["age", "fare", "sibsp", "parch"]].mean().unstack()</code></pre>
@@ -8468,8 +7342,8 @@ the data is changed as well.</pre>
 <li>Example: Get summary for numeric type variables for each <em>survival status</em> and <em>embarked port</em></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="a6160dec-6dbb-4b24-c426-da0e65bf047a" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>])[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="a6160dec-6dbb-4b24-c426-da0e65bf047a">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>])[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   sub_titanic_data.groupby(["survivedC", "embarkedC"])[["age", "fare", "sibsp", "parch"]].mean()</code></pre>
@@ -8755,8 +7629,8 @@ the data is changed as well.</pre>
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="b3d12c28-3698-443f-8d59-1cbc98a4302b" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>])[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="b3d12c28-3698-443f-8d59-1cbc98a4302b">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data.groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>])[[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   sub_titanic_data.groupby(["survivedC", "embarkedC"])[["age", "fare", "sibsp", "parch"]].std()</code></pre>
@@ -9045,11 +7919,11 @@ the data is changed as well.</pre>
 <ul>
 <li>As our code gets longer, this is a good place to use <code>\</code> to extend our code down a line</li>
 </ul>
-<div class="cell" data-outputid="cfa2b1ba-4cf5-4073-b8a0-ca294b021f20" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data <span class="op">\</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>]) <span class="op">\</span></span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>   [[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]] <span class="op">\</span></span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>   .mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="cfa2b1ba-4cf5-4073-b8a0-ca294b021f20">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>sub_titanic_data <span class="op">\</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  .groupby([<span class="st">"survivedC"</span>, <span class="st">"embarkedC"</span>]) <span class="op">\</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>   [[<span class="st">"age"</span>, <span class="st">"fare"</span>, <span class="st">"sibsp"</span>, <span class="st">"parch"</span>]] <span class="op">\</span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>   .mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   .groupby(["survivedC", "embarkedC"]) \</code></pre>
@@ -9346,12 +8220,12 @@ the data is changed as well.</pre>
 <li>A bit awkward in this case as we don’t really have a ‘column’ variable</li>
 <li>Make a dummy variable for that</li>
 </ul>
-<div class="cell" data-outputid="1bdace8d-4f0a-4e5f-c6ee-f0c3d6be8a95" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
-<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"mean"</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(sub_titanic_data.shape[<span class="dv">0</span>])], <span class="co">#create variable with only the value 'mean'</span></span>
-<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>  values <span class="op">=</span> sub_titanic_data.fare,</span>
-<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>  aggfunc <span class="op">=</span> <span class="st">'mean'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="1bdace8d-4f0a-4e5f-c6ee-f0c3d6be8a95">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"mean"</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(sub_titanic_data.shape[<span class="dv">0</span>])], <span class="co">#create variable with only the value 'mean'</span></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>  values <span class="op">=</span> sub_titanic_data.fare,</span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>  aggfunc <span class="op">=</span> <span class="st">'mean'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 
   <div id="df-22ae9925-d3d4-4c6d-8b51-0c43f3bae63c" class="colab-df-container">
@@ -9592,12 +8466,12 @@ the data is changed as well.</pre>
 <ul>
 <li>Can return multiple summaries at once by passing them as a <code>list</code></li>
 </ul>
-<div class="cell" data-outputid="83d56e5e-8d83-4cef-beff-0fc8051243b6" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
-<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"stat"</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(sub_titanic_data.shape[<span class="dv">0</span>])],</span>
-<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>  values <span class="op">=</span> sub_titanic_data.fare,</span>
-<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>  aggfunc <span class="op">=</span> [<span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'std'</span>, <span class="st">'count'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="83d56e5e-8d83-4cef-beff-0fc8051243b6">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  columns <span class="op">=</span> [<span class="st">"stat"</span> <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(sub_titanic_data.shape[<span class="dv">0</span>])],</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>  values <span class="op">=</span> sub_titanic_data.fare,</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  aggfunc <span class="op">=</span> [<span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'std'</span>, <span class="st">'count'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 
   <div id="df-f7dfacdb-b6ac-4627-9c8f-7e5bd234eb4d" class="colab-df-container">
@@ -9860,12 +8734,12 @@ the data is changed as well.</pre>
 <li>Example: Get summary for numeric type variables for each <em>survival status</em> and <em>embarked port</em></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="45ae4192-9ab4-4a31-aaec-481b2f07fc2d" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
-<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
-<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>  values <span class="op">=</span> sub_titanic_data.fare,</span>
-<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  aggfunc <span class="op">=</span> [<span class="st">'mean'</span>, <span class="st">'count'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="45ae4192-9ab4-4a31-aaec-481b2f07fc2d">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(</span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.embarkedC,</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  sub_titanic_data.survivedC,</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>  values <span class="op">=</span> sub_titanic_data.fare,</span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>  aggfunc <span class="op">=</span> [<span class="st">'mean'</span>, <span class="st">'count'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="78">
 
   <div id="df-82e1bca5-482c-4245-9dab-7e0d394177b0" class="colab-df-container">
@@ -10137,9 +9011,9 @@ the data is changed as well.</pre>
 <p>We’ll look at the <code>.pivot_table()</code> and <code>.agg()</code> methods.</p>
 <p>Remember to pop the video out into the full player.</p>
 <p>The notebook written in the video is <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/Learning_Python.ipynb">available here</a>.</p>
-<div class="cell" data-outputid="47ef7460-970a-48b8-b6c5-85f6196b732f" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=197e5481-40be-4488-8271-b0ff000f5fd2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="47ef7460-970a-48b8-b6c5-85f6196b732f">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=197e5481-40be-4488-8271-b0ff000f5fd2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="79">
 
         <iframe width="720" height="405" src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=197e5481-40be-4488-8271-b0ff000f5fd2&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" frameborder="0" allowfullscreen=""></iframe>

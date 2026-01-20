@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-12">
+<meta name="dcterms.date" content="2026-01-20">
 
 <title>ST 554 Analysis of Big Data (with Python) - Pandas for Reading Raw Data</title>
 <style>
@@ -305,6 +305,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/21-Error_Handling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Error Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Function Annotations &amp; Decorators</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basics of Using <code>git</code> and <code>gitHub</code></span></a>
   </div>
 </li>
       </ul>
@@ -614,7 +626,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-12</p>
+      <p class="date">2026-01-20</p>
     </div>
   </div>
   
@@ -630,7 +642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>pandas</code> library has functionality for reading <strong>delimited data</strong>, Excel data, SAS data, JSON data, and more!</p></li>
 <li><p>Remember we’ll need to import the <code>pandas</code> library in order to use it!</p></li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/16-Pandas_For_Reading_Data.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
@@ -669,7 +681,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>How does python locate the file?<br>
 </li>
-<li>Not in colab
+<li>If you are not in colab
 <ul>
 <li>You can give file <em>full path name</em>
 <ul>
@@ -678,17 +690,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>ex: ‘S:\Documents\repos\ST-554\datasets\data.csv’<br>
 </li>
 </ul></li>
-</ul></li>
 <li>Or use local paths!
 <ul>
 <li>Determine your <strong>working directory</strong></li>
 <li>Use a path <strong>relative</strong> to that</li>
 <li>If your working directory is ‘S:/Documents/repos/ST-554’ you can get to ‘data.csv’ via ‘datasets/data.csv’</li>
 </ul></li>
+</ul></li>
 <li>The <code>os</code> module gives you access to function for finding and setting your working directory</li>
 </ul>
 <p>Using a cloud-based platform complicates things a bit - In colab you can + <a href="https://stackoverflow.com/questions/48376580/how-to-read-data-in-google-colab-from-my-google-drive">Mount your google drive</a> + Read files from URLs + Upload files via the menu on the left (folder icon, then upload a file via the icons there)</p>
-<div class="cell" data-outputid="6bdd761c-e01b-44a4-c31a-fb0ec4e6aa16" data-execution_count="2">
+<div class="cell" data-outputid="6bdd761c-e01b-44a4-c31a-fb0ec4e6aa16">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#getcwd() stands for get current working directory</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>os.getcwd() <span class="co">#shows the directory you can get to via the folder icon on the left</span></span>
@@ -707,7 +719,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Nicely formatted <code>.csv</code> files can be read in with the <code>read_csv()</code> function from <code>pandas</code></p></li>
 <li><p><code>neuralgia.csv</code> has been loaded into the folder on colab in my session. Therefore, it exists in my <strong>working directory</strong>. This won’t be the case for you unless you upload the data during your session! You can click on the folder icon on the left, then click the upload button to upload <a href="https://www4.stat.ncsu.edu/online/datasets/neuralgia.csv" target="_blank"> this data set</a>.</p></li>
 </ul>
-<div class="cell" data-outputid="6fce5ad1-ba20-4917-faf0-b9ff32ac0622" data-execution_count="5">
+<div class="cell" data-outputid="6fce5ad1-ba20-4917-faf0-b9ff32ac0622">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>neuralgia_data <span class="op">=</span> pd.read_csv(<span class="st">"neuralgia.csv"</span>) <span class="co">#neuralgia.csv file was uploaded to colab for my session</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>neuralgia_data.head() <span class="co">#this code block won't work unless you upload the data in your session</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -855,7 +867,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="88649490-52c2-4c35-ce90-f9092ebe9250" data-execution_count="6">
+<div class="cell" data-outputid="88649490-52c2-4c35-ce90-f9092ebe9250">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>neuralgia_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(60, 5)</code></pre>
@@ -869,7 +881,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Nicely formatted <code>.csv</code> files can be read in with the <code>read_csv()</code> function from <code>pandas</code></p></li>
 <li><p><code>scoresFull.csv</code> file at a <strong>URL</strong> given by ‘https://www4.stat.ncsu.edu/~online/datasets/scoresFull.csv’</p></li>
 </ul>
-<div class="cell" data-outputid="113b697a-de92-42a3-cca7-c3bbd1a19f2c" data-execution_count="7">
+<div class="cell" data-outputid="113b697a-de92-42a3-cca7-c3bbd1a19f2c">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scores_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/scoresFull.csv"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>scores_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -1114,7 +1126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="5189dc67-d3af-4c22-b6fd-37dded06f088" data-execution_count="8">
+<div class="cell" data-outputid="5189dc67-d3af-4c22-b6fd-37dded06f088">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scores_data.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(3471, 82)</code></pre>
@@ -1127,7 +1139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><code>chemical.txt</code> file (space delimiter) stored at “https://www4.stat.ncsu.edu/~online/datasets/chemical.txt”</li>
 </ul>
-<div class="cell" data-outputid="a7783bb5-879d-48d9-988a-a26b025a596d" data-execution_count="9">
+<div class="cell" data-outputid="a7783bb5-879d-48d9-988a-a26b025a596d">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>chem_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/chemical.txt"</span>, sep<span class="op">=</span><span class="st">" "</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>chem_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -1275,7 +1287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Tab is <code>\t</code></li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="219942e5-93a9-453f-f99d-d22eea5cc2d4" data-execution_count="10">
+<div class="cell" data-outputid="219942e5-93a9-453f-f99d-d22eea5cc2d4">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>crabs_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/crabs.txt"</span>, sep<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>crabs_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -1436,7 +1448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Can specify <code>header = None</code> and give column names when reading (via <code>names = [list of names]</code>)</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="f4c9e7c7-59b3-490e-b762-c1e43d4f6e56" data-execution_count="11">
+<div class="cell" data-outputid="f4c9e7c7-59b3-490e-b762-c1e43d4f6e56">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ump_data <span class="op">=</span> pd.read_csv(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/umps2012.txt"</span>,</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                      sep<span class="op">=</span><span class="st">"&gt;"</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                      header<span class="op">=</span><span class="va">None</span>,</span>
@@ -1601,7 +1613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Use the <code>ExcelFile()</code> function from <code>pandas</code></p></li>
 <li><p><code>censusEd.xlsx</code> file located at “https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx”</p></li>
 </ul>
-<div class="cell" data-outputid="0fae7e41-d83c-4be3-e6aa-1afb24924827" data-execution_count="12">
+<div class="cell" data-outputid="0fae7e41-d83c-4be3-e6aa-1afb24924827">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.ExcelFile(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ed_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1611,7 +1623,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Unfortunately, there are different attributes associated with this data object!</li>
 </ul>
-<div class="cell" data-outputid="0d406003-3bf5-4bf1-e454-86ab74020ea1" data-execution_count="13">
+<div class="cell" data-outputid="0d406003-3bf5-4bf1-e454-86ab74020ea1">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ed_data.head(), ed_data.info() won't work!</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
@@ -1705,7 +1717,7 @@ Examples
       </div>
 </div>
 </div>
-<div class="cell" data-outputid="c40e5b24-d6de-4f06-97d8-902f0a804118" data-execution_count="14">
+<div class="cell" data-outputid="c40e5b24-d6de-4f06-97d8-902f0a804118">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ed_data.sheet_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>['EDU01A',
@@ -1723,7 +1735,7 @@ Examples
 <ul>
 <li>Use <code>.parse()</code> method with sheet to obtain a usual <code>DataFrame</code></li>
 </ul>
-<div class="cell" data-outputid="3f6bbd38-3ddc-474f-ee71-c425416060de" data-execution_count="15">
+<div class="cell" data-outputid="3f6bbd38-3ddc-474f-ee71-c425416060de">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ed_data.parse(<span class="st">'EDU01A'</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.12/dist-packages/openpyxl/worksheet/header_footer.py:48: UserWarning: Cannot parse header or footer so it will be ignored
@@ -1976,7 +1988,7 @@ Examples
 <li><p>This reads things in to a standard <code>DataFrame</code> but you have to specify a sheet to read in (or it defaults to the 1st)</p></li>
 <li><p><code>censusEd.xlsx</code> file located at “https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx”</p></li>
 </ul>
-<div class="cell" data-outputid="71b15dd5-565c-4b09-9da3-3e4a3221f4fd" data-execution_count="16">
+<div class="cell" data-outputid="71b15dd5-565c-4b09-9da3-3e4a3221f4fd">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.read_excel(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                        sheet_name <span class="op">=</span> <span class="dv">0</span>) <span class="co">#or "EDU01A"</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ed_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2234,7 +2246,7 @@ Examples
 <li>Values are the <code>DataFrame</code>s from each sheet</li>
 </ul></li>
 </ul>
-<div class="cell" data-outputid="965b93bc-cba1-4e95-db30-4442c3b10b1f" data-execution_count="17">
+<div class="cell" data-outputid="965b93bc-cba1-4e95-db30-4442c3b10b1f">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ed_data <span class="op">=</span> pd.read_excel(<span class="st">"https://www4.stat.ncsu.edu/~online/datasets/censusEd.xlsx"</span>,</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                        sheet_name <span class="op">=</span> <span class="va">None</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(ed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2246,13 +2258,13 @@ Examples
 <pre><code>dict</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="4d89cf76-955c-4e6b-d31e-680f62146090" data-execution_count="18">
+<div class="cell" data-outputid="4d89cf76-955c-4e6b-d31e-680f62146090">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ed_data.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>dict_keys(['EDU01A', 'EDU01B', 'EDU01C', 'EDU01D', 'EDU01E', 'EDU01F', 'EDU01G', 'EDU01H', 'EDU01I', 'EDU01J'])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="2550e9c3-5dad-4ffb-ffa9-e489d6d75317" data-execution_count="19">
+<div class="cell" data-outputid="2550e9c3-5dad-4ffb-ffa9-e489d6d75317">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ed_data.get(<span class="st">"EDU01A"</span>).head() <span class="co">#get one DataFrame using its key!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 
@@ -2522,7 +2534,7 @@ Examples
 <li><code>read_json()</code> function from <code>pandas</code> will work!</li>
 <li>Read in data from URL: “https://api.exchangerate-api.com/v4/latest/USD”</li>
 </ul>
-<div class="cell" data-outputid="370f9b39-89ea-4af6-b323-a3c7b53a71a5" data-execution_count="20">
+<div class="cell" data-outputid="370f9b39-89ea-4af6-b323-a3c7b53a71a5">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://api.exchangerate-api.com/v4/latest/USD"</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>usd_data <span class="op">=</span> pd.read_json(url)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>usd_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2691,7 +2703,7 @@ Examples
 <ul>
 <li>We can write out data using the <code>.to_csv()</code> method</li>
 </ul>
-<div class="cell" data-execution_count="21">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>usd_data.to_csv(<span class="st">'usd_data.csv'</span>, index <span class="op">=</span> <span class="va">False</span>) <span class="co">#this goes to the folder on the left in colab!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -2701,7 +2713,7 @@ Examples
 <p>This video shows some examples of reading in some SAS data and data from an API.</p>
 <p>Remember to pop the video out into the full player.</p>
 <p>The notebook written in the video is <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/Learning_Python.html">available here</a>.</p>
-<div class="cell" data-outputid="519bb492-f5c1-4c8e-9d3b-0f75da1ea5bb" data-execution_count="22">
+<div class="cell" data-outputid="519bb492-f5c1-4c8e-9d3b-0f75da1ea5bb">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>IFrame(src<span class="op">=</span><span class="st">"https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=30db871f-1750-4e5d-9de8-b0ff000c225c&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all"</span>, height<span class="op">=</span><span class="st">"405"</span>, width<span class="op">=</span><span class="st">"720"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">

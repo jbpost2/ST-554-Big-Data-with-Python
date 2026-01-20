@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-01-20">
 
-<title>ST 554 Analysis of Big Data (with Python) - Fitting &amp; Evaluating SLR Models</title>
+<title>ST 554 Analysis of Big Data (with Python) - Basics of Using git and gitHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,8 +26,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" rel="next">
-<link href="../01_Programming_in_python/24-Big_Recap_Landing.html" rel="prev">
+<link href="../01_Programming_in_python/24-Big_Recap_Landing.html" rel="next">
+<link href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" rel="prev">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -98,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/24-Big_Recap_Landing.html">Topic 3: Basics of Predictive Modeling</a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html">Fitting &amp; Evaluating SLR Models</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html">Basics of Using <code>git</code> and <code>gitHub</code></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,13 +209,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/13-EDA_Landing.html" class="sidebar-item-text sidebar-link">
@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Basics of Using <code>git</code> and <code>gitHub</code></span></a>
   </div>
 </li>
@@ -286,13 +286,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
@@ -301,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
   </div>
 </li>
@@ -569,7 +569,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fitting &amp; Evaluating SLR Models</h1>
+<h1 class="title">Basics of Using <code>git</code> and <code>gitHub</code></h1>
 </div>
 
 
@@ -590,16 +590,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The video below introduces the language and ideas around fitting and evaluating predictive models using the very basic simple linear regression (SLR) model as the example. This simple model is ubiquitous and is a decent starting point for modeling a quantitative response.</p>
-<p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6c86f851-668a-4fdd-8fa9-b10a0109e5ef&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="23-Fitting and Evaluating SLR Models"></iframe>
+<p><strong>Update</strong></p>
+<p>The video below attempts to help place us in our goals for the course. We discuss what we’ve done so far and where we are going. I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6249f65d-02f5-42ec-b233-b10a01059c31&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="22-Big Recap!"></iframe>
 <section id="notes" class="level2">
 <h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><a href="25-Fitting_Evaluating_SLR_Models.html" target="_blank">HTML version</a></li>
-<li><a href="PDFs/25-Fitting_Evaluating_SLR_Models.pdf" target="_blank">PDF version</a></li>
+<li><a href="24-Big_Recap.html" target="_blank">HTML version</a></li>
+<li><a href="PDFs/24-Big_Recap.pdf" target="_blank">PDF version</a></li>
 </ul>
-<p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>That wraps up the material for week 4! Head to the Moodle site to work on your next homework assignment.</p>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
 
 </section>
@@ -840,13 +841,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Big Recap!</span>
+      <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Function Annotations &amp; Decorators</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" class="pagination-link">
-        <span class="nav-page-text">Prediction and Training/Test Set Ideas</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="pagination-link">
+        <span class="nav-page-text">Big Recap!</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

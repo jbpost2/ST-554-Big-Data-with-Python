@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2026-01-20">
 
-<title>ST 554 Analysis of Big Data (with Python) - Fitting &amp; Evaluating SLR Models</title>
+<title>ST 554 Analysis of Big Data (with Python) - Function Annotations &amp; Decorators</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,13 +21,47 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" rel="next">
-<link href="../01_Programming_in_python/24-Big_Recap_Landing.html" rel="prev">
+<link href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" rel="next">
+<link href="../01_Programming_in_python/21-Error_Handling.html" rel="prev">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -98,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/24-Big_Recap_Landing.html">Topic 3: Basics of Predictive Modeling</a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html">Fitting &amp; Evaluating SLR Models</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01_Programming_in_python/13-EDA_Landing.html">Topic 2: Dealing with Data in <code>python</code></a></li><li class="breadcrumb-item"><a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html">Function Annotations &amp; Decorators</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,13 +243,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Topic 2: Dealing with Data in <code>python</code></span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/13-EDA_Landing.html" class="sidebar-item-text sidebar-link">
@@ -272,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="sidebar-item-text sidebar-link">
+  <a href="../01_Programming_in_python/22-Function_Annotations_Decorators.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Function Annotations &amp; Decorators</span></a>
   </div>
 </li>
@@ -286,13 +320,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
  <span class="menu-text">Topic 3: Basics of Predictive Modeling</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="sidebar-item-text sidebar-link">
@@ -301,7 +335,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01_Programming_in_python/25-Fitting_Evaluating_SLR_Models_Landing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fitting &amp; Evaluating SLR Models</span></a>
   </div>
 </li>
@@ -560,7 +594,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#annotations" id="toc-annotations" class="nav-link active" data-scroll-target="#annotations">Annotations</a>
+  <ul class="collapse">
+  <li><a href="#parameter-annotation" id="toc-parameter-annotation" class="nav-link" data-scroll-target="#parameter-annotation">Parameter Annotation</a></li>
+  <li><a href="#return-value-annotation" id="toc-return-value-annotation" class="nav-link" data-scroll-target="#return-value-annotation">Return Value Annotation</a></li>
+  </ul></li>
+  <li><a href="#decorators" id="toc-decorators" class="nav-link" data-scroll-target="#decorators">Decorators</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
     </div>
@@ -569,7 +609,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Fitting &amp; Evaluating SLR Models</h1>
+<h1 class="title">Function Annotations &amp; Decorators</h1>
 </div>
 
 
@@ -590,16 +630,171 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The video below introduces the language and ideas around fitting and evaluating predictive models using the very basic simple linear regression (SLR) model as the example. This simple model is ubiquitous and is a decent starting point for modeling a quantitative response.</p>
-<p>I highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.</p>
-<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6c86f851-668a-4fdd-8fa9-b10a0109e5ef&amp;autoplay=false&amp;offerviewer=true&amp;showtitle=true&amp;showbrand=true&amp;captions=false&amp;interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen="" allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="23-Fitting and Evaluating SLR Models"></iframe>
-<section id="notes" class="level2">
-<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/22_Function_Annotations_Decorators.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<blockquote class="blockquote">
+<p>Justin Post</p>
+</blockquote>
+<p>There are a few more extremely useful techniques we can apply when creating or running our functions. We’ll cover two of those here:</p>
 <ul>
-<li><a href="25-Fitting_Evaluating_SLR_Models.html" target="_blank">HTML version</a></li>
-<li><a href="PDFs/25-Fitting_Evaluating_SLR_Models.pdf" target="_blank">PDF version</a></li>
+<li>Function Annotations: Here we can help users by improving messages or describing the types of inputs and outputs we should use/expect</li>
+<li>Function Decorators:</li>
 </ul>
-<p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/22-Function_Annotations_Decorators.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
+<section id="annotations" class="level2">
+<h2 class="anchored" data-anchor-id="annotations">Annotations</h2>
+<p>We can describe two major <a href="https://peps.python.org/pep-3107/" target="_blank">types of annotations</a>:</p>
+<ul>
+<li>parameter (input) annotations</li>
+<li>return value annotations</li>
+</ul>
+<p>Let’s start by discussing how we might use parameter annotations to improve usability of our functions.</p>
+<section id="parameter-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-annotation">Parameter Annotation</h3>
+<p>Consider the basic function below that finds a trimmed mean from a list of values we created a while back (of course we’d prefer to use <code>numpy</code> <code>arrays</code> now that we know them, but let’s just consider this function for now).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y, method <span class="op">=</span> <span class="va">None</span>, p <span class="op">=</span> <span class="dv">0</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean or trimmed mean</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    If method is set to Trim, will remove outer most p values off the data</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    before finding the mean</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    p should be a number between 0 and 0.5</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">"Trim"</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Providing annotations for our parameters (<code>y</code>, <code>method</code>, and <code>p</code>) can help the user to understand what our function expects those inputs to be. For instance, we can state that <code>y</code> should be a list, <code>method</code> should be a string, and <code>p</code> should be a value between 0 and 0.5. This augments the use of the docstring.</p>
+<p>Parameter annotations take the form of optional expressions that follow the parameter name:</p>
+<p><code>def foo(a: expression, b: expression = 5):</code></p>
+<p>So we want to put the expression prior to any default values. Let’s put some annotations in our function definition.</p>
+<ul>
+<li><code>list[float]</code> implies that the first argument should be a list containing floats (integers work too)</li>
+<li><code>None | str</code> imply the second argument should be the special value <code>None</code> or a string</li>
+<li><code>float</code> specifies that <code>p</code> should be a float</li>
+</ul>
+<p><strong>Note: The only one of these I am able to get working with Colab is the third one. These others work with mypy though. If you are interested in that <a href="https://mypy-lang.org/" target="_blank">check here</a> or stop by office hours and we can chat!</strong></p>
+<div class="cell" data-execution_count="197">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> floor</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y: <span class="bu">list</span>[<span class="bu">float</span>], method: <span class="va">None</span> <span class="op">|</span> <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>, p: <span class="bu">float</span> <span class="op">=</span> <span class="dv">0</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean or trimmed mean</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    If method is set to Trim, will remove outer most p values off the data</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">    before finding the mean</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    p should be a number between 0 and 0.5</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">"Trim"</span>:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This doesn’t actually change how the code executes or anything like that.</p>
+<div class="cell" data-outputid="35dcca66-2e67-4d0a-9f43-061f4cdf85bd" data-execution_count="198">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="198">
+<pre><code>107.0</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="1a1cb7a8-11fc-425a-a14e-53d261654d39" data-execution_count="199">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="199">
+<pre><code>11.333333333333334</code></pre>
+</div>
+</div>
+<p>What it does is give us an alternative way to do type checking. We have an additional <code>__annotations__</code> attribute on our function. This is a mutable dictionary!</p>
+<div class="cell" data-outputid="83d5d9ae-1cee-4397-ee57-f0d2a32cccf7" data-execution_count="200">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>find_mean.__annotations__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="200">
+<pre><code>{'y': list[float], 'method': None | str, 'p': float}</code></pre>
+</div>
+</div>
+<p>In Colab, we can enable type checking when we run functions by going to - <code>Tools</code> -&gt; <code>Settings</code> -&gt; <code>Editor</code> - Scrolling down to <code>Code diagnostics</code>, select <code>Syntax and Type Checking</code></p>
+<p>Now when we run code that has annotations, they are checked first! Again, I can only get the third one to work in Colab…</p>
+<div class="cell" data-outputid="8f1cd591-d43d-45e0-a00a-cfbdb0ea9b69" data-execution_count="201">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="fl">0.2</span>) <span class="co">#works fine</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="201">
+<pre><code>11.333333333333334</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="311b2545-b727-4394-e474-fc7a89582eeb" data-execution_count="202">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="st">'20%'</span>) <span class="co">#p should be a float!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: must be real number, not str</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="716858e5-2e75-43ac-8ec7-144e925c2824" data-execution_count="204">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>find_mean(y <span class="op">=</span> <span class="st">"cat"</span>) <span class="co">#should throw a different TypeError than we see here... alas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code></pre>
+</div>
+</div>
+</section>
+<section id="return-value-annotation" class="level3">
+<h3 class="anchored" data-anchor-id="return-value-annotation">Return Value Annotation</h3>
+<p>We can also note the type of the value to be returned. The synatx for this is</p>
+<p><code>def foo() -&gt; expression:</code></p>
+<p>For our <code>find_mean()</code> function, we can specify that a float should be returned.</p>
+<div class="cell" data-execution_count="206">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> floor</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y: <span class="bu">list</span>[<span class="bu">float</span>], method: <span class="va">None</span> <span class="op">|</span> <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>, p: <span class="bu">float</span> <span class="op">=</span> <span class="dv">0</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean or trimmed mean</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">    If method is set to Trim, will remove outer most p values off the data</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">    before finding the mean</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">    p should be a number between 0 and 0.5</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">"Trim"</span>:</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>      sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>      to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Again, this doesn’t change how the code executes but is useful to have when understanding what a function should do.</p>
+</section>
+</section>
+<section id="decorators" class="level2">
+<h2 class="anchored" data-anchor-id="decorators">Decorators</h2>
+<p>We’ll end up seeing these when we get into <code>Spark</code>. They’ll help us understand the inner workings of <code>Spark</code> just a little better. Here is an example where knowing these two syntaxes are useful!</p>
+<pre><code>class FakeDataSource(DataSource):
+    """
+    A fake data source for PySpark to generate synthetic data using the `faker` library.
+    Options:
+    - numRows: specify number of rows to generate. Default value is 3.
+    """
+
+    @classmethod
+    def name(cls) -&gt; str:
+        return "fake"
+
+    def schema(self) -&gt; Union[StructType, str]:
+        return "name string, date string, zipcode string, state string"
+
+    def reader(self, schema: StructType) -&gt; DataSourceReader:
+        return FakeDataSourceReader(schema, self.options)
+
+    def writer(self, schema: StructType, overwrite: bool) -&gt; DataSourceWriter:
+        return FakeDataSourceWriter(self.options)
+
+    def streamReader(self, schema: StructType) -&gt; DataSourceStreamReader:
+        return FakeStreamReader(schema, self.options)
+
+    def streamWriter(self, schema: StructType, overwrite: bool) -&gt; DataSourceStreamWriter:
+        return FakeStreamWriter(self.options)</code></pre>
+<p>We can see the use of annotations to help us understand what the inputs and outputs for these functions should be.</p>
+</section>
+<section id="recap" class="level2">
+<h2 class="anchored" data-anchor-id="recap">Recap</h2>
+<p>Function annotations allow us to describe inputs and outputs more clearly. There are ways to enforce the types specified and, eventually, this should become an option that can be done without other packages or things needed.</p>
+<p>Function decorators…</p>
+<p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
+<p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html">our next lesson</a>!</p>
 
 
 </section>
@@ -840,13 +1035,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01_Programming_in_python/24-Big_Recap_Landing.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Big Recap!</span>
+      <a href="../01_Programming_in_python/21-Error_Handling.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Error Handling</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01_Programming_in_python/26-Prediction_Testing_Training_Landing.html" class="pagination-link">
-        <span class="nav-page-text">Prediction and Training/Test Set Ideas</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html" class="pagination-link">
+        <span class="nav-page-text">Basics of Using <code>git</code> and <code>gitHub</code></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

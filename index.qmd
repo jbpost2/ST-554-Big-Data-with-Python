@@ -75,7 +75,7 @@ To obtain course help there are a number of options:
 | 2/2-2/6           | 19 - Plotting with Matplotlib\                                 |                                           |
 |                   | 20 - Plotting with pandas\                                     |                                           |
 |                   | 21 - Error Handling\                                           |                                           |
-|                   | 22 - Function annotations and Decorators\                      |                                           |
+|                   | 22 - Function Annotations & Decorators\                        |                                           |
 |                   | 23 - Basics of Using `git` and `gitHub`                        |                                           |
 +-------------------+----------------------------------------------------------------+-------------------------------------------+
 | Week 5\           | 24 - Big Recap!\                                               | Exam 1 Th/F 2/12-2/13\                    |
