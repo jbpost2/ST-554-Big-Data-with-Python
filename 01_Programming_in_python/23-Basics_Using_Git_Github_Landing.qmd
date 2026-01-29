@@ -6,9 +6,8 @@ editor_options:
   chunk_output_type: inline
 ---
 
-**Update**
 
-The video below attempts to help place us in our goals for the course. We discuss what we've done so far and where we are going. I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+The video below introduces the `git` software and the website `gitHub` that allows for easy collaboration and version control using `git`. We'll dig into how to use `gitHub` with Colab. I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
 
 ```{=html}
 <iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=6249f65d-02f5-42ec-b233-b10a01059c31&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="22-Big Recap!" ></iframe>

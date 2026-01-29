@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-20">
+<meta name="dcterms.date" content="2026-01-29">
 
 <title>ST 554 Analysis of Big Data (with Python) - Function Annotations &amp; Decorators</title>
 <style>
@@ -620,7 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-20</p>
+      <p class="date">2026-01-29</p>
     </div>
   </div>
   
@@ -630,14 +630,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/22_Function_Annotations_Decorators.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<p><a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/22-Function_Annotations_Decorators.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 <blockquote class="blockquote">
 <p>Justin Post</p>
 </blockquote>
 <p>There are a few more extremely useful techniques we can apply when creating or running our functions. We’ll cover two of those here:</p>
 <ul>
-<li>Function Annotations: Here we can help users by improving messages or describing the types of inputs and outputs we should use/expect</li>
-<li>Function Decorators:</li>
+<li>Function Annotations: Help users by improving messages or describing the types of inputs and outputs we should use/expect</li>
+<li>Function Decorators: Add extra behavior to a function without modifying the function’s source code</li>
 </ul>
 <p>Note: These types of webpages are built from Jupyter notebooks (<code>.ipynb</code> files). You can access your own versions of them by <a href="https://colab.research.google.com/github/jbpost2/ST-554-Big-Data-with-Python/blob/main/01_Programming_in_python/22-Function_Annotations_Decorators.ipynb">clicking here</a>. <strong>It is highly recommended that you go through and run the notebooks yourself, modifying and rerunning things where you’d like!</strong></p>
 <section id="annotations" class="level2">
@@ -651,7 +651,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="parameter-annotation" class="level3">
 <h3 class="anchored" data-anchor-id="parameter-annotation">Parameter Annotation</h3>
 <p>Consider the basic function below that finds a trimmed mean from a list of values we created a while back (of course we’d prefer to use <code>numpy</code> <code>arrays</code> now that we know them, but let’s just consider this function for now).</p>
-<div class="cell">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y, method <span class="op">=</span> <span class="va">None</span>, p <span class="op">=</span> <span class="dv">0</span>):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean or trimmed mean</span></span>
@@ -666,7 +666,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Providing annotations for our parameters (<code>y</code>, <code>method</code>, and <code>p</code>) can help the user to understand what our function expects those inputs to be. For instance, we can state that <code>y</code> should be a list, <code>method</code> should be a string, and <code>p</code> should be a value between 0 and 0.5. This augments the use of the docstring.</p>
+<p>Providing annotations for our parameters (<code>y</code>, <code>method</code>, and <code>p</code>) can help the user to understand what our function expects those inputs to be. For instance, we can state that <code>y</code> should be a list of numeric values, <code>method</code> should be a string, and <code>p</code> should be a numeric value. <strong>This augments the use of the docstring.</strong></p>
 <p>Parameter annotations take the form of optional expressions that follow the parameter name:</p>
 <p><code>def foo(a: expression, b: expression = 5):</code></p>
 <p>So we want to put the expression prior to any default values. Let’s put some annotations in our function definition.</p>
@@ -675,8 +675,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>None | str</code> imply the second argument should be the special value <code>None</code> or a string</li>
 <li><code>float</code> specifies that <code>p</code> should be a float</li>
 </ul>
-<p><strong>Note: The only one of these I am able to get working with Colab is the third one. These others work with mypy though. If you are interested in that <a href="https://mypy-lang.org/" target="_blank">check here</a> or stop by office hours and we can chat!</strong></p>
-<div class="cell" data-execution_count="197">
+<p><strong>Note: The only one of these I am able to get working with Colab is the third one. These others work with <code>mypy</code> though. If you are interested in that <a href="https://mypy-lang.org/" target="_blank">check here</a> or stop by office hours and we can chat!</strong></p>
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> floor</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y: <span class="bu">list</span>[<span class="bu">float</span>], method: <span class="va">None</span> <span class="op">|</span> <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>, p: <span class="bu">float</span> <span class="op">=</span> <span class="dv">0</span>):</span>
@@ -694,52 +694,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This doesn’t actually change how the code executes or anything like that.</p>
-<div class="cell" data-outputid="35dcca66-2e67-4d0a-9f43-061f4cdf85bd" data-execution_count="198">
+<div class="cell" data-outputid="5d439393-9c49-4e36-dcdc-7084c63dc15b" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="198">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>107.0</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="1a1cb7a8-11fc-425a-a14e-53d261654d39" data-execution_count="199">
+<div class="cell" data-outputid="6414a236-e62d-4552-dca9-34cade091487" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="199">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>11.333333333333334</code></pre>
 </div>
 </div>
 <p>What it does is give us an alternative way to do type checking. We have an additional <code>__annotations__</code> attribute on our function. This is a mutable dictionary!</p>
-<div class="cell" data-outputid="83d5d9ae-1cee-4397-ee57-f0d2a32cccf7" data-execution_count="200">
+<div class="cell" data-outputid="9110cc6d-988e-4217-8e65-87c52878417f" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>find_mean.__annotations__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="200">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>{'y': list[float], 'method': None | str, 'p': float}</code></pre>
 </div>
 </div>
 <p>In Colab, we can enable type checking when we run functions by going to - <code>Tools</code> -&gt; <code>Settings</code> -&gt; <code>Editor</code> - Scrolling down to <code>Code diagnostics</code>, select <code>Syntax and Type Checking</code></p>
-<p>Now when we run code that has annotations, they are checked first! Again, I can only get the third one to work in Colab…</p>
-<div class="cell" data-outputid="8f1cd591-d43d-45e0-a00a-cfbdb0ea9b69" data-execution_count="201">
+<p>Now when we run code that has annotations, <em>some of them</em> are checked first! Again, I can only get the third one to work in Colab…</p>
+<div class="cell" data-outputid="50fd022b-bbb1-45e3-935f-dd6bd08b47cf" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="fl">0.2</span>) <span class="co">#works fine</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="201">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>11.333333333333334</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="311b2545-b727-4394-e474-fc7a89582eeb" data-execution_count="202">
+<div class="cell" data-outputid="cba1076a-5cf9-4eb0-8fbe-3ae08a3fe9d4" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="st">'20%'</span>) <span class="co">#p should be a float!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: must be real number, not str</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="716858e5-2e75-43ac-8ec7-144e925c2824" data-execution_count="204">
+<p>We can see the error notes that the input shouldn’t be a <code>str</code> but a real number.</p>
+<div class="cell" data-outputid="e6bc8ddf-a0e0-4248-b8ed-d7de7c8abd88" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>find_mean(y <span class="op">=</span> <span class="st">"cat"</span>) <span class="co">#should throw a different TypeError than we see here... alas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code></pre>
 </div>
 </div>
+<p>This does throw an error but not the one it should. This works with other methods for type checking (say with <code>mypy</code>) but not with Colab.</p>
 </section>
 <section id="return-value-annotation" class="level3">
 <h3 class="anchored" data-anchor-id="return-value-annotation">Return Value Annotation</h3>
-<p>We can also note the type of the value to be returned. The synatx for this is</p>
+<p>We can also note the type of the value to be returned. The syntax for this is</p>
 <p><code>def foo() -&gt; expression:</code></p>
 <p>For our <code>find_mean()</code> function, we can specify that a float should be returned.</p>
-<div class="cell" data-execution_count="206">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> floor</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y: <span class="bu">list</span>[<span class="bu">float</span>], method: <span class="va">None</span> <span class="op">|</span> <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>, p: <span class="bu">float</span> <span class="op">=</span> <span class="dv">0</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
@@ -756,43 +758,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Again, this doesn’t change how the code executes but is useful to have when understanding what a function should do.</p>
+<p>Again, this doesn’t change how the code executes but is useful to have when understanding what a function should do. When we start looking at the syntax of <code>pyspark</code>, we’ll see these types of hints and they can really help to understand how to use things!</p>
 </section>
 </section>
 <section id="decorators" class="level2">
 <h2 class="anchored" data-anchor-id="decorators">Decorators</h2>
-<p>We’ll end up seeing these when we get into <code>Spark</code>. They’ll help us understand the inner workings of <code>Spark</code> just a little better. Here is an example where knowing these two syntaxes are useful!</p>
-<pre><code>class FakeDataSource(DataSource):
-    """
-    A fake data source for PySpark to generate synthetic data using the `faker` library.
-    Options:
-    - numRows: specify number of rows to generate. Default value is 3.
-    """
-
-    @classmethod
-    def name(cls) -&gt; str:
-        return "fake"
-
-    def schema(self) -&gt; Union[StructType, str]:
-        return "name string, date string, zipcode string, state string"
-
-    def reader(self, schema: StructType) -&gt; DataSourceReader:
-        return FakeDataSourceReader(schema, self.options)
-
-    def writer(self, schema: StructType, overwrite: bool) -&gt; DataSourceWriter:
-        return FakeDataSourceWriter(self.options)
-
-    def streamReader(self, schema: StructType) -&gt; DataSourceStreamReader:
-        return FakeStreamReader(schema, self.options)
-
-    def streamWriter(self, schema: StructType, overwrite: bool) -&gt; DataSourceStreamWriter:
-        return FakeStreamWriter(self.options)</code></pre>
-<p>We can see the use of annotations to help us understand what the inputs and outputs for these functions should be.</p>
+<p>Decorators take in a function, add some functionality to it, and then outputs a modified function. In this process, the code for the original function isn’t changed. However, we are then able to call the function with the increased functionality. Decorators are pretty general and the same decorator can be used with multiple functions to give all of those functions some functionality.</p>
+<p>Let’s see a basic example! We could add a functionality to our functions that tells us the time it takes to run the function.</p>
+<p>To do this we import the <code>wraps</code> object (which just helps keep the attributes of our wrapper function in check) from <code>functools</code> along with the <code>time</code> module so we have access to the relevant functions for timing our function execution.</p>
+<p>We start by defining our new ‘decorator’ function (<code>timeit()</code>) and then create an inner function to do our bidding.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> wraps</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> timeit(func):</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@wraps</span>(func)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> wrapper(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time.perf_counter()</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> func(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> time.perf_counter()</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        elapsed <span class="op">=</span> end <span class="op">-</span> start</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>func<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss"> ran in </span><span class="sc">{</span>elapsed<span class="sc">:.6f}</span><span class="ss"> seconds"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wrapper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have a function that takes in another function, sets a start time of execution, runs the function, sets the end time of execution, and prints out the elapsed time the function ran. It then returns the results of the function call.</p>
+<p>So essentially, we are just gaining additional functionality if we utilize this!</p>
+<p>Let’s apply it to our finding a mean function. We do so using the special <code>@</code> notation you see below.</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="at">@timeit</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_mean(y: <span class="bu">list</span>[<span class="bu">float</span>], method: <span class="va">None</span> <span class="op">|</span> <span class="bu">str</span> <span class="op">=</span> <span class="va">None</span>, p: <span class="bu">float</span> <span class="op">=</span> <span class="dv">0</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Quick function to find the mean or trimmed mean</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Assumes we have a list with only numeric type data</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">    If method is set to Trim, will remove outer most p values off the data</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">    before finding the mean</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">    p should be a number between 0 and 0.5</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> method <span class="op">==</span> <span class="st">"Trim"</span>:</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>      sort_y <span class="op">=</span> <span class="bu">sorted</span>(y)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      to_remove <span class="op">=</span> floor(p<span class="op">*</span><span class="bu">len</span>(sort_y))</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>      y <span class="op">=</span> sort_y[to_remove:(<span class="bu">len</span>(sort_y)<span class="op">-</span>to_remove)]</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(y)<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now when we call the function it will also print out the time it took to run!</p>
+<div class="cell" data-outputid="ab88ee83-3279-4049-e8c8-977fadeeaaf9" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>find_mean([<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">21</span>, <span class="dv">500</span>], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>find_mean ran in 0.000010 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>11.333333333333334</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="f3ddd8a5-a530-4e56-f59b-811759e7035c" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>find_mean([i<span class="op">*</span><span class="dv">3</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>)], method <span class="op">=</span> <span class="st">'Trim'</span>, p <span class="op">=</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>find_mean ran in 0.000138 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>14998.5</code></pre>
+</div>
+</div>
+<p>The <code>@</code> notation is equivalent to writing</p>
+<p><code>find_mean = timeit(find_mean)</code></p>
+<p>The sort of beauty of this is that we can easily apply this to other functions as well - adding the functionality there too! The use of <code>*args*</code> and <code>**kwargs</code> in our inner function definition allows this to apply to functions with any number of arguments!</p>
+<p>Suppose we wanted to apply this to our print key/value pairs function we made a while back. We just add <code>@timeit</code> prior to defining the function.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="at">@timeit</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_key_value_pairs(<span class="op">**</span>kwargs):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">    key word args can be anything</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">type</span>(kwargs), kwargs)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> kwargs:</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(x <span class="op">+</span> <span class="st">" : "</span> <span class="op">+</span> <span class="bu">str</span>(kwargs.get(x))) <span class="co">#cast the value to a string for printing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="aea1e600-1f1a-4814-813f-bfd1b7b1b56a" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>print_key_value_pairs(name <span class="op">=</span> <span class="st">"Justin"</span>,</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                      job <span class="op">=</span> <span class="st">"Professor"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                      phone <span class="op">=</span> <span class="dv">9195150637</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'dict'&gt; {'name': 'Justin', 'job': 'Professor', 'phone': 9195150637}
+name : Justin
+job : Professor
+phone : 9195150637
+print_key_value_pairs ran in 0.000070 seconds</code></pre>
+</div>
+</div>
+<p>Nice! Now if we want to apply this to an already existing function, it takes a little extra effort.</p>
+<p>Suppose we want to apply this to the <code>random.default_rng()</code> function from <code>numpy</code>. Let’s set a seed and create the augmented version of the function.</p>
+<div class="cell" data-outputid="2f05320d-3fad-4777-a860-e6c5e241c8f7" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#set a seed for the random number generator.</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">10</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="at">@timeit</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> timed_random(<span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rng.random(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>timed_random(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>timed_random ran in 0.000020 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>array([0.95600171, 0.20768181, 0.82844489, 0.14928212, 0.51280462,
+       0.1359196 , 0.68903648, 0.84174772, 0.425509  , 0.956926  ])</code></pre>
+</div>
+</div>
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
-<p>Function annotations allow us to describe inputs and outputs more clearly. There are ways to enforce the types specified and, eventually, this should become an option that can be done without other packages or things needed.</p>
-<p>Function decorators…</p>
+<p>Function annotations allow us to describe inputs and outputs more clearly. There are ways to enforce the types specified and, eventually, this should become an option that can be done in <code>python</code> without other packages or things needed.</p>
+<p>Function decorators allow us to modify the behavior of a function while not changing the source code.</p>
+<p>We’ll end up seeing these when we get into <code>Spark</code> here and there so they’re useful to know about. For instance, if we check out some source code for the <a href="https://spark.apache.org/docs/latest/api/python/_modules/pyspark/pipelines/api.html#create_streaming_table" target="_blank"> <code>pyspark.pipelines.api</code></a>, we’d see some of the following (excerpts below):</p>
+<pre><code>from typing import Callable, Dict, List, Optional, Union, overload
+
+@overload
+def table(
+    *,
+    query_function: None = None,
+    name: Optional[str] = None,
+    comment: Optional[str] = None,
+    spark_conf: Optional[Dict[str, str]] = None,
+    table_properties: Optional[Dict[str, str]] = None,
+    partition_cols: Optional[List[str]] = None,
+    cluster_by: Optional[List[str]] = None,
+    schema: Optional[Union[StructType, str]] = None,
+) -&gt; Callable[[QueryFunction], None]:
+    ...</code></pre>
+<p>We can see the use of annotations to help us understand what the inputs and outputs for this functions should be. A decorator is used and adds whatever functionality <code>overload</code> gives!</p>
 <p>If you are on the course website, use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 <p>If you are on Google Colab, head back to our course website for <a href="https://jbpost2.github.io/ST-554-Big-Data-with-Python/01_Programming_in_python/23-Basics_Using_Git_Github_Landing.html">our next lesson</a>!</p>
 
