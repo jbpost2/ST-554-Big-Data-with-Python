@@ -19,6 +19,6 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 - <a href = "06-Data_Pipelines_Storage.html" target = "_blank">HTML version</a>
 - <a href = "PDFs/06-Data_Pipelines_Storage.pdf" target = "_blank">PDF version</a>
 
-That wraps up our week 7 content! Head out our Moodle site and start on homework 5. This homework won't focus on `SQL` (homework 6 will though!).
+That wraps up our week 7 content! Head out our Moodle site and start on homework 5.
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

@@ -41,8 +41,8 @@ We briefly discussed the difference between `python` using `None` and `SQLite` u
 
 You should 
 
-- head to the [`sqlitetutorial.net`](https://www.sqlitetutorial.net/sqlite-select/) site and read through the tutorials based around the `SELECT` statement (there are 7 or so listed on the page linked).
-- then read through the five '`SQLite` function' pages (For example: <https://www.sqlitetutorial.net/sqlite-avg/>)
-- Lastly, for those that want more practice, head to [`datalemur.com`](https://datalemur.com/) and try some of the 'easy' tasks! This will help prepare you for the logic of our later `SQL` work in `Spark`!
+- head to the <a href ="https://www.sqlitetutorial.net/sqlite-select/" target = "_blank">`sqlitetutorial.net`</a> site and read through the tutorials based around the `SELECT` statement (there are 7 or so listed on the page linked).
+- then read through the five '`SQLite` function' pages (For example: <a href = "https://www.sqlitetutorial.net/sqlite-avg/" target = "_blank">https://www.sqlitetutorial.net/sqlite-avg/</a>
+- Lastly, for those that want more practice, head to <a href = "https://datalemur.com/" target = "_blank">`datalemur.com`</a> and try some of the 'easy' tasks! This will help prepare you for the logic of our later `SQL` work in `Spark`!
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

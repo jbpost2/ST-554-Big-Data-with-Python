@@ -294,7 +294,7 @@ google, microsoft, and amazon (kineses for streaming) offer cloud managed servic
 
 - Also a host of open source tools that require management (and you can mix and match)
 
-- [Maybe feeling a little less overwhelmed?](https://mattturck.com/landscape/mad2024.pdf)
+- [Maybe feeling a little less overwhelmed?](https://mattturck.com/landscape/mad2025.pdf)
 
 <!--Also open source tools like flink, spark, kafka but you have to manage them-->
 

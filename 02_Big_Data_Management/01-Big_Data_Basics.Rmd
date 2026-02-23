@@ -81,7 +81,7 @@ Useful definition:
 
 - Big Data usually requires learning of new tools
 
-- [Want to feel overwhelmed?](https://mattturck.com/landscape/mad2024.pdf) 
+- [Want to feel overwhelmed?](https://mattturck.com/landscape/mad2025.pdf) (updated to 2025 version)
 
 
 ---
