@@ -6,6 +6,169 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Temp!
+```{r, include=FALSE, warning=FALSE, message=FALSE}
+library(reticulate)
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+options(reticulate.repl.quiet = TRUE)
+```
+
+
+
+We've implicitly been using different *Classes* during the course. We've created *Objects* from these classes, used their *methods*, and investigated their *attributes*. Understanding these at a basic level is really useful to fully understand how to extend certain programs - especially as we get into `Spark`. So let's dive a little deeper into `python` programming! 
+
+## What is a Class?
+
+> Classes provide a means of bundling data and functionality together.
+
+Essentially, we can use a class to create a new type of object with its own attributes and methods. We've used tons of classes and objects created from them in the course so far. As an example, we can use the `datetime` module to deal with dates.
+
+```{python}
+from datetime import date
+date
+```
+
+We can use a **method** on an instance of this class to read in a date such as `.fromisoformat()`!
+
+```{python}
+my_date = date.fromisoformat("2000-01-02")
+my_date
+```
+
+Or we can obtain today's date (as of this page's creation) using the `today()` method.
+
+```{python}
+date.today()
+```
+
+The class has defined **attributes** we can access such as `.day` or `.year`.
+
+```{python}
+my_date.day
+my_date.year
+```
+
+In some instances, creating our own classes with defined methods and attributes can be very useful! More often, we may need to dig into the docs a bit to <a href = "https://spark.apache.org/docs/latest/api/python/_modules/pyspark/sql/dataframe.html#DataFrame" target = "_blank">fully understand something in `Spark`</a>. Either way, understanding how classes are created is important. Let's learn the basics!
+
+## Investigating a Class
+
+It is difficult to investigate built-in classes as they are generally defined in `C`, but we can checkout how the `datetime.date` class is created!
+
+```{python, echo = FALSE, eval = FALSE}
+#install the dill module if need be
+from dill.source import getsource
+getsource(date)
+```
+
+(Selected output given below:)
+
+```
+class date:
+    """Concrete date type.
+
+    Constructors:
+
+    __new__()
+    fromtimestamp()
+    today()
+    fromordinal()
+
+    Operators:
+
+    __repr__, __str__
+    __eq__, __le__, __lt__, __ge__, __gt__, __hash__
+    __add__, __radd__, __sub__ (add/radd only with timedelta arg)
+
+    Methods:
+
+    timetuple()
+    toordinal()
+    weekday()
+    isoweekday(), isocalendar(), isoformat()
+    ctime()
+    strftime()
+
+    Properties (readonly):
+    year, month, day
+    """
+```
+
+We can see that we start with `class name_of_class:`. This is how we'll create a new class. Next we see a docstring like we've used when writing functions.
+
+```
+    def __new__(cls, year, month=None, day=None):
+        """Constructor.
+        Arguments:
+        year, month, day (required, base 1)
+        """
+        ...
+        year, month, day = _check_date_fields(year, month, day)
+        self = object.__new__(cls)
+        self._year = year
+        self._month = month
+        self._day = day
+        self._hashcode = -1
+        return self
+```
+
+An `__new__` 'dunder method' (double underscore) exists to create an instance of the class! This is used when we execute `date()`. Many classes also have an `__init__(self)` that initializes the instance.
+
+You can see it creates a number of different attributes associated with the object. However, these are 'protected' attributes. We define attributes using a special decorator, `@property`.
+
+```
+   # Read-only field accessors
+    @property
+    def year(self):
+        """year (1-9999)"""
+        return self._year
+
+    @property
+    def month(self):
+        """month (1-12)"""
+        return self._month
+```
+
+These are defined similar to how we create a function but, of course, we'll call our attributes without `()` on the end (`my_date.year`)!
+
+To create a method we use the special `@classmethod` decorator:
+
+```
+    @classmethod
+    def fromisoformat(cls, date_string):
+        """Construct a date from a string in ISO 8601 format."""
+        if not isinstance(date_string, str):
+            raise TypeError('fromisoformat: argument must be str')
+
+        if len(date_string) not in (7, 8, 10):
+            raise ValueError(f'Invalid isoformat string: {date_string!r}')
+
+        try:
+            return cls(*_parse_isoformat_date(date_string))
+        except Exception:
+            raise ValueError(f'Invalid isoformat string: {date_string!r}')
+```
+
+This method (used via syntax such as `date.fromisoformat()`) is again written very similarly to how we write a function.
+
+- Ok, we have the basics, let's get to it!
+
+## Creating a Class
+
+Let's create a class for students in this course. For each student we want to have a number of pieces of information and functionality. We can start with the `class` keyword as we saw above. <a href = "https://docs.python.org/3/tutorial/classes.html#class-objects" target = "_blank">Class objects support two kinds of operations</a>: attribute references and instantiation.
+
+- We can add attribute references by simply defining a name and the type it should take on (`name: str`, for instance)
+- To set an initial state to the object, we can use `__init__()`.
+
+```{python}
+class st554_student:
+    course = 'st554'
+
+    def __init__(self, name, unity_id):
+      self.name = name
+      self.unity_id = unity_id
+```
+
+
+
+
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -568,7 +602,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-a-class" id="toc-what-is-a-class" class="nav-link active" data-scroll-target="#what-is-a-class">What is a Class?</a></li>
+  <li><a href="#investigating-a-class" id="toc-investigating-a-class" class="nav-link" data-scroll-target="#investigating-a-class">Investigating a Class</a></li>
+  <li><a href="#creating-a-class" id="toc-creating-a-class" class="nav-link" data-scroll-target="#creating-a-class">Creating a Class</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -596,10 +638,145 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Temp!</p>
+<p>We’ve implicitly been using different <em>Classes</em> during the course. We’ve created <em>Objects</em> from these classes, used their <em>methods</em>, and investigated their <em>attributes</em>. Understanding these at a basic level is really useful to fully understand how to extend certain programs - especially as we get into <code>Spark</code>. So let’s dive a little deeper into <code>python</code> programming!</p>
+<section id="what-is-a-class" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-class">What is a Class?</h2>
+<blockquote class="blockquote">
+<p>Classes provide a means of bundling data and functionality together.</p>
+</blockquote>
+<p>Essentially, we can use a class to create a new type of object with its own attributes and methods. We’ve used tons of classes and objects created from them in the course so far. As an example, we can use the <code>datetime</code> module to deal with dates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> date</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'datetime.date'&gt;</code></pre>
+</div>
+</div>
+<p>We can use a <strong>method</strong> on an instance of this class to read in a date such as <code>.fromisoformat()</code>!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_date <span class="op">=</span> date.fromisoformat(<span class="st">"2000-01-02"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>datetime.date(2000, 1, 2)</code></pre>
+</div>
+</div>
+<p>Or we can obtain today’s date (as of this page’s creation) using the <code>today()</code> method.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>date.today()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>datetime.date(2026, 2, 26)</code></pre>
+</div>
+</div>
+<p>The class has defined <strong>attributes</strong> we can access such as <code>.day</code> or <code>.year</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_date.day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>my_date.year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2000</code></pre>
+</div>
+</div>
+<p>In some instances, creating our own classes with defined methods and attributes can be very useful! More often, we may need to dig into the docs a bit to <a href="https://spark.apache.org/docs/latest/api/python/_modules/pyspark/sql/dataframe.html#DataFrame" target="_blank">fully understand something in <code>Spark</code></a>. Either way, understanding how classes are created is important. Let’s learn the basics!</p>
+</section>
+<section id="investigating-a-class" class="level2">
+<h2 class="anchored" data-anchor-id="investigating-a-class">Investigating a Class</h2>
+<p>It is difficult to investigate built-in classes as they are generally defined in <code>C</code>, but we can checkout how the <code>datetime.date</code> class is created!</p>
+<p>(Selected output given below:)</p>
+<pre><code>class date:
+    """Concrete date type.
+
+    Constructors:
+
+    __new__()
+    fromtimestamp()
+    today()
+    fromordinal()
+
+    Operators:
+
+    __repr__, __str__
+    __eq__, __le__, __lt__, __ge__, __gt__, __hash__
+    __add__, __radd__, __sub__ (add/radd only with timedelta arg)
+
+    Methods:
+
+    timetuple()
+    toordinal()
+    weekday()
+    isoweekday(), isocalendar(), isoformat()
+    ctime()
+    strftime()
+
+    Properties (readonly):
+    year, month, day
+    """</code></pre>
+<p>We can see that we start with <code>class name_of_class:</code>. This is how we’ll create a new class. Next we see a docstring like we’ve used when writing functions.</p>
+<pre><code>    def __new__(cls, year, month=None, day=None):
+        """Constructor.
+        Arguments:
+        year, month, day (required, base 1)
+        """
+        ...
+        year, month, day = _check_date_fields(year, month, day)
+        self = object.__new__(cls)
+        self._year = year
+        self._month = month
+        self._day = day
+        self._hashcode = -1
+        return self</code></pre>
+<p>An <code>__new__</code> ‘dunder method’ (double underscore) exists to create an instance of the class! This is used when we execute <code>date()</code>. Many classes also have an <code>__init__(self)</code> that initializes the instance.</p>
+<p>You can see it creates a number of different attributes associated with the object. However, these are ‘protected’ attributes. We define attributes using a special decorator, <code>@property</code>.</p>
+<pre><code>   # Read-only field accessors
+    @property
+    def year(self):
+        """year (1-9999)"""
+        return self._year
+
+    @property
+    def month(self):
+        """month (1-12)"""
+        return self._month</code></pre>
+<p>These are defined similar to how we create a function but, of course, we’ll call our attributes without <code>()</code> on the end (<code>my_date.year</code>)!</p>
+<p>To create a method we use the special <code>@classmethod</code> decorator:</p>
+<pre><code>    @classmethod
+    def fromisoformat(cls, date_string):
+        """Construct a date from a string in ISO 8601 format."""
+        if not isinstance(date_string, str):
+            raise TypeError('fromisoformat: argument must be str')
+
+        if len(date_string) not in (7, 8, 10):
+            raise ValueError(f'Invalid isoformat string: {date_string!r}')
+
+        try:
+            return cls(*_parse_isoformat_date(date_string))
+        except Exception:
+            raise ValueError(f'Invalid isoformat string: {date_string!r}')</code></pre>
+<p>This method (used via syntax such as <code>date.fromisoformat()</code>) is again written very similarly to how we write a function.</p>
+<ul>
+<li>Ok, we have the basics, let’s get to it!</li>
+</ul>
+</section>
+<section id="creating-a-class" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-class">Creating a Class</h2>
+<p>Let’s create a class for students in this course. For each student we want to have a number of pieces of information and functionality. We can start with the <code>class</code> keyword as we saw above. <a href="https://docs.python.org/3/tutorial/classes.html#class-objects" target="_blank">Class objects support two kinds of operations</a>: attribute references and instantiation.</p>
+<ul>
+<li>We can add attribute references by simply defining a name and the type it should take on (<code>name: str</code>, for instance)</li>
+<li>To set an initial state to the object, we can use <code>__init__()</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> st554_student:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'st554'</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, unity_id):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.unity_id <span class="op">=</span> unity_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
