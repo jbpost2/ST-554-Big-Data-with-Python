@@ -1,0 +1,24 @@
+---
+title: "`spark`: Big Data Software"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below introduces the `spark` software for handling big data. This is a commonly used software to summarize, fit models, and handle streaming big data.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=8d9235f8-902d-4aae-9520-b28700f26023&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="09-Spark_for_Big_Data" ></iframe>
+```
+
+## Notes
+
+- <a href = "11-Spark_for_Big_Data.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/11-Spark_for_Big_Data.pdf" target = "_blank">PDF version</a>
+
+That wraps up our week 8 content! Head out our Moodle site and start on homework 6.
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

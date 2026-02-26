@@ -8,7 +8,7 @@ editor_options:
 
 We have a dedicated `JupyterHub` here in the college of sciences! The `JupyterHub` has `pyspark` enabled in it so we don't have to set things up ourselves! 
 
-To connect:
+To connect from off campus:
 
 - Connect to the NC State VPN. 
 
@@ -16,6 +16,8 @@ To connect:
     - Once installed, you need to login. <a href = "https://ncsu.service-now.com/sp?id=kb_article&sys_id=73c7e352db5844d084129ac5db9619fe" target = "_blank">See this site for info</a>. Basically, you connect to vpn.ncsu.edu and login with your username and password. You also need to do a duo login (I usually use a push notification - type 'push' in as the second password)
     - Once connect, you <a href = "https://jhub.cos.ncsu.edu/" target = "_blank">log into the `JupyterHub` here</a>.
     - Then you can select a pyspark kernel! 
+
+If you are on campus, you can skip the VPN part!
 
 The video below shows a quick walkthrough of this process.
 

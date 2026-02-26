@@ -1,0 +1,11 @@
+---
+title: "Creating a Class and Methods"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+Temp!
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

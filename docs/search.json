@@ -217,46 +217,53 @@
     "text": "Additional Readings for Week 11\n\nScikit-Learn Documentation\n\nAPI documentation\n\n\n\nModeling Readings\n\nIntrouction to Statistical Learning with Python\n\nChapter 3: sections 1, 2, and 3\nChapter 4: sections 1, 2, and 3\n\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
-    "objectID": "02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html",
-    "href": "02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html",
+    "objectID": "02_Big_Data_Management/14-pyspark_Spark_SQL_Landing.html",
+    "href": "02_Big_Data_Management/14-pyspark_Spark_SQL_Landing.html",
     "title": "pyspark: Spark SQL",
     "section": "",
     "text": "The video below discusses how pyspark can be used using its SQL style data frame and functionality.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes and the example done at the end of the notes is available in this notebook. You’ll need to download this .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.\nIf you are not an NC State student, you can download docker and gain access to Spark with a Jupyter notebook interface reasonably quickly!"
   },
   {
-    "objectID": "02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html#notes",
-    "href": "02_Big_Data_Management/12-pyspark_Spark_SQL_Landing.html#notes",
+    "objectID": "02_Big_Data_Management/14-pyspark_Spark_SQL_Landing.html#notes",
+    "href": "02_Big_Data_Management/14-pyspark_Spark_SQL_Landing.html#notes",
     "title": "pyspark: Spark SQL",
     "section": "Notes",
     "text": "Notes\n\nHTML version\nPDF version\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
-    "objectID": "02_Big_Data_Management/10-pyspark_RDD_Landing.html",
-    "href": "02_Big_Data_Management/10-pyspark_RDD_Landing.html",
+    "objectID": "02_Big_Data_Management/12-pyspark_RDD_Landing.html",
+    "href": "02_Big_Data_Management/12-pyspark_RDD_Landing.html",
     "title": "pyspark: Resilient Distributed Data Sets",
     "section": "",
     "text": "The video below describes the underlying data structure in spark called the resilient distributed data (RDD) data set. While we rarely utilize these data structures and their functionality exactly, it is useful to have an idea about RDDs and the functionality they have.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes and the example done at the end of the notes is available in this notebook. You’ll need to download this .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.\nIf you are not an NC State student, you can download docker and gain access to Spark with a Jupyter notebook interface reasonably quickly!"
   },
   {
-    "objectID": "02_Big_Data_Management/10-pyspark_RDD_Landing.html#notes",
-    "href": "02_Big_Data_Management/10-pyspark_RDD_Landing.html#notes",
+    "objectID": "02_Big_Data_Management/12-pyspark_RDD_Landing.html#notes",
+    "href": "02_Big_Data_Management/12-pyspark_RDD_Landing.html#notes",
     "title": "pyspark: Resilient Distributed Data Sets",
     "section": "Notes",
     "text": "Notes\n\nHTML version\nPDF version"
   },
   {
-    "objectID": "02_Big_Data_Management/10-pyspark_RDD_Landing.html#additional-readings-for-week-9",
-    "href": "02_Big_Data_Management/10-pyspark_RDD_Landing.html#additional-readings-for-week-9",
+    "objectID": "02_Big_Data_Management/12-pyspark_RDD_Landing.html#additional-readings-for-week-9",
+    "href": "02_Big_Data_Management/12-pyspark_RDD_Landing.html#additional-readings-for-week-9",
     "title": "pyspark: Resilient Distributed Data Sets",
     "section": "Additional Readings for Week 9",
-    "text": "Additional Readings for Week 9\n\npyspark\n\nQuick-start guide\nSQL API\npyspark SQL cheat sheet\npandas-on-Spark user guide\npandas-on-Spark example\n\n\n\nLooking for More?\n\nData Engineering Topics to Learn\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "Additional Readings for Week 9\n\npyspark\n\nQuick-start guide\nSQL API\npyspark SQL cheat sheet\npandas-on-Spark quick-start\npandas-on-Spark example\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+  },
+  {
+    "objectID": "02_Big_Data_Management/10-Running_python_Scripts.html",
+    "href": "02_Big_Data_Management/10-Running_python_Scripts.html",
+    "title": "Running python Scripts",
+    "section": "",
+    "text": "Temp!\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
     "objectID": "02_Big_Data_Management/08-Connecting_to_JupyterHub.html",
     "href": "02_Big_Data_Management/08-Connecting_to_JupyterHub.html",
     "title": "Connecting to our JupyterHub",
     "section": "",
-    "text": "We have a dedicated JupyterHub here in the college of sciences! The JupyterHub has pyspark enabled in it so we don’t have to set things up ourselves!\nTo connect:\n\nConnect to the NC State VPN.\n\nYou want to download Cisco AnyConnect VPN software.\nOnce installed, you need to login. See this site for info. Basically, you connect to vpn.ncsu.edu and login with your username and password. You also need to do a duo login (I usually use a push notification - type ‘push’ in as the second password)\nOnce connect, you log into the JupyterHub here.\nThen you can select a pyspark kernel!\n\n\nThe video below shows a quick walkthrough of this process.\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "We have a dedicated JupyterHub here in the college of sciences! The JupyterHub has pyspark enabled in it so we don’t have to set things up ourselves!\nTo connect from off campus:\n\nConnect to the NC State VPN.\n\nYou want to download Cisco AnyConnect VPN software.\nOnce installed, you need to login. See this site for info. Basically, you connect to vpn.ncsu.edu and login with your username and password. You also need to do a duo login (I usually use a push notification - type ‘push’ in as the second password)\nOnce connect, you log into the JupyterHub here.\nThen you can select a pyspark kernel!\n\n\nIf you are on campus, you can skip the VPN part!\nThe video below shows a quick walkthrough of this process.\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
     "objectID": "02_Big_Data_Management/06-Data_Pipelines_Storage_Landing.html",
@@ -1561,29 +1568,36 @@
     "text": "Additional Readings for Week 8\n\nHadoop\n\nHadoop Tutorial, Hadoop Architecture, Wikipedia article on Hadoop, What is Hadoop?, Another Intro to Hadoop\nHadoop YARN: Docs, Article\nHDFS & the Cloud: Article 1, Book (not free though)\nS3 storage\nAzure Blob Storage\n\n\n\nMapReduce\n\nMapReduce Examples: Article 1, Article 2\nA good intro through an example using PySpark\nHadoop vs Spark (IBM)\n\n\n\nSpark\n\nWhat is spark?\nBasic Spark Tutorial\nSpark APIs (databricks)\nMore on DAGs\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
-    "objectID": "02_Big_Data_Management/09-Spark_for_Big_Data_Landing.html",
-    "href": "02_Big_Data_Management/09-Spark_for_Big_Data_Landing.html",
+    "objectID": "02_Big_Data_Management/09-Creating_Class_Method.html",
+    "href": "02_Big_Data_Management/09-Creating_Class_Method.html",
+    "title": "Creating a Class and Methods",
+    "section": "",
+    "text": "Temp!\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+  },
+  {
+    "objectID": "02_Big_Data_Management/11-Spark_for_Big_Data_Landing.html",
+    "href": "02_Big_Data_Management/11-Spark_for_Big_Data_Landing.html",
     "title": "spark: Big Data Software",
     "section": "",
     "text": "The video below introduces the spark software for handling big data. This is a commonly used software to summarize, fit models, and handle streaming big data.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer."
   },
   {
-    "objectID": "02_Big_Data_Management/09-Spark_for_Big_Data_Landing.html#notes",
-    "href": "02_Big_Data_Management/09-Spark_for_Big_Data_Landing.html#notes",
+    "objectID": "02_Big_Data_Management/11-Spark_for_Big_Data_Landing.html#notes",
+    "href": "02_Big_Data_Management/11-Spark_for_Big_Data_Landing.html#notes",
     "title": "spark: Big Data Software",
     "section": "Notes",
-    "text": "Notes\n\nHTML version\nPDF version\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "Notes\n\nHTML version\nPDF version\n\nThat wraps up our week 8 content! Head out our Moodle site and start on homework 6.\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
-    "objectID": "02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html",
-    "href": "02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html",
+    "objectID": "02_Big_Data_Management/13-pyspark_pandas_on_Spark_Landing.html",
+    "href": "02_Big_Data_Management/13-pyspark_pandas_on_Spark_Landing.html",
     "title": "pyspark: Pandas-on-Spark",
     "section": "",
     "text": "The video below discusses the use of pyspark and the pandas-on-spark framework. This utilizes a pandas style data frame and functionality.\nI highly recommend watching the video using the ‘full’ Panopto player. There is a ‘pop out’ button in the bottom right of the video to enter this viewer.\nThe pyspark code used in the notes and the example done at the end of the notes is available in this notebook. You’ll need to download this .ipynb file and upload it to your JupyterHub environment. Make sure that the kernel used to run the notebook is a pyspark kernel!\nRemember, if you are off campus you should log in to the VPN and then you can access our JupyterHub.\nIf you are not an NC State student, you can download docker and gain access to Spark with a Jupyter notebook interface reasonably quickly!"
   },
   {
-    "objectID": "02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html#notes",
-    "href": "02_Big_Data_Management/11-pyspark_pandas_on_Spark_Landing.html#notes",
+    "objectID": "02_Big_Data_Management/13-pyspark_pandas_on_Spark_Landing.html#notes",
+    "href": "02_Big_Data_Management/13-pyspark_pandas_on_Spark_Landing.html#notes",
     "title": "pyspark: Pandas-on-Spark",
     "section": "Notes",
     "text": "Notes\n\nHTML version\nPDF version\n\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"

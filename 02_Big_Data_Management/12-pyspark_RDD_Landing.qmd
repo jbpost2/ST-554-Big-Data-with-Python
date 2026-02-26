@@ -1,0 +1,41 @@
+---
+title: "`pyspark`: Resilient Distributed Data Sets"
+format: html
+toc: TRUE
+editor_options: 
+  chunk_output_type: inline
+---
+
+The video below describes the underlying data structure in `spark` called the *resilient distributed data* (RDD) data set. While we rarely utilize these data structures and their functionality exactly, it is useful to have an idea about RDDs and the functionality they have.
+
+I highly recommend watching the video using the 'full' Panopto player. There is a 'pop out' button in the bottom right of the video to enter this viewer.
+
+The `pyspark` code used in the notes and the example done at the end of the notes is <a href = "pyspark_notebook.ipynb" target = "download">available in this notebook</a>. You'll need to download this `.ipynb` file and upload it to your `JupyterHub` environment. Make sure that the kernel used to run the notebook is a `pyspark` kernel!
+
+Remember, if you are off campus you should log in to the VPN and then you can <a href ="https://jhub.cos.ncsu.edu/" target = "_blank">access our `JupyterHub`</a>.
+
+```{=html}
+<iframe src="https://ncsu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=619f685a-9213-4ec4-8499-b29500c32443&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=false&interactivity=all" height="405" width="720" style="border: 1px solid #464646;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="10-pyspark_RDDs" ></iframe>
+```
+
+If you are not an NC State student, you can download docker and gain access to <a href = "https://hub.docker.com/r/jupyter/all-spark-notebook" target = "_blank">Spark with a Jupyter notebook interface</a> reasonably quickly! 
+
+
+## Notes
+
+- <a href = "12-pyspark_RDD.html" target = "_blank">HTML version</a>
+- <a href = "PDFs/12-pyspark_RDD.pdf" target = "_blank">PDF version</a>
+
+
+## Additional Readings for Week 9
+
+### pyspark
+
+- <a href="https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_df.html" target="_blank">Quick-start guide</a>
+- <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank">SQL API</a>
+- <a href = "https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PySpark_SQL_Cheat_Sheet_Python.pdf" target = "_blank">pyspark SQL cheat sheet</a>
+- <a href="https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_ps.html" target="_blank">pandas-on-Spark quick-start</a>
+- <a href="https://towardsdatascience.com/run-pandas-as-fast-as-spark-f5eefe780c45" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">pandas-on-Spark</a> example
+
+
+Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
