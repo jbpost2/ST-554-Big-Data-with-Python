@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-26">
+<meta name="dcterms.date" content="2026-02-27">
 
 <title>ST 554 Analysis of Big Data (with Python) - Creating a Class and Methods</title>
 <style>
@@ -608,7 +608,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#what-is-a-class" id="toc-what-is-a-class" class="nav-link active" data-scroll-target="#what-is-a-class">What is a Class?</a></li>
   <li><a href="#investigating-a-class" id="toc-investigating-a-class" class="nav-link" data-scroll-target="#investigating-a-class">Investigating a Class</a></li>
-  <li><a href="#creating-a-class" id="toc-creating-a-class" class="nav-link" data-scroll-target="#creating-a-class">Creating a Class</a></li>
+  <li><a href="#creating-a-class-with-attributes" id="toc-creating-a-class-with-attributes" class="nav-link" data-scroll-target="#creating-a-class-with-attributes">Creating a Class with Attributes</a></li>
+  <li><a href="#adding-methods-to-a-class" id="toc-adding-methods-to-a-class" class="nav-link" data-scroll-target="#adding-methods-to-a-class">Adding Methods to a Class</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
   </ul>
 </nav>
     </div>
@@ -628,7 +630,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-02-26</p>
+      <p class="date">2026-02-27</p>
     </div>
   </div>
   
@@ -652,7 +654,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>&lt;class 'datetime.date'&gt;</code></pre>
 </div>
 </div>
-<p>We can use a <strong>method</strong> on an instance of this class to read in a date such as <code>.fromisoformat()</code>!</p>
+<p>We can use a <strong>method</strong> to create an instance of this class to read in a date such as <code>.fromisoformat()</code>!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>my_date <span class="op">=</span> date.fromisoformat(<span class="st">"2000-01-02"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>my_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -660,11 +662,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>datetime.date(2000, 1, 2)</code></pre>
 </div>
 </div>
-<p>Or we can obtain today’s date (as of this page’s creation) using the <code>today()</code> method.</p>
+<p>Or we can obtain today’s date (as of this page’s creation) using the <code>today()</code> method on an already created instance of the class.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>date.today()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my_date.today()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>datetime.date(2026, 2, 26)</code></pre>
+<pre><code>datetime.date(2026, 2, 27)</code></pre>
 </div>
 </div>
 <p>The class has defined <strong>attributes</strong> we can access such as <code>.day</code> or <code>.year</code>.</p>
@@ -727,7 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         self._hashcode = -1
         return self</code></pre>
 <p>An <code>__new__</code> ‘dunder method’ (double underscore) exists to create an instance of the class! This is used when we execute <code>date()</code>. Many classes also have an <code>__init__(self)</code> that initializes the instance.</p>
-<p>You can see it creates a number of different attributes associated with the object. However, these are ‘protected’ attributes. We define attributes using a special decorator, <code>@property</code>.</p>
+<p>You can see it creates a number of different attributes associated with the object. However, these are ‘protected’ attributes. We define standard attributes after the <code>class</code> definition or using a special decorator, <code>@property</code>.</p>
 <pre><code>   # Read-only field accessors
     @property
     def year(self):
@@ -739,7 +741,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         """month (1-12)"""
         return self._month</code></pre>
 <p>These are defined similar to how we create a function but, of course, we’ll call our attributes without <code>()</code> on the end (<code>my_date.year</code>)!</p>
-<p>To create a method we use the special <code>@classmethod</code> decorator:</p>
+<p>To create a method we define functions within the class (tabbed in still). Here the <code>@classmethod</code> decorator creates a method that works on the class (but not on an instance of the class):</p>
 <pre><code>    @classmethod
     def fromisoformat(cls, date_string):
         """Construct a date from a string in ISO 8601 format."""
@@ -753,26 +755,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             return cls(*_parse_isoformat_date(date_string))
         except Exception:
             raise ValueError(f'Invalid isoformat string: {date_string!r}')</code></pre>
-<p>This method (used via syntax such as <code>date.fromisoformat()</code>) is again written very similarly to how we write a function.</p>
+<ul>
+<li><p>This works on the class itself, we can create a method to work on an instance of the class by defining a function without using the <code>@classmethod</code> decorator.</p></li>
+<li><p>For instance, the <code>.replace()</code> method allows a replacement of date field.</p></li>
+</ul>
+<pre><code>    def replace(self, year=None, month=None, day=None):
+        """Return a new date with new values for the specified fields."""
+        if year is None:
+            year = self._year
+        if month is None:
+            month = self._month
+        if day is None:
+            day = self._day
+        return type(self)(year, month, day)</code></pre>
 <ul>
 <li>Ok, we have the basics, let’s get to it!</li>
 </ul>
 </section>
-<section id="creating-a-class" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-class">Creating a Class</h2>
+<section id="creating-a-class-with-attributes" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-class-with-attributes">Creating a Class with Attributes</h2>
 <p>Let’s create a class for students in this course. For each student we want to have a number of pieces of information and functionality. We can start with the <code>class</code> keyword as we saw above. <a href="https://docs.python.org/3/tutorial/classes.html#class-objects" target="_blank">Class objects support two kinds of operations</a>: attribute references and instantiation.</p>
 <ul>
-<li>We can add attribute references by simply defining a name and the type it should take on (<code>name: str</code>, for instance)</li>
-<li>To set an initial state to the object, we can use <code>__init__()</code>.</li>
+<li>We can add attribute references by simply defining a name and a value or a data type (<code>name = str</code>, for instance)</li>
+<li>To set an initial state to the object, we can use <code>__init__()</code>. Here we’ll take in two arguments, <code>name</code> and <code>unity</code> ID.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> st554_student:</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'st554'</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, unity_id):</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.name <span class="op">=</span> name</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.unity_id <span class="op">=</span> unity_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> student:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'554'</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    department <span class="op">=</span> <span class="st">'st'</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.full_name <span class="op">=</span> name</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unity_id <span class="op">=</span> unity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now we can initiate an instance of a <code>student</code> object!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> student(<span class="st">"Justin Post"</span>, <span class="st">"jbpost2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can access the attributes defined above!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x.course</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'554'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x.full_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Justin Post'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x.unity_id</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'jbpost2'</code></pre>
+</div>
+</div>
+<p>We can add other attributes using the <code>@property</code> decorator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> student:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'554'</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    department <span class="op">=</span> <span class="st">'st'</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>):</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.full_name <span class="op">=</span> name</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unity_id <span class="op">=</span> unity</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> split_name(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">str</span>, <span class="bu">str</span>]:</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Return the first name and last name"""</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        first, last <span class="op">=</span> <span class="va">self</span>.full_name.split(<span class="st">" "</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> first, last</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we should have an attribute that returns a tuple of length two with the first and last name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> student(<span class="st">"Justin Post"</span>, <span class="st">"jbpost2"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.split_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>('Justin', 'Post')</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-methods-to-a-class" class="level2">
+<h2 class="anchored" data-anchor-id="adding-methods-to-a-class">Adding Methods to a Class</h2>
+<p>We can easily add our own methods. Let’s add a <code>grades</code> attribute and a method to add grades <strong>at creation time</strong>. To do this, we use the <code>@classmethod</code> decorator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> student:</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'554'</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    department <span class="op">=</span> <span class="st">'st'</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    grades <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>):</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.full_name <span class="op">=</span> name</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unity_id <span class="op">=</span> unity</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> split_name(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">str</span>, <span class="bu">str</span>]:</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Return the first name and last name"""</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>        first, last <span class="op">=</span> <span class="va">self</span>.full_name.split(<span class="st">" "</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> first, last</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> with_grades(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>, grades: <span class="bu">list</span>):</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>        student <span class="op">=</span> <span class="va">self</span>(name, unity)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>        student.grades <span class="op">=</span> grades</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> student</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> student.with_grades(<span class="st">"Justin Post"</span>, <span class="st">"jbpost2"</span>, [<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">40</span>])</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 10, 40]</code></pre>
+</div>
+</div>
+<p>Sweet! Let’s also add a method to take an already created instance and add grades to it! To create this kind of method, we just define a new function without the decorator.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> student:</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'554'</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    department <span class="op">=</span> <span class="st">'st'</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    grades <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>):</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.full_name <span class="op">=</span> name</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unity_id <span class="op">=</span> unity</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> split_name(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">str</span>, <span class="bu">str</span>]:</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Return the first name and last name"""</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>        first, last <span class="op">=</span> <span class="va">self</span>.full_name.split(<span class="st">" "</span>)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> first, last</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> with_grades(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>, grades: <span class="bu">list</span>):</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        student <span class="op">=</span> <span class="va">self</span>(name, unity)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        student.grades <span class="op">=</span> grades</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> student</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_grade(<span class="va">self</span>, grade: <span class="bu">list</span>):</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>        student <span class="op">=</span> <span class="va">self</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> student.grades <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>            student.grades <span class="op">=</span> grade</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>            student <span class="op">=</span> student.grades.extend(grade)</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> student</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> student.with_grades(<span class="st">"Justin Post"</span>, <span class="st">"jbpost2"</span>, [<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">40</span>])</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 10, 40]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x.add_grade([<span class="dv">12</span>, <span class="dv">11</span>])</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 10, 40, 12, 11]</code></pre>
+</div>
+</div>
+<p>Awesome! Last thing for our purposes, often an <code>__str__</code> method is added, which notes how to print the object. Let’s use an <code>F-string</code> to print out some info.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> student:</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    course <span class="op">=</span> <span class="st">'554'</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    department <span class="op">=</span> <span class="st">'st'</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    grades <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>):</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.full_name <span class="op">=</span> name</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.unity_id <span class="op">=</span> unity</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.grades <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="ss">f"Student(name=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>full_name<span class="sc">}</span><span class="ss">, unity_id=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>unity_id<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="ss">f"Student(name=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>full_name<span class="sc">}</span><span class="ss">, unity_id=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>unity_id<span class="sc">}</span><span class="ss">, grades=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>grades<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> split_name(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[<span class="bu">str</span>, <span class="bu">str</span>]:</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Return the first name and last name"""</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>        first, last <span class="op">=</span> <span class="va">self</span>.full_name.split(<span class="st">" "</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> first, last</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> with_grades(<span class="va">self</span>, name: <span class="bu">str</span>, unity: <span class="bu">str</span>, grades: <span class="bu">list</span>):</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>        student <span class="op">=</span> <span class="va">self</span>(name, unity)</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>        student.grades <span class="op">=</span> grades</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> student</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_grade(<span class="va">self</span>, grade: <span class="bu">list</span>):</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>        student <span class="op">=</span> <span class="va">self</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> student.grades <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>            student.grades <span class="op">=</span> grade</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>            student <span class="op">=</span> student.grades.extend(grade)</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> student</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s try it out!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> student(<span class="st">"Justin Post"</span>, <span class="st">"jbpost2"</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Student(name=Justin Post, unity_id=jbpost2)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> student.with_grades(<span class="st">"Justin Post"</span>, <span class="st">"jbpost2"</span>, [<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">40</span>])</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>x.add_grade([<span class="dv">12</span>, <span class="dv">11</span>])</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Student(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])</code></pre>
+</div>
+</div>
+</section>
+<section id="recap" class="level2">
+<h2 class="anchored" data-anchor-id="recap">Recap</h2>
+<p>Creating a class can be useful if you are going to create many objects of the same type. We can add our own attributes and methods!</p>
+<p>Note: A <code>python</code> script with the <a href="student_class.py" target="download">class above is available here</a> if you want to run the code. Next we look at how to execute python scripts from the command line!</p>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
 

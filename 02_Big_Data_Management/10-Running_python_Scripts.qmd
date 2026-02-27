@@ -6,6 +6,46 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Temp!
+```{r, include=FALSE, warning=FALSE, message=FALSE}
+library(reticulate)
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+options(reticulate.repl.quiet = TRUE)
+```
+
+At times we are going to want to be able to execute `python` scripts. That is, run all of the code and output something while not being in a `JupyterHub`, `Colab`, or interactive `python` environment.
+
+We'll focus on how to execute scripts from our `JupyterHub`.
+
+## Executing a Script from the Command Line
+
+Consider our `python` script that defined our class from the previous notes (<a href = "student_class.py" target = "download">available here</a>. We can execute this script from the command line pretty easily! If you look at the code you'll see a number of things should print out when we do so.
+
+- First, log in on our `JupyterHub` and upload the file there so you see it locally. 
+- Click on File -> New -> Terminal. Or, head to the 'Launcher,' scroll down, and click on "Terminal".
+- This should bring up a terminal window at looking at your 'root' directory. That is, it is looking in your main folder by default.
+- We can run a `.py` file using `python path_to_file.py`
+
+    - If our file exists there, we can just type
+
+```
+python student_class.py
+```
+
+    - I have my file in a sub-directory so I can just tell it where to find it. For instance,
+
+```
+python 02_Big_Data_Management/student_class.py
+```
+
+- If it finds the file, you should see something like:
+```
+554
+Justin Post
+jbpost2
+('Justin', 'Post')
+[3, 10, 40]
+[3, 10, 40, 12, 11]
+Student(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])
+```
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

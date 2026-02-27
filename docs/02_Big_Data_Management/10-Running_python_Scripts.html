@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-26">
+<meta name="dcterms.date" content="2026-02-27">
 
 <title>ST 554 Analysis of Big Data (with Python) - Running python Scripts</title>
 <style>
@@ -568,7 +568,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#executing-a-script-from-the-command-line" id="toc-executing-a-script-from-the-command-line" class="nav-link active" data-scroll-target="#executing-a-script-from-the-command-line">Executing a Script from the Command Line</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -586,7 +592,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-02-26</p>
+      <p class="date">2026-02-27</p>
     </div>
   </div>
   
@@ -596,10 +602,37 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Temp!</p>
+<p>At times we are going to want to be able to execute <code>python</code> scripts. That is, run all of the code and output something while not being in a <code>JupyterHub</code>, <code>Colab</code>, or interactive <code>python</code> environment.</p>
+<p>We’ll focus on how to execute scripts from our <code>JupyterHub</code>.</p>
+<section id="executing-a-script-from-the-command-line" class="level2">
+<h2 class="anchored" data-anchor-id="executing-a-script-from-the-command-line">Executing a Script from the Command Line</h2>
+<p>Consider our <code>python</code> script that defined our class from the previous notes (<a href="student_class.py" target="download">available here</a>. We can execute this script from the command line pretty easily! If you look at the code you’ll see a number of things should print out when we do so.</p>
+<ul>
+<li><p>First, log in on our <code>JupyterHub</code> and upload the file there so you see it locally.</p></li>
+<li><p>Click on File -&gt; New -&gt; Terminal. Or, head to the ‘Launcher,’ scroll down, and click on “Terminal”.</p></li>
+<li><p>This should bring up a terminal window at looking at your ‘root’ directory. That is, it is looking in your main folder by default.</p></li>
+<li><p>We can run a <code>.py</code> file using <code>python path_to_file.py</code></p>
+<ul>
+<li>If our file exists there, we can just type</li>
+</ul></li>
+</ul>
+<pre><code>python student_class.py</code></pre>
+<pre><code>- I have my file in a sub-directory so I can just tell it where to find it. For instance,</code></pre>
+<pre><code>python 02_Big_Data_Management/student_class.py</code></pre>
+<ul>
+<li>If it finds the file, you should see something like:</li>
+</ul>
+<pre><code>554
+Justin Post
+jbpost2
+('Justin', 'Post')
+[3, 10, 40]
+[3, 10, 40, 12, 11]
+Student(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])</code></pre>
 <p>Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

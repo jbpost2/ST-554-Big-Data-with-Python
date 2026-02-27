@@ -13,7 +13,6 @@ options(reticulate.repl.quiet = TRUE)
 ```
 
 
-
 We've implicitly been using different *Classes* during the course. We've created *Objects* from these classes, used their *methods*, and investigated their *attributes*. Understanding these at a basic level is really useful to fully understand how to extend certain programs - especially as we get into `Spark`. So let's dive a little deeper into `python` programming! 
 
 ## What is a Class?
@@ -27,17 +26,17 @@ from datetime import date
 date
 ```
 
-We can use a **method** on an instance of this class to read in a date such as `.fromisoformat()`!
+We can use a **method** to create an instance of this class to read in a date such as `.fromisoformat()`!
 
 ```{python}
 my_date = date.fromisoformat("2000-01-02")
 my_date
 ```
 
-Or we can obtain today's date (as of this page's creation) using the `today()` method.
+Or we can obtain today's date (as of this page's creation) using the `today()` method on an already created instance of the class.
 
 ```{python}
-date.today()
+my_date.today()
 ```
 
 The class has defined **attributes** we can access such as `.day` or `.year`.
@@ -112,7 +111,7 @@ We can see that we start with `class name_of_class:`. This is how we'll create a
 
 An `__new__` 'dunder method' (double underscore) exists to create an instance of the class! This is used when we execute `date()`. Many classes also have an `__init__(self)` that initializes the instance.
 
-You can see it creates a number of different attributes associated with the object. However, these are 'protected' attributes. We define attributes using a special decorator, `@property`.
+You can see it creates a number of different attributes associated with the object. However, these are 'protected' attributes. We define standard attributes after the `class` definition or using a special decorator, `@property`.
 
 ```
    # Read-only field accessors
@@ -129,7 +128,7 @@ You can see it creates a number of different attributes associated with the obje
 
 These are defined similar to how we create a function but, of course, we'll call our attributes without `()` on the end (`my_date.year`)!
 
-To create a method we use the special `@classmethod` decorator:
+To create a method we define functions within the class (tabbed in still). Here the `@classmethod` decorator creates a method that works on the class (but not on an instance of the class):
 
 ```
     @classmethod
@@ -147,28 +146,201 @@ To create a method we use the special `@classmethod` decorator:
             raise ValueError(f'Invalid isoformat string: {date_string!r}')
 ```
 
-This method (used via syntax such as `date.fromisoformat()`) is again written very similarly to how we write a function.
+- This works on the class itself, we can create a method to work on an instance of the class by defining a function without using the `@classmethod` decorator.
+
+- For instance, the `.replace()` method allows a replacement of date field.
+
+```
+    def replace(self, year=None, month=None, day=None):
+        """Return a new date with new values for the specified fields."""
+        if year is None:
+            year = self._year
+        if month is None:
+            month = self._month
+        if day is None:
+            day = self._day
+        return type(self)(year, month, day)
+```
 
 - Ok, we have the basics, let's get to it!
 
-## Creating a Class
+## Creating a Class with Attributes
 
 Let's create a class for students in this course. For each student we want to have a number of pieces of information and functionality. We can start with the `class` keyword as we saw above. <a href = "https://docs.python.org/3/tutorial/classes.html#class-objects" target = "_blank">Class objects support two kinds of operations</a>: attribute references and instantiation.
 
-- We can add attribute references by simply defining a name and the type it should take on (`name: str`, for instance)
-- To set an initial state to the object, we can use `__init__()`.
+- We can add attribute references by simply defining a name and a value or a data type (`name = str`, for instance)
+- To set an initial state to the object, we can use `__init__()`. Here we'll take in two arguments, `name` and `unity` ID.
 
 ```{python}
-class st554_student:
-    course = 'st554'
-
-    def __init__(self, name, unity_id):
-      self.name = name
-      self.unity_id = unity_id
+class student:
+    course = '554'
+    department = 'st'
+    
+    def __init__(self, name: str, unity: str):
+        self.full_name = name
+        self.unity_id = unity
 ```
 
+Now we can initiate an instance of a `student` object!
 
+```{python}
+x = student("Justin Post", "jbpost2")
+```
 
+We can access the attributes defined above!
 
+```{python}
+x.course
+x.full_name
+x.unity_id
+```
+
+We can add other attributes using the `@property` decorator.
+
+```{python}
+class student:
+    course = '554'
+    department = 'st'
+    
+    def __init__(self, name: str, unity: str):
+        self.full_name = name
+        self.unity_id = unity
+    
+    @property
+    def split_name(self) -> tuple[str, str]:
+        """Return the first name and last name"""
+        first, last = self.full_name.split(" ")
+        return first, last
+```
+
+Now we should have an attribute that returns a tuple of length two with the first and last name.
+
+```{python}
+x = student("Justin Post", "jbpost2")
+print(x.split_name)
+```
+
+## Adding Methods to a Class
+
+We can easily add our own methods. Let's add a `grades` attribute and a method to add grades **at creation time**. To do this, we use the `@classmethod` decorator.
+
+```{python}
+class student:
+    course = '554'
+    department = 'st'
+    grades = None
+    
+    def __init__(self, name: str, unity: str):
+        self.full_name = name
+        self.unity_id = unity
+    
+    @property
+    def split_name(self) -> tuple[str, str]:
+        """Return the first name and last name"""
+        first, last = self.full_name.split(" ")
+        return first, last
+
+    @classmethod
+    def with_grades(self, name: str, unity: str, grades: list):
+        student = self(name, unity)
+        student.grades = grades
+        return student
+      
+x = student.with_grades("Justin Post", "jbpost2", [3, 10, 40])
+print(x.grades)
+```
+
+Sweet! Let's also add a method to take an already created instance and add grades to it! To create this kind of method, we just define a new function without the decorator.
+
+```{python}
+class student:
+    course = '554'
+    department = 'st'
+    grades = None
+    
+    def __init__(self, name: str, unity: str):
+        self.full_name = name
+        self.unity_id = unity
+    
+    @property
+    def split_name(self) -> tuple[str, str]:
+        """Return the first name and last name"""
+        first, last = self.full_name.split(" ")
+        return first, last
+    
+    @classmethod
+    def with_grades(self, name: str, unity: str, grades: list):
+        student = self(name, unity)
+        student.grades = grades
+        return student
+      
+    def add_grade(self, grade: list):
+        student = self
+        if student.grades is None:
+            student.grades = grade
+        else:
+            student = student.grades.extend(grade)
+        return student
+
+x = student.with_grades("Justin Post", "jbpost2", [3, 10, 40])
+print(x.grades)
+x.add_grade([12, 11])
+print(x.grades)
+```
+
+Awesome! Last thing for our purposes, often an `__str__` method is added, which notes how to print the object. Let's use an `F-string` to print out some info.
+
+```{python}
+class student:
+    course = '554'
+    department = 'st'
+    grades = None
+    
+    def __init__(self, name: str, unity: str):
+        self.full_name = name
+        self.unity_id = unity
+    
+    def __str__(self):
+        if self.grades is None:
+            return f"Student(name={self.full_name}, unity_id={self.unity_id})"
+        else:
+            return f"Student(name={self.full_name}, unity_id={self.unity_id}, grades={self.grades})"
+      
+    @property
+    def split_name(self) -> tuple[str, str]:
+        """Return the first name and last name"""
+        first, last = self.full_name.split(" ")
+        return first, last
+    
+    @classmethod
+    def with_grades(self, name: str, unity: str, grades: list):
+        student = self(name, unity)
+        student.grades = grades
+        return student
+      
+    def add_grade(self, grade: list):
+        student = self
+        if student.grades is None:
+            student.grades = grade
+        else:
+            student = student.grades.extend(grade)
+        return student
+```
+
+Let's try it out!
+
+```{python}
+x = student("Justin Post", "jbpost2")
+print(x)
+x = student.with_grades("Justin Post", "jbpost2", [3, 10, 40])
+x.add_grade([12, 11])
+print(x)
+```
+
+## Recap
+
+Creating a class can be useful if you are going to create many objects of the same type. We can add our own attributes and methods!
+
+Note: A `python` script with the <a href = "student_class.py" target = "download">class above is available here</a> if you want to run the code. Next we look at how to execute python scripts from the command line!
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
