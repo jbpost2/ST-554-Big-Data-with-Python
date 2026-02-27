@@ -256,14 +256,28 @@
     "href": "02_Big_Data_Management/10-Running_python_Scripts.html",
     "title": "Running python Scripts",
     "section": "",
-    "text": "At times we are going to want to be able to execute python scripts. That is, run all of the code and output something while not being in a JupyterHub, Colab, or interactive python environment.\nWe’ll focus on how to execute scripts from our JupyterHub."
+    "text": "At times we are going to want to be able to execute python scripts (generally a .py file). That is, run all of the code and output something while not being in a JupyterHub, Colab, or interactive python environment.\nWe’ll focus on how to execute scripts from our JupyterHub."
   },
   {
     "objectID": "02_Big_Data_Management/10-Running_python_Scripts.html#executing-a-script-from-the-command-line",
     "href": "02_Big_Data_Management/10-Running_python_Scripts.html#executing-a-script-from-the-command-line",
     "title": "Running python Scripts",
     "section": "Executing a Script from the Command Line",
-    "text": "Executing a Script from the Command Line\nConsider our python script that defined our class from the previous notes (available here. We can execute this script from the command line pretty easily! If you look at the code you’ll see a number of things should print out when we do so.\n\nFirst, log in on our JupyterHub and upload the file there so you see it locally.\nClick on File -&gt; New -&gt; Terminal. Or, head to the ‘Launcher,’ scroll down, and click on “Terminal”.\nThis should bring up a terminal window at looking at your ‘root’ directory. That is, it is looking in your main folder by default.\nWe can run a .py file using python path_to_file.py\n\nIf our file exists there, we can just type\n\n\npython student_class.py\n- I have my file in a sub-directory so I can just tell it where to find it. For instance,\npython 02_Big_Data_Management/student_class.py\n\nIf it finds the file, you should see something like:\n\n554\nJustin Post\njbpost2\n('Justin', 'Post')\n[3, 10, 40]\n[3, 10, 40, 12, 11]\nStudent(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
+    "text": "Executing a Script from the Command Line\nConsider our python script that defined our class from the previous notes (available here. We can execute this script from the command line pretty easily! If you look at the code you’ll see a number of things should print out when we do so.\n\nFirst, log in on our JupyterHub and upload the file there so you see it locally.\nClick on File -&gt; New -&gt; Terminal. Or, head to the ‘Launcher,’ scroll down, and click on “Terminal”.\nThis should bring up a terminal window at looking at your ‘root’ directory. That is, it is looking in your main folder by default.\nWe can run a .py file using python path_to_file.py\n\nIf our file exists there, we can just type\n\npython student_class.py\n\nI have my file in a sub-directory so I can just tell it where to find it. For instance,\n\npython 02_Big_Data_Management/student_class.py\nIf it finds the file, you should see something like:\n\n554\nJustin Post\njbpost2\n('Justin', 'Post')\n[3, 10, 40]\n[3, 10, 40, 12, 11]\nStudent(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])\nWe just executed our first file! Woo."
+  },
+  {
+    "objectID": "02_Big_Data_Management/10-Running_python_Scripts.html#importing-a-file",
+    "href": "02_Big_Data_Management/10-Running_python_Scripts.html#importing-a-file",
+    "title": "Running python Scripts",
+    "section": "Importing a File",
+    "text": "Importing a File\nSometimes we’re going to want to import the code from a file but not execute it (similar to reading in a module). To do this, we need only a few changes to our .py file.\n\nWe add def main(): around the code that creates a new object and prints out information. We then just tab that code in four spaces\nThen, at the bottom of the file, we add\n\nif __name__==\"__main__\":\n    main()\n\nIf we run the code as we did above, it still executes (as it was the file being executed)\nHowever, the code won’t run if we import the file into a python session\nThis is super useful when we want to set up a sequence of files to run (a pipeline)\n\nDownload the file above and put it in your working directory. You can then either execute the code below in a python interpreter or in a notebook.\n\nWe can import this file and it will give us access to the class but won’t execute the code to print things out.\n\n\nimport student_class_main\n\n\nNothing prints out! But we can create an instance of the class.\n\n\ny = student_class_main.student(\"Jake Plummer\", \"jeplummer\")\nprint(y)\n\nStudent(name=Jake Plummer, unity_id=jeplummer)\n\n\n\nWe can execute the code in the main() part via\n\n\nstudent_class_main.main()\n\n554\nJustin Post\njbpost2\n('Justin', 'Post')\n[3, 10, 40]\n[3, 10, 40, 12, 11]\nStudent(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])\n\n\nSweet! This is going to help us out when we start dealing with data and/or model pipelines and when we get into streaming data!"
+  },
+  {
+    "objectID": "02_Big_Data_Management/10-Running_python_Scripts.html#recap",
+    "href": "02_Big_Data_Management/10-Running_python_Scripts.html#recap",
+    "title": "Running python Scripts",
+    "section": "Recap",
+    "text": "Recap\nIt is quite useful to be able to execute a python script from the command line. Also, it is super useful to be able to read in a python script as a module!\nUse the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!"
   },
   {
     "objectID": "02_Big_Data_Management/08-Connecting_to_JupyterHub.html",

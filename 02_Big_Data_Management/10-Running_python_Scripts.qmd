@@ -12,7 +12,7 @@ use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(reticulate.repl.quiet = TRUE)
 ```
 
-At times we are going to want to be able to execute `python` scripts. That is, run all of the code and output something while not being in a `JupyterHub`, `Colab`, or interactive `python` environment.
+At times we are going to want to be able to execute `python` scripts (generally a `.py` file). That is, run all of the code and output something while not being in a `JupyterHub`, `Colab`, or interactive `python` environment.
 
 We'll focus on how to execute scripts from our `JupyterHub`.
 
@@ -26,17 +26,13 @@ Consider our `python` script that defined our class from the previous notes (<a 
 - We can run a `.py` file using `python path_to_file.py`
 
     - If our file exists there, we can just type
-
 ```
 python student_class.py
 ```
-
     - I have my file in a sub-directory so I can just tell it where to find it. For instance,
-
 ```
 python 02_Big_Data_Management/student_class.py
 ```
-
 - If it finds the file, you should see something like:
 ```
 554
@@ -47,5 +43,48 @@ jbpost2
 [3, 10, 40, 12, 11]
 Student(name=Justin Post, unity_id=jbpost2, grades=[3, 10, 40, 12, 11])
 ```
+
+We just executed our first file! Woo.
+
+## Importing a File 
+
+Sometimes we're going to want to import the code from a file but not execute it (similar to reading in a module). To do this, we need only a <a href="student_class_main.py" target = "download">few changes to our `.py` file</a>.
+
+- We add `def main():` around the code that creates a new object and prints out information. We then just tab that code in four spaces
+- Then, at the bottom of the file, we add 
+```
+if __name__=="__main__":
+    main()
+```
+
+- If we run the code as we did above, it still executes (as it was the file being executed)
+- However, the code won't run if we `import` the file into a `python` session
+- This is super useful when we want to set up a sequence of files to run (a pipeline)
+
+Download the file above and put it in your working directory. You can then either execute the code below in a python interpreter or in a notebook.
+ 
+- We can `import` this file and it will give us access to the class but won't execute the code to print things out.
+
+```{python}
+import student_class_main
+```
+
+- Nothing prints out! But we can create an instance of the class.
+
+```{python}
+y = student_class_main.student("Jake Plummer", "jeplummer")
+print(y)
+```
+- We can execute the code in the `main()` part via
+
+```{python}
+student_class_main.main()
+```
+
+Sweet! This is going to help us out when we start dealing with data and/or model pipelines and when we get into streaming data!
+
+## Recap
+
+It is quite useful to be able to execute a python script from the command line. Also, it is super useful to be able to read in a python script as a module!
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!
