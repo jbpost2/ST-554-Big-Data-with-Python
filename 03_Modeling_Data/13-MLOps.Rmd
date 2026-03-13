@@ -245,7 +245,7 @@ knitr::include_graphics("img/model-serving-microservices.jpg")
 # Models Based on Streaming Data
 
 ```{r echo = FALSE, fig.align = 'center', out.width = '750px'}
-knitr::include_graphics("img/Online learning.jpg")
+knitr::include_graphics("img/online_learning.jpg")
 ```
 
 

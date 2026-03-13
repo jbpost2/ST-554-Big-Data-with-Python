@@ -8,7 +8,7 @@ editor_options:
 
 ```{r, include=FALSE, warning=FALSE, message=FALSE}
 library(reticulate)
-use_python("C:\\ProgramData\\Anaconda3\\python.exe")
+#use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(reticulate.repl.quiet = TRUE)
 ```
 
