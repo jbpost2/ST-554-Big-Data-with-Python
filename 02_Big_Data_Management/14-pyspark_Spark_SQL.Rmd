@@ -93,11 +93,12 @@ Two major DataFrame APIs in `pyspark`
 
 # Starting a Spark Instance
 
-- Use `pyspark.sql.SparkSession` to create a spark instance (or link to an existing one)
+- Use `SparkSession` from `pyspark.sql` to create a spark instance (or link to an existing one)
 
 ```{python, eval = FALSE}
 from pyspark.sql import SparkSession
-spark = SparkSession.builder.master('local[*]').appName('my_app').getOrCreate()
+spark = SparkSession.builder.master('local[*]').appName('my_app') \
+    .config("spark.sql.ansi.enabled", "false").getOrCreate()
 ```
 
 
@@ -105,11 +106,12 @@ spark = SparkSession.builder.master('local[*]').appName('my_app').getOrCreate()
 
 # Starting a Spark Instance
 
-- Use `pyspark.sql.SparkSession` to create a spark instance (or link to an existing one)
+- Use `SparkSession` from `pyspark.sql` to create a spark instance (or link to an existing one)
 
 ```{python, eval = FALSE}
 from pyspark.sql import SparkSession
-spark = SparkSession.builder.master('local[*]').appName('my_app').getOrCreate()
+spark = SparkSession.builder.master('local[*]').appName('my_app') \
+    .config("spark.sql.ansi.enabled", "false").getOrCreate()
 ```
 
 By the way, you may also see a few other ways of creating a spark instance
@@ -125,7 +127,7 @@ If you are reading tutorials, these (and a few others) can mostly be handled thr
 
 # Creating a Spark SQL DataFrame
 
-- Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
+- Create a DataFrame using `.createDataFrame()`
 - Can specify the data by `Row()` and infer the **schema**
 
 ```{python, eval = FALSE}
@@ -144,7 +146,7 @@ df
 
 # Creating a Spark SQL DataFrame
 
-- Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
+- Create a DataFrame using `.createDataFrame()`
 - Can specify the data and schema explicitly 
 
 ```{python, eval = FALSE}
@@ -162,7 +164,7 @@ df
 
 # Creating a Spark SQL DataFrame
 
-- Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
+- Create a DataFrame using `.createDataFrame()`
 - Can read data in directly in from a file
 ```{python, eval = FALSE}
 df = spark.read.load("data/neuralgia.csv",
@@ -179,7 +181,7 @@ df
 
 # Creating a Spark SQL DataFrame
 
-- Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
+- Create a DataFrame using `.createDataFrame()`
 - Can read data in directly in from a file
 ```{python, eval = FALSE}
 df = spark.read.load("data/neuralgia.csv",
@@ -191,15 +193,15 @@ df
 ```
 <pre>df: DataFrame[Treatment: string, Sex: string, Age: int, Duration: int, Pain: string]</pre>
 
-- `spark.read.load()` can read in other delimited data, json data, parquet data, and others
-- specific functions like `spark.read().csv("path")` also exist
+- `.read.load()` can read in other delimited data, json data, parquet data, and others
+- specific functions like `.read.csv("path")` also exist
 
 
 ---
 
 # Creating a Spark SQL DataFrame
 
-- Create a DataFrame using `pyspark.sql.spark.createDataFrame()`
+- Create a DataFrame using `.createDataFrame()`
 - Can create from a (*regular*) `pandas` DataFrame
 
 ```{python, eval = FALSE}
@@ -224,14 +226,14 @@ df
 You can go back and forth between Spark SQL and pandas-on-Spark DataFrames!
 
 ```{python, eval = FALSE}
-sdf = spark.read.load("neuralgia.csv",
+sdf = spark.read.load("data/neuralgia.csv",
                      format="csv", 
                      sep=",", 
                      inferSchema="true", 
                      header="true")
 type(sdf)
 ```
-<pre>pyspark.sql.dataframe.DataFrame</pre>
+<pre>pyspark.sql.classic.dataframe.DataFrame</pre>
 
 ```{python, eval = FALSE}
 dfps = sdf.pandas_api()
@@ -243,14 +245,14 @@ type(dfps)
 sdf2 = dfps.to_spark()
 type(sdf2)
 ```
-<pre>pyspark.sql.dataframe.DataFrame</pre>
+<pre>pyspark.sql.classic.dataframe.DataFrame</pre>
 
 
 ---
 
 # Understanding Spark SQL Data Frames
 
-Schema is vital to know (often need to cast to other data types)!
+Schema is vital to know (often need to cast to other data types)! (Here `df` is the neuralgia data.)
 
 ```{python, eval = FALSE}
 df.printSchema()

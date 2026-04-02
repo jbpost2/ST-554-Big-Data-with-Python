@@ -113,6 +113,11 @@ Two major DataFrame APIs in `pyspark`
 - First we can import our modules
 
 ```{python, eval = FALSE}
+from pyspark.sql import SparkSession
+spark = SparkSession.builder \
+    .appName("my_app") \
+    .config("spark.sql.ansi.enabled", "false") \
+    .getOrCreate()
 import pandas as pd
 import numpy as np
 import pyspark.pandas as ps
@@ -184,7 +189,7 @@ knitr::include_graphics("img/psdf2.PNG")
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[["column1", "column2"]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
     
 ---
@@ -196,7 +201,7 @@ knitr::include_graphics("img/psdf2.PNG")
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[["column1", "column2"]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
 ```{python, eval = FALSE}
 psdf.loc[psdf.quality > 5, ["alcohol", "quality"]].head()
@@ -215,7 +220,7 @@ knitr::include_graphics("img/psdf3.PNG")
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[["column1", "column2"]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
 ```{python, eval = FALSE}
 titanic_ps = ps.read_csv("titanic.csv") #data uploaded to jhub in data folder
@@ -234,7 +239,7 @@ knitr::include_graphics("img/psdf6.png")
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[["column1", "column2"]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
 ```{python, eval = FALSE}
 titanic_ps.groupby("survived").mean()
@@ -253,7 +258,7 @@ knitr::include_graphics("img/psdf5.png")
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[["column1", "column2"]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
 
 ```{python, eval = FALSE}
 titanic_ps.describe()
@@ -292,8 +297,8 @@ def standardize(pser) -> ps.Series[np.float64]:
 ```{python, eval = FALSE}
 std_res = titanic_ps[["age", "fare"]] \
     .rename(columns = {"age": "o_age", "fare": "o_fare"}) \
-    .join(titanic_ps[["age", "fare"]]
-              .transform(standardize))
+    .join(titanic_ps[["age", "fare"]].transform(standardize))
+std_res.head()
 ```
 ```{r, echo = FALSE, out.width="600px"}
 knitr::include_graphics("img/psdf7.png")

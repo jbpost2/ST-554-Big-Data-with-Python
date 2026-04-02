@@ -416,7 +416,10 @@ df = spark.createDataFrame(pandas_df)
 Common transformations done in spark:
 - `map()` apply a function to each RDD to return a new RDD
 - `filter()` return a subsetted RDD
-- Others like: `select()`, `filterByRange()`, `groupByKey()`, `reduceByKey()`, `distinct()`, `sample()`, `union()`, ...
+- Others like: `select()`, `groupByKey()`, `reduceByKey()`, `distinct()`, `sample()`, `union()`, ...
+
+    + `filterByRange()` is no longer supported
+    
 
 ---
 
@@ -427,7 +430,7 @@ Common transformations done in spark:
 Common transformations done in spark:
 - `map()` apply a function to each RDD to return a new RDD
 - `filter()` return a subsetted RDD
-- Others like: `select()`, `filterByRange()`, `groupByKey()`, `reduceByKey()`, `distinct()`, `sample()`, `union()`, ...
+- Others like: `select()`, `groupByKey()`, `reduceByKey()`, `distinct()`, `sample()`, `union()`, ...
 
 Common Actions done in spark:
 - `reduce()`

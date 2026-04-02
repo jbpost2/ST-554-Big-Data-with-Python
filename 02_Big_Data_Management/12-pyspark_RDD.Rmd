@@ -131,7 +131,7 @@ my_rdd = spark.sparkContext.parallelize(my_data)
 my_rdd
 ```
 
-`ParallelCollectionRDD[1] at readRDDFromFile at PythonRDD.scala:274`
+`ParallelCollectionRDD[1] at readRDDFromFile at PythonRDD.scala:297`
 
 
 ---
@@ -249,7 +249,7 @@ my_rdd \
     .mapValues(len) \
     .collect()
 ```
-`[('b', 31), ('a', 19)]`
+`[('a', 19), ('b', 31)]`
 
 
 
@@ -268,7 +268,7 @@ my_rdd \
     .mapValues(len) \
     .collect()
 ```
-`[('b', 31), ('a', 19)]`
+`[('a', 19), ('b', 31)]`
 
 - Allows us to do more transformations!
 
@@ -280,7 +280,7 @@ my_rdd \
     .map(lambda x: (x[0], x[1], log(x[1]))) \
     .collect()
 ```
-`[('b', 31, 3.4339872044851463), ('a', 19, 2.9444389791664403)]`
+`[('a', 19, 2.9444389791664403), ('b', 31, 3.4339872044851463)]`
 
 
 ---
@@ -296,7 +296,7 @@ my_rdd \
     .mapValues(sum) \
     .collect()
 ```
-`[('b', 1085), ('a', 190)]`
+`[('a', 190), ('b', 1085)]`
 
 - Documentation says use `aggregateByKey()` instead...
 
@@ -316,7 +316,7 @@ my_rdd \
                   lambda across_1, across_2: across_1 + across_2) \
   .collect() 
 ```
-`[('b', 1085), ('a', 190)]`
+`[('a', 190), ('b', 1085)]`
 
 
 ---
