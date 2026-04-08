@@ -38,7 +38,8 @@ library(tidyverse)
 library(knitr)
 library(reticulate)
 #use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-use_python("C:\\python\\python.exe")
+#use_python("C:\\python\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -172,7 +173,7 @@ df \
   .aggregation()
 ```
 
-- Note: There are [conditions for using watermarks](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#creating-streaming-dataframes-and-streaming-datasets) given in the guide
+- Note: There are [conditions for using watermarks](https://spark.apache.org/docs/latest/streaming/apis-on-dataframes-and-datasets.html) given in the guide
 
 
 ---

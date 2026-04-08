@@ -26,8 +26,6 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 
 - <a href="https://kafka.apache.org/intro" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">Nice&nbsp;intro from kafka</a>
         <span style="font-size: 0.9375rem;">&nbsp;about streaming data.</span>
-- <a href="https://streamsets.com/learn/stream-processing-streaming-data/" target="_blank" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">Streaming data intro with some detail.</a>
-- <a href="https://www.upsolver.com/blog/streaming-data-architecture-key-components" target="_blank">Decent intro to streaming data ideas.</a>&nbsp; Stop reading at (Examples of modern streaming architectures on AWS).
 - <a href="https://aws.amazon.com/streaming-data/" target="_blank">Basic overview of streaming data ideas.</a>
 
 ### Streaming Data Tasks
@@ -36,7 +34,7 @@ I highly recommend watching the video using the 'full' Panopto player. There is 
 
 ### Streaming Data & Spark
 
-- <a href="https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html" target="_blank">Spark Structured Streaming Overview</a>
+- <a href="https://spark.apache.org/docs/latest/streaming/index.html" target="_blank">Spark Structured Streaming Overview</a>
 - <a href="https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html" target="_blank">More on spark and kafka integration</a>
 
 Use the table of contents on the left or the arrows at the bottom of this page to navigate to the next learning material!

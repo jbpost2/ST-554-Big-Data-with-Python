@@ -225,6 +225,11 @@ Two major DataFrame APIs in `pyspark`
 
 
 ```python
+from pyspark.sql import SparkSession
+spark = SparkSession.builder \
+    .appName(&quot;my_app&quot;) \
+    .config(&quot;spark.sql.ansi.enabled&quot;, &quot;false&quot;) \
+    .getOrCreate()
 import pandas as pd
 import numpy as np
 import pyspark.pandas as ps
@@ -295,7 +300,7 @@ psdf.head()
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[[&quot;column1&quot;, &quot;column2&quot;]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
     
 ---
@@ -307,7 +312,7 @@ psdf.head()
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[[&quot;column1&quot;, &quot;column2&quot;]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
 
 ```python
@@ -325,7 +330,7 @@ psdf.loc[psdf.quality &gt; 5, [&quot;alcohol&quot;, &quot;quality&quot;]].head()
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[[&quot;column1&quot;, &quot;column2&quot;]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
 
 ```python
@@ -343,7 +348,7 @@ titanic_ps[&quot;survived&quot;].value_counts()
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[[&quot;column1&quot;, &quot;column2&quot;]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
     
 
 ```python
@@ -361,7 +366,7 @@ titanic_ps.groupby(&quot;survived&quot;).mean()
     + `.index`, `.columns`, `.shape`, `.info`
     + `.head()`, `tail()`
     + `[[&quot;column1&quot;, &quot;column2&quot;]]`, `.loc[]`
-    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()`
+    + `.mean()`, `.sum()`, `.groupby()`, `.describe()`, `.value_counts()` (a Series method)
 
 
 ```python
@@ -402,8 +407,8 @@ def standardize(pser) -&gt; ps.Series[np.float64]:
 ```python
 std_res = titanic_ps[[&quot;age&quot;, &quot;fare&quot;]] \
     .rename(columns = {&quot;age&quot;: &quot;o_age&quot;, &quot;fare&quot;: &quot;o_fare&quot;}) \
-    .join(titanic_ps[[&quot;age&quot;, &quot;fare&quot;]]
-              .transform(standardize))
+    .join(titanic_ps[[&quot;age&quot;, &quot;fare&quot;]].transform(standardize))
+std_res.head()
 ```
 &lt;img src=&quot;data:image/png;base64,#img/psdf7.png&quot; width=&quot;600px&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
 

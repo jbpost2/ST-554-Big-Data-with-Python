@@ -38,7 +38,8 @@ library(tidyverse)
 library(knitr)
 library(reticulate)
 #use_python("C:\\Users\\jbpost2\\AppData\\Local\\Programs\\Python\\Python310\\python.exe")
-use_python("C:\\python\\python.exe")
+#use_python("C:\\python\\python.exe")
+use_python("C:\\ProgramData\\Anaconda3\\python.exe")
 options(dplyr.print_min = 5)
 options(reticulate.repl.quiet = TRUE)
 ```
@@ -130,7 +131,7 @@ Commonly a stream of logs that record events
 Streaming data  
 
 - data that is generated over time (usually continuously)
-- often small amounts of data with high velocity
+- often smaller amounts of data
 
 Commonly a stream of logs that record events
 
